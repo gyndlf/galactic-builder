@@ -4,7 +4,7 @@
 UserID and Password*/
 function pasuser(form) {
 if (form.id.value=="James" || form.id.value=="Jacob" || form.id.value=="Joe") {
-if (form.pass.value=="Test") {              
+if (form.pass.value=="Test" || Special) {              
 location="LoggedIn.html" 
 } else {
 alert("Invalid Password")
