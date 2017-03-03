@@ -13,3 +13,8 @@ int factoryIncome
 int factoryResale
 int NumOfFactories
 int factoryCost
+
+int steelIncome
+int steelMineResale
+int NumOfSteelMines
+int steelMineCost
