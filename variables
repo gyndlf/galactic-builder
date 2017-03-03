@@ -1,8 +1,12 @@
+Done:
+
 int money
 int netIncome
 int income
-int losses
+int losses (name changed to expenses)
 int netWorth
+
+Not Done:
 
 int farmIncome
 int farmResale
