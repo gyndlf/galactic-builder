@@ -1,0 +1,5 @@
+int money
+int netIncome
+int income
+int losses
+int netWorth
