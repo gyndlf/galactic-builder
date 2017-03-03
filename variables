@@ -11,5 +11,5 @@ int farmCost
 
 int factoryIncome
 int factoryResale
-int NumOfFactory
+int NumOfFactories
 int factoryCost
