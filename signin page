@@ -3,14 +3,21 @@
 <title>Galactic Builder</title>
 <style>
 body {
+background-color: black; 
+}
+#mainpage {
+background-color:white;
+text-align: center;
 
 }
 </style>
 </head>
 <body>
-<div>
+<div id = "mainpage">
 <h1>Galactic Builder</h1>
-
+<!--
+this is where the sign in page goes
+-->
 </div>
 
 
