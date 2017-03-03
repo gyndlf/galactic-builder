@@ -5,7 +5,7 @@
 #export FLASK_APP=mainpythonfile.py
 #python -m flask run
 
-from flask import Flask
+from flask import *
 app = Flask(__name__)
 
 @app.route('/')
@@ -16,3 +16,10 @@ def hello_world():
 def show_post(user):
     # show the post with the given id, the id is a string
     return "User = " + str(user)
+
+from flask import render_template
+
+@app.route('/hello/')
+@app.route('/hello/<name>')
+def hello(name=None):
+    return render_template('hello.html', name=name)
