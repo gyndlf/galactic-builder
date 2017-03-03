@@ -51,14 +51,27 @@ text-align: center;
 <td>Farms</td>
 </tr>
 <tr>
-<td class = "module"> income: <!--income of each farm variable is displayed here--></td>
-<td class = "module"> <!--resale cost variable is displayed here--></td>
+<td class = "module"> income: {{ farmIncome }}</td>
+<td class = "module"> {{ farmResale }}</td>
 <td class = "module"> <button>-</button></td>
-<td class = "module"> <!--Number of farms goes here--> </td>
+<td class = "module"> {{ numOfFarms }} </td>
 <td class = "module"> <button>+</button></td>
-<td class = "module"> <!--cost of farms goes here--> </td>
+<td class = "module"> {{ farmCost }} </td>
 </tr>
-
+<td>Factories</td>
+</tr>
+</tr>
+<td>Car Factory</td>
+</tr>
+<tr>
+<td class = "module"> income: {{ factoryIncome }}</td>
+<td class = "module"> {{ factoryResale }}</td>
+<td class = "module"> <button>-</button></td>
+<td class = "module"> {{ numOfFactories }} </td>
+<td class = "module"> <button>+</button></td>
+<td class = "module"> {{ factorycost }} </td>
+<td class = "module">resources: <!--resources go here--></td>
+</tr>
 </table>
 </div>
 
