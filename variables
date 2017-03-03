@@ -3,3 +3,8 @@ int netIncome
 int income
 int losses
 int netWorth
+
+int farmIncome
+int farmResale
+int NumOfFarms
+int farmCost
