@@ -1,13 +1,18 @@
-#! python2
-
 #This is the main python file.
 #Please do not touch unless your are ABSOLUTELY SURE ABOUT WHAT YOU ARE DOING
 #Thanks :)
 
-import flask
+#export FLASK_APP=mainpythonfile.py
+#python -m flask run
 
-x = 10
+from flask import Flask
+app = Flask(__name__)
 
-x += 1
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
 
-print(x)
+@app.route('/login/<string:user>')
+def show_post(user):
+    # show the post with the given id, the id is a string
+    return "User = " + str(user)
