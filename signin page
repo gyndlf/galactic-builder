@@ -2,12 +2,15 @@
 <head>
 <title>Galactic Builder</title>
 <style>
+body {
 
+}
 </style>
 </head>
 <body>
 <div>
-<h1></h1>
+<h1>Galactic Builder</h1>
+
 </div>
 
 
