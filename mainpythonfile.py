@@ -6,6 +6,7 @@
 #python -m flask run
 
 import database as data
+import pickle
 
 from flask import *
 app = Flask(__name__)
@@ -14,6 +15,7 @@ networth = 300
 money = 53
 
 james = data.james
+
 
 @app.route('/')
 def hello_world():
@@ -32,3 +34,6 @@ def hello(name=None):
     if name == james.name:
         return render_template('finances.html', money=james.money, netIncome=james.netIncome, income=james.income, expenses=james.expenses, netWorth=james.netWorth)
     return "Invaild username"
+
+if __name__ == "__main__":
+    app.run()
