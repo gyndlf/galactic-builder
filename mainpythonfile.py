@@ -8,6 +8,9 @@
 from flask import *
 app = Flask(__name__)
 
+networth = 300
+money = 53
+
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
@@ -22,4 +25,4 @@ from flask import render_template
 @app.route('/hello/')
 @app.route('/hello/<name>')
 def hello(name=None):
-    return render_template('hello.html', name=name)
+    return render_template('hello.html', name=name, networth=networth, money=money)
