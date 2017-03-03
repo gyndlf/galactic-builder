@@ -5,11 +5,15 @@
 #export FLASK_APP=mainpythonfile.py
 #python -m flask run
 
+import database as data
+
 from flask import *
 app = Flask(__name__)
 
 networth = 300
 money = 53
+
+user1 = data.james
 
 @app.route('/')
 def hello_world():
