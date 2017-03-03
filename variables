@@ -8,3 +8,8 @@ int farmIncome
 int farmResale
 int NumOfFarms
 int farmCost
+
+int factoryIncome
+int factoryResale
+int NumOfFactory
+int factoryCost
