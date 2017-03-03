@@ -13,7 +13,7 @@ app = Flask(__name__)
 networth = 300
 money = 53
 
-user1 = data.james
+james = data.james
 
 @app.route('/')
 def hello_world():
@@ -29,4 +29,6 @@ from flask import render_template
 @app.route('/hello/')
 @app.route('/hello/<name>')
 def hello(name=None):
-    return render_template('hello.html', name=name, networth=networth, money=money)
+    if name == james.name:
+        return render_template('finances.html', money=james.money, netIncome=james.netIncome, income=james.income, expenses=james.expenses, netWorth=james.netWorth)
+    return "Invaild username"

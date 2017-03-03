@@ -2,15 +2,21 @@
 
 class person ():
     def __init__(self):
+        self.name = ""
+        self.id = 0
         self.money = 0
-        self.networth = 0
+        self.netWorth = 0
         self.salary = 0
         self.income = 0
         self.expenses = 0
+        self.netIncome = 0
 
 james = person
+james.name = "james"
+james.id = 2
 james.money = 1234
-james.networth = 4321
+james.netWorth = 4321
+james.netIncome = 23532
 james.expenses = 32
 james.income = 352
 james.salary = 200000
