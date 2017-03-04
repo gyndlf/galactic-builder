@@ -25,8 +25,6 @@ def show_post(user):
     # show the post with the given id, the id is a string
     return "User = " + str(user)
 
-from flask import render_template
-
 @app.route('/hello/')
 @app.route('/hello/<name>')
 def hello(name=None):
