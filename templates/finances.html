@@ -3,7 +3,7 @@
 <title>Galactic Builder</title>
 <style>
 body {
-background-color: black; 
+background-image: url("StarBackdrop.png"); 
 }
 #mainpage {
 background-color:white;
@@ -13,15 +13,20 @@ text-align: center;
 td{
 width:200px;
 text-align: center;
-
+border-bottom:1px solid black;
+padding:15px;
+}
+tr{
+border-bottom:1px solid black;
 }
 #maininfo {
 border:1px solid black;
 background-color:#cccccc;
 text-align: center;
+
 }
 .class{
-width:50px;
+border-bottom:2px solid black;
 text-align: center;
 }
 </style>
@@ -29,9 +34,20 @@ text-align: center;
 <body>
 <div id = "mainpage">
 <h1>Galactic Builder</h1>
+
 <table id = "maininfo">
 <tr>
 <td>Finances</td>
+<td>Community</td>
+<td>War</td>
+<td>Battle</td>
+<td>Custom equiptment<td>
+<td></td>
+</tr>
+</table>
+
+<table id = "maininfo">
+<td colspan="7">Finances</td>
 </tr>
 <tr>
 <td>Money</td>
@@ -39,16 +55,21 @@ text-align: center;
 <td>Income</td>
 <td>Expenses</td>
 <td>Net Worth<td>
+<td></td>
 </tr>
 <tr>
-<td>{{ money }}</td>
-<td>{{ netIncome }}</td>
-<td>{{ income }}</td>
-<td>{{ expenses }}</td>
-<td>{{ netWorth }}<td>
+<td class = "module">{{ money }}</td>
+<td class = "module">{{ netIncome }}</td>
+<td class = "module">{{ income }}</td>
+<td class = "module">{{ expenses }}</td>
+<td class = "module">{{ netWorth }}<td>
+<td class = "module"></td>
+
 </tr>
+</table>
+<table id = "maininfo">
 <tr>
-<td>Farms</td>
+<td colspan="7">Farms</td>
 </tr>
 <tr>
 <td class = "module"> income: {{ farmIncome }}</td>
@@ -57,11 +78,14 @@ text-align: center;
 <td class = "module"> {{ numOfFarms }} </td>
 <td class = "module"> <button>+</button></td>
 <td class = "module"> {{ farmCost }} </td>
+<td class = "module"></td>
 </tr>
-<td>Factories</td>
+</table>
+<table id = "maininfo">
+<tr>
+<td colspan="7">Factories</td>
 </tr>
-</tr>
-<td>Car Factory</td>
+<td colspan="7">Car Factory</td>
 </tr>
 <tr>
 <td class = "module"> income: {{ factoryIncome }}</td>
@@ -72,11 +96,13 @@ text-align: center;
 <td class = "module"> {{ factoryCost }} </td>
 <td class = "module">resources: <!--resources go here--></td>
 </tr>
+</table>
+<table id = "maininfo">
+<tr>
+<td colspan="7">Mines</td>
 </tr>
-<td>Mines</td>
-</tr>
-</tr>
-<td>Steel Mine</td>
+<tr>
+<td colspan="7">Steel Mine</td>
 </tr>
 <tr>
 <td class = "module"> income: {{ steelIncome }}</td>
@@ -85,16 +111,22 @@ text-align: center;
 <td class = "module"> {{ numOfSteelMines }} </td>
 <td class = "module"> <button>+</button></td>
 <td class = "module"> {{ steelMineCost }} </td>
+<td class = "module"></td>
 
 </tr>
+</table>
+<table id = "maininfo">
 <tr>
-<td>Research</td>
+<td colspan="7">Research</td>
 </tr>
 <tr>
 <td class = "module"> better furtiliser</td>
 <td class = "module"> X2 farm boost</td>
+<td class = "module"> $1,000,000</td>
 <td class = "module"> <button>buy</button></td>
-<td class = "module"> $1000000 </td>
+<td class = "module"></td>
+<td class = "module"></td>
+<td class = "module"></td>
 
 </tr>
 </table>
