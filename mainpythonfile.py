@@ -6,7 +6,6 @@
 #python -m flask run
 
 import database as data
-import pickle
 
 from flask import *
 app = Flask(__name__)
