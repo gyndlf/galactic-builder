@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5fce0134-f20f-404f-9e5d-a61c6af53638" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/finances.html" afterPath="$PROJECT_DIR$/templates/finances.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,8 +43,8 @@
       <file leaf-file-name="finances.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/finances.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+            <state relative-caret-position="120">
+              <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -476,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488696819589</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Pycharm">
+      <created>1488697855542</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1488697855542</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -547,7 +553,8 @@
     <MESSAGE value="Updated" />
     <MESSAGE value="Test" />
     <MESSAGE value="Still testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Still testing" />
+    <MESSAGE value="Pycharm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pycharm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -854,8 +861,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/finances.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+        <state relative-caret-position="120">
+          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
           <folding />
         </state>
       </provider>
