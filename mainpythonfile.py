@@ -15,8 +15,7 @@ money = 53
 
 james = data.james
 
-#Just a coment
-
+#Revert
 
 @app.route('/')
 def hello_world():
