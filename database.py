@@ -12,6 +12,7 @@ class person ():
         self.expenses = 0
         self.netIncome = 0
 
+#test
 #james stats
 james = person
 james.name = "james"
