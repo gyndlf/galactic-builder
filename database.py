@@ -11,14 +11,3 @@ class person ():
         self.income = 0
         self.expenses = 0
         self.netIncome = 0
-
-#james stats
-james = person
-james.name = "james"
-james.id = 2
-james.money = 1234
-james.netWorth = 4321
-james.netIncome = 23532
-james.expenses = 32
-james.income = 352
-james.salary = 200000
