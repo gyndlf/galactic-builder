@@ -22,17 +22,3 @@ james.netIncome = 23532
 james.expenses = 32
 james.income = 352
 james.salary = 200000
-
-#newst
-
-#Joe stats
-#joe = person
-#joe.name = "joe"
-#joe.id = 3
-#joe.money = 1233
-#joe.netWorth = 4320
-#joe.netIncome = 3255235
-#joe.expenses = 23
-#joe.income = 351
-#joe.salary = 0
-

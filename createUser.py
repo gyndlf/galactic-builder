@@ -1,7 +1,7 @@
+# Creates a new user with no money, jobs or anything according to the database.py file
+
 import pickle
 import os, sys
-
-# Creates a new user with no money, jobs or anything according to the database.py file
 
 import database
 
