@@ -23,6 +23,8 @@ james.expenses = 32
 james.income = 352
 james.salary = 200000
 
+#newst
+
 #Joe stats
 #joe = person
 #joe.name = "joe"
