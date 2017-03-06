@@ -9,7 +9,7 @@ name = input("User name? ")
 user = input("User id? ")
 users = []
 
-created = database.person
+created = database.person()
 
 created.name = name
 created.id = user
