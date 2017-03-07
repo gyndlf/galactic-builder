@@ -43,10 +43,9 @@ def show_post(user):
     # show the post with the given id, the id is a string
     return "User = " + str(user)
 
-@app.route('/hello/')
-@app.route('/hello/<name>')
-def hello(name=None):
-
+@app.route('/user/')
+@app.route('/user/<name>')
+def user(name=None):
     for person in users:
         if name == person.name:
             return render_template('finances.html', money=person.money, netIncome=person.netIncome, income=person.income, expenses=person.expenses, netWorth=person.netWorth)
