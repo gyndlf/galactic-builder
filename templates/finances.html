@@ -1,29 +1,31 @@
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galactic Builder</title>
 <style>
 body {
 background-image: url("StarBackdrop.png"); 
 }
 #mainpage {
-background-color:white;
+background-color: white;
 text-align: center;
 
 }
 td{
 
 text-align: center;
-border-bottom:1px solid black;
+border-bottom:1px solid #33cc33;
 padding:15px;
+width: 100px;
 }
 tr{
-border-bottom:1px solid black;
+border-bottom:1px solid #33cc33;
 }
 #maininfo {
-border:1px solid black;
-background-color:#cccccc;
+border:1px solid #33cc33;
+background-color: white;
 text-align: center;
-width:1550px;
+width: 1500px;
 }
 .module{
 border-bottom:0px solid black;
@@ -44,8 +46,13 @@ text-align: center;
 <td>Battle</td>
 <td>Custom equiptment</td>
 
+
 </tr>
 </table>
+
+<p><br>
+<br>
+</p>
 
 <table id = "maininfo">
 <td colspan="7">Finances</td>
@@ -66,6 +73,9 @@ text-align: center;
 <td class = "module">{{ netWorth }}</td>
 </tr>
 </table>
+<p><br>
+<br>
+</p>
 <table id = "maininfo">
 <tr>
 <td colspan="6">Farms</td>
@@ -80,6 +90,9 @@ text-align: center;
 
 </tr>
 </table>
+<p><br>
+<br>
+</p>
 <table id = "maininfo">
 <tr>
 <td colspan="7">Factories</td>
@@ -87,15 +100,32 @@ text-align: center;
 <td colspan="7">Car Factory</td>
 </tr>
 <tr>
-<td class = "module"> income: {{ factoryIncome }}</td>
-<td class = "module"> {{ factoryResale }}</td>
+<td> income: {{ factoryIncome }}</td>
+<td> {{ factoryResale }}</td>
+<td> <button>-</button></td>
+<td> {{ numOfFactories }} </td>
+<td> <button>+</button></td>
+<td> {{ factoryCost }} </td>
+<td >resources: 10 Steel</td>
+</tr>
+</tr>
+<td colspan="7">Pii Fighter Factory</td>
+</tr>
+<tr>
+<td class = "module"> income: {{ PFfactoryIncome }}</td>
+<td class = "module"> {{ PFfactoryResale }}</td>
 <td class = "module"> <button>-</button></td>
-<td class = "module"> {{ numOfFactories }} </td>
+<td class = "module"> {{ numOfPFFactories }} </td>
 <td class = "module"> <button>+</button></td>
-<td class = "module"> {{ factoryCost }} </td>
-<td class = "module">resources: <!--resources go here--></td>
+<td class = "module"> {{ PFfactoryCost }} </td>
+<td class = "module">resources: 10 Steel,<br> 10 White Energy Cystals, <br>1 Weapon License Core, <br>1 Fighter License Core</td>
 </tr>
 </table>
+
+<p><br>
+<br>
+</p>
+
 <table id = "maininfo">
 <tr>
 <td colspan="6">Mines</td>
@@ -104,31 +134,59 @@ text-align: center;
 <td colspan="6">Steel Mine</td>
 </tr>
 <tr>
-<td class = "module"> income: {{ steelIncome }}</td>
-<td class = "module"> {{ steelMineResale }}</td>
-<td class = "module"> <button>-</button></td>
-<td class = "module"> {{ numOfSteelMines }} </td>
-<td class = "module"> <button>+</button></td>
-<td class = "module"> {{ steelMineCost }} </td>
+<td> income: {{ steelIncome }}</td>
+<td> {{ steelMineResale }}</td>
+<td> <button>-</button></td>
+<td> {{ numOfSteelMines }} </td>
+<td> <button>+</button></td>
+<td> {{ steelMineCost }} </td>
 
 
 </tr>
+<tr>
+<td colspan="6">White Energy Cystal Mine</td>
+</tr>
+<tr>
+<td class = "module"> income: {{ WHCIncome }}</td>
+<td class = "module"> {{ WHCMineResale }}</td>
+<td class = "module"> <button>-</button></td>
+<td class = "module"> {{ numOfWHCMines }} </td>
+<td class = "module"> <button>+</button></td>
+<td class = "module"> {{ WHCMineCost }} </td>
+</tr>
 </table>
+
+<p><br>
+<br>
+</p>
+
 <table id = "maininfo">
 <tr>
 <td colspan="4">Research</td>
 </tr>
 <tr>
-<td class = "module"> better furtiliser</td>
-<td class = "module"> X2 farm boost</td>
-<td class = "module"> $1,000,000</td>
+<td> Better furtiliser</td>
+<td> X2 farm boost</td>
+<td> $1,000,000</td>
+<td> <button>buy</button></td>
+
+
+</tr>
+<tr>
+<td class = "module"> Robot workers</td>
+<td class = "module"> Factory is 10% more efficient</td>
+<td class = "module"> $10,000,000</td>
 <td class = "module"> <button>buy</button></td>
 
 
 </tr>
 </table>
-</div>
 
+<p><br>
+<br>
+</p>
+
+</div>
 
 </body>
 </html>
