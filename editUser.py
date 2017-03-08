@@ -21,5 +21,26 @@ with open(fname, 'rb') as f:
 print("Loaded user " + person.name)
 
 edit = str(input("Varible to edit? "))
-value = person.edit
-print("Current value is " + value)
+
+value = getattr(person,edit)
+print("Current value is " + str(value))
+
+kind = input("Is this new value a string or int (s or i)? ")
+
+if kind == "s" or kind == "S":
+    new = str(input("What should the new value be? "))
+elif kind == "i" or kind == "I":
+    new = int(input("What should the new value be? "))
+else:
+    print("Invaild option.")
+    exit()
+
+setattr(person,edit,new)
+
+check = getattr(person,edit)
+print("Updated the value to " + str(check))
+
+with open(fname, 'wb') as f:
+    pickle.dump(person, f)
+
+print("Done.")
