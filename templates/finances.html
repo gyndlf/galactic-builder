@@ -1,53 +1,79 @@
 <html>
+    
 <head>
+    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galactic Builder</title>
-<style>
+    
+<style type="text/css">
+    
 body {
-background-image: url("StarBackdrop.png"); 
+/*background-image: url(space_bg.gif)*/
+background: linear-gradient(132deg, #ec5218, #1665c1);
+background-size: 400% 400%;
+animation: BackgroundGradient 30s ease infinite;
 }
+    
+@keyframes BackgroundGradient {
+0% {background-position: 0% 50%;}
+50% {background-position: 100% 50%;}
+100% {background-position: 0% 50%;}
+}
+    
 #mainpage {
-background-color: white;
+background-color ;
 text-align: center;
-
 }
-td{
 
+h1{
+color: azure;        
+}
+    
+td{
 text-align: center;
 border-bottom:1px solid #33cc33;
 padding:15px;
 width: 100px;
 }
+    
 tr{
 border-bottom:1px solid #33cc33;
 }
+    
 #maininfo {
-border:1px solid #33cc33;
-background-color: white;
+border:5px solid #33cc33;
+background-color: azure;
 text-align: center;
 width: 100%;
 }
+    
 .module{
 border-bottom:0px solid black;
 text-align: center;
 }
 
 </style>
+    
 </head>
+    
 <body>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript"></script>
+    
 <div id = "mainpage">
-<h1>Galactic Builder</h1>
+<h1><b>Galactic Builder</b></h1>
 
 <table id = "maininfo">
 <tr>
-<td>Finances</td>
-<td>Community</td>
-<td>War</td>
-<td>Battle</td>
-<td>Custom equiptment</td>
-
+<td><b>Finances</b></td>
+<td><b>Community</b></td>
+<td><b>War</b></td>
+<td><b>Battle</b></td>
+<td><b>Custom equiptment</b></td>
 
 </tr>
+    
 </table>
 
 <p><br>
@@ -55,16 +81,18 @@ text-align: center;
 </p>
 
 <table id = "maininfo">
-<td colspan="7">Finances</td>
-</tr>
+    
+<td colspan="7"><b>Finances</b></td>
+
+    
 <tr>
 <td>Money</td>
 <td>Net Income</td>
 <td>Income</td>
 <td>Expenses</td>
 <td>Net Worth</td>
-
 </tr>
+    
 <tr>
 <td class = "module">{{ money }}</td>
 <td class = "module">{{ netIncome }}</td>
@@ -72,15 +100,21 @@ text-align: center;
 <td class = "module">{{ expenses }}</td>
 <td class = "module">{{ netWorth }}</td>
 </tr>
+    
 </table>
+    
 <p><br>
 <br>
 </p>
+    
 <table id = "maininfo">
 <tr>
-<td colspan="6">Farms</td>
+  
+<td colspan="6"><b>Farms</b></td>
+ 
 </tr>
 <tr>
+    
 <td class = "module"> income: {{ farmIncome }}</td>
 <td class = "module"> {{ farmResale }}</td>
 <td class = "module"> <button>-</button></td>
@@ -89,16 +123,19 @@ text-align: center;
 <td class = "module"> {{ farmCost }} </td>
 
 </tr>
+    
 </table>
+    
 <p><br>
 <br>
 </p>
+    
 <table id = "maininfo">
 <tr>
-<td colspan="7">Factories</td>
+<td colspan="7"><b>Factories</b></td>
 </tr>
-<td colspan="7">Car Factory</td>
-</tr>
+<td colspan="7"><b>Car Factory</b></td>
+
 <tr>
 <td> income: {{ factoryIncome }}</td>
 <td> {{ factoryResale }}</td>
@@ -108,9 +145,9 @@ text-align: center;
 <td> {{ factoryCost }} </td>
 <td >resources: 10 Steel</td>
 </tr>
-</tr>
-<td colspan="7">Pii Fighter Factory</td>
-</tr>
+
+<td colspan="7"><b>Pii Fighter Factory</b></td>
+
 <tr>
 <td class = "module"> income: {{ PFfactoryIncome }}</td>
 <td class = "module"> {{ PFfactoryResale }}</td>
@@ -120,6 +157,7 @@ text-align: center;
 <td class = "module"> {{ PFfactoryCost }} </td>
 <td class = "module">resources: 10 Steel,<br> 10 White Energy Cystals, <br>1 Weapon License Core, <br>1 Fighter License Core</td>
 </tr>
+    
 </table>
 
 <p><br>
@@ -128,11 +166,13 @@ text-align: center;
 
 <table id = "maininfo">
 <tr>
-<td colspan="6">Mines</td>
+<td colspan="6"><b>Mines</b></td>
 </tr>
+    
 <tr>
-<td colspan="6">Steel Mine</td>
+<td colspan="6"><b>Steel Mine</b></td>
 </tr>
+    
 <tr>
 <td> income: {{ steelIncome }}</td>
 <td> {{ steelMineResale }}</td>
@@ -143,9 +183,11 @@ text-align: center;
 
 
 </tr>
+    
 <tr>
-<td colspan="6">White Energy Cystal Mine</td>
+<td colspan="6"><b>White Energy Cystal Mine</b></td>
 </tr>
+    
 <tr>
 <td class = "module"> income: {{ WHCIncome }}</td>
 <td class = "module"> {{ WHCMineResale }}</td>
@@ -154,6 +196,7 @@ text-align: center;
 <td class = "module"> <button>+</button></td>
 <td class = "module"> {{ WHCMineCost }} </td>
 </tr>
+    
 </table>
 
 <p><br>
@@ -162,8 +205,9 @@ text-align: center;
 
 <table id = "maininfo">
 <tr>
-<td colspan="4">Research</td>
+<td colspan="4"><b>Research</b></td>
 </tr>
+    
 <tr>
 <td> Better furtiliser</td>
 <td> X2 farm boost</td>
@@ -172,6 +216,7 @@ text-align: center;
 
 
 </tr>
+    
 <tr>
 <td class = "module"> Robot workers</td>
 <td class = "module"> Factory is 10% more efficient</td>
@@ -180,6 +225,7 @@ text-align: center;
 
 
 </tr>
+    
 </table>
 
 <p><br>
@@ -189,4 +235,5 @@ text-align: center;
 </div>
 
 </body>
+    
 </html>
