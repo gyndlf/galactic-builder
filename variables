@@ -25,6 +25,16 @@ Public int PFfactoryResale
 Private int NumOfPfFactories
 Public int PffactoryCost
 
+Private int UPfactoryIncome
+Public int UPfactoryResale
+Private int NumOfUPFactories
+Public int UPfactoryCost
+
+Private int AWfactoryIncome
+Public int AWfactoryResale
+Private int NumOfAWFactories
+Public int AWfactoryCost
+
 ---Mines---
 
 Private int steelIncome
@@ -85,3 +95,4 @@ Private bool RWorResearch
 
 Private bool LCutResearch
 
+Private bool NKeaResearch
