@@ -83,3 +83,5 @@ Private bool BFerResearch
 
 Private bool RWorResearch
 
+Private bool LCutResearch
+
