@@ -24,6 +24,7 @@ USERSPATH = os.path.join(PICKLE_DIR, USERS)
 
 users = []
 
+#Load users from their .p files
 with open(USERSPATH, 'rb') as f:
     usersArray = pickle.load(f)
 
@@ -34,21 +35,17 @@ for file in usersArray:
         peps = pickle.load(f)
         users.append(peps)
 
+
+#All app.route functions
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def home():
+    return render_template('index.html')
 
-@app.route('/login/<string:user>')
-def show_post(user):
-    # show the post with the given id, the id is a string
-    return "User = " + str(user)
-
-@app.route('/foo', methods=['POST'])
-def foo():
-    if request.method == 'POST':
-        x = 10
-    return render_template('teststuff.html')
-
+@app.route('/loginuser', methods=['POST'])
+def calcmessage():
+    username = request.form['username']
+    print("Logging in to " + str(username))
+    return redirect(url_for('user', name=username))
 
 @app.route('/user/')
 @app.route('/user/<name>')
@@ -59,24 +56,26 @@ def user(name=None):
                                    expenses=person.expenses, netWorth=person.netWorth)
     return "Invaild username"
 
-@app.route('/button')
-def home():
-    return render_template('button.html', message=message, number=number)
+#Button example ---------------#
+#@app.route('/button')
+#def button():
+#    return render_template('button.html', message=message, number=number)
 
-@app.route('/calcmessage', methods=['POST'])
-def calcmessage():
-    global message
-    message = request.form['message']
-    print(request.form['message'])
-    return redirect(url_for('home'))
+#@app.route('/calcmessage', methods=['POST'])
+#def calcmessage():
+#    global message
+#    message = request.form['message']
+#    print(request.form['message'])
+#    return redirect(url_for('button'))
 
-@app.route('/addone', methods=['POST'])
-def addone():
-    global number
-    if request.form['add1']:
-        number += 1
-    print(number)
-    return redirect(url_for('home'))
+#@app.route('/addone', methods=['POST'])
+#def addone():
+#    global number
+#    if request.form['add1']:
+#        number += 1
+#    print(number)
+#    return redirect(url_for('button'))
+#Button example ---------------#
 
 if __name__ == "__main__":
     app.run()
