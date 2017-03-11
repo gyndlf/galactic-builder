@@ -36,7 +36,7 @@ for file in usersArray:
         users.append(peps)
 
 
-#All app.route functions
+#All app.route functions --------------#
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -52,8 +52,7 @@ def calcmessage():
 def user(name=None):
     for person in users:
         if name == person.name:
-            return render_template('finances.html', money=person.money, netIncome=person.netIncome, income=person.income,
-                                   expenses=person.expenses, netWorth=person.netWorth)
+            return render_template('basicFinances.html',name=person.name, money=person.money, netIncome=person.netIncome)
     return "Invaild username"
 
 #Button example ---------------#

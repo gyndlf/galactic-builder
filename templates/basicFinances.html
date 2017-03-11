@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finances</title>
+</head>
+<body>
+
+<h1>Welcome {{ name }}!</h1>
+
+    <form action="/addone" method="post">
+    <p>You have ${{ money }}</p><input type="submit" name="add1" value="Get More">
+    </form>
+
+<p>You have a net income of ${{ netIncome }}</p>
+
+
+
+</body>
+</html>
