@@ -11,8 +11,8 @@ import os, sys
 from flask import *
 app = Flask(__name__)
 
-networth = 300
-money = 53
+message = ""
+number = 0
 
 # Load all users according to "users.p" and display their stats
 
@@ -58,6 +58,25 @@ def user(name=None):
             return render_template('finances.html', money=person.money, netIncome=person.netIncome, income=person.income,
                                    expenses=person.expenses, netWorth=person.netWorth)
     return "Invaild username"
+
+@app.route('/button')
+def home():
+    return render_template('button.html', message=message, number=number)
+
+@app.route('/calcmessage', methods=['POST'])
+def calcmessage():
+    global message
+    message = request.form['message']
+    print(request.form['message'])
+    return redirect(url_for('home'))
+
+@app.route('/addone', methods=['POST'])
+def addone():
+    global number
+    if request.form['add1']:
+        number += 1
+    print(number)
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
     app.run()
