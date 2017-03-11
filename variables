@@ -25,7 +25,6 @@ Public int PFfactoryResale
 Private int NumOfPfFactories
 Public int PffactoryCost
 
-<<<<<<< HEAD
 Private int UPfactoryIncome
 Public int UPfactoryResale
 Private int NumOfUPFactories
@@ -36,8 +35,11 @@ Public int AWfactoryResale
 Private int NumOfAWFactories
 Public int AWfactoryCost
 
-=======
->>>>>>> 7de890de7de3ff74611b45030f69f24210b7c8b8
+Private int ToiletfactoryIncome
+Public int ToiletfactoryResale
+Private int NumOfToiletFactories
+Public int ToiletfactoryCost
+
 ---Mines---
 
 Private int steelIncome
@@ -98,7 +100,5 @@ Private bool RWorResearch
 
 Private bool LCutResearch
 
-<<<<<<< HEAD
 Private bool NKeaResearch
-=======
->>>>>>> 7de890de7de3ff74611b45030f69f24210b7c8b8
+
