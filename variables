@@ -13,6 +13,8 @@ int farmResale
 int NumOfFarms
 int farmCost
 
+---Factories---
+
 int factoryIncome
 int factoryResale
 int NumOfFactories
@@ -23,15 +25,59 @@ int PFfactoryResale
 int NumOfPfFactories
 int PffactoryCost
 
+---Mines---
+
 int steelIncome
 int steelMineResale
 int NumOfSteelMines
 int steelMineCost
 
+int HydrogenIncome
+int HydrogenMineResale
+int NumOfHydrogenMines
+int HydrogenMineCost
+
+int TitaniumIncome
+int TitaniumMineResale
+int NumOfTitaniumMines
+int TitaniumMineCost
+
+int YHCIncome
+int YHCMineResale
+int NumOfYHCMines
+int YHCMineCost
+
 int WHCIncome
 int WHCMineResale
 int NumOfWHCMines
 int WHCMineCost
+
+int DiamondIncome
+int DiamondMineResale
+int NumOfDiamondMines
+int DiamondMineCost
+
+int SiliconIncome
+int SiliconMineResale
+int NumOfSiliconMines
+int SiliconMineCost
+
+int CopperIncome
+int CopperMineResale
+int NumOfCopperMines
+int CopperMineCost
+
+int NoobidiumIncome
+int NoobidiumMineResale
+int NumOfNoobidiumMines
+int NoobidiumMineCost
+
+int HeliumIncome
+int HeliumMineResale
+int NumOfHeliumMines
+int HeliumMineCost
+
+---Research---
 
 bool BFerResearch
 
