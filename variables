@@ -1,85 +1,85 @@
 Done:
 
-int money
-int netIncome
-int income
-int losses (name changed to expenses)
-int netWorth
+Private int money
+Private int netIncome
+Private int income
+Private int losses (name changed to expenses)
+Private int netWorth
 
 Not Done:
 
-int farmIncome
-int farmResale
-int NumOfFarms
-int farmCost
+Private int farmIncome
+Public int farmResale
+Private int NumOfFarms
+Public int farmCost
 
 ---Factories---
 
-int factoryIncome
-int factoryResale
-int NumOfFactories
-int factoryCost
+Private int factoryIncome
+Public int factoryResale
+Private int NumOfFactories
+Public int factoryCost
 
-int PFfactoryIncome
-int PFfactoryResale
-int NumOfPfFactories
-int PffactoryCost
+Private int PFfactoryIncome
+Public int PFfactoryResale
+Private int NumOfPfFactories
+Public int PffactoryCost
 
 ---Mines---
 
-int steelIncome
-int steelMineResale
-int NumOfSteelMines
-int steelMineCost
+Private int steelIncome
+Public int steelMineResale
+Private int NumOfSteelMines
+Public int steelMineCost
 
-int HydrogenIncome
-int HydrogenMineResale
-int NumOfHydrogenMines
-int HydrogenMineCost
+Private int HydrogenIncome
+Public int HydrogenMineResale
+Private int NumOfHydrogenMines
+Public int HydrogenMineCost
 
-int TitaniumIncome
-int TitaniumMineResale
-int NumOfTitaniumMines
-int TitaniumMineCost
+Private int TitaniumIncome
+Public int TitaniumMineResale
+Private int NumOfTitaniumMines
+Public int TitaniumMineCost
 
-int YHCIncome
-int YHCMineResale
-int NumOfYHCMines
-int YHCMineCost
+Private int YHCIncome
+Public int YHCMineResale
+Private int NumOfYHCMines
+Public int YHCMineCost
 
-int WHCIncome
-int WHCMineResale
-int NumOfWHCMines
-int WHCMineCost
+Private int WHCIncome
+Public int WHCMineResale
+Private int NumOfWHCMines
+Public int WHCMineCost
 
-int DiamondIncome
-int DiamondMineResale
-int NumOfDiamondMines
-int DiamondMineCost
+Private int DiamondIncome
+Public int DiamondMineResale
+Private int NumOfDiamondMines
+Public int DiamondMineCost
 
-int SiliconIncome
-int SiliconMineResale
-int NumOfSiliconMines
-int SiliconMineCost
+Private int SiliconIncome
+Public int SiliconMineResale
+Private int NumOfSiliconMines
+Public int SiliconMineCost
 
-int CopperIncome
-int CopperMineResale
-int NumOfCopperMines
-int CopperMineCost
+Private int CopperIncome
+Public int CopperMineResale
+Private int NumOfCopperMines
+Public int CopperMineCost
 
-int NoobidiumIncome
-int NoobidiumMineResale
-int NumOfNoobidiumMines
-int NoobidiumMineCost
+Private int NoobidiumIncome
+Public int NoobidiumMineResale
+Private int NumOfNoobidiumMines
+Public int NoobidiumMineCost
 
-int HeliumIncome
-int HeliumMineResale
-int NumOfHeliumMines
-int HeliumMineCost
+Private int HeliumIncome
+Public int HeliumMineResale
+Private int NumOfHeliumMines
+Public int HeliumMineCost
 
 ---Research---
 
-bool BFerResearch
+Private bool BFerResearch
 
-bool RWorResearch
+Private bool RWorResearch
 
