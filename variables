@@ -18,7 +18,22 @@ int factoryResale
 int NumOfFactories
 int factoryCost
 
+int PFfactoryIncome
+int PFfactoryResale
+int NumOfPfFactories
+int PffactoryCost
+
 int steelIncome
 int steelMineResale
 int NumOfSteelMines
 int steelMineCost
+
+int WHCIncome
+int WHCMineResale
+int NumOfWHCMines
+int WHCMineCost
+
+bool BFerResearch
+
+bool RWorResearch
+
