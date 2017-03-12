@@ -55,6 +55,15 @@ def user(name=None):
             return render_template('basicFinances.html',name=person.name, money=person.money, netIncome=person.netIncome)
     return "Invaild username"
 
+@app.route('/user/<name>/button', methods=['POST'])
+def userButton(name=None):
+    for person in users:
+        if name == person.name:
+            print("Signed in as " + str(person.name))
+            if request.form['add1']:
+                person.money += 1
+    return redirect(url_for('user', name=name))
+
 #Button example ---------------#
 #@app.route('/button')
 #def button():

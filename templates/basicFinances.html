@@ -8,7 +8,7 @@
 
 <h1>Welcome {{ name }}!</h1>
 
-    <form action="/addone" method="post">
+    <form action="/user/{{ name }}/button" method="post">
     <p>You have ${{ money }}</p><input type="submit" name="add1" value="Get More">
     </form>
 
