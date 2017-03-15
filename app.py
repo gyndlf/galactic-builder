@@ -57,11 +57,19 @@ def user(name=None):
 
 @app.route('/user/<name>/button', methods=['POST'])
 def userButton(name=None):
+    global users
     for person in users:
         if name == person.name:
             print("Signed in as " + str(person.name))
-            if request.form['add1']:
+            if request.form['money1']:
+                print("money1")
                 person.money += 1
+            elif request.form['money2']:
+                print("money2")
+                person.money = 0
+            else:
+                print("Unknown value")
+    print("Redirect")
     return redirect(url_for('user', name=name))
 
 #Button example ---------------#

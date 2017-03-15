@@ -8,9 +8,17 @@
 
 <h1>Welcome {{ name }}!</h1>
 
+
     <form action="/user/{{ name }}/button" method="post">
-    <p>You have ${{ money }}</p><input type="submit" name="add1" value="Get More">
+    <p>You have ${{ money }}</p><input type="submit" name="money1" value="Get More">
     </form>
+
+    <p>Some text.</p>
+
+    <form action="/user/{{ name }}/button" method="post">
+    <input type="submit" name="money2" value="Lose money">
+    </form>
+
 
 <p>You have a net income of ${{ netIncome }}</p>
 

@@ -1,7 +1,8 @@
 Displays all buttons and their tags:
 
 
-NAME    DISPLAYED   Added?
+NAME        DISPLAYED       Added? (James only)
 
 E.g
-add1   Get money    No
+money1      Get money       Yes
+money2      Lose money      Yes
