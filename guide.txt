@@ -1,0 +1,14 @@
+This is a guide on how to use create a button in html
+By James
+
+Use this code:
+
+<form action="/user/{{ name }}/button" method="post">
+    <p>This is example text next to the button</p><input type="submit" name="NAME" value="DISPLAYED">
+    </form>
+
+In the form tag you can put text if you have to but try not as it is easier to debug.
+Any button tag should work, but no testing has been done yet.
+
+The NAME (Look above) is not displayed but needed by the code. DISPLAYED is the displayed value and can be anything.
+As soon as you make a button put it in buttons.txt so that James can add it to the python code.

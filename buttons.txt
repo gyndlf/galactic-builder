@@ -1,0 +1,7 @@
+Displays all buttons and their tags:
+
+
+NAME    DISPLAYED   Added?
+
+E.g
+add1   Get money    No
