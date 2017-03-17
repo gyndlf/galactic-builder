@@ -10,6 +10,7 @@ money2      	    Lose money      Yes
 finances.html_____________________
 sellFarm		    -               No
 buyFarm			    +               No
+
 sellCarFactory	    -               No
 buyCarFactory	    +               No
 sellUPFactory	    -               No
@@ -20,3 +21,29 @@ sellToiletFactory	-               No
 buyToiletFactory	+               No
 sellPFFactory		-               No
 buyPFFactory		+               No
+
+sellSteelMin		-
+buySteelMin			+
+sellHydroMin		-
+buyHydroMin			+
+sellYECMin			-
+buyYECMin			+
+sellTitMin			-
+buyTitMin			+
+sellSiliconMin		-
+buySiliconMin		+
+sellCopMin			-
+buyCopMin			+
+sellNoobMin			-
+buyNoobMin			+
+sellDiaMin			-
+buyDiaMin			+
+sellHeMin			-
+buyHeMin			+
+sellWHCMin			-
+buyWHCMin			+
+
+buyLCR				Buy
+buyBFR				Buy
+buyNKR				Buy
+buyRWR				Buy
