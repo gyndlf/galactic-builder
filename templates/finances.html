@@ -117,9 +117,13 @@ text-align: center;
     
 <td class = "module"> income: {{ farmIncome }}</td>
 <td class = "module"> {{ farmResale }}</td>
-<td class = "module"> <button>-</button></td>
+	<form action="/user/{{ name }}/button" method="post">
+		<td class = "module"> <button>-</button></td><input type="submit" name="sellFarm" value="DISPLAYED">
+    </form>
 <td class = "module"> {{ numOfFarms }} </td>
-<td class = "module"> <button>+</button></td>
+	<form action="/user/{{ name }}/button" method="post">
+		<td class = "module"><button>+</button></td><input type="submit" name="sellBuy" value="DISPLAYED">
+    </form>
 <td class = "module"> {{ farmCost }} </td>
 
 </tr>
