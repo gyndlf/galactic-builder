@@ -6,11 +6,13 @@ NAME        	DISPLAYED       Added? (James only)
 E.g
 money1     		Get money       Yes
 money2      	Lose money      Yes
-sellFarm		-
-buyFarm			+
-sellCarFactory	-
-buyCarFactory	+
-sellUPFactory	-
-buyUPFactory	+
-sellAWFactory	-
-buyAWFactory	+
+
+finances.html
+sellFarm		-               No
+buyFarm			+               No
+sellCarFactory	-               No
+buyCarFactory	+               No
+sellUPFactory	-               No
+buyUPFactory	+               No
+sellAWFactory	-               No
+buyAWFactory	+               No
