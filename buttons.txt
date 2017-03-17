@@ -16,3 +16,19 @@ sellUPFactory	-               No
 buyUPFactory	+               No
 sellAWFactory	-               No
 buyAWFactory	+               No
+=======
+money1     			Get money       Yes
+money2      		Lose money      Yes
+sellFarm			-
+buyFarm				+
+sellCarFactory		-
+buyCarFactory		+
+sellUPFactory		-
+buyUPFactory		+
+sellAWFactory		-
+buyAWFactory		+
+sellToiletFactory	-
+buyToiletFactory	+
+sellPFFactory		-
+buyPFFactory		+
+>>>>>>> ba6a25f9cbf1d7180843702d89a58723709d8666
