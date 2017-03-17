@@ -63,18 +63,17 @@ def userButton(name=None):
             print("Signed in as " + str(person.name))
 
             try:
-                if request.form['money1'] == 'Get more':
+                if request.form['money1']:
                     print("Detected money1")
                     person.money += 1
             except:
-                print("Not money1")
-
+                pass
             try:
-                if request.form['money2'] == 'Lose all money':
-                    print("money2")
+                if request.form['money2']:
+                    print("Detected money2")
                     person.money = 0
             except:
-                print("Not money2")
+                pass
     print("Redirect")
     return redirect(url_for('user', name=name))
 

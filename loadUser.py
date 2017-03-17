@@ -14,6 +14,4 @@ print("Opening " + str(fname))
 with open(fname, 'rb') as f:
     person = pickle.load(f)
 
-# favorite_color is now { "lion": "yellow", "kitty": "red" }
-print(person)
 print(vars(person))

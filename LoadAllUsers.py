@@ -13,6 +13,7 @@ with open(USERSPATH, 'rb') as f:
 
 for file in users:
     fname = os.path.join(PICKLE_DIR, file)
+    print('')
     print("Opening " + str(fname))
     with open(fname, 'rb') as f:
         person = pickle.load(f)
