@@ -1,10 +1,16 @@
 Displays all buttons and their tags:
 
 
-NAME        DISPLAYED       Added? (James only)
+NAME        	DISPLAYED       Added? (James only)
 
 E.g
-money1      Get money       Yes
-money2      Lose money      Yes
-sellFarm	-
-buyFarm		+
+money1     		Get money       Yes
+money2      	Lose money      Yes
+sellFarm		-
+buyFarm			+
+sellCarFactory	-
+buyCarFactory	+
+sellUPFactory	-
+buyUPFactory	+
+sellAWFactory	-
+buyAWFactory	+
