@@ -25,7 +25,7 @@ print("Creating " + str(fname))
 
 with open(USERSPATH, 'rb') as f:
     users = pickle.load(f)
-
+#users = []
 print("Adding " + name + " to " + USERS)
 users.append(filename)
 print("Current users " + str(users))

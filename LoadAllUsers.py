@@ -11,6 +11,8 @@ USERSPATH = os.path.join(PICKLE_DIR, USERS)
 with open(USERSPATH, 'rb') as f:
     users = pickle.load(f)
 
+print('Current users ' + str(users))
+
 for file in users:
     fname = os.path.join(PICKLE_DIR, file)
     print('')
