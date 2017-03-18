@@ -7,8 +7,9 @@
 
 import pickle
 import os, sys
-
 from flask import *
+from functions import *
+
 app = Flask(__name__)
 
 message = ""
