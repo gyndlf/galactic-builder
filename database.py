@@ -11,3 +11,4 @@ class person ():
         self.income = 0
         self.expenses = 0
         self.netIncome = 0
+        self.numberFarms = 0

@@ -52,7 +52,7 @@ def calcmessage():
 def user(name=None):
     for person in users:
         if name == person.name:
-            return render_template('basicFinances.html',name=person.name, money=person.money, netIncome=person.netIncome)
+            return render_template('finances.html',name=person.name, money=person.money, netIncome=person.netIncome)
     return "Invaild username"
 
 @app.route('/user/<name>/button', methods=['POST'])
@@ -62,41 +62,126 @@ def userButton(name=None):
         if name == person.name:
             print("Signed in as " + str(person.name))
 
-            try:
-                if request.form['money1']:
-                    print("Detected money1")
-                    person.money += 1
-            except:
-                pass
-            try:
-                if request.form['money2']:
-                    print("Detected money2")
-                    person.money = 0
-            except:
-                pass
+            #Button detection below
+            if True:
+                #Finances.html -------------#
+                #Farms ---------------------#
+                if 'sellFarm' in request.form:
+                    print("Detected 'sellFarm'")
+
+                elif 'buyFarm' in request.form:
+                    print("Detected 'buyFarm'")
+
+                #Factories -----------------#
+                elif 'sellCarFac' in request.form:
+                    print("Detected 'sellCarFac'")
+
+                elif 'buyCarFac' in request.form:
+                    print("Detected 'buyCarFac'")
+
+                elif 'sellUPFac' in request.form:
+                    print("Detected 'sellUPFac'")
+
+                elif 'buyUPFac' in request.form:
+                    print("Detected 'buyUPFac'")
+
+                elif 'sellAWFac' in request.form:
+                    print("Detected 'sellAWFac'")
+
+                elif 'buyAWFac' in request.form:
+                    print("Detected 'buyAWFac'")
+
+                elif 'sellToiletFac' in request.form:
+                    print("Detected 'sellToiletFac'")
+
+                elif 'buyToiletFac' in request.form:
+                    print("Detected 'buyToiletFac'")
+
+                elif 'sellPFFac' in request.form:
+                    print("Detected 'sellPFFac'")
+
+                elif 'buyPFFac' in request.form:
+                    print("Detected 'buyPFFac'")
+
+                #Mines --------------------#
+                elif 'sellSteelMin' in request.form:
+                    print("Detected 'sellSteelMin'")
+
+                elif 'buySteelMin' in request.form:
+                    print("Detected 'buySteelMin'")
+
+                elif 'sellHydroMin' in request.form:
+                    print("Detected 'sellHydroMin'")
+
+                elif 'buyHydroMin' in request.form:
+                    print("Detected 'buyHydroMin'")
+
+                elif 'sellYECMin' in request.form:
+                    print("Detected 'sellYECMin'")
+
+                elif 'buyYECMin' in request.form:
+                    print("Detected 'buyYECMin'")
+
+                elif 'sellTitMin' in request.form:
+                    print("Detected 'sellTitMin'")
+
+                elif 'buyTitMin' in request.form:
+                    print("Detected 'buyTitMin'")
+
+                elif 'sellSiliconMin' in request.form:
+                    print("Detected 'sellSiliconMin'")
+
+                elif 'buySiliconMin' in request.form:
+                    print("Detected 'buySiliconMin'")
+
+                elif 'sellCopMin' in request.form:
+                    print("Detected 'sellCopMin'")
+
+                elif 'buyCopMin' in request.form:
+                    print("Detected 'buyCopMin'")
+
+                elif 'sellNoobMin' in request.form:
+                    print("Detected 'sellNoobMin'")
+
+                elif 'buyNoobMin' in request.form:
+                    print("Detected 'buyNoobMin'")
+
+                elif 'sellDiaMin' in request.form:
+                    print("Detected 'sellDiaMin'")
+
+                elif 'buyDiaMin' in request.form:
+                    print("Detected 'buyDiaMin'")
+
+                elif 'sellHeMin' in request.form:
+                    print("Detected 'sellHeMin'")
+
+                elif 'buyHeMin' in request.form:
+                    print("Detected 'buyHeMin'")
+
+                elif 'sellWHCMin' in request.form:
+                    print("Detected 'sellWHCMin'")
+
+                elif 'buyWHCMin' in request.form:
+                    print("Detected 'buyWHCMin'")
+
+                #Research ---------------------#
+                elif 'buyLCR' in request.form:
+                    print("Detected 'buyLCR'")
+
+                elif 'buyBFR' in request.form:
+                    print("Detected 'buyBFR'")
+
+                elif 'buyNKR' in request.form:
+                    print("Detected 'buyNKR'")
+
+                elif 'buyRWR' in request.form:
+                    print("Detected 'buyRWR'")
+
+                else:
+                    print('Unknown value')
+
     print("Redirect")
     return redirect(url_for('user', name=name))
-
-#Button example ---------------#
-#@app.route('/button')
-#def button():
-#    return render_template('button.html', message=message, number=number)
-
-#@app.route('/calcmessage', methods=['POST'])
-#def calcmessage():
-#    global message
-#    message = request.form['message']
-#    print(request.form['message'])
-#    return redirect(url_for('button'))
-
-#@app.route('/addone', methods=['POST'])
-#def addone():
-#    global number
-#    if request.form['add1']:
-#        number += 1
-#    print(number)
-#    return redirect(url_for('button'))
-#Button example ---------------#
 
 if __name__ == "__main__":
     app.run()

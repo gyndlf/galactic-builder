@@ -7,20 +7,21 @@ E.g
 money1     		    Get money       Yes
 money2      	    Lose money      Yes
 
-finances.html_____________________
-sellFarm		    -               No
-buyFarm			    +               No
+finances.html ----------------------------
+Done: ----|
+sellFarm		    -
+buyFarm			    +
 
-sellCarFactory	    -               No
-buyCarFactory	    +               No
-sellUPFactory	    -               No
-buyUPFactory	    +               No
-sellAWFactory	    -               No
-buyAWFactory	    +               No
-sellToiletFactory	-               No
-buyToiletFactory	+               No
-sellPFFactory		-               No
-buyPFFactory		+               No
+sellCarFac	        -
+buyCarFac	        +
+sellUPFac	        -
+buyUPFac	        +
+sellAWFac	        -
+buyAWFac	        +
+sellToiletFac	    -
+buyToiletFac	    +
+sellPFFac		    -
+buyPFFac		    +
 
 sellSteelMin		-
 buySteelMin			+
@@ -47,3 +48,5 @@ buyLCR				Buy
 buyBFR				Buy
 buyNKR				Buy
 buyRWR				Buy
+Not Done: ----|
+finances.html ----------------------------
