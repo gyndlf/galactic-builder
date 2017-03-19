@@ -53,7 +53,7 @@ def calcmessage():
 def user(name=None):
     for person in users:
         if name == person.name:
-            return render_template('finances.html',name=person.name, money=person.money, netIncome=person.netIncome)
+            return render_template('finances.html',name=person.name, money=person.money, netIncome=person.netIncome, expenses=person.expenses)
     return "Invaild username"
 
 @app.route('/user/<name>/button', methods=['POST'])
