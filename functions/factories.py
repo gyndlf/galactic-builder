@@ -1,17 +1,32 @@
 #Has all factory functions
+import pickle, os, sys
 
-#From the spreadsheet:
-#Income = Product cost * amount produced
-#Product cost = Constant value
-#Amount produced = 1.5^(Factory Level)*5
-#Factory Level = Upgradable Value
-#Profit = (Income) - (Material Cost * Amount Produced) - (Amount of workers * Worker Salary) {If less than $0, profit is $0}
-#Factory Upgrade Cost = Money Made * 3
-#Material Cost = Each resource * Resource cost
-#Amount of workers = Factory level * 10 (Change to 30?)
-#Salary = Constant Value
+MY_DIR  = os.path.realpath(os.path.dirname(os.path.dirname(__file__)))
+PICKLE_DIR = os.path.join(MY_DIR, 'data')
+VALUES = 'values.p'
+VALUESPATH = os.path.join(PICKLE_DIR, VALUES)
 
+with open(VALUESPATH, 'rb') as f:
+    values = pickle.load(f)
 
-class factory ():
+class main ():
     def __init__(self):
-        pass
+        self.productCost = 0
+        self.factoryLevel = 1
+        self.amountProduced = 2^self.factoryLevel*2
+        self.income = self.productCost * self.amountProduced
+        self.upgrade = self.income * 5
+        self.materialCost = 0 #Changed in other classes
+        self.profit = self.income - (self.materialCost * self.amountProduced)
+
+class steel (main):
+    def __init__(self):
+        super().__init__()
+        self.materialCost = values.steelMineValue
+
+h = steel()
+print(h.materialCost)
+
+
+#Profit = (Income) - (Material Cost * Amount Produced) - (Amount of workers * Worker Salary) {If less than $0, profit is $0}
+#Material Cost = Each resource * Resource cost

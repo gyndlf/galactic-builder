@@ -3,6 +3,7 @@
 import pickle
 import os, sys
 import database
+import baseValues
 
 confirm = False
 print('This script will create "database.p" and "users.p".')
@@ -10,6 +11,7 @@ print('If you have edited "database.py" and not run "updateVaribles.py" all your
 if str(input('Are you sure you want to continue? ')) == 'y':
     confirm = True
 if confirm == False:
+    print("Quiting...")
     quit()
 
 # Work out file paths
@@ -22,14 +24,21 @@ DATABASEPATH = os.path.join(PICKLE_DIR, DATABASE)
 USERS = "users.p"
 USERSPATH = os.path.join(PICKLE_DIR, USERS)
 
+VALUES = 'values.p'
+VALUESPATH = os.path.join(PICKLE_DIR, VALUES)
+
 users = []
 with open(USERSPATH, 'wb') as f:
     pickle.dump(users, f)
 
-# Load database.p
+# Load data
 data = database.person()
+values = baseValues.basic()
 
 with open(DATABASEPATH, 'wb') as f:
     pickle.dump(data, f)
+
+with open(VALUESPATH, 'wb') as f:
+    pickle.dump(values, f)
 
 print("Done.")
