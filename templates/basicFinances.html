@@ -8,20 +8,26 @@
 
 <h1>Welcome {{ name }}!</h1>
 
+<p>Farm Income: {{ farmIncome }}</p>
 
-    <form action="/user/{{ name }}/button" method="post">
-    <p>You have ${{ money }}</p><input type="submit" name="money1" value="Get more">
-    </form>
+<p>Number of farms: {{ numOfFarms }} </p>
+<p>Amount produced: {{ amountProduced }}</p>
+<p>Farm Level: {{ farmLevel }}</p>
 
-    <p>Some text.</p>
+<form action="/user/{{ name }}/button" method="post">
+    <input type="submit" name="buyFarm" value="Buy Farms">
+</form>
 
-    <form action="/user/{{ name }}/button" method="post">
-    <input type="submit" name="money2" value="Lose all money">
-    </form>
+<form action="/user/{{ name }}/button" method="post">
+    <input type="submit" name="upgradeFarm" value="Upgrade Farm">
+</form>
+
+<p>Farm cost: {{ farmCost }}</p>
+<p>Farm Level Cost: {{  farmLevelCost }}</p>
 
 
 <p>You have a net income of ${{ netIncome }}</p>
-
+<p> And money of {{ money }} </p>
 
 
 </body>

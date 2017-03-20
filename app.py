@@ -8,7 +8,6 @@
 import pickle
 import os, sys
 from flask import *
-from functions import *
 
 app = Flask(__name__)
 
@@ -25,18 +24,6 @@ USERSPATH = os.path.join(PICKLE_DIR, USERS)
 
 users = []
 
-#Load users from their .p files
-with open(USERSPATH, 'rb') as f:
-    usersArray = pickle.load(f)
-
-for file in usersArray:
-    fname = os.path.join(PICKLE_DIR, file)
-    print("Opening " + str(fname))
-    with open(fname, 'rb') as f:
-        peps = pickle.load(f)
-        users.append(peps)
-
-
 #All app.route functions --------------#
 @app.route('/')
 def home():
@@ -51,9 +38,30 @@ def calcmessage():
 @app.route('/user/')
 @app.route('/user/<name>')
 def user(name=None):
+    from functions import farms, factories, mines
+    farmsClass = farms.farm()
+    # Load users from their .p files
+    with open(USERSPATH, 'rb') as f:
+        usersArray = pickle.load(f)
+
+    for file in usersArray:
+        fname = os.path.join(PICKLE_DIR, file)
+        print("Opening " + str(fname))
+        with open(fname, 'rb') as f:
+            peps = pickle.load(f)
+            users.append(peps)
+
     for person in users:
         if name == person.name:
-            return render_template('finances.html',name=person.name, money=person.money, netIncome=person.netIncome, expenses=person.expenses)
+            #print("Farms.py values : " + str(vars(farmsClass)))
+            #print("User Values : " + str(vars(person)))
+
+            produced = person.farmLevel * person.numberFarms
+            income = produced * farmsClass.farmValue
+
+            return render_template('basicFinances.html',name=person.name, money=person.money, netIncome=person.netIncome,
+                                   farmIncome=income, numOfFarms=person.numberFarms, amountProduced=produced,
+                                   farmCost=farmsClass.farmCost, farmLevel=person.farmLevel, farmLevelCost=farmsClass.levelCost)
     return "Invaild username"
 
 @app.route('/user/<name>/button', methods=['POST'])
@@ -72,6 +80,11 @@ def userButton(name=None):
 
                 elif 'buyFarm' in request.form:
                     print("Detected 'buyFarm'")
+                    person.numberFarms += 1
+
+                elif 'upgradeFarm' in request.form:
+                    print("Detected 'upgradeFarm'")
+                    person.farmLevel += 1
 
                 #Factories -----------------#
                 elif 'sellCarFac' in request.form:
@@ -180,6 +193,13 @@ def userButton(name=None):
 
                 else:
                     print('Unknown value')
+
+            print('Saving...')
+            username = person.name + '.p'
+            fname = os.path.join(PICKLE_DIR, username)
+            with open(fname, 'wb') as f:
+                pickle.dump(person, f)
+
 
     print("Redirect")
     return redirect(url_for('user', name=name))

@@ -24,9 +24,5 @@ class steel (main):
         super().__init__()
         self.materialCost = values.steelMineValue
 
-h = steel()
-print(h.materialCost)
-
-
 #Profit = (Income) - (Material Cost * Amount Produced) - (Amount of workers * Worker Salary) {If less than $0, profit is $0}
 #Material Cost = Each resource * Resource cost

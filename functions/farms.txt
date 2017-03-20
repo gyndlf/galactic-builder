@@ -1,0 +1,28 @@
+Formulas To use: (Spreadsheet modified to test them)
+
+Population = Constant Value
+
+Food needed = Population * 5
+
+Food sent = Dynamic Variable
+
+Selling Food Value = (Food needed - Food sent) * 3
+
+Farm Value = Selling food value / 10 {But if less than Total Produced / 10 it is Total Produced * 2}
+
+Farm Cost = Farm Value * 3000
+
+Level Cost = Farm Cost * 500
+
+Farm Level = Upgradable Value
+
+Number Of farms = Upgradable Value
+
+Amount produced = Farm Level * Number of Farms
+
+Total Produced = Dynamic Variable
+
+Income = Amount produced * Selling Food value
+
+
+

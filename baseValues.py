@@ -5,3 +5,9 @@ class basic ():
         #Mines
         self.steelMineValue = 1341
         self.noobMineValue = 985
+
+
+        #Farms
+        self.population = 1000
+        self.foodSent = 0
+        self.totalProduced = 0 #No idea how to do this one!

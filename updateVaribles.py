@@ -4,6 +4,7 @@
 import pickle
 import os, sys
 import database
+import baseValues
 
 
 confirm = False
@@ -78,5 +79,44 @@ print('')
 print('Saving new database...')
 with open(DATABASEPATH, 'wb') as f:
     pickle.dump(newData, f)
+
+
+#Do the same with the values:
+print('')
+print("Moving on to values.p")
+
+#Work out names
+VALUES = 'values.p'
+VALUESPATH = os.path.join(PICKLE_DIR, VALUES)
+
+#Load values.p
+with open(VALUESPATH, 'rb') as f:
+    oldValues = pickle.load(f)
+oldVarsv = vars(oldValues)
+
+#Load new values
+newValues = baseValues.basic()
+newVarsv = vars(newValues)
+
+#Find the changes
+changes = []
+for varible in newVarsv:
+    try:
+        oldVarsv[varible]
+    except:
+        changes.append(varible)
+
+print("Found " + str(changes) + ' changes.')
+print('Old : ' + str(oldVarsv))
+
+#Add changes
+for diff in changes:
+    print("Need to add " + diff)
+    oldVarsv[diff] = 0
+
+print("New : " + str(oldVarsv))
+
+with open(VALUESPATH, 'wb') as f:
+    pickle.dump(newValues, f)
 
 print('Done.')
