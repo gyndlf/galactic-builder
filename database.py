@@ -18,4 +18,5 @@ class person ():
 
         #Farms
         self.numberFarms = 0
-        self.farmLevel = 0
+        self.farmLevel = 1
+        self.foodProduced = 0

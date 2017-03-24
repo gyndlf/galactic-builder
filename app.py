@@ -14,6 +14,8 @@ app = Flask(__name__)
 message = ""
 number = 0
 
+toBeSaved = {}
+
 # Load all users according to "users.p" and display their stats
 
 MY_DIR  = os.path.realpath(os.path.dirname(__file__))
@@ -23,6 +25,41 @@ USERS = "users.p"
 USERSPATH = os.path.join(PICKLE_DIR, USERS)
 
 users = []
+
+def printVars (object):
+    print(str(object) + " vars: " + str(vars(object)))
+
+def hasMoney (object, money):
+    try:
+        if object.money >= money:
+            return True
+        else:
+            return False
+    except:
+        return False
+
+def dynamicPersonalCalc (object):
+    #Calculate personal dynamic varibles
+    from functions import farms, factories, mines, total
+    farmsClass = farms.farm()
+
+    #Farms
+    Fproduced = object.farmLevel * object.numberFarms
+    Fincome = Fproduced * farmsClass.farmValue
+
+    income = Fincome + 0 #Add factory income and mine income here
+    expenses = int(income/5) #(Tax) Add all expenses here
+    netIncome = income - expenses
+
+    calculated = {
+        'Fproduced' : Fproduced,
+        'Fincome' : Fincome,
+        'income' : income,
+        'expenses' : expenses,
+        'netIncome' : netIncome
+    }
+
+    return calculated
 
 #All app.route functions --------------#
 @app.route('/')
@@ -38,7 +75,7 @@ def calcmessage():
 @app.route('/user/')
 @app.route('/user/<name>')
 def user(name=None):
-    from functions import farms, factories, mines
+    from functions import farms, factories, mines, total
     farmsClass = farms.farm()
     # Load users from their .p files
     with open(USERSPATH, 'rb') as f:
@@ -53,24 +90,30 @@ def user(name=None):
 
     for person in users:
         if name == person.name:
-            #print("Farms.py values : " + str(vars(farmsClass)))
-            #print("User Values : " + str(vars(person)))
+            #printVars(person)
+            #printVars(farmsClass)
 
-            produced = person.farmLevel * person.numberFarms
-            income = produced * farmsClass.farmValue
+            #Calculate varibles
+            dynamicPersonal = dynamicPersonalCalc(person)
 
-            return render_template('basicFinances.html',name=person.name, money=person.money, netIncome=person.netIncome,
-                                   farmIncome=income, numOfFarms=person.numberFarms, amountProduced=produced,
+            #Test it
+            print(dynamicPersonal['income'])
+
+
+            return render_template('basicFinances.html',name=person.name, money=person.money, netIncome=dynamicPersonal['netIncome'],
+                                   farmIncome=dynamicPersonal['Fincome'], numOfFarms=person.numberFarms, amountProduced=dynamicPersonal['Fproduced'],
                                    farmCost=farmsClass.farmCost, farmLevel=person.farmLevel, farmLevelCost=farmsClass.levelCost)
     return "Invaild username"
 
 @app.route('/user/<name>/button', methods=['POST'])
 def userButton(name=None):
+    from functions import farms, factories, mines, total
+    farmsClass = farms.farm()
     global users
     for person in users:
         if name == person.name:
             print("Signed in as " + str(person.name))
-
+            #printVars(person)
             #Button detection below
             if True:
                 #Finances.html -------------#
@@ -80,11 +123,25 @@ def userButton(name=None):
 
                 elif 'buyFarm' in request.form:
                     print("Detected 'buyFarm'")
-                    person.numberFarms += 1
+                    if hasMoney(person, farmsClass.farmCost):
+                        person.numberFarms += 1
+                        person.money -= farmsClass.farmCost
+                        print("Brought one farm")
+                    else:
+                        print("Money Error: Not enough money")
+
 
                 elif 'upgradeFarm' in request.form:
                     print("Detected 'upgradeFarm'")
-                    person.farmLevel += 1
+                    if person.farmLevel >= 5:
+                        print("Error: Max farm level")
+                    else:
+                        if hasMoney(person, farmsClass.levelCost):
+                            person.farmLevel += 1
+                            person.money -= farmsClass.levelCost
+                            print("Upgraded Level")
+                        else:
+                            print("Money Error: Not enough money")
 
                 #Factories -----------------#
                 elif 'sellCarFac' in request.form:
@@ -194,6 +251,7 @@ def userButton(name=None):
                 else:
                     print('Unknown value')
 
+            #Save personal Data
             print('Saving...')
             username = person.name + '.p'
             fname = os.path.join(PICKLE_DIR, username)

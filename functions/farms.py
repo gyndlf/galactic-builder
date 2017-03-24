@@ -13,12 +13,9 @@ with open(VALUESPATH, 'rb') as f:
 class farm ():
     def __init__(self):
         self.population = values.population
-        self.foodNeeded = self.population*5
+        self.foodNeeded = self.population*2
         self.foodSent = values.foodSent
-        self.sellFoodValue = (self.foodNeeded - self.foodSent)*3
+        self.farmValue = (self.foodNeeded - self.foodSent)*2
 
-        #Need to change
-        self.farmValue = int(self.sellFoodValue/10)
-
-        self.farmCost = self.farmValue * 3000
-        self.levelCost = self.farmCost * 500
+        self.farmCost = self.farmValue * 20
+        self.levelCost = self.farmCost * 50
