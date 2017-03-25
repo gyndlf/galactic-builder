@@ -12,6 +12,9 @@ Private int farmIncome
 Public int farmResale
 Private int NumOfFarms
 Public int farmCost
+Public int population
+Public int foodNeeded
+Public int foodProduced
 
 ---Factories---
 
