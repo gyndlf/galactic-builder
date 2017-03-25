@@ -105,23 +105,23 @@
             </p>
             <table id="maininfo">
                 <tr>
-                    <td colspan="6"><b>Farms</b>
+                    <td colspan="12"><b>Farms</b>
                     </td>
                 </tr>
                 <tr>
-                    <td class="module">Farm income: {{ farmIncome }}</td>
-                    <td class="module">Number of farms: {{ numOfFarms }}</td>
-                    <td class="module">
+                    <td class="module", colspan="3">Income: {{ farmIncome }}</td>
+                    <td class="module", colspan="3">{{ numOfFarms }}</td>
+                    <td class="module", colspan="3">
                         <form action="/user/{{ name }}/button" method="post">
                             <input type="submit" name="buyFarm" value="Buy Farm">
                         </form>
                     </td>
-                    <td class="module">Farm Cost: {{ farmCost }}</td>
+                    <td class="module", colspan="3">{{ farmCost }}</td>
                 </tr>
                 <tr>
-                    <td class= "module", colspan="2">Population: {{ population }}</td>
-                    <td class= "module", colspan="2">Food Needed: {{ foodNeeded }}</td>
-                    <td class= "module", colspan="2">Food Produced: {{ foodProduced }}</td>
+                    <td class= "module", colspan="4">Population: {{ population }}</td>
+                    <td class= "module", colspan="4">Food Needed: {{ foodNeeded }}</td>
+                    <td class= "module", colspan="4">Food Produced: {{ foodProduced }}</td>
                 </tr>
             </table>
             <p>
