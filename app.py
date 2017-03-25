@@ -29,6 +29,22 @@ users = []
 def printVars (object):
     print(str(object) + " vars: " + str(vars(object)))
 
+def loadUsers ():
+    # Load users from their .p files
+    with open(USERSPATH, 'rb') as f:
+        usersArray = pickle.load(f)
+
+    for file in usersArray:
+        fname = os.path.join(PICKLE_DIR, file)
+        #print("Opening " + str(fname))
+        with open(fname, 'rb') as f:
+            peps = pickle.load(f)
+            users.append(peps)
+    return users
+
+def saveUsers ():
+    pass
+
 def hasMoney (object, money):
     try:
         if object.money >= money:
@@ -40,7 +56,7 @@ def hasMoney (object, money):
 
 def dynamicPersonalCalc (object):
     #Calculate personal dynamic varibles
-    from functions import farms, factories, mines, total
+    from functions import farms, factories, mines
     farmsClass = farms.farm()
 
     #Farms
@@ -59,6 +75,28 @@ def dynamicPersonalCalc (object):
         'netIncome' : netIncome
     }
 
+    #Save new varibles
+    username = object.name + '.p'
+    fname = os.path.join(PICKLE_DIR, username)
+    with open(fname, 'wb') as f:
+        pickle.dump(object, f)
+
+    return calculated
+
+def total ():
+     # These are things like total food sent, total net worth
+    users = loadUsers()
+
+    foodSent = 0
+    totalMoney = 0
+    for person in users:
+        foodSent += person.foodProduced
+        totalMoney += person.money
+
+    calculated = {
+        'foodSent' : foodSent,
+        'totalMoney' : totalMoney
+    }
     return calculated
 
 #All app.route functions --------------#
@@ -75,39 +113,40 @@ def calcmessage():
 @app.route('/user/')
 @app.route('/user/<name>')
 def user(name=None):
-    from functions import farms, factories, mines, total
+    from functions import farms, factories, mines
+
+    #Calculate the recipies
+    print('Calculating dynamic varibles...')
     farmsClass = farms.farm()
-    # Load users from their .p files
-    with open(USERSPATH, 'rb') as f:
-        usersArray = pickle.load(f)
+    totals = total()
 
-    for file in usersArray:
-        fname = os.path.join(PICKLE_DIR, file)
-        print("Opening " + str(fname))
-        with open(fname, 'rb') as f:
-            peps = pickle.load(f)
-            users.append(peps)
+    #Load all the users
+    print('Loading all users...')
+    users = loadUsers()
 
+    #Identify the user
     for person in users:
         if name == person.name:
             #printVars(person)
             #printVars(farmsClass)
 
-            #Calculate varibles
+            #Calculate dynamic personal varibles
+            print('Calculating dynamic personal varibles...')
             dynamicPersonal = dynamicPersonalCalc(person)
 
             #Test it
-            print(dynamicPersonal['income'])
+            print('Income $' + str( dynamicPersonal['income']))
+            print('You are sending ' + str(totals['foodSent']) + ' bits of food.')
 
-
-            return render_template('finances.html',name=person.name, money=person.money, netIncome=dynamicPersonal['netIncome'],
+            #Return the html
+            return render_template('basicFinances.html',name=person.name, money=person.money, netIncome=dynamicPersonal['netIncome'],
                                    farmIncome=dynamicPersonal['Fincome'], numOfFarms=person.numberFarms, amountProduced=dynamicPersonal['Fproduced'],
-                                   farmCost=farmsClass.farmCost, farmLevel=person.farmLevel, farmLevelCost=farmsClass.levelCost)
+                                   farmCost=farmsClass.farmCost, farmLevel=person.farmLevel, farmLevelCost=farmsClass.levelCost, farmValue=farmsClass.farmValue)
     return "Invaild username"
 
 @app.route('/user/<name>/button', methods=['POST'])
 def userButton(name=None):
-    from functions import farms, factories, mines, total
+    from functions import farms, factories, mines
     farmsClass = farms.farm()
     global users
     for person in users:

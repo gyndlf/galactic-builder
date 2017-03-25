@@ -1,4 +1,5 @@
 #Has all mine functions
+print('Running "mines.py"')
 
 #From the spreadsheet
 #Amount mined = Mine Level * 100

@@ -1,7 +1,7 @@
 #Total Varibles recipie book
 
 #These are things like total food sent, total net worth
-
+print('total.py')
 import pickle
 import os, sys
 
@@ -16,20 +16,33 @@ with open(USERSPATH, 'rb') as f:
 
 print('Current users ' + str(users))
 
+people = []
+
 for file in users:
+    #Find file name
     fname = os.path.join(PICKLE_DIR, file)
-    #print('')
+    #Open the file and save
     print("Opening " + str(fname))
     with open(fname, 'rb') as f:
         person = pickle.load(f)
+
+    #Save person
+    people.append(person)
     #print(vars(person))
 
 
-class farm ():
+class total ():
     def __init__(self):
         print('Calculating total dynamic varibles')
-        self.foodSent = 0
-
 
         #Farms
-        #self.totalFoodSent
+        self.foodSent = 0
+        for person in people:
+            self.foodSent += person.foodProduced
+
+        #Money
+        self.totalMoney = 0
+        for person in people:
+            self.totalMoney += person.money
+
+        print(self.foodSent, self.totalMoney)

@@ -20,6 +20,8 @@ with open(fname, 'rb') as f:
 
 print("Loaded user " + person.name)
 
+print("Current varibles: " + str(vars(person)))
+
 edit = str(input("Varible to edit? "))
 
 value = getattr(person,edit)

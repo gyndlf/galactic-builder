@@ -1,5 +1,5 @@
 #Functions for farms
-
+print('Running "farms.py"')
 import pickle, os, sys
 
 MY_DIR  = os.path.realpath(os.path.dirname(os.path.dirname(__file__)))
@@ -14,7 +14,7 @@ class farm ():
     def __init__(self):
         self.population = values.population
         self.foodNeeded = self.population*2
-        self.foodSent = values.foodSent
+        self.foodSent = 0
         self.farmValue = (self.foodNeeded - self.foodSent)*2
 
         self.farmCost = self.farmValue * 20

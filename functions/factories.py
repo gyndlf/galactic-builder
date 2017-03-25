@@ -1,4 +1,5 @@
 #Has all factory functions
+print('Running "factories.py"')
 import pickle, os, sys
 
 MY_DIR  = os.path.realpath(os.path.dirname(os.path.dirname(__file__)))
