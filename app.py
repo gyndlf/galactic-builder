@@ -100,7 +100,7 @@ def user(name=None):
             print(dynamicPersonal['income'])
 
 
-            return render_template('basicFinances.html',name=person.name, money=person.money, netIncome=dynamicPersonal['netIncome'],
+            return render_template('finances.html',name=person.name, money=person.money, netIncome=dynamicPersonal['netIncome'],
                                    farmIncome=dynamicPersonal['Fincome'], numOfFarms=person.numberFarms, amountProduced=dynamicPersonal['Fproduced'],
                                    farmCost=farmsClass.farmCost, farmLevel=person.farmLevel, farmLevelCost=farmsClass.levelCost)
     return "Invaild username"
@@ -263,7 +263,5 @@ def userButton(name=None):
     return redirect(url_for('user', name=name))
 
 if __name__ == "__main__":
-    app.run()
-    #app.run('0.0.0.0', 8080)
-#This time
-#0,12,425,5&*#%9en35iqt
+    #app.run()
+    app.run('0.0.0.0', 8080)

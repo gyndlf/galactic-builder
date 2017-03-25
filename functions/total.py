@@ -28,6 +28,8 @@ for file in users:
 class farm ():
     def __init__(self):
         print('Calculating total dynamic varibles')
+        self.foodSent = 0
+
 
         #Farms
         #self.totalFoodSent
