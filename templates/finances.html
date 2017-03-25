@@ -110,16 +110,10 @@
                 </tr>
                 <tr>
                     <td class="module">income: {{ farmIncome }}</td>
-                    <td class="module">{{ farmResale }}</td>
-                    <td class="module">
-                        <form action="/user/{{ name }}/button" method="post">
-                            <input type="submit" name="sellFarm" value="-">
-                        </form>
-                    </td>
                     <td class="module">{{ numOfFarms }}</td>
                     <td class="module">
                         <form action="/user/{{ name }}/button" method="post">
-                            <input type="submit" name="buyFarm" value="+">
+                            <input type="submit" name="buyFarm" value="Buy Farm">
                         </form>
                     </td>
                     <td class="module">{{ farmCost }}</td>
