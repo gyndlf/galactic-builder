@@ -18,3 +18,9 @@ Three types of varibles:
     - Constant Varibles
         These are varibles that never change. They are stored in the values.p file (Why not use a python file?)
         Things like mine value and populations are in here.
+
+
+ToDo:
+Fix app.py total function.
+Use for loops in html
+Create a smarter way of rendering the template.

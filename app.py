@@ -127,16 +127,14 @@ def user(name=None):
     #Identify the user
     for person in users:
         if name == person.name:
-            #printVars(person)
-            #printVars(farmsClass)
 
             #Calculate dynamic personal varibles
             print('Calculating dynamic personal varibles...')
             dynamicPersonal = dynamicPersonalCalc(person)
 
             #Test it
-            print('Income $' + str( dynamicPersonal['income']))
-            print('You are sending ' + str(totals['foodSent']) + ' bits of food.')
+            print('Personal ncome $' + str( dynamicPersonal['income']))
+            print('Everyone is sending ' + str(totals['foodSent']) + ' bits of food.')
 
             #Return the html
             return render_template('basicFinances.html',name=person.name, money=person.money, netIncome=dynamicPersonal['netIncome'],
