@@ -78,6 +78,7 @@ class WorkingCopySync():
 		payload = urlencode(payload).replace('+', '%20')
 		fmt = 'working-copy://{x_callback}{action}/?{payload}'
 		url = fmt.format(x_callback=x_callback, action=action, payload=payload)
+		print('Opening ' +str(url))
 		wb.open(url)
 
 	def _get_repo_list(self):
