@@ -24,12 +24,13 @@ PICKLE_DIR = os.path.join(MY_DIR, 'data')
 USERS = "users.p"
 USERSPATH = os.path.join(PICKLE_DIR, USERS)
 
-users = []
+#users = []
 
 def printVars (object):
     print(str(object) + " vars: " + str(vars(object)))
 
 def loadUsers ():
+    users = []
     # Load users from their .p files
     with open(USERSPATH, 'rb') as f:
         usersArray = pickle.load(f)
@@ -74,10 +75,16 @@ def dynamicPersonalCalc (object):
         'expenses' : expenses,
         'netIncome' : netIncome
     }
+    #Input new varibles into "object" object
+    object.foodProduced = Fproduced
+    object.income = income
+    object.expenses = expenses
+    object.netIncome = netIncome
 
-    #Save new varibles
+    #Save new varibles to file
     username = object.name + '.p'
     fname = os.path.join(PICKLE_DIR, username)
+    print("Saving dynamic personal data to " + str(username))
     with open(fname, 'wb') as f:
         pickle.dump(object, f)
 
@@ -89,6 +96,7 @@ def total ():
 
     foodSent = 0
     totalMoney = 0
+
     for person in users:
         foodSent += person.foodProduced
         totalMoney += person.money
@@ -97,6 +105,10 @@ def total ():
         'foodSent' : foodSent,
         'totalMoney' : totalMoney
     }
+
+    print("Total food sent " + str(foodSent))
+    print("Total money in the game " + str(totalMoney))
+
     return calculated
 
 #All app.route functions --------------#
@@ -113,12 +125,12 @@ def calcmessage():
 @app.route('/user/')
 @app.route('/user/<name>')
 def user(name=None):
+    print("-" * 10 + str("Finances") + "-" * 10)
     from functions import farms, factories, mines
 
     #Calculate the recipies
     print('Calculating dynamic varibles...')
     farmsClass = farms.farm()
-    totals = total()
 
     #Load all the users
     print('Loading all users...')
@@ -132,11 +144,16 @@ def user(name=None):
             print('Calculating dynamic personal varibles...')
             dynamicPersonal = dynamicPersonalCalc(person)
 
+            #Calculate totals
+            print("Calculating totals...")
+            totals = total()
+
             #Test it
-            print('Personal ncome $' + str( dynamicPersonal['income']))
+            print('Personal income $' + str( dynamicPersonal['income']))
             print('Everyone is sending ' + str(totals['foodSent']) + ' bits of food.')
 
             #Return the html
+            print("Rendering html...")
             return render_template('basicFinances.html',name=person.name, money=person.money, netIncome=dynamicPersonal['netIncome'],
                                    farmIncome=dynamicPersonal['Fincome'], numOfFarms=person.numberFarms, amountProduced=dynamicPersonal['Fproduced'],
                                    farmCost=farmsClass.farmCost, farmLevel=person.farmLevel, farmLevelCost=farmsClass.levelCost, farmValue=farmsClass.farmValue)
@@ -144,9 +161,15 @@ def user(name=None):
 
 @app.route('/user/<name>/button', methods=['POST'])
 def userButton(name=None):
+    print("-"*10 + str("Button") + "-"*10)
+
+    #Run recipies
+    print("Loading recipies...")
     from functions import farms, factories, mines
     farmsClass = farms.farm()
-    global users
+
+    #Load users
+    users = loadUsers()
     for person in users:
         if name == person.name:
             print("Signed in as " + str(person.name))
@@ -302,4 +325,3 @@ def userButton(name=None):
 if __name__ == "__main__":
     #app.run()
     app.run('0.0.0.0', 8080)
-    #hi
