@@ -201,6 +201,8 @@ class WorkingCopySync():
 
 def main(url_action=None, url_args=None):
 	wc = WorkingCopySync()
+	
+	print (url_action)
 	if not url_action:
 		wc.present()
 	elif url_action == 'copy_repo':
@@ -215,7 +217,7 @@ def main(url_action=None, url_args=None):
 
 if __name__ == "__main__":
 	url_action, url_args = None, None
-	if len(sys.argv) > 1:
-		url_action = sys.argv[1]
-		url_args = sys.argv[2:]
+	#if len(sys.argv) > 1:
+	#	url_action = sys.argv[1]
+	#	url_args = sys.argv[2:]
 	main(url_action, url_args)
