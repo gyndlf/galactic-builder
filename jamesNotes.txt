@@ -21,6 +21,7 @@ Three types of varibles:
 
 
 ToDo:
-Fix app.py total function.
+Critical: Convert files in functions to defintions in app.py
+Critical: Rewrite code in app.py to use new data
 Use for loops in html
 Create a smarter way of rendering the template.
