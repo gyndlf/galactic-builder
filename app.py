@@ -167,7 +167,6 @@ def dynamicPersonalCalc(object):
 
     return calculated
 
-
 # All app.route functions --------------#
 @app.route('/')
 def home():

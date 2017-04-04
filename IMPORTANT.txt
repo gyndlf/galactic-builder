@@ -1,0 +1,14 @@
+This is needed before moving on html wise.
+
+The code for the farms in html must have ROOM for ALL of these varibles:
+
+Farm Income: 47712
+Number of farms:
+Amount produced:
+Farm Level:
+Farm cost: $
+Farm Level Cost: $
+Farm selling value = $
+
+This is so people have sufficiant infomation for investing in farms.
+Tell James when you are done.
