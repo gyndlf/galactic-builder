@@ -109,6 +109,19 @@ def farm ():
 	}
 	return calculated
 
+def factory ():
+	#The factory calculations
+	print('[3] Running factory def')
+	
+	#productCost = 0
+	#factoryLevel = 1
+	#amountProduced = 2^factoryLevel*2
+	#income = productCost * amountProduced
+	#upgrade = income * 5
+	#materialCost = 0 #Changed in other classes
+	#profit = income - (materialCost * amountProduced)
+	
+
 def dynamicPersonalCalc (object):
 	#Calculate personal dynamic varibles
 	print('[4] Running dynamic personal calulator def')
