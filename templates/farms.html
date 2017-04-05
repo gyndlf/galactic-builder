@@ -5,20 +5,36 @@
         <td colspan="12"><b>Farms</b>
         </td>
     </tr>
+
+
+
+
+
+
     <tr>
-        <td class="module", colspan="3">Farm Income: ${{ farmIncome }}</td>
-        <td class="module", colspan="3">Number of farms: {{ numOfFarms }}</td>
-        <td class="module", colspan="3">
-            <form action="/user/{{ name }}/button" method="post">
-                <input type="submit" name="buyFarm" value="Buy Farm">
-            </form>
-        </td>
-        <td class="module", colspan="3">Farm cost: ${{ farmCost }}</td>
+        <td class="module", colspan="3.5">Farm Income: ${{ farmIncome }}</td>
+        <td class="module", colspan="3.5">Number of farms: {{ numOfFarms }}</td>
+        <td class="module", colspan="3.5">Farm level: {{ farmLevel }}</td>
+        <td class="module", colspan="3.5">Farm cost: ${{ farmCost }}</td>
     </tr>
     <tr>
         <td class= "module", colspan="4">Population: {{ population }}</td>
-        <td class= "module", colspan="4">Farm Value: {{ farmValue }}</td>
+        <td class= "module", colspan="4">Value per farm: {{ farmValue }}</td>
         <td class= "module", colspan="4">Food Produced: {{ foodProduced }}</td>
     </tr>
+    <tr>
+        <td class= "module", colspan="4"><form action="/user/{{ username }}/button" method="post">
+                <input type="submit" name="buyFarm" value="Buy Farm">
+            </form>
+        </td>
+        <td class= "module", colspan="4">Level cost: {{ farmLevelCost }}</td>
+        <td class= "module", colspan="4"><form action="/user/{{ username }}/button" method="post">
+                <input type="submit" name="upgradeFarm" value="Upgrade farm level">
+            </form>
+        </td>
+    </tr>
 </table>
+
+<br><br>
+<p>Possibly some graphics down here? Some images? Graphs?</p>
 {% endblock %}

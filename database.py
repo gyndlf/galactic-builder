@@ -9,7 +9,7 @@ class person ():
         #General
         self.name = ""
         self.id = 0
-        self.money = 0
+        self.money = 10000000000
         self.netWorth = 0
         self.salary = 0
         self.income = 0
@@ -17,6 +17,6 @@ class person ():
         self.netIncome = 0
 
         #Farms
-        self.numberFarms = 0
+        self.numberFarms = 1
         self.farmLevel = 1
         self.foodProduced = 0

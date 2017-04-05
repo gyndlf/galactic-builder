@@ -178,8 +178,8 @@ def dynamicPersonalCalc(object):
 @app.route('/')
 def home():
     # The login page
-    return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
-    #return render_template('index.html')
+    #return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
+    return render_template('index.html')
 
 @app.route('/loginuser', methods=['POST'])
 def calcmessage():
@@ -190,6 +190,7 @@ def calcmessage():
 
 
 @app.route('/user/')
+@app.route('/user/<name>')
 @app.route('/user/<name>/<page>')
 def user(name=None, page=None):
     print("-" * 10 + str("Finances") + "-" * 10)
@@ -202,6 +203,7 @@ def user(name=None, page=None):
     # Load all the users
     print('Loading all users...')
     users = loadUsers()
+    values = loadValues()
 
     # Identify the user
     for person in users:
@@ -228,7 +230,8 @@ def user(name=None, page=None):
                 return render_template('farms.html', username=person.name, farmIncome=dynamicPersonal['Fincome'], numOfFarms=person.numberFarms,
                                    amountProduced=dynamicPersonal['Fproduced'],
                                    farmCost=farms['farmCost'], farmLevel=person.farmLevel,
-                                   farmLevelCost=farms['levelCost'], farmValue=farms['farmValue'])
+                                   farmLevelCost=farms['levelCost'], farmValue=farms['farmValue'], population=values.population,
+                                    foodProduced=dynamicPersonal['Fproduced'])
             else:
                 return "Invalid page name"
     return "Invaild username"
@@ -393,7 +396,7 @@ def userButton(name=None):
                 pickle.dump(person, f)
 
     print("Redirect")
-    return redirect(url_for('user', name=name))
+    return redirect(url_for('user', name=name, page='home'))
 
 
 if __name__ == "__main__":
