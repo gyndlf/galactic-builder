@@ -116,6 +116,14 @@ def farm():
     }
     return calculated
 
+def mine ():
+    #The mine calculations
+    print('[3] Running mine def')
+
+    #Number of mines
+    #buy mine button
+    #amount produced = number of mines * percentage boost
+    #mine cost = total mines * mine value
 
 def factory():
     # The factory calculations
@@ -136,7 +144,6 @@ def factory():
     # materialCost = 0 #Changed in other classes
     # profit = income - (materialCost * amountProduced)
     return calculated
-
 
 def dynamicPersonalCalc(object):
     # Calculate personal dynamic varibles
