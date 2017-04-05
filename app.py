@@ -120,15 +120,22 @@ def farm():
 def factory():
     # The factory calculations
     print('[3] Running factory def')
+    users = loadUsers()
+    values = loadValues()
+    totals = total()
 
+    calculated = {
+        'nothing' : None
+    }
 
-# productCost = 0
-# factoryLevel = 1
-# amountProduced = 2^factoryLevel*2
-# income = productCost * amountProduced
-# upgrade = income * 5
-# materialCost = 0 #Changed in other classes
-# profit = income - (materialCost * amountProduced)
+    # productCost = 0
+    # factoryLevel = 1
+    # amountProduced = 2^factoryLevel*2
+    # income = productCost * amountProduced
+    # upgrade = income * 5
+    # materialCost = 0 #Changed in other classes
+    # profit = income - (materialCost * amountProduced)
+    return calculated
 
 
 def dynamicPersonalCalc(object):
@@ -171,20 +178,20 @@ def dynamicPersonalCalc(object):
 @app.route('/')
 def home():
     # The login page
-    return redirect(url_for('user', name='james'))  # A little hotwire for debuging
-# return render_template('index.html')
+    return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
+    #return render_template('index.html')
 
 @app.route('/loginuser', methods=['POST'])
 def calcmessage():
     # The script that runs once you login
     username = request.form['username']
     print("Logging in to " + str(username))
-    return redirect(url_for('user', name=username))
+    return redirect(url_for('user', name=username, page='home'))
 
 
 @app.route('/user/')
-@app.route('/user/<name>')
-def user(name=None):
+@app.route('/user/<name>/<page>')
+def user(name=None, page=None):
     print("-" * 10 + str("Finances") + "-" * 10)
     # from functions import farms, factories, mines
 
@@ -211,13 +218,19 @@ def user(name=None):
             print('[] Everyone is sending ' + str(totals['foodSent']) + ' bits of food.')
 
             # Return the html
-            print("Rendering html...")
-            return render_template('basicFinances.html', name=person.name, money=person.money,
-                                   netIncome=dynamicPersonal['netIncome'],
-                                   farmIncome=dynamicPersonal['Fincome'], numOfFarms=person.numberFarms,
+            if page == 'home':
+                print("Rendering home html...")
+                return render_template('finances.html', username=person.name, money=person.money, netIncome=person.netIncome,
+                                       income=person.income, expenses=person.expenses, netWorth=0)
+
+            elif page == 'farms':
+                print('Rendering farm html...')
+                return render_template('farms.html', username=person.name, farmIncome=dynamicPersonal['Fincome'], numOfFarms=person.numberFarms,
                                    amountProduced=dynamicPersonal['Fproduced'],
                                    farmCost=farms['farmCost'], farmLevel=person.farmLevel,
                                    farmLevelCost=farms['levelCost'], farmValue=farms['farmValue'])
+            else:
+                return "Invalid page name"
     return "Invaild username"
 
 
@@ -384,5 +397,5 @@ def userButton(name=None):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 # app.run('0.0.0.0', 8080)
