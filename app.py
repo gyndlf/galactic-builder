@@ -232,6 +232,11 @@ def user(name=None, page=None):
                                    farmCost=farms['farmCost'], farmLevel=person.farmLevel,
                                    farmLevelCost=farms['levelCost'], farmValue=farms['farmValue'], population=values.population,
                                     foodProduced=dynamicPersonal['Fproduced'])
+
+            elif page == 'mines':
+                print('Rendering mines html...')
+                return render_template('mines.html', username=person.name)
+
             else:
                 return "Invalid page name"
     return "Invaild username"

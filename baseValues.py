@@ -10,6 +10,4 @@ class basic ():
 
 
         #Farms
-        self.population = 1000
-        self.foodSent = 0
-        self.totalProduced = 0 #No idea how to do this one!
+        self.population = 200
