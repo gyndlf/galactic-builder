@@ -14,8 +14,6 @@ DATABASEPATH = os.path.join(PICKLE_DIR, DATABASE)
 VALUES = 'values.p'
 VALUESPATH = os.path.join(PICKLE_DIR, VALUES)
 
-quit = False
-
 def editUser ():
     #Edits a specified user. Has failsafe built in
     # Create file name
@@ -239,7 +237,7 @@ def updateVaribles ():
     # Add changes
     for diff in changes:
         print("Need to add " + diff)
-        oldVarsv[diff] = 0
+        oldVarsv[diff] = newVarsv[diff]
 
     print("New : " + str(oldVarsv))
 
@@ -275,56 +273,60 @@ def createDatabase ():
     with open(VALUESPATH, 'wb') as f:
         pickle.dump(values, f)
 
-while quit == False:
-    #Main page
-    print("-"*10 + "Home" + "-"*10)
-    print("Welcome to the usermanagement system! Here you can do anything you want to the database.")
-    print("Press 1 to create a user")
-    print("Press 2 to edit a user")
-    print("Press 3 to remove a user")
-    print("Press 4 to view all users")
-    print("Press 5 to update varibles in the database.py and values.p")
-    print("Press 6 to create a new database")
-    print("Or press anything else to quit")
-
-    choice = input(": ")
-
-    if choice == "1":
-        #Create a users
-        #Uses createUser.py
-        print("-"*10 + "Creating User" + "-"*10)
-        createUser()
-
-    elif choice == "2":
-        #Edit a user
-        #Uses edituser.py + loadUser.py
-        print("-" * 10 + "Editing User" + "-" * 10)
-        editUser()
-
-    elif choice == "3":
-        #Remove a user
-        #Uses removeUser.py
-        print("-" * 10 + "Removing User" + "-" * 10)
-        removeUser()
-
-    elif choice == "4":
-        #View all users
-        #Uses LoadAllUsers.py
-        print("-" * 10 + "Loading Users" + "-" * 10)
-        loadUsers()
-
-    elif choice == "5":
-        #Update varibles
-        #Uses updateVaribles.py and LoadAllUsers.py and editUsers.py
-        print("-" * 10 + "Updating Varibles" + "-" * 10)
-        updateVaribles()
-
-    elif choice == "6":
-        #Create new database
-        #Uses createDatabase.py
-        print("-" * 10 + "Creating Database" + "-" * 10)
-        createDatabase()
-
-    else:
-        print("Quitting...")
-        quit = True
+def main ():
+	quit = False
+	while quit == False:
+	    #Main page
+	    print("-"*10 + "Home" + "-"*10)
+	    print("Welcome to the usermanagement system! Here you can do anything you want to the database.")
+	    print("Press 1 to create a user")
+	    print("Press 2 to edit a user")
+	    print("Press 3 to remove a user")
+	    print("Press 4 to view all users")
+	    print("Press 5 to update varibles in the database.py and values.p")
+	    print("Press 6 to create a new database")
+	    print("Or press anything else to quit")
+	
+	    choice = input(": ")
+	
+	    if choice == "1":
+	        #Create a users
+	        #Uses createUser.py
+	        print("-"*10 + "Creating User" + "-"*10)
+	        createUser()
+	
+	    elif choice == "2":
+	        #Edit a user
+	        #Uses edituser.py + loadUser.py
+	        print("-" * 10 + "Editing User" + "-" * 10)
+	        editUser()
+	
+	    elif choice == "3":
+	        #Remove a user
+	        #Uses removeUser.py
+	        print("-" * 10 + "Removing User" + "-" * 10)
+	        removeUser()
+	
+	    elif choice == "4":
+	        #View all users
+	        #Uses LoadAllUsers.py
+	        print("-" * 10 + "Loading Users" + "-" * 10)
+	        loadUsers()
+	
+	    elif choice == "5":
+	        #Update varibles
+	        #Uses updateVaribles.py and LoadAllUsers.py and editUsers.py
+	        print("-" * 10 + "Updating Varibles" + "-" * 10)
+	        updateVaribles()
+	
+	    elif choice == "6":
+	        #Create new database
+	        #Uses createDatabase.py
+	        print("-" * 10 + "Creating Database" + "-" * 10)
+	        createDatabase()
+	
+	    else:
+	        print("Quitting...")
+	        quit = True
+if __name__ == '__main__':
+	main()

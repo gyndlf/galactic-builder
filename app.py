@@ -72,16 +72,19 @@ def total():
 
     foodSent = 0
     totalMoney = 0
+    totalMines = 0
 
     for person in users:
         foodSent += person.foodProduced
         totalMoney += person.money
-        for name, number in person.ownedMines:
-        	print(name, number)
-
+        for mine in person.ownedMines:
+        	totalMines += person.ownedMines[mine]
+	
+    print('Total mines '+str(totalMines))
     calculated = {
         'foodSent': foodSent,
-        'totalMoney': totalMoney
+        'totalMoney': totalMoney,
+        'totalMines' : totalMines
     }
 
     # print("Total food sent " + str(foodSent))
@@ -117,10 +120,19 @@ def mine ():
     #The mine calculations
     print('[3] Running mine def')
     values = loadValues()
-
+    totals = total()
+    calculated = {}
+	
+    for mine in values.mineValues:	
+        mineCost = totals['totalMines'] * values.mineValues[mine]
+        print(mine, mineCost)
+        name = mine + 'Cost'
+        calculated[name] = mineCost
     #Number of mines
     #amount produced = number of mines * percentage boost
     #mine cost = total mines * mine value
+    print(calculated)
+    return calculated
 
 def factory():
     # The factory calculations
@@ -205,7 +217,8 @@ def user(name=None, page=None):
     # Calculate the recipies
     print('Calculating dynamic varibles...')
     farms = farm()
-    factories = factory()
+    mines = mine()
+    #factories = factory()
 
     # Load all the users
     print('Loading all users...')
