@@ -2,11 +2,20 @@
 {% block content %}
 <table id="maininfo">
     <tr>
-        <td colspan="12"><b>Mines</b>
-        </td>
+        <td colspan="12"><b>Mines</b></td>
     </tr>
-
-
 </table>
+
+    {% for mine in values.mineValues %}
+<table id="maininfo">
+    <tr>
+        <td colspan="12">Mine name: {{ mine }}</td>
+        <td colspan="12">Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</td>
+        <td colspan="12">Mine cost: {{ mines[mine+'Cost'] }}</td>
+    </tr>
+    <br>
+    <br>
+</table>
+    {% endfor %}
 
 {% endblock %}

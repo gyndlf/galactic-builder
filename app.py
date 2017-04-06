@@ -55,6 +55,7 @@ def loadValues():
         values = pickle.load(f)
     return values
 
+
 def hasMoney(object, money):
     try:
         if object.money >= money:
@@ -65,10 +66,9 @@ def hasMoney(object, money):
         return False
 
 
-def total():
+def total(users):
     # These are things like total food sent, total net worth
     print('[2] Running total definition')
-    users = loadUsers()
 
     foodSent = 0
     totalMoney = 0
@@ -78,13 +78,13 @@ def total():
         foodSent += person.foodProduced
         totalMoney += person.money
         for mine in person.ownedMines:
-        	totalMines += person.ownedMines[mine]
-	
-    print('Total mines '+str(totalMines))
+            totalMines += person.ownedMines[mine]
+
+    #print('Total mines ' + str(totalMines))
     calculated = {
         'foodSent': foodSent,
         'totalMoney': totalMoney,
-        'totalMines' : totalMines
+        'totalMines': totalMines
     }
 
     # print("Total food sent " + str(foodSent))
@@ -93,12 +93,9 @@ def total():
     return calculated
 
 
-def farm():
+def farm(users, values, totals):
     print('[3] Running farms def')
     # All farm calculations done here. Not farms.py
-    users = loadUsers()
-    values = loadValues()
-    totals = total()
 
     population = values.population
     foodNeeded = population * 2
@@ -116,23 +113,23 @@ def farm():
     }
     return calculated
 
-def mine ():
-    #The mine calculations
+
+def mine(values, totals):
+    # The mine calculations
     print('[3] Running mine def')
-    values = loadValues()
-    totals = total()
     calculated = {}
-	
-    for mine in values.mineValues:	
+
+    for mine in values.mineValues:
         mineCost = totals['totalMines'] * values.mineValues[mine]
-        print(mine, mineCost)
+        #print(mine, mineCost)
         name = mine + 'Cost'
         calculated[name] = mineCost
-    #Number of mines
-    #amount produced = number of mines * percentage boost
-    #mine cost = total mines * mine value
-    print(calculated)
+    # Number of mines
+    # amount produced = number of mines * percentage boost
+    # mine cost = total mines * mine value
+    #print(calculated)
     return calculated
+
 
 def factory():
     # The factory calculations
@@ -142,7 +139,7 @@ def factory():
     totals = total()
 
     calculated = {
-        'nothing' : None
+        'nothing': None
     }
 
     # productCost = 0
@@ -154,18 +151,21 @@ def factory():
     # profit = income - (materialCost * amountProduced)
     return calculated
 
-def dynamicPersonalCalc(object):
+
+def dynamicPersonalCalc(object, farms, mines, values):
     # Calculate personal dynamic varibles
     print('[4] Running dynamic personal calulator def')
 
-    farms = farm()
 
     # Farms
     Fproduced = object.farmLevel * object.numberFarms
     Fincome = Fproduced * farms['farmValue']
-    
+
     # Mines
-    
+    minesDict = {}
+    for name in values.mineValues:
+        produced = object.ownedMines[name] * object.mineBoost
+        minesDict[name] = produced
 
     income = Fincome + 0  # Add factory income and mine income here
     expenses = int(income / 5)  # (Tax) Add all expenses here
@@ -176,13 +176,16 @@ def dynamicPersonalCalc(object):
         'Fincome': Fincome,
         'income': income,
         'expenses': expenses,
-        'netIncome': netIncome
+        'netIncome': netIncome,
+        'minesDict' : minesDict
     }
     # Input new varibles into "object" object
     object.foodProduced = Fproduced
     object.income = income
     object.expenses = expenses
     object.netIncome = netIncome
+    object.mineProduced = minesDict
+    print(minesDict)
 
     # Save new varibles to file
     username = object.name + '.p'
@@ -193,12 +196,14 @@ def dynamicPersonalCalc(object):
 
     return calculated
 
+
 # All app.route functions --------------#
 @app.route('/')
 def home():
     # The login page
     return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
-    #return render_template('index.html')
+    # return render_template('index.html')
+
 
 @app.route('/loginuser', methods=['POST'])
 def calcmessage():
@@ -207,6 +212,7 @@ def calcmessage():
     print("Logging in to " + str(username))
     return redirect(url_for('user', name=username, page='home'))
 
+
 @app.route('/user/')
 @app.route('/user/<name>')
 @app.route('/user/<name>/<page>')
@@ -214,26 +220,26 @@ def user(name=None, page=None):
     print("-" * 10 + str("Finances") + "-" * 10)
     # from functions import farms, factories, mines
 
+    #Calculate the very basics
+    values = loadValues()
+    users = loadUsers()
+    totals = total(users)
+
     # Calculate the recipies
     print('Calculating dynamic varibles...')
-    farms = farm()
-    mines = mine()
-    #factories = factory()
+    farms = farm(users, values, totals)
+    mines = mine(values, totals)
+    # factories = factory()
 
-    # Load all the users
-    print('Loading all users...')
-    users = loadUsers()
-    values = loadValues()
+
+
 
     # Identify the user
     for person in users:
         if name == person.name:
             # Calculate dynamic personal varibles
             print('Calculating dynamic personal varibles')
-            dynamicPersonal = dynamicPersonalCalc(person)
-
-            # Calculate totals
-            totals = total()
+            dynamicPersonal = dynamicPersonalCalc(person, farms, mines, values)
 
             # Test it
             print('[] Personal income $' + str(dynamicPersonal['income']))
@@ -242,20 +248,32 @@ def user(name=None, page=None):
             # Return the html
             if page == 'home':
                 print("Rendering home html...")
-                return render_template('finances.html', username=person.name, money=person.money, netIncome=person.netIncome,
+                return render_template('finances.html', username=person.name, money=person.money,
+                                       netIncome=person.netIncome,
                                        income=person.income, expenses=person.expenses, netWorth=0)
 
             elif page == 'farms':
                 print('Rendering farm html...')
-                return render_template('farms.html', username=person.name, farmIncome=dynamicPersonal['Fincome'], numOfFarms=person.numberFarms,
-                                   amountProduced=dynamicPersonal['Fproduced'],
-                                   farmCost=farms['farmCost'], farmLevel=person.farmLevel,
-                                   farmLevelCost=farms['levelCost'], farmValue=farms['farmValue'], population=values.population,
-                                    foodProduced=dynamicPersonal['Fproduced'])
+                return render_template('farms.html', username=person.name, farmIncome=dynamicPersonal['Fincome'],
+                                       numOfFarms=person.numberFarms,
+                                       amountProduced=dynamicPersonal['Fproduced'],
+                                       farmCost=farms['farmCost'], farmLevel=person.farmLevel,
+                                       farmLevelCost=farms['levelCost'], farmValue=farms['farmValue'],
+                                       population=values.population,
+                                       foodProduced=dynamicPersonal['Fproduced'])
 
             elif page == 'mines':
+
+                templateData = {
+                    'mines': mines,
+                    'dynamicPersonal' : dynamicPersonal,
+                    'values' : values,
+                    'person' : person
+                }
+
                 print('Rendering mines html...')
-                return render_template('mines.html', username=person.name)
+                #print(dynamicPersonal['minesDict'])
+                return render_template('mines.html', username=person.name, **templateData)
 
             else:
                 return "Invalid page name"
@@ -425,6 +443,6 @@ def userButton(name=None):
 
 
 if __name__ == "__main__":
-    #app.run(debug=True)
+    # app.run(debug=True)
     app.run()
 # app.run('0.0.0.0', 8080)

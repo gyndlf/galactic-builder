@@ -27,4 +27,6 @@ class person ():
         	'mine2' : 0,
         	'mine3' : 0
         }
+        self.mineProduced = {}
         self.totalMines = 0
+        self.mineBoost = 1
