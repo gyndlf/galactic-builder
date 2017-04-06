@@ -55,11 +55,6 @@ def loadValues():
         values = pickle.load(f)
     return values
 
-
-def saveUsers():
-    pass
-
-
 def hasMoney(object, money):
     try:
         if object.money >= money:
@@ -81,6 +76,8 @@ def total():
     for person in users:
         foodSent += person.foodProduced
         totalMoney += person.money
+        for name, number in person.ownedMines:
+        	print(name, number)
 
     calculated = {
         'foodSent': foodSent,
@@ -119,9 +116,9 @@ def farm():
 def mine ():
     #The mine calculations
     print('[3] Running mine def')
+    values = loadValues()
 
     #Number of mines
-    #buy mine button
     #amount produced = number of mines * percentage boost
     #mine cost = total mines * mine value
 
@@ -154,6 +151,9 @@ def dynamicPersonalCalc(object):
     # Farms
     Fproduced = object.farmLevel * object.numberFarms
     Fincome = Fproduced * farms['farmValue']
+    
+    # Mines
+    
 
     income = Fincome + 0  # Add factory income and mine income here
     expenses = int(income / 5)  # (Tax) Add all expenses here
@@ -185,8 +185,8 @@ def dynamicPersonalCalc(object):
 @app.route('/')
 def home():
     # The login page
-    #return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
-    return render_template('index.html')
+    return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
+    #return render_template('index.html')
 
 @app.route('/loginuser', methods=['POST'])
 def calcmessage():
@@ -194,7 +194,6 @@ def calcmessage():
     username = request.form['username']
     print("Logging in to " + str(username))
     return redirect(url_for('user', name=username, page='home'))
-
 
 @app.route('/user/')
 @app.route('/user/<name>')
@@ -206,6 +205,7 @@ def user(name=None, page=None):
     # Calculate the recipies
     print('Calculating dynamic varibles...')
     farms = farm()
+    factories = factory()
 
     # Load all the users
     print('Loading all users...')
@@ -412,5 +412,6 @@ def userButton(name=None):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run()
 # app.run('0.0.0.0', 8080)

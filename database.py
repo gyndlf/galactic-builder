@@ -20,3 +20,11 @@ class person ():
         self.numberFarms = 1
         self.farmLevel = 1
         self.foodProduced = 0
+        
+        #Mines
+        self.ownedMines = {
+        	'mine1' : 0,
+        	'mine2' : 0,
+        	'mine3' : 0
+        }
+        self.totalMines = 0

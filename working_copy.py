@@ -202,7 +202,7 @@ class WorkingCopySync():
 def main(url_action=None, url_args=None):
 	wc = WorkingCopySync()
 	
-	print (url_action)
+	#print (url_action)
 	if not url_action:
 		wc.present()
 	elif url_action == 'copy_repo':
