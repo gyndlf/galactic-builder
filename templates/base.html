@@ -57,17 +57,17 @@
         <script type="text/javascript"></script>
 
         <div id="mainpage">
-            	<h1><b>Galactic Builder</b></h1>
+            <a href=" {{ url_for('home') }} "><h1><b>Galactic Builder</b></h1></a>
 
             <table id="maininfo">
                 <tr>
                     <td><b><a href=" {{ url_for('user', name=username, page='farms') }} ">Farms</a></b>
                     </td>
-                    <td><b>Community</b>
+                    <td><b><a href=" {{ url_for('user', name=username, page='community') }} ">Community</a></b>
                     </td>
                     <td><b><a href=" {{ url_for('user', name=username, page='home') }} ">Home</a></b>
                     </td>
-                    <td><b>Factories</b>
+                    <td><b><a href=" {{ url_for('user', name=username, page='factories') }} ">Factories</a></b>
                     </td>
                     <td><b><a href=" {{ url_for('user', name=username, page='mines') }} ">Mines</a></b>
                     </td>

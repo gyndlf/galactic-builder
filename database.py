@@ -8,6 +8,7 @@ class person ():
     def __init__(self):
         #General
         self.name = ""
+        self.password = 'password'
         self.id = 0
         self.money = 10000000000
         self.netWorth = 0

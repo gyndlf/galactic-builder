@@ -121,9 +121,10 @@ def mine(values, totals):
 
     for mine in values.mineValues:
         mineCost = totals['totalMines'] * values.mineValues[mine]
-        #print(mine, mineCost)
-        name = mine + 'Cost'
-        calculated[name] = mineCost
+        if mineCost < 1200:
+            mineCost = 1200
+        print('Mine cost: ', mine, mineCost)
+        calculated[mine] = mineCost
     # Number of mines
     # amount produced = number of mines * percentage boost
     # mine cost = total mines * mine value
@@ -185,7 +186,7 @@ def dynamicPersonalCalc(object, farms, mines, values):
     object.expenses = expenses
     object.netIncome = netIncome
     object.mineProduced = minesDict
-    print(minesDict)
+    print('Dynamic personal number of mines: ', minesDict)
 
     # Save new varibles to file
     username = object.name + '.p'
@@ -201,16 +202,24 @@ def dynamicPersonalCalc(object, farms, mines, values):
 @app.route('/')
 def home():
     # The login page
-    return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
-    # return render_template('index.html')
+    #return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
+    return render_template('index.html')
 
 
 @app.route('/loginuser', methods=['POST'])
 def calcmessage():
     # The script that runs once you login
-    username = request.form['username']
-    print("Logging in to " + str(username))
-    return redirect(url_for('user', name=username, page='home'))
+    users = loadUsers()
+    try:
+        username = request.form['username']
+        password = request.form['password']
+    except:
+        return redirect(url_for('home'))
+    for person in users:
+        if person.name == username and person.password == password:
+            print("Logging in to " + str(username))
+            return redirect(url_for('user', name=username, page='home'))
+    return redirect(url_for('home'))
 
 
 @app.route('/user/')
@@ -263,17 +272,22 @@ def user(name=None, page=None):
                                        foodProduced=dynamicPersonal['Fproduced'])
 
             elif page == 'mines':
-
+                print('Rendering mines html...')
                 templateData = {
-                    'mines': mines,
+                    'minesFunc': mines,
                     'dynamicPersonal' : dynamicPersonal,
                     'values' : values,
                     'person' : person
                 }
-
-                print('Rendering mines html...')
-                #print(dynamicPersonal['minesDict'])
                 return render_template('mines.html', username=person.name, **templateData)
+
+            elif page == 'factories':
+                print("Rendering factories html...")
+                return render_template('factories.html', username=person.name)
+
+            elif page == 'community':
+                print("Rendering community html..")
+                return render_template('community.html', username=person.name)
 
             else:
                 return "Invalid page name"
@@ -285,151 +299,153 @@ def userButton(name=None):
     print("-" * 10 + str("Button") + "-" * 10)
 
     # Run recipies
-    print("Loading recipies...")
-    farms = farm()
-    # Load users
     users = loadUsers()
+    values = loadValues()
+    totals = total(users)
+    print("Loading recipies...")
+    farms = farm(users, values, totals)
+    # Load users
+
+    farmHtml = False
+    mineHtml = False
 
     for person in users:
         if name == person.name:
             print("Signed in as " + str(person.name))
-            # printVars(person)
             # Button detection below
-            if True:
-                # Finances.html -------------#
-                # Farms ---------------------#
-                if 'sellFarm' in request.form:
-                    print("Detected 'sellFarm'")
 
-                elif 'buyFarm' in request.form:
-                    print("Detected 'buyFarm'")
-                    if hasMoney(person, farms['farmCost']):
-                        person.numberFarms += 1
-                        person.money -= farms['farmCost']
-                        print("Brought one farm")
+            # farms.html -------------#
+            if 'buyFarm' in request.form:
+                print("Detected 'buyFarm'")
+                farmHtml = True
+                if hasMoney(person, farms['farmCost']):
+                    person.numberFarms += 1
+                    person.money -= farms['farmCost']
+                    print("Brought one farm")
+                else:
+                    print("Money Error: Not enough money")
+
+
+            elif 'upgradeFarm' in request.form:
+                print("Detected 'upgradeFarm'")
+                farmHtml = True
+                if person.farmLevel >= 5:
+                    print("Error: Max farm level")
+                else:
+                    if hasMoney(person, farms['levelCost']):
+                        person.farmLevel += 1
+                        person.money -= farms['levelCost']
+                        print("Upgraded Level")
                     else:
                         print("Money Error: Not enough money")
 
+            # Factories -----------------#
+            elif 'sellCarFac' in request.form:
+                print("Detected 'sellCarFac'")
 
-                elif 'upgradeFarm' in request.form:
-                    print("Detected 'upgradeFarm'")
-                    if person.farmLevel >= 5:
-                        print("Error: Max farm level")
-                    else:
-                        if hasMoney(person, farms['levelCost']):
-                            person.farmLevel += 1
-                            person.money -= farms['levelCost']
-                            print("Upgraded Level")
-                        else:
-                            print("Money Error: Not enough money")
+            elif 'buyCarFac' in request.form:
+                print("Detected 'buyCarFac'")
 
-                            # Factories -----------------#
-                elif 'sellCarFac' in request.form:
-                    print("Detected 'sellCarFac'")
+            elif 'sellUPFac' in request.form:
+                print("Detected 'sellUPFac'")
 
-                elif 'buyCarFac' in request.form:
-                    print("Detected 'buyCarFac'")
+            elif 'buyUPFac' in request.form:
+                print("Detected 'buyUPFac'")
 
-                elif 'sellUPFac' in request.form:
-                    print("Detected 'sellUPFac'")
+            elif 'sellAWFac' in request.form:
+                print("Detected 'sellAWFac'")
 
-                elif 'buyUPFac' in request.form:
-                    print("Detected 'buyUPFac'")
+            elif 'buyAWFac' in request.form:
+                print("Detected 'buyAWFac'")
 
-                elif 'sellAWFac' in request.form:
-                    print("Detected 'sellAWFac'")
+            elif 'sellToiletFac' in request.form:
+                print("Detected 'sellToiletFac'")
 
-                elif 'buyAWFac' in request.form:
-                    print("Detected 'buyAWFac'")
+            elif 'buyToiletFac' in request.form:
+                print("Detected 'buyToiletFac'")
 
-                elif 'sellToiletFac' in request.form:
-                    print("Detected 'sellToiletFac'")
+            elif 'sellPFFac' in request.form:
+                print("Detected 'sellPFFac'")
 
-                elif 'buyToiletFac' in request.form:
-                    print("Detected 'buyToiletFac'")
+            elif 'buyPFFac' in request.form:
+                print("Detected 'buyPFFac'")
 
-                elif 'sellPFFac' in request.form:
-                    print("Detected 'sellPFFac'")
+                # Mines --------------------#
+            elif 'sellSteelMin' in request.form:
+                print("Detected 'sellSteelMin'")
 
-                elif 'buyPFFac' in request.form:
-                    print("Detected 'buyPFFac'")
+            elif 'buySteelMin' in request.form:
+                print("Detected 'buySteelMin'")
 
-                    # Mines --------------------#
-                elif 'sellSteelMin' in request.form:
-                    print("Detected 'sellSteelMin'")
+            elif 'sellHydroMin' in request.form:
+                print("Detected 'sellHydroMin'")
 
-                elif 'buySteelMin' in request.form:
-                    print("Detected 'buySteelMin'")
+            elif 'buyHydroMin' in request.form:
+                print("Detected 'buyHydroMin'")
 
-                elif 'sellHydroMin' in request.form:
-                    print("Detected 'sellHydroMin'")
+            elif 'sellYECMin' in request.form:
+                print("Detected 'sellYECMin'")
 
-                elif 'buyHydroMin' in request.form:
-                    print("Detected 'buyHydroMin'")
+            elif 'buyYECMin' in request.form:
+                print("Detected 'buyYECMin'")
 
-                elif 'sellYECMin' in request.form:
-                    print("Detected 'sellYECMin'")
+            elif 'sellTitMin' in request.form:
+                print("Detected 'sellTitMin'")
 
-                elif 'buyYECMin' in request.form:
-                    print("Detected 'buyYECMin'")
+            elif 'buyTitMin' in request.form:
+                print("Detected 'buyTitMin'")
 
-                elif 'sellTitMin' in request.form:
-                    print("Detected 'sellTitMin'")
+            elif 'sellSiliconMin' in request.form:
+                print("Detected 'sellSiliconMin'")
 
-                elif 'buyTitMin' in request.form:
-                    print("Detected 'buyTitMin'")
+            elif 'buySiliconMin' in request.form:
+                print("Detected 'buySiliconMin'")
 
-                elif 'sellSiliconMin' in request.form:
-                    print("Detected 'sellSiliconMin'")
+            elif 'sellCopMin' in request.form:
+                print("Detected 'sellCopMin'")
 
-                elif 'buySiliconMin' in request.form:
-                    print("Detected 'buySiliconMin'")
+            elif 'buyCopMin' in request.form:
+                print("Detected 'buyCopMin'")
 
-                elif 'sellCopMin' in request.form:
-                    print("Detected 'sellCopMin'")
+            elif 'sellNoobMin' in request.form:
+                print("Detected 'sellNoobMin'")
 
-                elif 'buyCopMin' in request.form:
-                    print("Detected 'buyCopMin'")
+            elif 'buyNoobMin' in request.form:
+                print("Detected 'buyNoobMin'")
 
-                elif 'sellNoobMin' in request.form:
-                    print("Detected 'sellNoobMin'")
+            elif 'sellDiaMin' in request.form:
+                print("Detected 'sellDiaMin'")
 
-                elif 'buyNoobMin' in request.form:
-                    print("Detected 'buyNoobMin'")
+            elif 'buyDiaMin' in request.form:
+                print("Detected 'buyDiaMin'")
 
-                elif 'sellDiaMin' in request.form:
-                    print("Detected 'sellDiaMin'")
+            elif 'sellHeMin' in request.form:
+                print("Detected 'sellHeMin'")
 
-                elif 'buyDiaMin' in request.form:
-                    print("Detected 'buyDiaMin'")
+            elif 'buyHeMin' in request.form:
+                print("Detected 'buyHeMin'")
 
-                elif 'sellHeMin' in request.form:
-                    print("Detected 'sellHeMin'")
+            elif 'sellWHCMin' in request.form:
+                print("Detected 'sellWHCMin'")
 
-                elif 'buyHeMin' in request.form:
-                    print("Detected 'buyHeMin'")
+            elif 'buyWHCMin' in request.form:
+                print("Detected 'buyWHCMin'")
 
-                elif 'sellWHCMin' in request.form:
-                    print("Detected 'sellWHCMin'")
+                # Research ---------------------#
+            elif 'buyLCR' in request.form:
+                print("Detected 'buyLCR'")
 
-                elif 'buyWHCMin' in request.form:
-                    print("Detected 'buyWHCMin'")
+            elif 'buyBFR' in request.form:
+                print("Detected 'buyBFR'")
 
-                    # Research ---------------------#
-                elif 'buyLCR' in request.form:
-                    print("Detected 'buyLCR'")
+            elif 'buyNKR' in request.form:
+                print("Detected 'buyNKR'")
 
-                elif 'buyBFR' in request.form:
-                    print("Detected 'buyBFR'")
+            elif 'buyRWR' in request.form:
+                print("Detected 'buyRWR'")
 
-                elif 'buyNKR' in request.form:
-                    print("Detected 'buyNKR'")
-
-                elif 'buyRWR' in request.form:
-                    print("Detected 'buyRWR'")
-
-                else:
-                    print('Unknown value')
+            else:
+                print('Unknown value')
 
                     # Save personal Data
             print('Saving...')
@@ -438,8 +454,13 @@ def userButton(name=None):
             with open(fname, 'wb') as f:
                 pickle.dump(person, f)
 
-    print("Redirect")
-    return redirect(url_for('user', name=name, page='home'))
+    print("Calculating edirect")
+    if farmHtml:
+        print('Redirecting back to farms')
+        return redirect(url_for('user', name=name, page='farms'))
+    else:
+        print('Redirecting to home')
+        return redirect(url_for('user', name=name, page='home'))
 
 
 if __name__ == "__main__":
