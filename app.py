@@ -218,16 +218,34 @@ def calcmessage():
     for person in users:
         if person.name == username and person.password == password:
             print("Logging in to " + str(username))
-            return redirect(url_for('user', name=username, page='home'))
+            resp = make_response(redirect(url_for('user', name=username, page='home')))
+            print("Saving cookie 'sessionID'")
+            resp.set_cookie('sessionID', username) #Eventually change from username to a random string
+            return resp
     return redirect(url_for('home'))
 
+@app.route('/givedevolpercookie')
+def devolperCookie():
+    #Give the devolper cookie out
+    resp = make_response(redirect(url_for('home')))
+    resp.set_cookie('sessionID', 'Devolper')
+    return resp
 
 @app.route('/user/')
 @app.route('/user/<name>')
 @app.route('/user/<name>/<page>')
 def user(name=None, page=None):
     print("-" * 10 + str("Finances") + "-" * 10)
-    # from functions import farms, factories, mines
+
+    try: #Load the session cookie
+        cookie = request.cookies.get('sessionID')
+        print('Username via cookie: ', cookie)
+    except:
+        return 'No cookie found.'
+
+    if cookie != 'Devolper':
+        if cookie != name:
+            return 'You do not have access to this location'
 
     #Calculate the very basics
     values = loadValues()
@@ -239,9 +257,6 @@ def user(name=None, page=None):
     farms = farm(users, values, totals)
     mines = mine(values, totals)
     # factories = factory()
-
-
-
 
     # Identify the user
     for person in users:
@@ -340,109 +355,19 @@ def userButton(name=None):
                         print("Money Error: Not enough money")
 
             # Factories -----------------#
-            elif 'sellCarFac' in request.form:
-                print("Detected 'sellCarFac'")
-
-            elif 'buyCarFac' in request.form:
-                print("Detected 'buyCarFac'")
-
-            elif 'sellUPFac' in request.form:
-                print("Detected 'sellUPFac'")
-
-            elif 'buyUPFac' in request.form:
-                print("Detected 'buyUPFac'")
-
-            elif 'sellAWFac' in request.form:
-                print("Detected 'sellAWFac'")
-
-            elif 'buyAWFac' in request.form:
-                print("Detected 'buyAWFac'")
-
-            elif 'sellToiletFac' in request.form:
-                print("Detected 'sellToiletFac'")
-
-            elif 'buyToiletFac' in request.form:
-                print("Detected 'buyToiletFac'")
-
-            elif 'sellPFFac' in request.form:
-                print("Detected 'sellPFFac'")
-
-            elif 'buyPFFac' in request.form:
-                print("Detected 'buyPFFac'")
 
                 # Mines --------------------#
-            elif 'sellSteelMin' in request.form:
-                print("Detected 'sellSteelMin'")
+            elif 'buymine1' in request.form:
+                print("Detected 'buymine1'")
+                mineHtml = True
 
-            elif 'buySteelMin' in request.form:
-                print("Detected 'buySteelMin'")
+            elif 'buymine2' in request.form:
+                print("Detected 'buymine2'")
+                mineHtml = True
 
-            elif 'sellHydroMin' in request.form:
-                print("Detected 'sellHydroMin'")
-
-            elif 'buyHydroMin' in request.form:
-                print("Detected 'buyHydroMin'")
-
-            elif 'sellYECMin' in request.form:
-                print("Detected 'sellYECMin'")
-
-            elif 'buyYECMin' in request.form:
-                print("Detected 'buyYECMin'")
-
-            elif 'sellTitMin' in request.form:
-                print("Detected 'sellTitMin'")
-
-            elif 'buyTitMin' in request.form:
-                print("Detected 'buyTitMin'")
-
-            elif 'sellSiliconMin' in request.form:
-                print("Detected 'sellSiliconMin'")
-
-            elif 'buySiliconMin' in request.form:
-                print("Detected 'buySiliconMin'")
-
-            elif 'sellCopMin' in request.form:
-                print("Detected 'sellCopMin'")
-
-            elif 'buyCopMin' in request.form:
-                print("Detected 'buyCopMin'")
-
-            elif 'sellNoobMin' in request.form:
-                print("Detected 'sellNoobMin'")
-
-            elif 'buyNoobMin' in request.form:
-                print("Detected 'buyNoobMin'")
-
-            elif 'sellDiaMin' in request.form:
-                print("Detected 'sellDiaMin'")
-
-            elif 'buyDiaMin' in request.form:
-                print("Detected 'buyDiaMin'")
-
-            elif 'sellHeMin' in request.form:
-                print("Detected 'sellHeMin'")
-
-            elif 'buyHeMin' in request.form:
-                print("Detected 'buyHeMin'")
-
-            elif 'sellWHCMin' in request.form:
-                print("Detected 'sellWHCMin'")
-
-            elif 'buyWHCMin' in request.form:
-                print("Detected 'buyWHCMin'")
-
-                # Research ---------------------#
-            elif 'buyLCR' in request.form:
-                print("Detected 'buyLCR'")
-
-            elif 'buyBFR' in request.form:
-                print("Detected 'buyBFR'")
-
-            elif 'buyNKR' in request.form:
-                print("Detected 'buyNKR'")
-
-            elif 'buyRWR' in request.form:
-                print("Detected 'buyRWR'")
+            elif 'buymine3' in request.form:
+                print("Detected 'buymine3'")
+                mineHtml = True
 
             else:
                 print('Unknown value')
@@ -454,10 +379,13 @@ def userButton(name=None):
             with open(fname, 'wb') as f:
                 pickle.dump(person, f)
 
-    print("Calculating edirect")
+    print("Calculating redirect")
     if farmHtml:
         print('Redirecting back to farms')
         return redirect(url_for('user', name=name, page='farms'))
+    elif mineHtml:
+        print('Redirecting back to mines')
+        return redirect(url_for('user', name=name, page='mines'))
     else:
         print('Redirecting to home')
         return redirect(url_for('user', name=name, page='home'))
@@ -466,4 +394,4 @@ def userButton(name=None):
 if __name__ == "__main__":
     # app.run(debug=True)
     app.run()
-# app.run('0.0.0.0', 8080)
+    #app.run('0.0.0.0', 8080)

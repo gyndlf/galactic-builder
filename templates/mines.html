@@ -10,8 +10,15 @@
 <table id="maininfo">
     <tr>
         <td colspan="12">Mine name: {{ mine }}</td>
+        <td colspan="12">Mine Value: {{ values.mineValues[mine] }}</td>
         <td colspan="12">Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</td>
         <td colspan="12">Mine cost: {{ minesFunc[mine] }}</td>
+    </tr>
+    <tr>
+        <td colspan="12">Number of mines: {{ person.ownedMines[mine] }}</td>
+        <td colspan="12"><form action="/user/{{ username }}/button" method="post">
+                <input type="submit" name="{{ 'buy' + mine }}" value="Buy mine">
+            </form></td>
     </tr>
     <br>
     <br>
