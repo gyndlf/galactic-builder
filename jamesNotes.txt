@@ -22,3 +22,4 @@ Three types of varibles:
 
 ToDo:
 Complete the use of for loops in html
+Modify the cookies to expirea after 5 minutes

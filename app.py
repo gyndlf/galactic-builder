@@ -55,6 +55,9 @@ def loadValues():
         values = pickle.load(f)
     return values
 
+def scrambleCookie (request):
+    #Scrambles the cookies!!!!
+    pass
 
 def hasMoney(object, money):
     try:
