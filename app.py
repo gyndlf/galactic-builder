@@ -8,15 +8,23 @@
 import pickle
 import os, sys
 from flask import *
+import string as s
 
 app = Flask(__name__)
 
 message = ""
 number = 0
 
-toBeSaved = {}
+CHAR_SET = s.printable[:-5]  # All valid characters
+SUBSTITUTION_CHARS = CHAR_SET[-3:] + CHAR_SET[:-3]  # Moves them over by 3
 
-# Load all users according to "users.p" and display their stats
+#Create the encryption and decryption dictionaries
+ENCRYPT_DICT = {}
+DECRYPT_DICT = {}
+for i,c in enumerate(CHAR_SET):
+    v = SUBSTITUTION_CHARS[i]
+    ENCRYPT_DICT[c] = v
+    DECRYPT_DICT[v] = c
 
 # Calculate file paths
 MY_DIR = os.path.realpath(os.path.dirname(__file__))
@@ -55,9 +63,24 @@ def loadValues():
         values = pickle.load(f)
     return values
 
-def scrambleCookie (request):
+def scrambleCookie (request, username):
     #Scrambles the cookies!!!!
-    pass
+    text = []
+    for i in username:
+        v = ENCRYPT_DICT[i]
+        text.append(v)
+    cookie = ''.join(text)
+    request.set_cookie('sessionID', cookie)
+    return request
+
+
+def loadCookie(username):
+    # Converts the cypher to words.
+    text = []
+    for i in username:
+        v = DECRYPT_DICT[i]
+        text.append(v)
+    return ''.join(text)
 
 def hasMoney(object, money):
     try:
@@ -223,16 +246,9 @@ def calcmessage():
             print("Logging in to " + str(username))
             resp = make_response(redirect(url_for('user', name=username, page='home')))
             print("Saving cookie 'sessionID'")
-            resp.set_cookie('sessionID', username) #Eventually change from username to a random string
+            resp = scrambleCookie(resp, username)
             return resp
     return redirect(url_for('home'))
-
-@app.route('/givedevolpercookie')
-def devolperCookie():
-    #Give the devolper cookie out
-    resp = make_response(redirect(url_for('home')))
-    resp.set_cookie('sessionID', 'Devolper')
-    return resp
 
 @app.route('/user/')
 @app.route('/user/<name>')
@@ -246,9 +262,10 @@ def user(name=None, page=None):
     except:
         return 'No cookie found.'
 
-    if cookie != 'Devolper':
-        if cookie != name:
-            return 'You do not have access to this location'
+    cookie = loadCookie(cookie)
+
+    if cookie != name:
+        return 'You do not have access to this location'
 
     #Calculate the very basics
     values = loadValues()
