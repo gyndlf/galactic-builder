@@ -12,9 +12,6 @@ import string as s
 
 app = Flask(__name__)
 
-message = ""
-number = 0
-
 CHAR_SET = s.printable[:-5]  # All valid characters
 SUBSTITUTION_CHARS = CHAR_SET[-3:] + CHAR_SET[:-3]  # Moves them over by 3
 
@@ -36,53 +33,50 @@ DATABASEPATH = os.path.join(PICKLE_DIR, DATABASE)
 VALUES = 'values.p'
 VALUESPATH = os.path.join(PICKLE_DIR, VALUES)
 
-
-def printVars(object):
-    print(str(object) + " vars: " + str(vars(object)))
-
-
 def loadUsers():
+    '''Load users from the file given as USERS'''
     print('[1] Loading users')
     users = []
-    # Load users from their .p files
+    # Load users.p files
     with open(USERSPATH, 'rb') as f:
         usersArray = pickle.load(f)
 
+    #Read to find out the users
     for file in usersArray:
         fname = os.path.join(PICKLE_DIR, file)
-        # print("Opening " + str(fname))
         with open(fname, 'rb') as f:
-            peps = pickle.load(f)
-            users.append(peps)
+            person = pickle.load(f)
+            users.append(person)
     return users
 
-
 def loadValues():
+    '''Load the values from the file given as VALUES'''
     print('[1] Load values')
     with open(VALUESPATH, 'rb') as f:
         values = pickle.load(f)
     return values
 
-def scrambleCookie (request, username):
-    #Scrambles the cookies!!!!
-    text = []
+def scrambleCookie(request, username):
+    '''Scramble the username and add to the give request'''
+    t = []
     for i in username:
         v = ENCRYPT_DICT[i]
-        text.append(v)
-    cookie = ''.join(text)
-    request.set_cookie('sessionID', cookie)
+        t.append(v)
+    sessio = ''.join(t)
+    request.set_cookie('sessionID', sessio)
     return request
 
-
 def loadCookie(username):
+    '''Decrypt the username'''
     # Converts the cypher to words.
-    text = []
+    h = []
     for i in username:
         v = DECRYPT_DICT[i]
-        text.append(v)
-    return ''.join(text)
+        h.append(v)
+    return ''.join(h)
 
 def hasMoney(object, money):
+    '''Weather or not the object has >= money'''
     try:
         if object.money >= money:
             return True
@@ -91,35 +85,31 @@ def hasMoney(object, money):
     except:
         return False
 
-
 def total(users):
-    # These are things like total food sent, total net worth
+    '''Calculate totals across all the users'''
     print('[2] Running total definition')
 
     foodSent = 0
     totalMoney = 0
     totalMines = 0
 
+    #Add them all up!
     for person in users:
         foodSent += person.foodProduced
         totalMoney += person.money
         for mine in person.ownedMines:
             totalMines += person.ownedMines[mine]
 
-    #print('Total mines ' + str(totalMines))
+    #Put them in a dictionary
     calculated = {
         'foodSent': foodSent,
         'totalMoney': totalMoney,
         'totalMines': totalMines
     }
-
-    # print("Total food sent " + str(foodSent))
-    # print("Total money in the game " + str(totalMoney))
-
     return calculated
 
-
-def farm(users, values, totals):
+def farm(values, totals):
+    '''The farms calculation. Calculates all the formulas for farms'''
     print('[3] Running farms def')
     # All farm calculations done here. Not farms.py
 
@@ -133,33 +123,27 @@ def farm(users, values, totals):
     calculated = {
         'foodNeeded': foodNeeded,
         'foodSent': foodSent,
-        'farmValue': farmValue,  # Selling farm cost
+        'farmValue': farmValue,  # Selling food value
         'farmCost': farmCost,
         'levelCost': levelCost
     }
     return calculated
 
-
 def mine(values, totals):
-    # The mine calculations
+    '''Calculate the mine costs'''
     print('[3] Running mine def')
     calculated = {}
-
+    #For each mine calculate its costs
     for mine in values.mineValues:
         mineCost = totals['totalMines'] * values.mineValues[mine]
         if mineCost < 1200:
             mineCost = 1200
-        print('Mine cost: ', mine, mineCost)
+        print('Mine cost: ', mine, mineCost) #Get rid of eventually
         calculated[mine] = mineCost
-    # Number of mines
-    # amount produced = number of mines * percentage boost
-    # mine cost = total mines * mine value
-    #print(calculated)
     return calculated
 
-
 def factory():
-    # The factory calculations
+    '''Calculate factory costs. Uncompleted.'''
     print('[3] Running factory def')
     users = loadUsers()
     values = loadValues()
@@ -178,11 +162,9 @@ def factory():
     # profit = income - (materialCost * amountProduced)
     return calculated
 
-
-def dynamicPersonalCalc(object, farms, mines, values):
-    # Calculate personal dynamic varibles
+def dynamicPersonalCalc(object, farms, values):
+    '''Calculate personal dynamic varibles'''
     print('[4] Running dynamic personal calulator def')
-
 
     # Farms
     Fproduced = object.farmLevel * object.numberFarms
@@ -190,14 +172,17 @@ def dynamicPersonalCalc(object, farms, mines, values):
 
     # Mines
     minesDict = {}
+    # amount produced = number of mines * percentage boost || Eventually use this
     for name in values.mineValues:
         produced = object.ownedMines[name] * object.mineBoost
         minesDict[name] = produced
 
+    #General
     income = Fincome + 0  # Add factory income and mine income here
     expenses = int(income / 5)  # (Tax) Add all expenses here
     netIncome = income - expenses
 
+    #Chuck in a dictionary
     calculated = {
         'Fproduced': Fproduced,
         'Fincome': Fincome,
@@ -220,21 +205,20 @@ def dynamicPersonalCalc(object, farms, mines, values):
     print("[-] Saving dynamic personal data to " + str(username))
     with open(fname, 'wb') as f:
         pickle.dump(object, f)
-
     return calculated
 
 
 # All app.route functions --------------#
 @app.route('/')
 def home():
-    # The login page
+    '''The main login page / Index'''
     #return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
     return render_template('index.html')
 
 
 @app.route('/loginuser', methods=['POST'])
 def calcmessage():
-    # The script that runs once you login
+    '''This is the login script'''
     users = loadUsers()
     try:
         username = request.form['username']
@@ -254,6 +238,7 @@ def calcmessage():
 @app.route('/user/<name>')
 @app.route('/user/<name>/<page>')
 def user(name=None, page=None):
+    '''The main script. Run whenever logged in'''
     print("-" * 10 + str("Finances") + "-" * 10)
 
     try: #Load the session cookie
@@ -263,7 +248,6 @@ def user(name=None, page=None):
         return 'No cookie found.'
 
     cookie = loadCookie(cookie)
-
     if cookie != name:
         return 'You do not have access to this location'
 
@@ -274,30 +258,26 @@ def user(name=None, page=None):
 
     # Calculate the recipies
     print('Calculating dynamic varibles...')
-    farms = farm(users, values, totals)
+    farms = farm(values, totals)
     mines = mine(values, totals)
-    # factories = factory()
+    #factories = factory() [Not implemented yet]
 
     # Identify the user
     for person in users:
         if name == person.name:
             # Calculate dynamic personal varibles
             print('Calculating dynamic personal varibles')
-            dynamicPersonal = dynamicPersonalCalc(person, farms, mines, values)
-
-            # Test it
-            print('[] Personal income $' + str(dynamicPersonal['income']))
-            print('[] Everyone is sending ' + str(totals['foodSent']) + ' bits of food.')
+            dynamicPersonal = dynamicPersonalCalc(person, farms, values)
 
             # Return the html
             if page == 'home':
-                print("Rendering home html...")
+                print("Rendering home html...") #Need to upgrade to send the whole person
                 return render_template('finances.html', username=person.name, money=person.money,
                                        netIncome=person.netIncome,
                                        income=person.income, expenses=person.expenses, netWorth=0)
 
             elif page == 'farms':
-                print('Rendering farm html...')
+                print('Rendering farm html...') #Use dictionaries below in the future
                 return render_template('farms.html', username=person.name, farmIncome=dynamicPersonal['Fincome'],
                                        numOfFarms=person.numberFarms,
                                        amountProduced=dynamicPersonal['Fproduced'],
@@ -331,25 +311,28 @@ def user(name=None, page=None):
 
 @app.route('/user/<name>/button', methods=['POST'])
 def userButton(name=None):
+    '''The script run once ANY button is pressed'''
     print("-" * 10 + str("Button") + "-" * 10)
 
     # Run recipies
+    print("Loading recipies...")
     users = loadUsers()
     values = loadValues()
     totals = total(users)
-    print("Loading recipies...")
-    farms = farm(users, values, totals)
-    # Load users
+    farms = farm(values, totals)
+    mines = mine(values, totals)
 
     farmHtml = False
     mineHtml = False
 
+    #Identify the user
     for person in users:
         if name == person.name:
             print("Signed in as " + str(person.name))
-            # Button detection below
 
-            # farms.html -------------#
+            #Detect what button it was and do the appropriate action
+
+            # farms.html ---------------#
             if 'buyFarm' in request.form:
                 print("Detected 'buyFarm'")
                 farmHtml = True
@@ -359,7 +342,6 @@ def userButton(name=None):
                     print("Brought one farm")
                 else:
                     print("Money Error: Not enough money")
-
 
             elif 'upgradeFarm' in request.form:
                 print("Detected 'upgradeFarm'")
@@ -374,31 +356,47 @@ def userButton(name=None):
                     else:
                         print("Money Error: Not enough money")
 
-            # Factories -----------------#
+            # Factories ----------------#
 
-                # Mines --------------------#
+            # Mines --------------------#
             elif 'buymine1' in request.form:
                 print("Detected 'buymine1'")
                 mineHtml = True
+                if hasMoney(person, mines['mine1']):
+                    person.ownedMines['mine1'] += 1
+                    print('Brought one mine1 mine')
+                else:
+                    print('Not enough money.')
 
             elif 'buymine2' in request.form:
                 print("Detected 'buymine2'")
                 mineHtml = True
+                if hasMoney(person, mines['mine2']):
+                    person.ownedMines['mine2'] += 1
+                    print('Brought one mine2 mine')
+                else:
+                    print('Not enough money.')
 
             elif 'buymine3' in request.form:
                 print("Detected 'buymine3'")
                 mineHtml = True
+                if hasMoney(person, mines['mine3']):
+                    person.ownedMines['mine3'] += 1
+                    print('Brought one mine3 mine')
+                else:
+                    print('Not enough money.')
 
             else:
                 print('Unknown value')
 
-                    # Save personal Data
+            #Save upated personal data
             print('Saving...')
             username = person.name + '.p'
             fname = os.path.join(PICKLE_DIR, username)
             with open(fname, 'wb') as f:
                 pickle.dump(person, f)
 
+    #Redirect back to the page the user was at before
     print("Calculating redirect")
     if farmHtml:
         print('Redirecting back to farms')
