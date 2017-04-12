@@ -135,10 +135,10 @@ def mine(values, totals):
     calculated = {}
     #For each mine calculate its costs
     for mine in values.mineValues:
-        mineCost = totals['totalMines'] * values.mineValues[mine]
+        mineCost = totals['totalMines'] * values.mineValues[mine] #Number of mines * value of mine
         if mineCost < 1200:
             mineCost = 1200
-        print('Mine cost: ', mine, mineCost) #Get rid of eventually
+        print('Mine cost: (', totals['totalMines'], ' * ', values.mineValues[mine], ') ', mine, mineCost) #Get rid of eventually
         calculated[mine] = mineCost
     return calculated
 
@@ -359,35 +359,16 @@ def userButton(name=None):
             # Factories ----------------#
 
             # Mines --------------------#
-            elif 'buymine1' in request.form:
-                print("Detected 'buymine1'")
-                mineHtml = True
-                if hasMoney(person, mines['mine1']):
-                    person.ownedMines['mine1'] += 1
-                    print('Brought one mine1 mine')
-                else:
-                    print('Not enough money.')
-
-            elif 'buymine2' in request.form:
-                print("Detected 'buymine2'")
-                mineHtml = True
-                if hasMoney(person, mines['mine2']):
-                    person.ownedMines['mine2'] += 1
-                    print('Brought one mine2 mine')
-                else:
-                    print('Not enough money.')
-
-            elif 'buymine3' in request.form:
-                print("Detected 'buymine3'")
-                mineHtml = True
-                if hasMoney(person, mines['mine3']):
-                    person.ownedMines['mine3'] += 1
-                    print('Brought one mine3 mine')
-                else:
-                    print('Not enough money.')
-
             else:
-                print('Unknown value')
+                for digger in person.ownedMines:
+                    button = 'buy' + digger
+                    if button in request.form:
+                        mineHtml = True
+                        if hasMoney(person, mines[digger]):
+                            person.ownedMines[digger] += 1
+                            person.money -= mines[digger]
+                        else:
+                            print("Not enough money")
 
             #Save upated personal data
             print('Saving...')
