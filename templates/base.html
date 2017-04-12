@@ -5,7 +5,6 @@
 
         <style type="text/css">
             body {
-                /*background-image: url(space_bg.gif)*/
                 background: linear-gradient(132deg, #ec5218, #1665c1);
                 background-size: 400% 400%;
                 animation: BackgroundGradient 30s ease infinite;
@@ -47,7 +46,67 @@
                 border-bottom:0px solid black;
                 text-align: center;
             }
-        </style>
+            
+            .button {
+                display: inline-block;
+                padding: 15px 25px;
+                font-size: 24px;
+                cursor: pointer;
+                text-align: center;
+                text-decoration: none;
+                outline: none;
+                color: #fff;
+                background-color: #4CAF50;
+                border: none;
+                border-radius: 15px;
+                box-shadow: 0 9px #FFF;
+           }
+
+           .button:hover {background-color: #3e8e41}
+
+           .button:active {
+               background-color: #3e8e41;
+               box-shadow: 0 5px #666;
+               transform: translateY(4px);
+           }
+
+           .button {
+              position: relative;
+              background-color: #4CAF50;
+              border: none;
+              font-size: 28px;
+              color: #FFFFFF;
+              padding: 20px;
+              width: 200px;
+              text-align: center;
+              -webkit-transition-duration: 0.4s; /* Safari */
+              transition-duration: 0.4s;
+              text-decoration: none;
+              overflow: hidden;
+              cursor: pointer;
+          }
+
+           .button:after {
+              content: "";
+              background: #f1f1f1;
+              display: block;
+              position: absolute;
+              padding-top: 300%;
+              padding-left: 350%;
+              margin-left: -20px !important;
+              margin-top: -120%;
+              opacity: 0;
+              transition: all 0.8s
+          }
+
+          .button:active:after {
+              padding: 0;
+              margin: 0;
+              opacity: 1;
+              transition: 0s
+          }
+          
+    </style>
 
     </head>
 
@@ -61,15 +120,15 @@
 
             <table id="maininfo">
                 <tr>
-                    <td><b><a href=" {{ url_for('user', name=username, page='farms') }} ">Farms</a></b>
+                    <td><b><a href=" {{ url_for('user', name=username, page='farms') }} "></a><button class="button">Farms</button></b>
                     </td>
-                    <td><b><a href=" {{ url_for('user', name=username, page='community') }} ">Community</a></b>
+                    <td><b><a href=" {{ url_for('user', name=username, page='community') }} "></a><button class="button">Community</button></b>
                     </td>
-                    <td><b><a href=" {{ url_for('user', name=username, page='home') }} ">Home</a></b>
+                    <td><b><a href=" {{ url_for('user', name=username, page='home') }} "><button class="button">Home</button></a></b>
                     </td>
-                    <td><b><a href=" {{ url_for('user', name=username, page='factories') }} ">Factories</a></b>
+                    <td><b><a href=" {{ url_for('user', name=username, page='factories') }} "><button class="button">Factories</button></a></b>
                     </td>
-                    <td><b><a href=" {{ url_for('user', name=username, page='mines') }} ">Mines</a></b>
+                    <td><b><a href=" {{ url_for('user', name=username, page='mines') }} "><button class="button">Mines</button></a></b>
                     </td>
                 </tr>
             </table>
