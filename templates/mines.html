@@ -15,8 +15,8 @@
         <td colspan="12">Mine cost: {{ minesFunc[mine] }}</td>
     </tr>
     <tr>
-        <td colspan="12">Number of mines: {{ person.ownedMines[mine] }}</td>
-        <td colspan="12"><form action="/user/{{ username }}/button" method="post">
+        <td colspan="12" class = "module">Number of mines: {{ person.ownedMines[mine] }}</td>
+        <td colspan="12" class = "module"><form action="/user/{{ username }}/button" method="post">
                 <input type="submit" name="{{ 'buy' + mine }}" value="Buy mine">
             </form></td>
     </tr>
