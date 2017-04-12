@@ -1,12 +1,12 @@
-#Data base file
-#So far the script can only read from this file and not update it. That will have to change...
+# Data base file
+# So far the script can only read from this file and not update it. That will have to change...
 
 
-#No formulas in here!!! Cheeky cheeky!
+# No formulas in here!!! Cheeky cheeky!
 
-class person ():
+class person():
     def __init__(self):
-        #General
+        # General
         self.name = ""
         self.password = 'password'
         self.id = 0
@@ -17,16 +17,23 @@ class person ():
         self.expenses = 0
         self.netIncome = 0
 
-        #Farms
+        # Farms
         self.numberFarms = 1
         self.farmLevel = 1
         self.foodProduced = 0
-        
-        #Mines
+
+        # Mines
         self.ownedMines = {
-        	'mine1' : 0,
-        	'mine2' : 0,
-        	'mine3' : 0
+            'steel': 0,
+            'hydrogen': 0,
+            'titanium': 0,
+            'yellow_crystal': 0,
+            'white_crystal': 0,
+            'diamond': 0,
+            'silicon': 0,
+            'copper': 0,
+            'noobidium': 0,
+            'helium': 0
         }
         self.mineProduced = {}
         self.totalMines = 0

@@ -66,12 +66,13 @@ def createUser ():
     import database
 
     name = input("User name? ")
-    user = input("User id? ")
+    #user = input("User id? ")
+    password = input("User password? ")
 
     #Create the user in RAM
     created = database.person()
     created.name = name
-    created.id = user
+    created.password = password
 
     #Work out file names
     filename = str(created.name) + ".p"
