@@ -3,8 +3,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Galactic Builder</title>
 
+<style>
+		body{
+            /*background-image: url(space_bg.gif)*/
+            background: linear-gradient(132deg, #ec5218, #1665c1);
+            background-size: 400% 400%;
+            animation: BackgroundGradient 30s ease infinite;
+        }
+        
+        @keyframes BackgroundGradient {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+        }
+        
+        #community {
+            background-color ;
+            text-align: center;
+        }
+        
+        h1{
+            color: azure;
+        }
+        
+        td{
+            text-align: center;
+            border-bottom:1px solid #33cc33;
+            padding:15px;
+            width: 100px;
+        }
+        
+        tr{
+            border-bottom:1px solid #33cc33;
+        }
+        
+        #maininfo{
+            border:5px solid #33cc33;
+            background-color: azure;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .module{
+            border-bottom:0px solid black;
+            text-align: center;
+        }
+        article{
 
- <link rel="stylesheet" type="text/css" href="GalacticBuilderStyleSheet.css">
+		width: 100%;
+		}
+		nav{
+
+		width: 100%;
+		}
+		canvas {
+			border:1px solid #d3d3d3;
+			background-color: #f1f1f1;
+		}
+        </style>
 
     </head>
 
@@ -18,9 +74,9 @@
 
             <table id="maininfo">
                 <tr>
-                    <td><b><a href=" {{ url_for('user', name=username, page='farms') }} "></a><button class="button">Farms</button></b>
+                    <td><b><a href=" {{ url_for('user', name=username, page='farms') }} "><button class="button">Farms</button></a></b>
                     </td>
-                    <td><b><a href=" {{ url_for('user', name=username, page='community') }} "></a><button class="button">Community</button></b>
+                    <td><b><a href=" {{ url_for('user', name=username, page='community') }} "><button class="button">Community</button></a></b>
                     </td>
                     <td><b><a href=" {{ url_for('user', name=username, page='home') }} "><button class="button">Home</button></a></b>
                     </td>
