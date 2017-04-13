@@ -7,16 +7,22 @@
 </table>
 
     {% for factory in cost %}
-    <p>Factory name: {{ factory }}</p>
-    <p>Factory cost: ${{ cost[factory] }} </p>
-    <p>Amount produced by yourself: {{ formulas[factory]['produced'] }}</p>
-    <p>Amount produced by everyone else: {{ totals['factoryCount'][factory] }}</p>
-    <p>Factory count: {{ person.ownedFactories[factory] }}</p>
-    <p>Income: ${{ formulas[factory]['income'] }}</p>
-    <p>Profit: ${{ formulas[factory]['profit'] }}</p>
-    <form action="/user/{{ username }}/button" method="post">
+    <table>
+    <tr>
+    <td>Factory name: {{ factory }}</td>
+    <td>Factory cost: ${{ cost[factory] }} </td>
+    <td>Amount produced by yourself: {{ formulas[factory]['produced'] }}</td>
+    <td>Amount produced by everyone: {{ totals['factoryCount'][factory] }}</td>
+    </tr>
+    <tr>
+    <td>Factory count: {{ person.ownedFactories[factory] }}</td>
+    <td>Income: ${{ formulas[factory]['income'] }}</td>
+    <td>Profit: ${{ formulas[factory]['profit'] }}</td>
+    <td><form action="/user/{{ username }}/button" method="post">
         <input type="submit" name="{{ 'buy' + factory }}" value="Buy factory">
-    </form>
+    </form></td>
+    </tr>
+    </table>
     <br>
     <br>
     {% endfor %}
