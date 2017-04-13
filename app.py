@@ -9,15 +9,22 @@ import pickle
 import os, sys
 from flask import *
 import string as s
+from random import shuffle
 
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
+word = list(CHAR_SET)
+print(CHAR_SET)
+shuffle(word)
+CHAR_SET = ''.join(word)
+print(CHAR_SET)
 SUBSTITUTION_CHARS = CHAR_SET[-3:] + CHAR_SET[:-3]  # Moves them over by 3
 
 #Create the encryption and decryption dictionaries
 ENCRYPT_DICT = {}
 DECRYPT_DICT = {}
+
 for i,c in enumerate(CHAR_SET):
     v = SUBSTITUTION_CHARS[i]
     ENCRYPT_DICT[c] = v
@@ -138,7 +145,7 @@ def mine(values, totals):
         mineCost = totals['totalMines'] * values.mineValues[mine] #Number of mines * value of mine
         if mineCost < 1200:
             mineCost = 1200
-        print('Mine cost: (', totals['totalMines'], ' * ', values.mineValues[mine], ') ', mine, mineCost) #Get rid of eventually
+        #print('Mine cost: (', totals['totalMines'], ' * ', values.mineValues[mine], ') ', mine, mineCost) #Get rid of eventually
         calculated[mine] = mineCost
     return calculated
 
@@ -197,7 +204,7 @@ def dynamicPersonalCalc(object, farms, values):
     object.expenses = expenses
     object.netIncome = netIncome
     object.mineProduced = minesDict
-    print('Dynamic personal number of mines: ', minesDict)
+    #print('Dynamic personal number of mines: ', minesDict)
 
     # Save new varibles to file
     username = object.name + '.p'
