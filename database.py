@@ -35,6 +35,12 @@ class person():
             'noobidium': 0,
             'helium': 0
         }
+        self.ownedFactories = {
+            'fac1': 0,
+            'fac2': 0,
+            'fac3': 0
+        }
         self.mineProduced = {}
+        self.saveFactories = {}
         self.totalMines = 0
         self.mineBoost = 1

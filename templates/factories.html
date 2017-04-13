@@ -6,6 +6,19 @@
     </tr>
 </table>
 
-    <p>Stuff here</p>
+    {% for factory in cost %}
+    <p>Factory name: {{ factory }}</p>
+    <p>Factory cost: ${{ cost[factory] }} </p>
+    <p>Amount produced by yourself: {{ formulas[factory]['produced'] }}</p>
+    <p>Amount produced by everyone else: {{ totals['factoryCount'][factory] }}</p>
+    <p>Factory count: {{ person.ownedFactories[factory] }}</p>
+    <p>Income: ${{ formulas[factory]['income'] }}</p>
+    <p>Profit: ${{ formulas[factory]['profit'] }}</p>
+    <form action="/user/{{ username }}/button" method="post">
+        <input type="submit" name="{{ 'buy' + factory }}" value="Buy factory">
+    </form>
+    <br>
+    <br>
+    {% endfor %}
 
 {% endblock %}

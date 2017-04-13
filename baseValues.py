@@ -20,6 +20,11 @@ class basic ():
             'helium': 100
         }
 
+        self.factoryValues = {
+            'fac1' : 100,
+            'fac2' : 200,
+            'fac3' : 500
+        }
 
         #Farms
         self.population = 200

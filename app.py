@@ -92,13 +92,16 @@ def hasMoney(object, money):
     except:
         return False
 
-def total(users):
+def total(users, values):
     '''Calculate totals across all the users'''
     print('[2] Running total definition')
 
     foodSent = 0
     totalMoney = 0
     totalMines = 0
+    factories = {}
+    for factoryh in values.factoryValues:
+        factories[factoryh] = 0
 
     #Add them all up!
     for person in users:
@@ -106,13 +109,18 @@ def total(users):
         totalMoney += person.money
         for mine in person.ownedMines:
             totalMines += person.ownedMines[mine]
+        for factoryh in person.ownedFactories:
+            factories[factoryh] += person.ownedFactories[factoryh]
+
 
     #Put them in a dictionary
     calculated = {
         'foodSent': foodSent,
         'totalMoney': totalMoney,
-        'totalMines': totalMines
+        'totalMines': totalMines,
+        'factoryCount' : factories
     }
+    print('Calculated count ', factories)
     return calculated
 
 def farm(values, totals):
@@ -149,17 +157,17 @@ def mine(values, totals):
         calculated[mine] = mineCost
     return calculated
 
-def factory():
+def factory(values, totals):
     '''Calculate factory costs. Uncompleted.'''
     print('[3] Running factory def')
-    users = loadUsers()
-    values = loadValues()
-    totals = total()
 
-    calculated = {
-        'nothing': None
-    }
+    calculated = {}
 
+    for factoryt in values.factoryValues:
+        calculated[factoryt] = values.factoryValues[factoryt] * totals['factoryCount'][factoryt] * 2
+        if calculated[factoryt] < 1000:
+            calculated[factoryt] = 999
+    print('Calculated cost ', calculated)
     # productCost = 0
     # factoryLevel = 1
     # amountProduced = 2^factoryLevel*2
@@ -184,6 +192,22 @@ def dynamicPersonalCalc(object, farms, values):
         produced = object.ownedMines[name] * object.mineBoost
         minesDict[name] = produced
 
+    # Factories
+    factoryDict = {}
+    #amountProduced = numberOfFactories * Bonus(edited)
+    #income = productCost * amountProduced
+    #profit = income - (materialCost * amountProduced)
+    for factoryp in values.factoryValues:
+        facProduced = object.ownedFactories[factoryp] * 1 #Add bonus instead of 1 eventually
+        facIncome = values.factoryValues[factoryp] * facProduced
+        facProfit = facIncome - 0 #Need to add materials next
+        tmp = {
+            'produced' : facProduced,
+            'income' : facIncome,
+            'profit' : facProfit
+        }
+        factoryDict[factoryp] = tmp
+
     #General
     income = Fincome + 0  # Add factory income and mine income here
     expenses = int(income / 5)  # (Tax) Add all expenses here
@@ -196,7 +220,8 @@ def dynamicPersonalCalc(object, farms, values):
         'income': income,
         'expenses': expenses,
         'netIncome': netIncome,
-        'minesDict' : minesDict
+        'minesDict' : minesDict,
+        'factories' : factoryDict
     }
     # Input new varibles into "object" object
     object.foodProduced = Fproduced
@@ -204,6 +229,7 @@ def dynamicPersonalCalc(object, farms, values):
     object.expenses = expenses
     object.netIncome = netIncome
     object.mineProduced = minesDict
+    object.saveFactories = factoryDict
     #print('Dynamic personal number of mines: ', minesDict)
 
     # Save new varibles to file
@@ -261,13 +287,13 @@ def user(name=None, page=None):
     #Calculate the very basics
     values = loadValues()
     users = loadUsers()
-    totals = total(users)
+    totals = total(users, values)
 
     # Calculate the recipies
     print('Calculating dynamic varibles...')
     farms = farm(values, totals)
     mines = mine(values, totals)
-    #factories = factory() [Not implemented yet]
+    factories = factory(values, totals)
 
     # Identify the user
     for person in users:
@@ -305,7 +331,13 @@ def user(name=None, page=None):
 
             elif page == 'factories':
                 print("Rendering factories html...")
-                return render_template('factories.html', username=person.name)
+                templateData = {
+                    'formulas' : dynamicPersonal['factories'],
+                    'cost' : factories,
+                    'person' : person,
+                    'totals' : totals
+                }
+                return render_template('factories.html', username=person.name, **templateData)
 
             elif page == 'community':
                 print("Rendering community html..")
@@ -325,12 +357,14 @@ def userButton(name=None):
     print("Loading recipies...")
     users = loadUsers()
     values = loadValues()
-    totals = total(users)
+    totals = total(users, values)
     farms = farm(values, totals)
     mines = mine(values, totals)
+    factories = factory(values, totals)
 
     farmHtml = False
     mineHtml = False
+    factoryHtml = False
 
     #Identify the user
     for person in users:
@@ -367,13 +401,29 @@ def userButton(name=None):
 
             # Mines --------------------#
             else:
+                #Mines
                 for digger in person.ownedMines:
                     button = 'buy' + digger
                     if button in request.form:
+                        print('Detected mine')
                         mineHtml = True
                         if hasMoney(person, mines[digger]):
                             person.ownedMines[digger] += 1
                             person.money -= mines[digger]
+                            print('Brought one ', digger, ' mine')
+                        else:
+                            print("Not enough money")
+                #Factories
+                for factoryl in person.ownedFactories:
+                    button = 'buy' + factoryl
+                    if button in request.form:
+                        print('Factory detected')
+                        factoryHtml = True
+                        if hasMoney(person, factories[factoryl]):
+                            print(factoryl)
+                            person.ownedFactories[factoryl] += 1
+                            person.money -= factories[factoryl]
+                            print('Brought one ', factoryl, ' factory')
                         else:
                             print("Not enough money")
 
@@ -392,12 +442,15 @@ def userButton(name=None):
     elif mineHtml:
         print('Redirecting back to mines')
         return redirect(url_for('user', name=name, page='mines'))
+    elif factoryHtml:
+        print('Redirecting back to factories')
+        return redirect(url_for('user', name=name, page='factories'))
     else:
         print('Redirecting to home')
         return redirect(url_for('user', name=name, page='home'))
 
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    app.run()
+    app.run(debug=True)
+    #app.run()
     #app.run('0.0.0.0', 8080)
