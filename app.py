@@ -11,13 +11,17 @@ from flask import *
 import string as s
 import random
 seed = random.randint(0,1000)
-random.seed(seed)
-print('The seed is ', seed)
+random.seed(316)
+print('The seed is ', 316)
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
 print(CHAR_SET)
 CHAR_SET = CHAR_SET.replace("\\", "") #Remove backslash
+CHAR_SET = CHAR_SET.replace("'", '') #Remove single quote
+CHAR_SET = CHAR_SET.replace('"', '') #Remove double quote
+CHAR_SET = CHAR_SET.replace(',', '') #Remove commar
+CHAR_SET = CHAR_SET.replace('`', '') #Remove thingy
 word = list(CHAR_SET)
 print(CHAR_SET)
 random.shuffle(word)
@@ -468,6 +472,6 @@ def userButton(name=None):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    #app.run()
+    #app.run(debug=True)
+    app.run()
     #app.run('0.0.0.0', 8080)
