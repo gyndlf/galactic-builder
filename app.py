@@ -9,8 +9,10 @@ import pickle
 import os, sys
 from flask import *
 import string as s
-from random import shuffle
-
+import random
+seed = random.randint(0,1000)
+random.seed(seed)
+print('The seed is ', seed)
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
@@ -18,7 +20,7 @@ print(CHAR_SET)
 CHAR_SET = CHAR_SET.replace("\\", "") #Remove backslash
 word = list(CHAR_SET)
 print(CHAR_SET)
-shuffle(word)
+random.shuffle(word)
 CHAR_SET = ''.join(word)
 print(CHAR_SET)
 SUBSTITUTION_CHARS = CHAR_SET[-3:] + CHAR_SET[:-3]  # Moves them over by 3
