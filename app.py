@@ -10,9 +10,9 @@ import os, sys
 from flask import *
 import string as s
 import random
-seed = random.randint(0,1000)
-random.seed(316)
-print('The seed is ', 316)
+seed = random.randint(0,10000)
+random.seed(seed)
+print('The seed is ', seed)
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
