@@ -194,6 +194,7 @@ def dynamicPersonalCalc(object, farms, values):
 
     # Factories
     factoryDict = {}
+    totalFacIncome = 0
     #amountProduced = numberOfFactories * Bonus(edited)
     #income = productCost * amountProduced
     #profit = income - (materialCost * amountProduced)
@@ -201,6 +202,7 @@ def dynamicPersonalCalc(object, farms, values):
         facProduced = object.ownedFactories[factoryp] * 1 #Add bonus instead of 1 eventually
         facIncome = values.factoryValues[factoryp] * facProduced
         facProfit = facIncome - 0 #Need to add materials next
+        totalFacIncome += facProfit
         tmp = {
             'produced' : facProduced,
             'income' : facIncome,
@@ -209,7 +211,7 @@ def dynamicPersonalCalc(object, farms, values):
         factoryDict[factoryp] = tmp
 
     #General
-    income = Fincome + 0  # Add factory income and mine income here
+    income = Fincome + totalFacIncome  # Add factory income and mine income here
     expenses = int(income / 5)  # (Tax) Add all expenses here
     netIncome = income - expenses
 
@@ -352,6 +354,16 @@ def user(name=None, page=None):
 def userButton(name=None):
     '''The script run once ANY button is pressed'''
     print("-" * 10 + str("Button") + "-" * 10)
+
+    try: #Load the session cookie
+        cookie = request.cookies.get('sessionID')
+        print('Username via cookie: ', cookie)
+    except:
+        return 'No cookie found.'
+
+    cookie = loadCookie(cookie)
+    if cookie != name:
+        return 'You do not have access to this location'
 
     # Run recipies
     print("Loading recipies...")
