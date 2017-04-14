@@ -286,6 +286,7 @@ def user(name=None, page=None):
 
     cookie = loadCookie(cookie)
     if cookie != name:
+        print('Cookie is not the same as ', name)
         return 'You do not have access to this location'
 
     #Calculate the very basics
