@@ -14,6 +14,8 @@ from random import shuffle
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
+print(CHAR_SET)
+CHAR_SET = CHAR_SET.replace("\\", "") #Remove backslash
 word = list(CHAR_SET)
 print(CHAR_SET)
 shuffle(word)
