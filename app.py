@@ -11,8 +11,8 @@ from flask import *
 import string as s
 import random
 seed = random.randint(0,10000)
-random.seed(seed)
-print('The seed is ', seed)
+random.seed(8435)
+print('The seed is ', 8435)
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
