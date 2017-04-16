@@ -1,6 +1,7 @@
 # This is the main python file.
 # Please do not touch unless your are ABSOLUTELY SURE ABOUT WHAT YOU ARE DOING
 # Thanks :)
+#https://pythonspot.com/en/flask-and-great-looking-charts-using-chart-js/
 
 # export FLASK_APP=mainpythonfile.py
 # python -m flask run
@@ -277,6 +278,12 @@ def calcmessage():
             return resp
     return redirect(url_for('home'))
 
+@app.route("/test")
+def chart():
+    labels = ["January", "February", "March", "April", "May", "June", "July", "August"]
+    values = [10, 9, 8, 7, 6, 4, 7, 8]
+    return render_template('testing.html', values=values, labels=labels)
+
 @app.route('/user/')
 @app.route('/user/<name>')
 @app.route('/user/<name>/<page>')
@@ -352,7 +359,9 @@ def user(name=None, page=None):
 
             elif page == 'community':
                 print("Rendering community html..")
-                return render_template('community.html', username=person.name)
+                labels = ["January", "February", "March", "April", "May", "June", "July", "August"]
+                values = [10, 9, 8, 7, 6, 4, 7, 8]
+                return render_template('testing.html', values=values, labels=labels)
 
             else:
                 return "Invalid page name"
@@ -361,7 +370,7 @@ def user(name=None, page=None):
 
 @app.route('/user/<name>/button', methods=['POST'])
 def userButton(name=None):
-    '''The script run once ANY button is pressed'''
+    '''The script runs once ANY button is pressed'''
     print("-" * 10 + str("Button") + "-" * 10)
 
     try: #Load the session cookie
@@ -472,6 +481,6 @@ def userButton(name=None):
 
 
 if __name__ == "__main__":
-    #app.run(debug=True)
-    app.run()
+    app.run(debug=True)
+    #app.run()
     #app.run('0.0.0.0', 8080)
