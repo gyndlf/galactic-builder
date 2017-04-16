@@ -361,7 +361,7 @@ def user(name=None, page=None):
                 print("Rendering community html..")
                 labels = ["January", "February", "March", "April", "May", "June", "July", "August"]
                 values = [10, 9, 8, 7, 6, 4, 7, 8]
-                return render_template('testing.html', values=values, labels=labels)
+                return render_template('community.html', values=values, labels=labels)
 
             else:
                 return "Invalid page name"
