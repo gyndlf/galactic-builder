@@ -11,6 +11,7 @@ import os, sys
 from flask import *
 import string as s
 import random
+import math
 seed = random.randint(0,10000)
 random.seed(8435)
 print('The seed is ', 8435)
@@ -108,6 +109,7 @@ def total(users, values):
     foodSent = 0
     totalMoney = 0
     totalMines = 0
+    wealth = {}
     factories = {}
     for factoryh in values.factoryValues:
         factories[factoryh] = 0
@@ -116,18 +118,22 @@ def total(users, values):
     for person in users:
         foodSent += person.foodProduced
         totalMoney += person.money
+        wealth[person.name] = person.netIncome * int(math.sqrt(person.money))
+        print(person.name, "'s wealth ", wealth[person.name])
         for mine in person.ownedMines:
             totalMines += person.ownedMines[mine]
         for factoryh in person.ownedFactories:
             factories[factoryh] += person.ownedFactories[factoryh]
 
+    print('Wealth', wealth)
 
     #Put them in a dictionary
     calculated = {
         'foodSent': foodSent,
         'totalMoney': totalMoney,
         'totalMines': totalMines,
-        'factoryCount' : factories
+        'factoryCount' : factories,
+        'wealth' : wealth
     }
     print('Calculated count ', factories)
     return calculated
@@ -252,7 +258,7 @@ def dynamicPersonalCalc(object, farms, values):
     return calculated
 
 
-# All app.route functions --------------#
+# All app.route functions -----------------------------------------------------------------------------------------#
 @app.route('/')
 def home():
     '''The main login page / Index'''
@@ -359,10 +365,15 @@ def user(name=None, page=None):
 
             elif page == 'community':
                 print("Rendering community html..")
-                labels = ["James", "Cael", "Joe", "Joshua", "William", "Jacob", "Government"]
-                values = [100, 18, 6, 50, 1, 10, 10, 30]
-                colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"]
-                return render_template('community.html', username=person.name, set=zip(values, labels, colors))
+                labels = []
+                info = []
+                for object in users:
+                    labels.append(object.name)
+                data = totals['wealth']
+                for item in data:
+                    info.append(data[item])
+                colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD"]
+                return render_template('community.html', username=person.name, set=zip(info, labels, colors))
 
             else:
                 return "Invalid page name"
@@ -482,6 +493,6 @@ def userButton(name=None):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    #app.run()
+    #app.run(debug=True)
+    app.run()
     #app.run('0.0.0.0', 8080)
