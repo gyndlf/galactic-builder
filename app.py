@@ -359,9 +359,10 @@ def user(name=None, page=None):
 
             elif page == 'community':
                 print("Rendering community html..")
-                labels = ["January", "February", "March", "April", "May", "June", "July", "August"]
-                values = [10, 9, 8, 7, 6, 4, 7, 8]
-                return render_template('community.html', values=values, labels=labels)
+                labels = ["James", "Cael", "Joe", "Joshua", "William", "Jacob", "Government"]
+                values = [100, 18, 6, 50, 1, 10, 10, 30]
+                colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"]
+                return render_template('community.html', set=zip(values, labels, colors))
 
             else:
                 return "Invalid page name"
