@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bac2889-d1b2-48d6-a0cd-f6d05ce2172f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/james.p" afterPath="$PROJECT_DIR$/data/james.p" />
+    <list default="true" id="3bac2889-d1b2-48d6-a0cd-f6d05ce2172f" name="Default" comment="Added wealth calculations and functions in the community tab">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/james.p" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/users.p" afterPath="$PROJECT_DIR$/data/users.p" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,24 +26,34 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="374" column="78" lean-forward="false" selection-start-line="374" selection-start-column="78" selection-end-line="374" selection-end-column="78" />
+            <state relative-caret-position="96">
+              <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
               <folding>
                 <element signature="e#258#271#0" expanded="true" />
-                <element signature="e#1513#1933#0" expanded="false" />
-                <element signature="e#1957#2125#0" expanded="false" />
-                <element signature="e#2170#2394#0" expanded="false" />
-                <element signature="e#2426#2592#0" expanded="false" />
-                <element signature="e#2627#2810#0" expanded="false" />
-                <element signature="e#3899#4485#0" expanded="false" />
-                <element signature="e#4517#5018#0" expanded="false" />
-                <element signature="e#5053#5702#0" expanded="false" />
-                <element signature="e#5756#7924#0" expanded="false" />
-                <element signature="e#8076#8248#0" expanded="false" />
-                <element signature="e#8317#8912#0" expanded="false" />
-                <element signature="e#8951#9146#0" expanded="false" />
-                <element signature="e#12961#17038#0" expanded="false" />
+                <element signature="e#1504#1924#0" expanded="false" />
+                <element signature="e#1948#2116#0" expanded="false" />
+                <element signature="e#2161#2385#0" expanded="false" />
+                <element signature="e#2417#2583#0" expanded="false" />
+                <element signature="e#2618#2801#0" expanded="false" />
+                <element signature="e#3972#4558#0" expanded="false" />
+                <element signature="e#4590#5091#0" expanded="false" />
+                <element signature="e#5126#5775#0" expanded="false" />
+                <element signature="e#5829#7997#0" expanded="false" />
+                <element signature="e#8149#8321#0" expanded="false" />
+                <element signature="e#8390#8985#0" expanded="false" />
+                <element signature="e#9024#9219#0" expanded="false" />
+                <element signature="e#13018#17095#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="finances.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/finances.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="38" column="4" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,6 +73,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="565">
               <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1114">
+              <caret line="217" column="25" lean-forward="true" selection-start-line="217" selection-start-column="25" selection-end-line="217" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -649,7 +669,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492400391246</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added wealth calculations and functions in the community tab">
+      <created>1492402800876</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1492402800876</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -751,11 +778,15 @@
     <MESSAGE value="Added working bar graph to community" />
     <MESSAGE value="Changed bar graph to pie chart" />
     <MESSAGE value="Fixed community tab button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed community tab button" />
+    <MESSAGE value="Added wealth calculations and functions in the community tab" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added wealth calculations and functions in the community tab" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="27" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="30" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -801,19 +832,19 @@
           <caret line="214" column="41" lean-forward="false" selection-start-line="214" selection-start-column="41" selection-end-line="214" selection-end-column="41" />
           <folding>
             <element signature="e#258#271#0" expanded="true" />
-            <element signature="e#1513#1933#0" expanded="false" />
-            <element signature="e#1957#2125#0" expanded="false" />
-            <element signature="e#2170#2394#0" expanded="false" />
-            <element signature="e#2426#2592#0" expanded="false" />
-            <element signature="e#2627#2810#0" expanded="false" />
-            <element signature="e#3899#4485#0" expanded="false" />
-            <element signature="e#4517#5018#0" expanded="false" />
-            <element signature="e#5053#5702#0" expanded="false" />
-            <element signature="e#5756#7924#0" expanded="false" />
-            <element signature="e#8076#8248#0" expanded="false" />
-            <element signature="e#8317#8912#0" expanded="false" />
-            <element signature="e#8951#9146#0" expanded="false" />
-            <element signature="e#12961#17038#0" expanded="false" />
+            <element signature="e#1504#1924#0" expanded="false" />
+            <element signature="e#1948#2116#0" expanded="false" />
+            <element signature="e#2161#2385#0" expanded="false" />
+            <element signature="e#2417#2583#0" expanded="false" />
+            <element signature="e#2618#2801#0" expanded="false" />
+            <element signature="e#3972#4558#0" expanded="false" />
+            <element signature="e#4590#5091#0" expanded="false" />
+            <element signature="e#5126#5775#0" expanded="false" />
+            <element signature="e#5829#7997#0" expanded="false" />
+            <element signature="e#8149#8321#0" expanded="false" />
+            <element signature="e#8390#8985#0" expanded="false" />
+            <element signature="e#9024#9219#0" expanded="false" />
+            <element signature="e#13018#17095#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -885,13 +916,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/finances.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="4" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -988,14 +1012,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="217" column="25" lean-forward="true" selection-start-line="217" selection-start-column="25" selection-end-line="217" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/pieCommunity.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
@@ -1060,25 +1076,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1114">
+          <caret line="217" column="25" lean-forward="true" selection-start-line="217" selection-start-column="25" selection-end-line="217" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/finances.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="38" column="4" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="374" column="78" lean-forward="false" selection-start-line="374" selection-start-column="78" selection-end-line="374" selection-end-column="78" />
+        <state relative-caret-position="96">
+          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
           <folding>
             <element signature="e#258#271#0" expanded="true" />
-            <element signature="e#1513#1933#0" expanded="false" />
-            <element signature="e#1957#2125#0" expanded="false" />
-            <element signature="e#2170#2394#0" expanded="false" />
-            <element signature="e#2426#2592#0" expanded="false" />
-            <element signature="e#2627#2810#0" expanded="false" />
-            <element signature="e#3899#4485#0" expanded="false" />
-            <element signature="e#4517#5018#0" expanded="false" />
-            <element signature="e#5053#5702#0" expanded="false" />
-            <element signature="e#5756#7924#0" expanded="false" />
-            <element signature="e#8076#8248#0" expanded="false" />
-            <element signature="e#8317#8912#0" expanded="false" />
-            <element signature="e#8951#9146#0" expanded="false" />
-            <element signature="e#12961#17038#0" expanded="false" />
+            <element signature="e#1504#1924#0" expanded="false" />
+            <element signature="e#1948#2116#0" expanded="false" />
+            <element signature="e#2161#2385#0" expanded="false" />
+            <element signature="e#2417#2583#0" expanded="false" />
+            <element signature="e#2618#2801#0" expanded="false" />
+            <element signature="e#3972#4558#0" expanded="false" />
+            <element signature="e#4590#5091#0" expanded="false" />
+            <element signature="e#5126#5775#0" expanded="false" />
+            <element signature="e#5829#7997#0" expanded="false" />
+            <element signature="e#8149#8321#0" expanded="false" />
+            <element signature="e#8390#8985#0" expanded="false" />
+            <element signature="e#9024#9219#0" expanded="false" />
+            <element signature="e#13018#17095#0" expanded="false" />
           </folding>
         </state>
       </provider>

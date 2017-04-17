@@ -12,9 +12,8 @@ from flask import *
 import string as s
 import random
 import math
-seed = random.randint(0,10000)
-random.seed(8435)
-print('The seed is ', 8435)
+random.seed(843496738976346)
+print('The seed is ', 843496738976346)
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
@@ -118,7 +117,10 @@ def total(users, values):
     for person in users:
         foodSent += person.foodProduced
         totalMoney += person.money
-        wealth[person.name] = person.netIncome * int(math.sqrt(person.money))
+        tmpWealth = person.netIncome * int(math.sqrt(person.money))
+        if tmpWealth < 1:
+            tmpWealth = 0
+        wealth[person.name] = tmpWealth
         print(person.name, "'s wealth ", wealth[person.name])
         for mine in person.ownedMines:
             totalMines += person.ownedMines[mine]
@@ -331,7 +333,7 @@ def user(name=None, page=None):
                 print("Rendering home html...") #Need to upgrade to send the whole person
                 return render_template('finances.html', username=person.name, money=person.money,
                                        netIncome=person.netIncome,
-                                       income=person.income, expenses=person.expenses, netWorth=0)
+                                       income=person.income, expenses=person.expenses, netWorth=totals['wealth'][person.name])
 
             elif page == 'farms':
                 print('Rendering farm html...') #Use dictionaries below in the future
@@ -367,11 +369,10 @@ def user(name=None, page=None):
                 print("Rendering community html..")
                 labels = []
                 info = []
-                for object in users:
-                    labels.append(object.name)
                 data = totals['wealth']
                 for item in data:
                     info.append(data[item])
+                    labels.append(item)
                 colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD"]
                 return render_template('community.html', username=person.name, set=zip(info, labels, colors))
 
