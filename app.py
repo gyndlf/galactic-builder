@@ -362,7 +362,7 @@ def user(name=None, page=None):
                 labels = ["James", "Cael", "Joe", "Joshua", "William", "Jacob", "Government"]
                 values = [100, 18, 6, 50, 1, 10, 10, 30]
                 colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"]
-                return render_template('community.html', set=zip(values, labels, colors))
+                return render_template('community.html', username=person.name, set=zip(values, labels, colors))
 
             else:
                 return "Invalid page name"
