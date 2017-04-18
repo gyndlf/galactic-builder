@@ -6,8 +6,6 @@
 # export FLASK_APP=mainpythonfile.py
 # python -m flask run
 
-#Does this work?
-
 import pickle
 import os, sys
 from flask import *
