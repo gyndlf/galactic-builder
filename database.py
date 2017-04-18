@@ -36,9 +36,12 @@ class person():
             'helium': 0
         }
         self.ownedFactories = {
-            'fac1': 0,
-            'fac2': 0,
-            'fac3': 0
+             'Car' : 0, #10 steel, 1 silicon,
+            'xPhone' : 0, #2 titianium, 1 copper, 1 silicon (Possible weapon license)
+            'AppyLyinx' : 0, #5 titianium, 3 copper, 3 silicon, 1 noobidium
+            'Toilet' : 0, #10 noobidium
+            'Pii Fighter' : 0, #50 steel, 20 titianium, 10 hydrogen, 1 white crystal, weapon lisence core, fighter license
+            '4d Printer' : 0 #10 steel, 10 copper, 10 silicon, 1 white crystal, 1 yellow crystal
         }
         self.mineProduced = {}
         self.saveFactories = {}
