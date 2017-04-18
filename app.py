@@ -12,8 +12,9 @@ from flask import *
 import string as s
 import random
 import math
-random.seed(8434967384636)
-print('The seed is ', 8434967384636)
+seed = 8434967384636
+random.seed(seed)
+print('The seed is ', seed)
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
