@@ -277,6 +277,7 @@ def calcmessage():
         username = request.form['username']
         password = request.form['password']
     except:
+        print('Error! Returning to home')
         return redirect(url_for('home'))
     for person in users:
         if person.name == username and person.password == password:
@@ -285,6 +286,7 @@ def calcmessage():
             print("Saving cookie 'sessionID'")
             resp = scrambleCookie(resp, username)
             return resp
+    print('Error! Returning to home')
     return redirect(url_for('home'))
 
 @app.route("/test")
