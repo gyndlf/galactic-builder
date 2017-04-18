@@ -1,9 +1,14 @@
 Hello Previous Players of the Lego Game
 
+<<<<<<< HEAD
 You are invited to the New Game of Galactic Builder!
 This game will be on a website instead of a spreadsheet expanding our opportunities and making harder to cheat.
 This gives us more control and we can add many more features!
 
+=======
+You are invited to the New Game of Galactic Builder
+This game will be on a website instead of a spreedsheet expanding our opportunities and making harder to cheat
+>>>>>>> 5b491b94b7ad9dd9c3777cebc3b409fef26fbc2d
 If you want to be apart of this game then send me a reply with:
 1. Your user name (Preferably your actual name. You cannot change it!)
 2. Password (Keep it hidden, duh!)
@@ -19,11 +24,25 @@ Galactic Builder's Team
 Hello
 
 You have been invited to the Galactic Builder Game
-if you want to play reply with:
+This game is like a money and power making game
+If you want to play reply with:
 1. Username
 2. Password
 3. Your Species (not required, you will be by default humans)
 
 Us Developers hope to see you in the game
 
+<<<<<<< HEAD
 (Joe give them the link to the spreadsheet)
+=======
+-----------
+
+Thank you for desiding to Join
+
+You have been let into the game and the game will be starting on the ---
+The web address will be --- when the game starts
+Mean while you can join our discord server where you will get all the updates
+https://discord.gg/ya3AS3C
+
+We hope to have a fun game with you.
+>>>>>>> 5b491b94b7ad9dd9c3777cebc3b409fef26fbc2d
