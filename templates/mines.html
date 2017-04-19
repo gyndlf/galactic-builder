@@ -9,10 +9,10 @@
     {% for mine in values.mineValues %}
 <table id="maininfo" background="/static/minephoto/{{ mine }}.jpg">
     <tr>
-        <td>Mine name: {{ mine }}</td>
-        <td>Mine Value: §{{ values.mineValues[mine] }}</td>
-        <td>Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</td>
-        <td>Mine cost: §{{ minesFunc[mine] }}</td>
+        <td class = "module">Mine name: {{ mine }}</td>
+        <td class = "module">Mine Value: §{{ values.mineValues[mine] }}</td>
+        <td class = "module">Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</td>
+        <td class = "module">Mine cost: §{{ minesFunc[mine] }}</td>
     </tr>
     <tr>
         <td class = "module">Number of mines: {{ person.ownedMines[mine] }}</td>
