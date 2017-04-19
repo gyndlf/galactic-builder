@@ -280,6 +280,27 @@ def createDatabase():
     with open(VALUESPATH, 'wb') as f:
         pickle.dump(values, f)
 
+def payUsers():
+    #Load users
+    #For user in users
+    #Add money by income
+    #save
+
+    with open(USERSPATH, 'rb') as f:
+        users = pickle.load(f)
+
+    for file in users:
+        fname = os.path.join(PICKLE_DIR, file)
+        print('')
+        print("Opening " + str(fname))
+        with open(fname, 'rb') as f:
+            person = pickle.load(f)
+        print(person.name, ' now has ', person.netIncome, ' more money with a total of ', person.money + person.netIncome)
+        person.money += person.netIncome
+
+        with open(fname, 'wb') as f:
+            pickle.dump(person, f)
+
 
 def main():
     quit = False
@@ -296,52 +317,53 @@ def main():
         print("Press 7 to give the users their income")
         print("Or press anything else to quit")
 
-    choice = input(": ")
+        choice = input(": ")
 
-    if choice == "1":
-        # Create a users
-        # Uses createUser.py
-        print("-" * 10 + "Creating User" + "-" * 10)
-        createUser()
+        if choice == "1":
+            # Create a users
+            # Uses createUser.py
+            print("-" * 10 + "Creating User" + "-" * 10)
+            createUser()
 
-    elif choice == "2":
-        # Edit a user
-        # Uses edituser.py + loadUser.py
-        print("-" * 10 + "Editing User" + "-" * 10)
-        editUser()
+        elif choice == "2":
+            # Edit a user
+            # Uses edituser.py + loadUser.py
+            print("-" * 10 + "Editing User" + "-" * 10)
+            editUser()
 
-    elif choice == "3":
-        # Remove a user
-        # Uses removeUser.py
-        print("-" * 10 + "Removing User" + "-" * 10)
-        removeUser()
+        elif choice == "3":
+            # Remove a user
+            # Uses removeUser.py
+            print("-" * 10 + "Removing User" + "-" * 10)
+            removeUser()
 
-    elif choice == "4":
-        # View all users
-        # Uses LoadAllUsers.py
-        print("-" * 10 + "Loading Users" + "-" * 10)
-        loadUsers()
+        elif choice == "4":
+            # View all users
+            # Uses LoadAllUsers.py
+            print("-" * 10 + "Loading Users" + "-" * 10)
+            loadUsers()
 
-    elif choice == "5":
-        # Update varibles
-        # Uses updateVaribles.py and LoadAllUsers.py and editUsers.py
-        print("-" * 10 + "Updating Varibles" + "-" * 10)
-        updateVaribles()
+        elif choice == "5":
+            # Update varibles
+            # Uses updateVaribles.py and LoadAllUsers.py and editUsers.py
+            print("-" * 10 + "Updating Varibles" + "-" * 10)
+            updateVaribles()
 
-    elif choice == "6":
-        # Create new database
-        # Uses createDatabase.py
-        print("-" * 10 + "Creating Database" + "-" * 10)
-        createDatabase()
+        elif choice == "6":
+            # Create new database
+            # Uses createDatabase.py
+            print("-" * 10 + "Creating Database" + "-" * 10)
+            createDatabase()
 
-    elif choice == '7':
-        #Adds the users salary
-        #Newly created code
-        print('-'*10 + 'Paying Users' + '-'*10)
+        elif choice == '7':
+            #Adds the users salary
+            #Newly created code
+            print('-'*10 + 'Paying Users' + '-'*10)
+            payUsers()
 
-    else:
-        print("Quitting...")
-        quit = True
+        else:
+            print("Quitting...")
+            quit = True
 
 
 if __name__ == '__main__':
