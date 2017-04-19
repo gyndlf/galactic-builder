@@ -1,11 +1,11 @@
-#This is THE file to use when wanting to edit the database
-#This used to be 7 seperate files but they have been merged into one
+# This is THE file to use when wanting to edit the database
+# This used to be 7 seperate files but they have been merged into one
 
 import pickle
 import os, sys
 
-#Calculate file paths
-MY_DIR  = os.path.realpath(os.path.dirname(__file__))
+# Calculate file paths
+MY_DIR = os.path.realpath(os.path.dirname(__file__))
 PICKLE_DIR = os.path.join(MY_DIR, 'data')
 USERS = "users.p"
 USERSPATH = os.path.join(PICKLE_DIR, USERS)
@@ -14,8 +14,9 @@ DATABASEPATH = os.path.join(PICKLE_DIR, DATABASE)
 VALUES = 'values.p'
 VALUESPATH = os.path.join(PICKLE_DIR, VALUES)
 
-def editUser ():
-    #Edits a specified user. Has failsafe built in
+
+def editUser():
+    # Edits a specified user. Has failsafe built in
     # Create file name
     name = str(input("Username? "))
     filename = name + ".p"
@@ -60,26 +61,27 @@ def editUser ():
         pickle.dump(person, f)
     print("Done.")
 
-def createUser ():
+
+def createUser():
     # Creates a new user with no money, jobs or anything according to the "database.py" file and add them into a list stored in "users.p"
     print("Warning! Names CANNOT be changed! Think carefully...")
     import database
 
     name = input("User name? ")
-    #user = input("User id? ")
+    # user = input("User id? ")
     password = input("User password? ")
 
-    #Create the user in RAM
+    # Create the user in RAM
     created = database.person()
     created.name = name
     created.password = password
 
-    #Work out file names
+    # Work out file names
     filename = str(created.name) + ".p"
     fname = os.path.join(PICKLE_DIR, filename)
     print("Creating " + str(fname))
 
-    #Add users to the list of users
+    # Add users to the list of users
     with open(USERSPATH, 'rb') as f:
         users = pickle.load(f)
     print("Adding " + name + " to " + USERS)
@@ -88,13 +90,14 @@ def createUser ():
     with open(USERSPATH, 'wb') as f:
         pickle.dump(users, f)
 
-    #Save the finished product
+    # Save the finished product
     with open(fname, 'wb') as f:
         pickle.dump(created, f)
     print("Created")
     print("Done")
 
-def removeUser ():
+
+def removeUser():
     # Removes a user from 'users.p' so you can delete their file
     print('These changes are irreversible! Are you sure you want to continue? (y/n)')
     choice = input(": ")
@@ -104,13 +107,13 @@ def removeUser ():
     if go == False:
         return
 
-    #Find filenames
+    # Find filenames
     name = input("Username? ")
     filename = name + ".p"
     with open(USERSPATH, 'rb') as f:
         users = pickle.load(f)
 
-    #Remove user
+    # Remove user
     print("Removing " + name + " from " + USERS)
     try:
         users.remove(filename)
@@ -118,14 +121,15 @@ def removeUser ():
         print("Error: No such user")
         return
 
-    #Save new data
+    # Save new data
     print("Current users " + str(users))
     with open(USERSPATH, 'wb') as f:
         pickle.dump(users, f)
 
     print("You may now delete " + filename + ' safely.')
 
-def loadUsers ():
+
+def loadUsers():
     # Load all users according to "users.p" and display their stats
 
     with open(USERSPATH, 'rb') as f:
@@ -140,7 +144,8 @@ def loadUsers ():
             person = pickle.load(f)
         print(vars(person))
 
-def updateVaribles ():
+
+def updateVaribles():
     # This code will add a new varible(s) to all of the users in the data file.
     # This is done according to database.py
     import database
@@ -247,7 +252,8 @@ def updateVaribles ():
 
     print('Done.')
 
-def createDatabase ():
+
+def createDatabase():
     # This code will initilise the database You probably will run it when you start from scratch
     import database
     import baseValues
@@ -268,66 +274,75 @@ def createDatabase ():
     data = database.person()
     values = baseValues.basic()
 
-    #Save it!
+    # Save it!
     with open(DATABASEPATH, 'wb') as f:
         pickle.dump(data, f)
     with open(VALUESPATH, 'wb') as f:
         pickle.dump(values, f)
 
-def main ():
-	quit = False
-	while quit == False:
-	    #Main page
-	    print("-"*10 + "Home" + "-"*10)
-	    print("Welcome to the usermanagement system! Here you can do anything you want to the database.")
-	    print("Press 1 to create a user")
-	    print("Press 2 to edit a user")
-	    print("Press 3 to remove a user")
-	    print("Press 4 to view all users")
-	    print("Press 5 to update varibles in the database.py and values.p")
-	    print("Press 6 to create a new database")
-	    print("Or press anything else to quit")
-	
-	    choice = input(": ")
-	
-	    if choice == "1":
-	        #Create a users
-	        #Uses createUser.py
-	        print("-"*10 + "Creating User" + "-"*10)
-	        createUser()
-	
-	    elif choice == "2":
-	        #Edit a user
-	        #Uses edituser.py + loadUser.py
-	        print("-" * 10 + "Editing User" + "-" * 10)
-	        editUser()
-	
-	    elif choice == "3":
-	        #Remove a user
-	        #Uses removeUser.py
-	        print("-" * 10 + "Removing User" + "-" * 10)
-	        removeUser()
-	
-	    elif choice == "4":
-	        #View all users
-	        #Uses LoadAllUsers.py
-	        print("-" * 10 + "Loading Users" + "-" * 10)
-	        loadUsers()
-	
-	    elif choice == "5":
-	        #Update varibles
-	        #Uses updateVaribles.py and LoadAllUsers.py and editUsers.py
-	        print("-" * 10 + "Updating Varibles" + "-" * 10)
-	        updateVaribles()
-	
-	    elif choice == "6":
-	        #Create new database
-	        #Uses createDatabase.py
-	        print("-" * 10 + "Creating Database" + "-" * 10)
-	        createDatabase()
-	
-	    else:
-	        print("Quitting...")
-	        quit = True
+
+def main():
+    quit = False
+    while quit == False:
+        # Main page
+        print("-" * 10 + "Home" + "-" * 10)
+        print("Welcome to the usermanagement system! Here you can do anything you want to the database.")
+        print("Press 1 to create a user")
+        print("Press 2 to edit a user")
+        print("Press 3 to remove a user")
+        print("Press 4 to view all users")
+        print("Press 5 to update varibles in the database.py and values.p")
+        print("Press 6 to create a new database")
+        print("Press 7 to give the users their income")
+        print("Or press anything else to quit")
+
+    choice = input(": ")
+
+    if choice == "1":
+        # Create a users
+        # Uses createUser.py
+        print("-" * 10 + "Creating User" + "-" * 10)
+        createUser()
+
+    elif choice == "2":
+        # Edit a user
+        # Uses edituser.py + loadUser.py
+        print("-" * 10 + "Editing User" + "-" * 10)
+        editUser()
+
+    elif choice == "3":
+        # Remove a user
+        # Uses removeUser.py
+        print("-" * 10 + "Removing User" + "-" * 10)
+        removeUser()
+
+    elif choice == "4":
+        # View all users
+        # Uses LoadAllUsers.py
+        print("-" * 10 + "Loading Users" + "-" * 10)
+        loadUsers()
+
+    elif choice == "5":
+        # Update varibles
+        # Uses updateVaribles.py and LoadAllUsers.py and editUsers.py
+        print("-" * 10 + "Updating Varibles" + "-" * 10)
+        updateVaribles()
+
+    elif choice == "6":
+        # Create new database
+        # Uses createDatabase.py
+        print("-" * 10 + "Creating Database" + "-" * 10)
+        createDatabase()
+
+    elif choice == '7':
+        #Adds the users salary
+        #Newly created code
+        print('-'*10 + 'Paying Users' + '-'*10)
+
+    else:
+        print("Quitting...")
+        quit = True
+
+
 if __name__ == '__main__':
-	main()
+    main()
