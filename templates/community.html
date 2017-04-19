@@ -7,11 +7,14 @@
 </table>
 
     <p>Graph Below:</p>
-    <div id="maininfo">
+    <div class="species">
     <!-- bar chart canvas element --><canvas id="chart" width="600" height="400"></canvas>
+	<br>
 	<br>
 	<a href=" {{ url_for('user', name=username, page='species') }} "><button class="button">Species</button></a>
     </div> 
+	<br>
+	<br>
     <script>
    var pieData = [
             {% for item,label,colors in set %}
