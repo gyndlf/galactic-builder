@@ -24,8 +24,13 @@
     <br>
 </table>
 <script>
+var str = ".";
+str += {{ mine }};
+var loc = "/static/minephoto/";
+loc += {{ mine }};
+loc += ".jpg"
 $(document).ready(function(){
-        $("." + {{ mine }}).css("background-image", "\static\minephoto\" + {{ mine }});
+        $(str).css("background-image", loc);
 });
 </script>
     {% endfor %}
