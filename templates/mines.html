@@ -10,9 +10,9 @@
 <table id="maininfo" background="/static/minephoto/{{ mine }}.jpg">
     <tr>
         <td>Mine name: {{ mine }}</td>
-        <td>Mine Value: {{ values.mineValues[mine] }}</td>
+        <td>Mine Value: §{{ values.mineValues[mine] }}</td>
         <td>Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</td>
-        <td>Mine cost: {{ minesFunc[mine] }}</td>
+        <td>Mine cost: §{{ minesFunc[mine] }}</td>
     </tr>
     <tr>
         <td class = "module">Number of mines: {{ person.ownedMines[mine] }}</td>
