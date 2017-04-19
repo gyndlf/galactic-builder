@@ -7,22 +7,27 @@
 </table>
 
     {% for mine in values.mineValues %}
-<table id="maininfo">
+<table id="maininfo" class="{{ mine }}">
     <tr>
-        <td colspan="12">Mine name: {{ mine }}</td>
-        <td colspan="12">Mine Value: {{ values.mineValues[mine] }}</td>
-        <td colspan="12">Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</td>
-        <td colspan="12">Mine cost: {{ minesFunc[mine] }}</td>
+        <td>Mine name: {{ mine }}</td>
+        <td>Mine Value: {{ values.mineValues[mine] }}</td>
+        <td>Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</td>
+        <td>Mine cost: {{ minesFunc[mine] }}</td>
     </tr>
     <tr>
-        <td colspan="12" class = "module">Number of mines: {{ person.ownedMines[mine] }}</td>
-        <td colspan="12" class = "module"><form action="/user/{{ username }}/button" method="post">
+        <td class = "module">Number of mines: {{ person.ownedMines[mine] }}</td>
+        <td class = "module"><form action="/user/{{ username }}/button" method="post">
                 <input type="submit" name="{{ 'buy' + mine }}" value="Buy mine">
             </form></td>
     </tr>
     <br>
     <br>
 </table>
+<script>
+$(document).ready(function(){
+        $("." + {{ mine }}).css("background-image", "\static\minephoto\" + {{ mine }});
+});
+</script>
     {% endfor %}
 
 {% endblock %}
