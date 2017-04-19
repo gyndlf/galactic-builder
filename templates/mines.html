@@ -19,6 +19,7 @@
         <td class = "module"><form action="/user/{{ username }}/button" method="post">
                 <input type="submit" name="{{ 'buy' + mine }}" value="Buy mine">
             </form></td>
+        <td class = "module"><img src="/static/minephoto/{{ mine }}.jpg" alt="{{ mine }}"></td>
     </tr>
     <br>
     <br>
@@ -26,7 +27,7 @@
 <script>
 
 $(document).ready(function(){
-        $(".{{ mine }}").css("background-image", "\static\minephoto\{{ mine }}.jpg");
+        $(".{{ mine }}").css("background-image", "/static/minephoto/{{ mine }}.jpg");
 });
 </script>
     {% endfor %}
