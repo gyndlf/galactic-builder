@@ -122,13 +122,13 @@ def total(users, values):
         if tmpWealth < 1:
             tmpWealth = 0
         wealth[person.name] = tmpWealth
-        print(person.name, "'s wealth ", wealth[person.name])
+        #print(person.name, "'s wealth ", wealth[person.name])
         for mine in person.ownedMines:
             totalMines += person.ownedMines[mine]
         for factoryh in person.ownedFactories:
             factories[factoryh] += person.ownedFactories[factoryh]
 
-    print('Wealth', wealth)
+    #print('Wealth', wealth)
 
     #Put them in a dictionary
     calculated = {
@@ -138,7 +138,7 @@ def total(users, values):
         'factoryCount' : factories,
         'wealth' : wealth
     }
-    print('Calculated count ', factories)
+    #print('Calculated count ', factories)
     return calculated
 
 def farm(values, totals):
@@ -185,7 +185,7 @@ def factory(values, totals):
         calculated[factoryt] = values.factoryValues[factoryt] * totals['factoryCount'][factoryt] * 2
         if calculated[factoryt] < 1000:
             calculated[factoryt] = 999
-    print('Calculated cost ', calculated)
+    #print('Calculated cost ', calculated)
     # productCost = 0
     # factoryLevel = 1
     # amountProduced = 2^factoryLevel*2
@@ -328,7 +328,7 @@ def user(name=None, page=None):
     for person in users:
         if name == person.name:
             # Calculate dynamic personal varibles
-            print('Calculating dynamic personal varibles')
+            #print('Calculating dynamic personal varibles')
             dynamicPersonal = dynamicPersonalCalc(person, farms, values)
 
             # Return the html
