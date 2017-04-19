@@ -379,6 +379,10 @@ def user(name=None, page=None):
                 colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD"]
                 return render_template('community.html', username=person.name, set=zip(info, labels, colors))
 
+            elif page == 'species':
+                print('Rendering species html')
+                return render_template('species.html', username=person.name)
+
             else:
                 return "Invalid page name"
     return "Invaild username"
