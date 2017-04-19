@@ -1,7 +1,8 @@
-        {% block content %}
+{% block content %}
 		
 		<table id="maininfo">
 		<tr>
+			<td><button id= "human" class="button">Human</button></td>
 			<td><button id= "joefish" class="button">Joefish</button></td>
 			<td><button id= "gagners" class="button">Gagners</button></td>
 			<td><button id= "anz" class="button">Anz</button></td>
@@ -10,7 +11,11 @@
 		</table>
 		<br>
 		<br>
-		
+		<div id="humaninfo" class="species">
+		<h2>Humans</h2>
+		<h3>General info</h3>
+		<p>humans have just reached the gotten into contact with the other empires in the area and have developed Pii fighters to move about. Humans are the balanced species and are ready to come to any species aid but most of the other species do not like humans as the have a number of things that other empires do not allow like alchol. </p>
+		</div>
 		<div id="joefishinfo" class="species">
 		<h2>Joefish</h2>
 		<h3>General Info</h3>
@@ -64,6 +69,10 @@
 		<script>
 $(document).ready(function(){
 $(".species").hide();
+	$("#human").click(function(){
+		$(".species").hide();
+        $("#humaninfo").show();
+    });
     $("#joefish").click(function(){
 		$(".species").hide();
         $("#joefishinfo").show();
