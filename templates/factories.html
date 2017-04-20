@@ -11,14 +11,14 @@
     <table id="maininfo">
     <tr>
     <td>Factory name: {{ factory }}</td>
-    <td>Factory cost: §{{ cost[factory] }} </td>
+    <td>Factory cost: {{ cost[factory] }} </td>
     <td>Amount produced by yourself: {{ formulas[factory]['produced'] }}</td>
     <td>Amount produced by everyone: {{ totals['factoryCount'][factory] }}</td>
     </tr>
     <tr>
     <td>Factory count: {{ person.ownedFactories[factory] }}</td>
-    <td>Income: §{{ formulas[factory]['income'] }}</td>
-    <td>Profit: §{{ formulas[factory]['profit'] }}</td>
+    <td>Income: {{ formulas[factory]['income'] }}</td>
+    <td>Profit: {{ formulas[factory]['profit'] }}</td>
     <td><form action="/user/{{ username }}/button" method="post">
         <input type="submit" name="{{ 'buy' + factory }}" value="Buy factory">
     </form></td>
