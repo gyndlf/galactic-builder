@@ -260,14 +260,12 @@ def dynamicPersonalCalc(object, farms, values):
         pickle.dump(object, f)
     return calculated
 
-
 # All app.route functions -----------------------------------------------------------------------------------------#
 @app.route('/')
 def home():
     '''The main login page / Index'''
     #return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
     return render_template('index.html')
-
 
 @app.route('/loginuser', methods=['POST'])
 def calcmessage():
@@ -387,7 +385,6 @@ def user(name=None, page=None):
                 return "Invalid page name"
     return "Invaild username"
 
-
 @app.route('/user/<name>/button', methods=['POST'])
 def userButton(name=None):
     '''The script runs once ANY button is pressed'''
@@ -498,7 +495,6 @@ def userButton(name=None):
     else:
         print('Redirecting to home')
         return redirect(url_for('user', name=name, page='home'))
-
 
 if __name__ == "__main__":
     #app.run(debug=True)
