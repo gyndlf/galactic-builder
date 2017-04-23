@@ -175,10 +175,16 @@ def mine(values, totals):
         calculated[mine] = mineCost
     return calculated
 
-def factory(values, totals):
+def factory(values, totals, resources):
     '''Calculate factory costs. Uncompleted.'''
     print('[3] Running factory def')
-
+	""" respourceDisplay = ""
+	for mine in values.mineValues:
+			resourceObject = int(float(str(resources)[:mine]))
+			if resourceObject > 0:
+				resourceDisplay += mine.value + ":"(mine.total * resourceObject) ","
+				resourcecost += mine.total * resourceObject
+	return resourceDisplay, """
     calculated = {}
 
     for factoryt in values.factoryValues:
