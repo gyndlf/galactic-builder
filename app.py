@@ -12,23 +12,28 @@ from flask import *
 import string as s
 import random
 import math
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 seed = 8434967384636
 random.seed(seed)
-print('The seed is ', seed)
+logger.info('The seed is %s', seed)
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
-print(CHAR_SET)
+logger.debug('All characters %s', CHAR_SET)
 CHAR_SET = CHAR_SET.replace("\\", "") #Remove backslash
 CHAR_SET = CHAR_SET.replace("'", '') #Remove single quote
 CHAR_SET = CHAR_SET.replace('"', '') #Remove double quote
 CHAR_SET = CHAR_SET.replace(',', '') #Remove commar
 CHAR_SET = CHAR_SET.replace('`', '') #Remove thingy
 word = list(CHAR_SET)
-print(CHAR_SET)
+logger.debug('Valid characters %s', CHAR_SET)
 random.shuffle(word)
 CHAR_SET = ''.join(word)
-print(CHAR_SET)
+logger.info('Scrambled characters %s', CHAR_SET)
 SUBSTITUTION_CHARS = CHAR_SET[-3:] + CHAR_SET[:-3]  # Moves them over by 3
 
 #Create the encryption and decryption dictionaries
@@ -52,7 +57,7 @@ VALUESPATH = os.path.join(PICKLE_DIR, VALUES)
 
 def loadUsers():
     '''Load users from the file given as USERS'''
-    print('[1] Loading users')
+    logger.info('[1] Loading users')
     users = []
     # Load users.p files
     with open(USERSPATH, 'rb') as f:
@@ -68,7 +73,7 @@ def loadUsers():
 
 def loadValues():
     '''Load the values from the file given as VALUES'''
-    print('[1] Load values')
+    logger.info('[1] Load values')
     with open(VALUESPATH, 'rb') as f:
         values = pickle.load(f)
     return values
@@ -104,7 +109,7 @@ def hasMoney(object, money):
 
 def total(users, values):
     '''Calculate totals across all the users'''
-    print('[2] Running total definition')
+    logger.info('[2] Running total definition')
 
     foodSent = 0
     totalMoney = 0
@@ -122,13 +127,12 @@ def total(users, values):
         if tmpWealth < 1:
             tmpWealth = 0
         wealth[person.name] = tmpWealth
-        #print(person.name, "'s wealth ", wealth[person.name])
+        message = str(person.name) +  "'s wealth " + str(wealth[person.name])
+        logger.debug(message)
         for mine in person.ownedMines:
             totalMines += person.ownedMines[mine]
         for factoryh in person.ownedFactories:
             factories[factoryh] += person.ownedFactories[factoryh]
-
-    #print('Wealth', wealth)
 
     #Put them in a dictionary
     calculated = {
@@ -138,12 +142,12 @@ def total(users, values):
         'factoryCount' : factories,
         'wealth' : wealth
     }
-    #print('Calculated count ', factories)
+    logger.debug('Calculated factory count %s', factories)
     return calculated
 
 def farm(values, totals):
     '''The farms calculation. Calculates all the formulas for farms'''
-    print('[3] Running farms def')
+    logger.info('[3] Running farms def')
     # All farm calculations done here. Not farms.py
 
     population = values.population
@@ -164,20 +168,21 @@ def farm(values, totals):
 
 def mine(values, totals):
     '''Calculate the mine costs'''
-    print('[3] Running mine def')
+    logger.info('[3] Running mine def')
     calculated = {}
     #For each mine calculate its costs
     for mine in values.mineValues:
         mineCost = totals['totalMines'] * values.mineValues[mine] #Number of mines * value of mine
         if mineCost < 1200:
             mineCost = 1200
-        #print('Mine cost: (', totals['totalMines'], ' * ', values.mineValues[mine], ') ', mine, mineCost) #Get rid of eventually
+        msg = 'Mine cost: (' +  str(totals['totalMines']) + ' * ' + str(values.mineValues[mine]) + ') ' + str(mine) + str(mineCost)
+        logger.debug(msg)
         calculated[mine] = mineCost
     return calculated
 
 def factory(values, totals):
     '''Calculate factory costs. Uncompleted.'''
-    print('[3] Running factory def')
+    logger.info('[3] Running factory def')
 
     calculated = {}
 
@@ -185,7 +190,7 @@ def factory(values, totals):
         calculated[factoryt] = values.factoryValues[factoryt] * totals['factoryCount'][factoryt] * 2
         if calculated[factoryt] < 1000:
             calculated[factoryt] = 999
-    #print('Calculated cost ', calculated)
+    logger.debug('Calculated factory cost %s', calculated)
     # productCost = 0
     # factoryLevel = 1
     # amountProduced = 2^factoryLevel*2
@@ -197,7 +202,7 @@ def factory(values, totals):
 
 def dynamicPersonalCalc(object, farms, values):
     '''Calculate personal dynamic varibles'''
-    print('[4] Running dynamic personal calulator def')
+    logger.info('[4] Running dynamic personal calulator def')
 
     # Farms
     Fproduced = object.farmLevel * object.numberFarms
@@ -250,12 +255,12 @@ def dynamicPersonalCalc(object, farms, values):
     object.netIncome = netIncome
     object.mineProduced = minesDict
     object.saveFactories = factoryDict
-    #print('Dynamic personal number of mines: ', minesDict)
+    logger.debug('Dynamic personal number of mines: %s', minesDict)
 
     # Save new varibles to file
     username = object.name + '.p'
     fname = os.path.join(PICKLE_DIR, username)
-    print("[-] Saving dynamic personal data to " + str(username))
+    logger.debug("[-] Saving dynamic personal data to %s", str(username))
     with open(fname, 'wb') as f:
         pickle.dump(object, f)
     return calculated
@@ -275,40 +280,35 @@ def calcmessage():
         username = request.form['username']
         password = request.form['password']
     except:
-        print('Error! Returning to home')
+        logger.error('Invalid username or password')
         return redirect(url_for('home'))
     for person in users:
         if person.name == username and person.password == password:
-            print("Logging in to " + str(username))
+            logger.info("Logging in to %s", str(username))
             resp = make_response(redirect(url_for('user', name=username, page='home')))
-            print("Saving cookie 'sessionID'")
+            logger.debug("Saving cookie 'sessionID'")
             resp = scrambleCookie(resp, username)
             return resp
-    print('Error! Returning to home')
+    logger.error('Username or password does not match database')
     return redirect(url_for('home'))
-
-@app.route("/test")
-def chart():
-    labels = ["January", "February", "March", "April", "May", "June", "July", "August"]
-    values = [10, 9, 8, 7, 6, 4, 7, 8]
-    return render_template('testing.html', values=values, labels=labels)
 
 @app.route('/user/')
 @app.route('/user/<name>')
 @app.route('/user/<name>/<page>')
 def user(name=None, page=None):
     '''The main script. Run whenever logged in'''
-    print("-" * 10 + str("Finances") + "-" * 10)
+    logger.info("-" * 10 + str("Finances") + "-" * 10)
 
     try: #Load the session cookie
         cookie = request.cookies.get('sessionID')
-        print('Username via cookie: ', cookie)
+        logger.debug('Username via cookie: %s', cookie)
     except:
-        return 'No cookie found.'
+        logger.error('No cookie found')
+        return redirect(url_for('home'))
 
     cookie = loadCookie(cookie)
     if cookie != name:
-        print('Cookie is not the same as ', name)
+        logger.error('Cookie is not the same as %s', name)
         return 'You do not have access to this location'
 
     #Calculate the very basics
@@ -317,7 +317,7 @@ def user(name=None, page=None):
     totals = total(users, values)
 
     # Calculate the recipies
-    print('Calculating dynamic varibles...')
+    logger.info('Calculating dynamic varibles...')
     farms = farm(values, totals)
     mines = mine(values, totals)
     factories = factory(values, totals)
@@ -326,18 +326,17 @@ def user(name=None, page=None):
     for person in users:
         if name == person.name:
             # Calculate dynamic personal varibles
-            #print('Calculating dynamic personal varibles')
             dynamicPersonal = dynamicPersonalCalc(person, farms, values)
 
             # Return the html
             if page == 'home':
-                print("Rendering home html...") #Need to upgrade to send the whole person
+                logger.info("Rendering home html...") #Need to upgrade to send the whole person
                 return render_template('finances.html', username=person.name, money=person.money,
                                        netIncome=person.netIncome,
                                        income=person.income, expenses=person.expenses, netWorth=totals['wealth'][person.name])
 
             elif page == 'farms':
-                print('Rendering farm html...') #Use dictionaries below in the future
+                logger.info('Rendering farm html...') #Use dictionaries below in the future
                 return render_template('farms.html', username=person.name, farmIncome=dynamicPersonal['Fincome'],
                                        numOfFarms=person.numberFarms,
                                        amountProduced=dynamicPersonal['Fproduced'],
@@ -347,7 +346,7 @@ def user(name=None, page=None):
                                        foodProduced=dynamicPersonal['Fproduced'])
 
             elif page == 'mines':
-                print('Rendering mines html...')
+                logger.info('Rendering mines html...')
                 templateData = {
                     'minesFunc': mines,
                     'dynamicPersonal' : dynamicPersonal,
@@ -357,7 +356,7 @@ def user(name=None, page=None):
                 return render_template('mines.html', username=person.name, **templateData)
 
             elif page == 'factories':
-                print("Rendering factories html...")
+                logger.info("Rendering factories html...")
                 templateData = {
                     'formulas' : dynamicPersonal['factories'],
                     'cost' : factories,
@@ -367,7 +366,7 @@ def user(name=None, page=None):
                 return render_template('factories.html', username=person.name, **templateData)
 
             elif page == 'community':
-                print("Rendering community html..")
+                logger.info("Rendering community html..")
                 labels = []
                 info = []
                 data = totals['wealth']
@@ -378,30 +377,34 @@ def user(name=None, page=None):
                 return render_template('community.html', username=person.name, set=zip(info, labels, colors))
 
             elif page == 'species':
-                print('Rendering species html')
+                logger.info('Rendering species html')
                 return render_template('species.html', username=person.name)
 
             else:
+                logger.error('Invalid page name!')
                 return "Invalid page name"
+    logger.error('Invalid username!')
     return "Invaild username"
 
 @app.route('/user/<name>/button', methods=['POST'])
 def userButton(name=None):
     '''The script runs once ANY button is pressed'''
-    print("-" * 10 + str("Button") + "-" * 10)
+    logger.info("-" * 10 + str("Button") + "-" * 10)
 
     try: #Load the session cookie
         cookie = request.cookies.get('sessionID')
-        print('Username via cookie: ', cookie)
+        logger.debug('Username via cookie: %s', cookie)
     except:
+        logger.error('No cookie found')
         return 'No cookie found.'
 
     cookie = loadCookie(cookie)
     if cookie != name:
+        logger.error('Cookie does not match database')
         return 'You do not have access to this location'
 
     # Run recipies
-    print("Loading recipies...")
+    logger.info("Loading recipies...")
     users = loadUsers()
     values = loadValues()
     totals = total(users, values)
@@ -416,33 +419,33 @@ def userButton(name=None):
     #Identify the user
     for person in users:
         if name == person.name:
-            print("Signed in as " + str(person.name))
+            logger.info("Signed in as " + str(person.name))
 
             #Detect what button it was and do the appropriate action
 
             # farms.html ---------------#
             if 'buyFarm' in request.form:
-                print("Detected 'buyFarm'")
+                logger.info("Detected 'buyFarm'")
                 farmHtml = True
                 if hasMoney(person, farms['farmCost']):
                     person.numberFarms += 1
                     person.money -= farms['farmCost']
-                    print("Brought one farm")
+                    logger.info("Brought one farm")
                 else:
-                    print("Money Error: Not enough money")
+                    logger.error("Money Error: Not enough money")
 
             elif 'upgradeFarm' in request.form:
-                print("Detected 'upgradeFarm'")
+                logger.info("Detected 'upgradeFarm'")
                 farmHtml = True
                 if person.farmLevel >= 5:
-                    print("Error: Max farm level")
+                    logger.error("Error: Max farm level")
                 else:
                     if hasMoney(person, farms['levelCost']):
                         person.farmLevel += 1
                         person.money -= farms['levelCost']
-                        print("Upgraded Level")
+                        logger.info("Upgraded Level")
                     else:
-                        print("Money Error: Not enough money")
+                        logger.error("Money Error: Not enough money")
 
             # Factories ----------------#
 
@@ -452,51 +455,51 @@ def userButton(name=None):
                 for digger in person.ownedMines:
                     button = 'buy' + digger
                     if button in request.form:
-                        print('Detected mine')
+                        logger.info('Detected mine button')
                         mineHtml = True
                         if hasMoney(person, mines[digger]):
                             person.ownedMines[digger] += 1
                             person.money -= mines[digger]
-                            print('Brought one ', digger, ' mine')
+                            logger.info('Brought one %s mine', digger)
                         else:
-                            print("Not enough money")
+                            logger.error("Money Error: Not enough money")
                 #Factories
                 for factoryl in person.ownedFactories:
                     button = 'buy' + factoryl
                     if button in request.form:
-                        print('Factory detected')
+                        logger.info('Factory detected')
                         factoryHtml = True
                         if hasMoney(person, factories[factoryl]):
-                            print(factoryl)
                             person.ownedFactories[factoryl] += 1
                             person.money -= factories[factoryl]
-                            print('Brought one ', factoryl, ' factory')
+                            logger.info('Brought one %s factory', factoryl)
                         else:
-                            print("Not enough money")
+                            logger.error("Money Error: Not enough money")
 
             #Save upated personal data
-            print('Saving...')
+            logger.info('Saving...')
             username = person.name + '.p'
             fname = os.path.join(PICKLE_DIR, username)
             with open(fname, 'wb') as f:
                 pickle.dump(person, f)
 
     #Redirect back to the page the user was at before
-    print("Calculating redirect")
+    logger.info("Calculating redirect")
     if farmHtml:
-        print('Redirecting back to farms')
+        logger.info('Redirecting back to farms')
         return redirect(url_for('user', name=name, page='farms'))
     elif mineHtml:
-        print('Redirecting back to mines')
+        logger.info('Redirecting back to mines')
         return redirect(url_for('user', name=name, page='mines'))
     elif factoryHtml:
-        print('Redirecting back to factories')
+        logger.info('Redirecting back to factories')
         return redirect(url_for('user', name=name, page='factories'))
     else:
-        print('Redirecting to home')
+        logger.info('Redirecting to home')
         return redirect(url_for('user', name=name, page='home'))
 
 if __name__ == "__main__":
     #app.run(debug=True)
+    logger.info('Running app')
     app.run()
     #app.run('0.0.0.0', 8080)
