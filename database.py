@@ -10,7 +10,7 @@ class person():
         self.name = ""
         self.password = 'password'
         self.id = 0
-        self.money = 1000000
+        self.money = 100000
         self.netWorth = 0
         self.salary = 0
         self.income = 0
