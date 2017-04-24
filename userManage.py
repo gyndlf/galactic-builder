@@ -302,7 +302,45 @@ def payUsers():
             pickle.dump(person, f)
 
 def createUsersFromFile():
-    pass
+    #Get data file
+    dataFile = input('Input file name [Enter for default] ')
+    if dataFile == '':
+        dataFile = 'people.config'
+        print('Using default ', dataFile)
+
+    #Find the file path
+    file = os.path.join(PICKLE_DIR, dataFile)
+
+    #For each entered user create a user
+    f = open(file)
+    for line in f.readlines():
+        line = line.replace("\n", "")
+        data = str(line).split(' ')
+
+        import database
+        # Create the user in RAM
+        created = database.person()
+        created.name = data[0]
+        created.password = data[1]
+
+        # Work out file names
+        filename = str(created.name) + ".p"
+        fname = os.path.join(PICKLE_DIR, filename)
+        print("Creating " + str(fname))
+
+        # Add users to the list of users
+        with open(USERSPATH, 'rb') as f:
+            users = pickle.load(f)
+        print("Adding " + created.name + " to " + USERS)
+        users.append(filename)
+        print("Current users " + str(users))
+        with open(USERSPATH, 'wb') as f:
+            pickle.dump(users, f)
+
+        # Save the finished product
+        with open(fname, 'wb') as f:
+            pickle.dump(created, f)
+    f.close()
 
 def main():
     quit = False
