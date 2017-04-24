@@ -10,7 +10,7 @@ class person():
         self.name = ""
         self.password = 'password'
         self.id = 0
-        self.money = 100000
+        self.money = 10000
         self.netWorth = 0
         self.salary = 0
         self.income = 0
@@ -27,8 +27,8 @@ class person():
             'steel': 0,
             'hydrogen': 0,
             'titanium': 0,
-            'yellow_crystal': 0,
-            'white_crystal': 0,
+            'yellow crystal': 0,
+            'white crystal': 0,
             'diamond': 0,
             'silicon': 0,
             'copper': 0,

@@ -18,12 +18,17 @@ import logging
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler = logging.FileHandler('logs.log')
 handler.setFormatter(formatter)
-
+'''
 logger = logging.getLogger('')
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
+'''
 
-seed = 943787649038648697347696748967943
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
+
+seed = 943787649038865876796748967943
 random.seed(seed)
 logger.info('The seed is %s', seed)
 app = Flask(__name__)
@@ -135,7 +140,7 @@ def total(users, values):
     for person in users:
         foodSent += person.foodProduced
         totalMoney += person.money
-        tmpWealth = person.netIncome * int(math.sqrt(person.money))
+        tmpWealth = int(person.netIncome * random.randint(8000,12000)/10000)
         if tmpWealth < 1:
             tmpWealth = 0
         wealth[person.name] = tmpWealth
@@ -244,24 +249,35 @@ def dynamicPersonalCalc(object, farms, values):
     # Factories
     factoryDict = {}
     totalFacIncome = 0
+    materialsNeeded = {}
+    for material in values.mineValues:
+        materialsNeeded[material] = 0
     # amountProduced = numberOfFactories * Bonus(edited)
     # income = productCost * amountProduced
     # profit = income - (materialCost * amountProduced)
-    for factoryp in values.factoryValues:
-        facProduced = object.ownedFactories[factoryp] * 1  # Add bonus instead of 1 eventually
-        facIncome = values.factoryValues[factoryp] * facProduced
+    for factory in values.factoryValues:
+        facProduced = object.ownedFactories[factory] * 1  # Add bonus instead of 1 eventually
+        facIncome = values.factoryValues[factory] * facProduced
         facProfit = facIncome - 0  # Need to add materials next
+
+        for material in values.factoryRecipies[factory]:
+            materialsNeeded[material] += values.factoryRecipies[factory][material] * facProduced
         totalFacIncome += facProfit
         tmp = {
             'produced': facProduced,
             'income': facIncome,
             'profit': facProfit
         }
-        factoryDict[factoryp] = tmp
+        factoryDict[factory] = tmp
+    logger.debug('Materials needed %s', materialsNeeded)
+    materialCost = 0
+    for material in materialsNeeded:
+        materialCost += materialsNeeded[material] * values.mineValues[material]
+    logger.debug('You have a factory material cost of %s', materialCost)
 
     # General
     income = Fincome + totalFacIncome  # Add factory income and mine income here
-    expenses = int(income / 5)  # (Tax) Add all expenses here
+    expenses = int(income / 5) + materialCost  # (Tax) Add all expenses here
     netIncome = income - expenses
 
     # Chuck in a dictionary
