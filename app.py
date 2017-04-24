@@ -263,6 +263,14 @@ def dynamicPersonalCalc(object, farms, values):
         for material in values.factoryRecipies[factory]: #Find out how many materials are needed
             materialsNeeded[material] += values.factoryRecipies[factory][material] * facProduced
         totalFacIncome += facProfit
+
+        tmp = {
+            'produced': facProduced,
+            'income': facIncome,
+            'profit': facProfit
+        }
+
+        factoryDict[factory] = tmp
     logger.debug('Materials needed in total %s', materialsNeeded)
     logger.debug('Materials produced: %s', minesDict)
 
@@ -278,13 +286,7 @@ def dynamicPersonalCalc(object, farms, values):
         materialCost += materialsToBuy[material] * values.mineValues[material]
     logger.debug('You have a factory material cost of %s', materialCost)
 
-    tmp = {
-        'produced': facProduced,
-        'income': facIncome,
-        'profit': facProfit
-    }
 
-    factoryDict[factory] = tmp
     # General
     income = Fincome + totalFacIncome  # Add factory income and mine income here
     expenses = int(income / 5) + materialCost  # (Tax) Add all expenses here
