@@ -11,6 +11,8 @@
 						<td><button id= "vinitipu" class="button">Vinitipu</button ></td>
 		</tr>
 		<tr id="page2">
+		<td><button id= "slang" class="button">Slang</button ></td>
+		<td><button id= "giovleono" class="button">Giovleono</button ></td>
 			<td><button id= "map" class="button">Map</button></td>
 			<td><button id= "galactichistory" class="button">Galactic History</button></td>
 		</tr>
@@ -30,6 +32,10 @@
 		<div id="anzinfo" class="species">
 		</div>
 		<div id="vinitipuinfo" class="species">
+		</div>
+		<div id="slanginfo" class="species">
+		</div>
+		<div id="giovleonoinfo" class="species">
 		</div>
 		<div id="mapinfo" class="species">
 		</div>
@@ -71,6 +77,16 @@ $("#page2").hide();
 		$(".species").hide();
         $("#vinitipuinfo").show();
 		$("#vinitipuinfo").load("/static/vinitipuinfo.txt");
+    });
+	$("#slang").click(function(){
+		$(".species").hide();
+        $("#slanginfo").show();
+		$("#slanginfo").load("/static/slanginfo.txt");
+    });
+	$("#giovleono").click(function(){
+		$(".species").hide();
+        $("#giovleonoinfo").show();
+		$("#giovleonoinfo").load("/static/giovleonoinfo.txt");
     });
 	$("#map").click(function(){
 		$(".species").hide();
