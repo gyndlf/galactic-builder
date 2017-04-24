@@ -14,7 +14,6 @@ DATABASEPATH = os.path.join(PICKLE_DIR, DATABASE)
 VALUES = 'values.p'
 VALUESPATH = os.path.join(PICKLE_DIR, VALUES)
 
-
 def editUser():
     # Edits a specified user. Has failsafe built in
     # Create file name
@@ -61,7 +60,6 @@ def editUser():
         pickle.dump(person, f)
     print("Done.")
 
-
 def createUser():
     # Creates a new user with no money, jobs or anything according to the "database.py" file and add them into a list stored in "users.p"
     print("Warning! Names CANNOT be changed! Think carefully...")
@@ -96,7 +94,6 @@ def createUser():
     print("Created")
     print("Done")
 
-
 def removeUser():
     # Removes a user from 'users.p' so you can delete their file
     print('These changes are irreversible! Are you sure you want to continue? (y/n)')
@@ -128,7 +125,6 @@ def removeUser():
 
     print("You may now delete " + filename + ' safely.')
 
-
 def loadUsers():
     # Load all users according to "users.p" and display their stats
 
@@ -143,7 +139,6 @@ def loadUsers():
         with open(fname, 'rb') as f:
             person = pickle.load(f)
         print(vars(person))
-
 
 def updateVaribles():
     # This code will add a new varible(s) to all of the users in the data file.
@@ -251,7 +246,6 @@ def updateVaribles():
         pickle.dump(newValues, f)
 
     print('Done.')
-
 
 def createDatabase():
     # This code will initilise the database You probably will run it when you start from scratch
@@ -411,7 +405,6 @@ def main():
         else:
             print("Quitting...")
             quit = True
-
 
 if __name__ == '__main__':
     main()

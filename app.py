@@ -18,14 +18,15 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler = logging.FileHandler('logs.log')
 handler.setFormatter(formatter)
 
+'''
 logger = logging.getLogger('')
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 '''
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-'''
+
 
 seed = 943787649038865876796748967943
 random.seed(seed)
@@ -261,6 +262,7 @@ def dynamicPersonalCalc(object, farms, values):
 
         for material in values.factoryRecipies[factory]:
             materialsNeeded[material] += values.factoryRecipies[factory][material] * facProduced
+            materialsNeeded[material] -= minesDict[material]
         totalFacIncome += facProfit
         tmp = {
             'produced': facProduced,
@@ -548,5 +550,5 @@ def userButton(name=None):
 if __name__ == "__main__":
     # app.run(debug=True)
     logger.info('Running app')
-    #app.run()
-    app.run('0.0.0.0', 80)
+    app.run()
+    #app.run('0.0.0.0', 80)

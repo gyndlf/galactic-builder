@@ -1,7 +1,6 @@
 # Data base file
 # So far the script can only read from this file and not update it. That will have to change...
 
-
 # No formulas in here!!! Cheeky cheeky!
 
 class person():
