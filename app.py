@@ -341,10 +341,12 @@ def calcmessage():
 @app.route('/user/')
 @app.route('/user/<name>')
 @app.route('/user/<name>/<page>')
-def user(name=None, page=None):
+@app.route('/user/<name>/<page>/<data>')
+def user(name=None, page=None, data=None):
     '''The main script. Run whenever logged in'''
     logger.info("-" * 10 + str("Finances") + "-" * 10)
 
+    #Make sure the user is allowed to be here!
     try:  # Load the session cookie
         cookie = request.cookies.get('sessionID')
         logger.debug('Username via cookie: %s', cookie)
@@ -352,10 +354,19 @@ def user(name=None, page=None):
         logger.error('No cookie found')
         return redirect(url_for('home'))
 
+    #Check the cookie matches
     cookie = loadCookie(cookie)
     if cookie != name:
         logger.error('Cookie is not the same as %s', name)
         return 'You do not have access to this location'
+
+    #Have you been sent here with an error? Get ready to display it!
+    if data == 'notEnoughMoney':
+        dialogMessage = 'Not enough money!'
+    elif data == 'maxFarmLevel':
+        dialogMessage = 'The max farm level is 5'
+    else:
+        dialogMessage = None
 
     # Calculate the very basics
     values = loadValues()
@@ -380,7 +391,7 @@ def user(name=None, page=None):
                 return render_template('finances.html', username=person.name, money=person.money,
                                        netIncome=person.netIncome,
                                        income=person.income, expenses=person.expenses,
-                                       netWorth=totals['wealth'][person.name])
+                                       netWorth=totals['wealth'][person.name], dialogMessage=dialogMessage)
 
             elif page == 'farms':
                 logger.info('Rendering farm html...')  # Use dictionaries below in the future
@@ -390,7 +401,7 @@ def user(name=None, page=None):
                                        farmCost=farms['farmCost'], farmLevel=person.farmLevel,
                                        farmLevelCost=farms['levelCost'], farmValue=farms['farmValue'],
                                        population=values.population,
-                                       foodProduced=dynamicPersonal['Fproduced'])
+                                       foodProduced=dynamicPersonal['Fproduced'], dialogMessage=dialogMessage)
 
             elif page == 'mines':
                 logger.info('Rendering mines html...')
@@ -400,7 +411,7 @@ def user(name=None, page=None):
                     'values': values,
                     'person': person
                 }
-                return render_template('mines.html', username=person.name, **templateData)
+                return render_template('mines.html', username=person.name, dialogMessage=dialogMessage, **templateData)
 
             elif page == 'factories':
                 logger.info("Rendering factories html...")
@@ -410,7 +421,7 @@ def user(name=None, page=None):
                     'person': person,
                     'totals': totals
                 }
-                return render_template('factories.html', username=person.name, **templateData)
+                return render_template('factories.html', username=person.name, dialogMessage=dialogMessage, **templateData)
 
             elif page == 'community':
                 logger.info("Rendering community html..")
@@ -421,11 +432,11 @@ def user(name=None, page=None):
                     info.append(data[item])
                     labels.append(item)
                 colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD"]
-                return render_template('community.html', username=person.name, set=zip(info, labels, colors))
+                return render_template('community.html', username=person.name, dialogMessage=dialogMessage, set=zip(info, labels, colors))
 
             elif page == 'species':
                 logger.info('Rendering species html')
-                return render_template('species.html', username=person.name)
+                return render_template('species.html', username=person.name, dialogMessage=dialogMessage)
 
             else:
                 logger.error('Invalid page name!')
@@ -460,9 +471,13 @@ def userButton(name=None):
     mines = mine(values, totals)
     factories = factory(values, totals)
 
+    #Where have you come from?
     farmHtml = False
     mineHtml = False
     factoryHtml = False
+
+    #Has there been an error you should know about?
+    error = None
 
     # Identify the user
     for person in users:
@@ -481,12 +496,14 @@ def userButton(name=None):
                     logger.info("Brought one farm")
                 else:
                     logger.error("Money Error: Not enough money")
+                    error = 'notEnoughMoney'
 
             elif 'upgradeFarm' in request.form:
                 logger.info("Detected 'upgradeFarm'")
                 farmHtml = True
                 if person.farmLevel >= 5:
                     logger.error("Error: Max farm level")
+                    error = 'maxFarmLevel'
                 else:
                     if hasMoney(person, farms['levelCost']):
                         person.farmLevel += 1
@@ -494,6 +511,7 @@ def userButton(name=None):
                         logger.info("Upgraded Level")
                     else:
                         logger.error("Money Error: Not enough money")
+                        error = 'notEnoughMoney'
 
             # Factories ----------------#
 
@@ -511,6 +529,7 @@ def userButton(name=None):
                             logger.info('Brought one %s mine', digger)
                         else:
                             logger.error("Money Error: Not enough money")
+                            error = 'notEnoughMoney'
                 # Factories
                 for factoryl in person.ownedFactories:
                     button = 'buy' + factoryl
@@ -523,6 +542,7 @@ def userButton(name=None):
                             logger.info('Brought one %s factory', factoryl)
                         else:
                             logger.error("Money Error: Not enough money")
+                            error = 'notEnoughMoney'
 
             # Save upated personal data
             logger.info('Saving...')
@@ -535,16 +555,16 @@ def userButton(name=None):
     logger.info("Calculating redirect")
     if farmHtml:
         logger.info('Redirecting back to farms')
-        return redirect(url_for('user', name=name, page='farms'))
+        return redirect(url_for('user', name=name, page='farms', data=error))
     elif mineHtml:
         logger.info('Redirecting back to mines')
-        return redirect(url_for('user', name=name, page='mines'))
+        return redirect(url_for('user', name=name, page='mines', data=error))
     elif factoryHtml:
         logger.info('Redirecting back to factories')
-        return redirect(url_for('user', name=name, page='factories'))
+        return redirect(url_for('user', name=name, page='factories', data=error))
     else:
         logger.info('Redirecting to home')
-        return redirect(url_for('user', name=name, page='home'))
+        return redirect(url_for('user', name=name, page='home', data=error))
 
 
 if __name__ == "__main__":

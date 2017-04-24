@@ -230,6 +230,13 @@ font-size: 17px
         <script src='/static/Chart.min.js'></script>
         <script type="text/javascript"></script>
 
+        <!-- Display the message if there is one -->
+        {% if dialogMessage != None %}
+        <script type="text/javascript">
+            alert("{{ dialogMessage }}");
+        </script>
+        {% endif %}
+
         <div id="mainpage">
             <a href=" {{ url_for('home') }} "><h1><b>Galactic Builder</b></h1></a>
 
