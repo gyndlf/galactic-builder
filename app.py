@@ -17,7 +17,7 @@ import logging
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler = logging.FileHandler('logs.log')
 handler.setFormatter(formatter)
-'''
+
 logger = logging.getLogger('')
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
@@ -25,7 +25,7 @@ logger.setLevel(logging.INFO)
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
-
+'''
 
 seed = 943787649038865876796748967943
 random.seed(seed)
@@ -548,5 +548,5 @@ def userButton(name=None):
 if __name__ == "__main__":
     # app.run(debug=True)
     logger.info('Running app')
-    app.run()
-    # app.run('0.0.0.0', 8080)
+    #app.run()
+    app.run('0.0.0.0', 80)
