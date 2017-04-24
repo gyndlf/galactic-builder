@@ -11,7 +11,6 @@ import os, sys
 from flask import *
 import string as s
 import random
-import math
 import logging
 
 # create a logging format
@@ -140,7 +139,7 @@ def total(users, values):
     for person in users:
         foodSent += person.foodProduced
         totalMoney += person.money
-        tmpWealth = int(person.netIncome * random.randint(8000,12000)/10000)
+        tmpWealth = int(person.netIncome * random.randint(5000,15000)/10000)
         if tmpWealth < 1:
             tmpWealth = 0
         wealth[person.name] = tmpWealth
