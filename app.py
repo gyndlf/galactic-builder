@@ -14,21 +14,16 @@ import random
 import math
 import logging
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-# create a file handler
-handler = logging.FileHandler('logs.log')
-handler.setLevel(logging.INFO)
-
 # create a logging format
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler = logging.FileHandler('logs.log')
 handler.setFormatter(formatter)
 
-# add the handlers to the logger
+logger = logging.getLogger('')
 logger.addHandler(handler)
+logger.setLevel(logging.INFO)
 
-seed = 8434967384636
+seed = 943787649038648697347696748967943
 random.seed(seed)
 logger.info('The seed is %s', seed)
 app = Flask(__name__)
