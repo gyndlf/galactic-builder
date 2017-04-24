@@ -14,7 +14,7 @@ import random
 import math
 import logging
 
-logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # create a file handler
@@ -30,21 +30,21 @@ logger.addHandler(handler)
 
 seed = 8434967384636
 random.seed(seed)
-print('The seed is ', seed)
+logger.info('The seed is %s', seed)
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
-print(CHAR_SET)
+logger.info('All characters %s', CHAR_SET)
 CHAR_SET = CHAR_SET.replace("\\", "")  # Remove backslash
 CHAR_SET = CHAR_SET.replace("'", '')  # Remove single quote
 CHAR_SET = CHAR_SET.replace('"', '')  # Remove double quote
 CHAR_SET = CHAR_SET.replace(',', '')  # Remove commar
 CHAR_SET = CHAR_SET.replace('`', '')  # Remove thingy
 word = list(CHAR_SET)
-print(CHAR_SET)
+logger.info('Valid character %s', CHAR_SET)
 random.shuffle(word)
 CHAR_SET = ''.join(word)
-print(CHAR_SET)
+logger.info('Shuffled characters %s', CHAR_SET)
 SUBSTITUTION_CHARS = CHAR_SET[-3:] + CHAR_SET[:-3]  # Moves them over by 3
 
 # Create the encryption and decryption dictionaries
@@ -201,7 +201,7 @@ def mine(values, totals):
     return calculated
 
 
-def factory(values, totals, resources):
+def factory(values, totals):
     '''Calculate factory costs. Uncompleted.'''
 
     ''' respourceDisplay = 

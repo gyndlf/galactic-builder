@@ -1,0 +1,99 @@
+2017-04-24 12:13:22,631 - __main__ - INFO - The seed is 8434967384636
+2017-04-24 12:13:22,633 - __main__ - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-04-24 12:13:22,633 - __main__ - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-04-24 12:13:22,633 - __main__ - INFO - Shuffled characters vD-(e|Q&FV+.zfba$T3?JW)x4uGHwtC6{@Ss*Kd9h/j<1:E!=icO>LPXM}lnqB;8p7Y%N[Ugr^AR2mo]I5k~#_0yZ 
+2017-04-24 12:13:22,637 - __main__ - INFO - Running app
+2017-04-24 12:13:30,303 - __main__ - INFO - [1] Loading users
+2017-04-24 12:13:30,326 - __main__ - INFO - Logging in to james
+2017-04-24 12:13:30,340 - __main__ - INFO - ----------Finances----------
+2017-04-24 12:13:30,340 - __main__ - INFO - [1] Load values
+2017-04-24 12:13:30,347 - __main__ - INFO - [1] Loading users
+2017-04-24 12:13:30,348 - __main__ - INFO - [2] Running total definition
+2017-04-24 12:13:30,349 - __main__ - INFO - Calculating dynamic varibles...
+2017-04-24 12:13:30,349 - __main__ - INFO - [3] Running farms def
+2017-04-24 12:13:30,350 - __main__ - INFO - [3] Running mine def
+2017-04-24 12:13:57,118 - __main__ - INFO - The seed is 8434967384636
+2017-04-24 12:13:57,119 - __main__ - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-04-24 12:13:57,119 - __main__ - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-04-24 12:13:57,119 - __main__ - INFO - Shuffled characters vD-(e|Q&FV+.zfba$T3?JW)x4uGHwtC6{@Ss*Kd9h/j<1:E!=icO>LPXM}lnqB;8p7Y%N[Ugr^AR2mo]I5k~#_0yZ 
+2017-04-24 12:13:57,121 - __main__ - INFO - Running app
+2017-04-24 12:14:01,706 - __main__ - INFO - [1] Loading users
+2017-04-24 12:14:01,709 - __main__ - INFO - Logging in to james
+2017-04-24 12:14:01,724 - __main__ - INFO - ----------Finances----------
+2017-04-24 12:14:01,725 - __main__ - INFO - [1] Load values
+2017-04-24 12:14:01,725 - __main__ - INFO - [1] Loading users
+2017-04-24 12:14:01,726 - __main__ - INFO - [2] Running total definition
+2017-04-24 12:14:01,726 - __main__ - INFO - Calculating dynamic varibles...
+2017-04-24 12:14:01,726 - __main__ - INFO - [3] Running farms def
+2017-04-24 12:14:01,726 - __main__ - INFO - [3] Running mine def
+2017-04-24 12:14:01,726 - __main__ - INFO - [3] Running factory def
+2017-04-24 12:14:01,727 - __main__ - INFO - [4] Running dynamic personal calulator def
+2017-04-24 12:14:01,727 - __main__ - INFO - Rendering home html...
+2017-04-24 12:14:03,413 - __main__ - INFO - ----------Finances----------
+2017-04-24 12:14:03,413 - __main__ - INFO - [1] Load values
+2017-04-24 12:14:03,413 - __main__ - INFO - [1] Loading users
+2017-04-24 12:14:03,414 - __main__ - INFO - [2] Running total definition
+2017-04-24 12:14:03,414 - __main__ - INFO - Calculating dynamic varibles...
+2017-04-24 12:14:03,414 - __main__ - INFO - [3] Running farms def
+2017-04-24 12:14:03,414 - __main__ - INFO - [3] Running mine def
+2017-04-24 12:14:03,415 - __main__ - INFO - [3] Running factory def
+2017-04-24 12:14:03,415 - __main__ - INFO - [4] Running dynamic personal calulator def
+2017-04-24 12:14:03,416 - __main__ - INFO - Rendering community html..
+2017-04-24 12:14:04,436 - __main__ - INFO - ----------Finances----------
+2017-04-24 12:14:04,437 - __main__ - INFO - [1] Load values
+2017-04-24 12:14:04,437 - __main__ - INFO - [1] Loading users
+2017-04-24 12:14:04,438 - __main__ - INFO - [2] Running total definition
+2017-04-24 12:14:04,438 - __main__ - INFO - Calculating dynamic varibles...
+2017-04-24 12:14:04,439 - __main__ - INFO - [3] Running farms def
+2017-04-24 12:14:04,439 - __main__ - INFO - [3] Running mine def
+2017-04-24 12:14:04,439 - __main__ - INFO - [3] Running factory def
+2017-04-24 12:14:04,439 - __main__ - INFO - [4] Running dynamic personal calulator def
+2017-04-24 12:14:04,439 - __main__ - INFO - Rendering factories html...
+2017-04-24 12:14:06,759 - __main__ - INFO - ----------Button----------
+2017-04-24 12:14:06,759 - __main__ - INFO - Loading recipies...
+2017-04-24 12:14:06,759 - __main__ - INFO - [1] Loading users
+2017-04-24 12:14:06,760 - __main__ - INFO - [1] Load values
+2017-04-24 12:14:06,761 - __main__ - INFO - [2] Running total definition
+2017-04-24 12:14:06,761 - __main__ - INFO - [3] Running farms def
+2017-04-24 12:14:06,761 - __main__ - INFO - [3] Running mine def
+2017-04-24 12:14:06,761 - __main__ - INFO - [3] Running factory def
+2017-04-24 12:14:06,762 - __main__ - INFO - Signed in as james
+2017-04-24 12:14:06,762 - __main__ - INFO - Factory detected
+2017-04-24 12:14:06,762 - __main__ - INFO - Brought one Toilet factory
+2017-04-24 12:14:06,762 - __main__ - INFO - Saving...
+2017-04-24 12:14:06,763 - __main__ - INFO - Calculating redirect
+2017-04-24 12:14:06,763 - __main__ - INFO - Redirecting back to factories
+2017-04-24 12:14:06,773 - __main__ - INFO - ----------Finances----------
+2017-04-24 12:14:06,773 - __main__ - INFO - [1] Load values
+2017-04-24 12:14:06,773 - __main__ - INFO - [1] Loading users
+2017-04-24 12:14:06,774 - __main__ - INFO - [2] Running total definition
+2017-04-24 12:14:06,775 - __main__ - INFO - Calculating dynamic varibles...
+2017-04-24 12:14:06,775 - __main__ - INFO - [3] Running farms def
+2017-04-24 12:14:06,775 - __main__ - INFO - [3] Running mine def
+2017-04-24 12:14:06,775 - __main__ - INFO - [3] Running factory def
+2017-04-24 12:14:06,775 - __main__ - INFO - [4] Running dynamic personal calulator def
+2017-04-24 12:14:06,776 - __main__ - INFO - Rendering factories html...
+2017-04-24 12:14:09,967 - __main__ - INFO - ----------Button----------
+2017-04-24 12:14:09,968 - __main__ - INFO - Loading recipies...
+2017-04-24 12:14:09,968 - __main__ - INFO - [1] Loading users
+2017-04-24 12:14:09,969 - __main__ - INFO - [1] Load values
+2017-04-24 12:14:09,970 - __main__ - INFO - [2] Running total definition
+2017-04-24 12:14:09,970 - __main__ - INFO - [3] Running farms def
+2017-04-24 12:14:09,970 - __main__ - INFO - [3] Running mine def
+2017-04-24 12:14:09,970 - __main__ - INFO - [3] Running factory def
+2017-04-24 12:14:09,970 - __main__ - INFO - Signed in as james
+2017-04-24 12:14:09,971 - __main__ - INFO - Factory detected
+2017-04-24 12:14:09,971 - __main__ - INFO - Brought one Car factory
+2017-04-24 12:14:09,972 - __main__ - INFO - Saving...
+2017-04-24 12:14:09,972 - __main__ - INFO - Calculating redirect
+2017-04-24 12:14:09,972 - __main__ - INFO - Redirecting back to factories
+2017-04-24 12:14:09,982 - __main__ - INFO - ----------Finances----------
+2017-04-24 12:14:09,982 - __main__ - INFO - [1] Load values
+2017-04-24 12:14:09,983 - __main__ - INFO - [1] Loading users
+2017-04-24 12:14:09,984 - __main__ - INFO - [2] Running total definition
+2017-04-24 12:14:09,985 - __main__ - INFO - Calculating dynamic varibles...
+2017-04-24 12:14:09,985 - __main__ - INFO - [3] Running farms def
+2017-04-24 12:14:09,985 - __main__ - INFO - [3] Running mine def
+2017-04-24 12:14:09,985 - __main__ - INFO - [3] Running factory def
+2017-04-24 12:14:09,986 - __main__ - INFO - [4] Running dynamic personal calulator def
+2017-04-24 12:14:09,986 - __main__ - INFO - Rendering factories html...
