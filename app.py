@@ -18,15 +18,15 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler = logging.FileHandler('logs.log')
 handler.setFormatter(formatter)
 
-#Add quotes here for normal output
+''' #Add quotes here for normal output
 logger = logging.getLogger('')
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 '''
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
-''' #Add quotes here for only printing to the log
+ #Add quotes here for only printing to the log
 
 seed = 943787649038865876796748967943
 random.seed(seed)
@@ -260,22 +260,31 @@ def dynamicPersonalCalc(object, farms, values):
         facIncome = values.factoryValues[factory] * facProduced
         facProfit = facIncome - 0  # Need to add materials next
 
-        for material in values.factoryRecipies[factory]:
+        for material in values.factoryRecipies[factory]: #Find out how many materials are needed
             materialsNeeded[material] += values.factoryRecipies[factory][material] * facProduced
-            materialsNeeded[material] -= minesDict[material]
         totalFacIncome += facProfit
-        tmp = {
-            'produced': facProduced,
-            'income': facIncome,
-            'profit': facProfit
-        }
-        factoryDict[factory] = tmp
-    logger.debug('Materials needed %s', materialsNeeded)
-    materialCost = 0
-    for material in materialsNeeded:
-        materialCost += materialsNeeded[material] * values.mineValues[material]
+    logger.debug('Materials needed in total %s', materialsNeeded)
+    logger.debug('Materials produced: %s', minesDict)
+
+    #Effectivly materialsNeeded - materialsProduced
+    materialsToBuy = { k: materialsNeeded.get(k, 0) - minesDict.get(k, 0) for k in set(materialsNeeded) & set(minesDict) }
+    for material in materialsToBuy: #Make sure they are not negative numbers!
+        if materialsToBuy[material] < 0:
+            materialsToBuy[material] = 0
+    logger.debug('Materials to buy: %s', materialsToBuy)
+
+    materialCost = 0 #Add up all the costs
+    for material in materialsToBuy:
+        materialCost += materialsToBuy[material] * values.mineValues[material]
     logger.debug('You have a factory material cost of %s', materialCost)
 
+    tmp = {
+        'produced': facProduced,
+        'income': facIncome,
+        'profit': facProfit
+    }
+
+    factoryDict[factory] = tmp
     # General
     income = Fincome + totalFacIncome  # Add factory income and mine income here
     expenses = int(income / 5) + materialCost  # (Tax) Add all expenses here
@@ -570,5 +579,5 @@ def userButton(name=None):
 if __name__ == "__main__":
     # app.run(debug=True)
     logger.info('Running app')
-    #app.run()
-    app.run('0.0.0.0', 80)
+    app.run()
+    #app.run('0.0.0.0', 80)
