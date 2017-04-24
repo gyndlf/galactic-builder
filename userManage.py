@@ -301,6 +301,8 @@ def payUsers():
         with open(fname, 'wb') as f:
             pickle.dump(person, f)
 
+def createUsersFromFile():
+    pass
 
 def main():
     quit = False
@@ -315,6 +317,7 @@ def main():
         print("Press 5 to update varibles in the database.py and values.p")
         print("Press 6 to create a new database")
         print("Press 7 to give the users their income")
+        print("Press 8 to create the users from a file")
         print("Or press anything else to quit")
 
         choice = input(": ")
@@ -360,6 +363,12 @@ def main():
             #Newly created code
             print('-'*10 + 'Paying Users' + '-'*10)
             payUsers()
+
+        elif choice == '8':
+            #Creates the new users from the given file
+            #Newly created code
+            print('-'*10 + 'Creating new users' + '-'*10)
+            createUsersFromFile()
 
         else:
             print("Quitting...")
