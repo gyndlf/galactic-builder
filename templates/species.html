@@ -13,8 +13,9 @@
 		<tr id="page2">
 		<td><button id= "slang" class="button">Slang</button ></td>
 		<td><button id= "giovleono" class="button">Giovleono</button ></td>
-			<td><button id= "map" class="button">Map</button></td>
-			<td><button id= "galactichistory" class="button">Galactic History</button></td>
+		<td><button id= "vexxors" class="button">Vexxors</button ></td>
+		<td><button id= "map" class="button">Map</button></td>
+		<td><button id= "galactichistory" class="button">Galactic History</button></td>
 		</tr>
 		<tr>
 		<td colspan="5"><button id= "next" class="button">Next</button></td>
@@ -36,6 +37,8 @@
 		<div id="slanginfo" class="species">
 		</div>
 		<div id="giovleonoinfo" class="species">
+		</div>
+		<div id="vexxorsinfo" class="species">
 		</div>
 		<div id="mapinfo" class="species">
 		</div>
@@ -87,6 +90,11 @@ $("#page2").hide();
 		$(".species").hide();
         $("#giovleonoinfo").show();
 		$("#giovleonoinfo").load("/static/giovleonoinfo.txt");
+    });
+    $("#vexxors").click(function(){
+		$(".species").hide();
+        $("#vexxorsinfo").show();
+		$("#vexxorsinfo").load("/static/vexxorsinfo.txt");
     });
 	$("#map").click(function(){
 		$(".species").hide();
