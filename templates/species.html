@@ -51,13 +51,9 @@ $("#page2").hide();
 
 
 	$("#next").click(function(){
-		if ($("#page1").is(':visible')){
-			$("#page1").hide();
-			$("#page2").show();
-		}else if ($("#page1").is(':visible')){
-			$("#page2").hide();
-			$("#page1").show();
-		}
+	$("#page1").toggle();
+	$("#page2").toggle();
+	
 	});
 
 	$("#human").click(function(){
