@@ -34,3 +34,8 @@
 2017-04-27 14:11:08,328 - werkzeug - INFO -  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
 2017-04-27 14:11:15,191 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2017 14:11:15] "GET / HTTP/1.1" 200 -
 2017-04-27 14:11:16,001 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2017 14:11:16] "GET /favicon.ico HTTP/1.1" 404 -
+2017-04-27 15:51:35,500 - root - INFO - The seed is 943787649038865876796748967943
+2017-04-27 15:51:35,503 - root - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-04-27 15:51:35,503 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-04-27 15:51:35,503 - root - INFO - Shuffled characters O }~{MfY/B4?z:&LWonV)jQ7J_cPg-m+xD5#Fb%TZH9CX^8q]hGK<we@vS!;a*kpd=I0tE3i|AUr2(.Rs1[lN6y>$u
+2017-04-27 15:51:35,508 - root - INFO - Running app
