@@ -24,14 +24,17 @@
     </form></td>
     </tr>
 	<tr>
-	<td>Materials Needed:  </td>
+	<td>Materials You Need To Supply:  </td>
 	<td>{{ formulas[factory]['needed'] }}</td>
-    <td>Material Cost:</td>
+    <td>Materials That You Currently Supply:</td>
     <td>{{ formulas[factory]['materialsMade'] }}</td>
 	</tr>
     </table>
     <br>
     <br>
     {% endfor %}
+
+<p>Factory upgrades go here</p>
+<p>Also perhaps some formulas so people know what is going on?</p>
 
 {% endblock %}
