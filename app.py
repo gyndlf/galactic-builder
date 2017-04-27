@@ -140,7 +140,7 @@ def total(users, values):
     for person in users:
         foodSent += person.foodProduced
         totalMoney += person.money
-        tmpWealth = int(person.netIncome * random.randint(5000,15000)/10000)
+        tmpWealth = int(person.netIncome * random.randint(7500,12500)/10000)
         if tmpWealth < 1:
             tmpWealth = 0
         wealth[person.name] = tmpWealth
@@ -202,7 +202,7 @@ def mine(values, totals):
 
 
 def factory(values, totals):
-    '''Calculate factory costs. Uncompleted.'''
+    '''Calculate factory costs'''
 
     ''' respourceDisplay = 
     for mine in values.mineValues:
@@ -216,10 +216,18 @@ def factory(values, totals):
 
     calculated = {}
 
+    #Calculate factory costs
     for factoryt in values.factoryValues:
-        calculated[factoryt] = values.factoryValues[factoryt] * totals['factoryCount'][factoryt] * 2
-        if calculated[factoryt] < 1000:
-            calculated[factoryt] = 999
+
+        #Make sure that the scaling is correct. Now timesing by 0
+        if totals['factoryCount'][factoryt] == 0:
+            calculated[factoryt] = values.factoryValues[factoryt] * 2
+        else:
+            calculated[factoryt] = values.factoryValues[factoryt] * totals['factoryCount'][factoryt] * 2
+
+        #Make sure the cost is not below 10
+        if calculated[factoryt] < 10:
+            calculated[factoryt] = 10
     logger.debug('Calculated factory cost %s', calculated)
     # productCost = 0
     # factoryLevel = 1
