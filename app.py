@@ -260,14 +260,23 @@ def dynamicPersonalCalc(object, farms, values):
         facIncome = values.factoryValues[factory] * facProduced
         facProfit = facIncome - 0  # Need to add materials next
 
+        localMaterialsNeeded = {}
         for material in values.factoryRecipies[factory]: #Find out how many materials are needed
             materialsNeeded[material] += values.factoryRecipies[factory][material] * facProduced
+            #Put a minimum value in case they produce nothing in that factory
+            toSet = values.factoryRecipies[factory][material] * facProduced
+            if toSet > 0:
+                localMaterialsNeeded[material] = toSet
+            else:
+                localMaterialsNeeded[material] = values.factoryRecipies[factory][material]
         totalFacIncome += facProfit
 
         tmp = {
             'produced': facProduced,
             'income': facIncome,
-            'profit': facProfit
+            'profit': facProfit,
+            'needed' : localMaterialsNeeded,
+            'materialsMade' : '(Included in a future update)'
         }
 
         factoryDict[factory] = tmp
