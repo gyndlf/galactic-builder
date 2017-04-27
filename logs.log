@@ -39,3 +39,8 @@
 2017-04-27 15:51:35,503 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
 2017-04-27 15:51:35,503 - root - INFO - Shuffled characters O }~{MfY/B4?z:&LWonV)jQ7J_cPg-m+xD5#Fb%TZH9CX^8q]hGK<we@vS!;a*kpd=I0tE3i|AUr2(.Rs1[lN6y>$u
 2017-04-27 15:51:35,508 - root - INFO - Running app
+2017-04-27 16:38:03,672 - root - INFO - The seed is 943787649038865876796748967943
+2017-04-27 16:38:03,675 - root - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-04-27 16:38:03,676 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-04-27 16:38:03,676 - root - INFO - Shuffled characters O }~{MfY/B4?z:&LWonV)jQ7J_cPg-m+xD5#Fb%TZH9CX^8q]hGK<we@vS!;a*kpd=I0tE3i|AUr2(.Rs1[lN6y>$u
+2017-04-27 16:38:03,679 - root - INFO - Running app

@@ -9,7 +9,7 @@ class person():
         self.name = ""
         self.password = 'password'
         self.id = 0
-        self.money = 10000
+        self.money = 1000
         self.netWorth = 0
         self.salary = 0
         self.income = 0
