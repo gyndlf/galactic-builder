@@ -21,7 +21,7 @@ def calcmessage():
     except:
         return redirect(url_for('home'))
 
-    if username == 'james' and password == 'topsecret':
+    if username == 'james' and password == 'neverguess':
         print("Logging into james")
         resp = make_response(redirect(url_for('user')))
         print("Saved cookie 'currentUser'")
