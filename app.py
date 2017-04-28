@@ -7,7 +7,7 @@
 # python -m flask run
 
 import pickle
-import os, sys
+import os
 from flask import *
 import string as s
 import random
@@ -26,7 +26,7 @@ logger.setLevel(logging.INFO)
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
- #Add quotes here for only printing to the log
+#Add quotes here for only printing to the log
 
 seed = 943787649038865876796748967943
 random.seed(seed)
