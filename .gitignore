@@ -1,1 +1,6 @@
 .idea
+data/__pycache__/
+/data/people.config
+/userManage.py
+/working_copy.py
+/testapp.py
