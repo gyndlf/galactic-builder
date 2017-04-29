@@ -24,7 +24,7 @@ logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 '''
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 #Add quotes here for only printing to the log
 
@@ -250,8 +250,11 @@ def dynamicPersonalCalc(object, farms, values):
     # Mines
     minesDict = {}
     # amount produced = number of mines * percentage boost || Eventually use this
+    #object.mineBoost is representing a number/100. So 5 is a 5% bonus.
+    #object.minePowerUpgrade is the one that lets mines produce more than one material
     for name in values.mineValues:
-        produced = object.ownedMines[name] * object.mineBoost
+        produced = object.ownedMines[name] * object.minePowerUpgrade
+        produced += int(produced * object.mineBoost/100)
         minesDict[name] = produced
 
     # Factories
@@ -544,11 +547,21 @@ def userButton(name=None):
                     else:
                         logger.error("Money Error: Not enough money")
                         error = 'notEnoughMoney'
-
-            # Factories ----------------#
-
             # Mines --------------------#
+            elif 'mineUpgrade' in request.form:
+                logger.debug('Detected mineUpgrade')
+                person.minePowerUpgrade += 1
+                mineHtml = True
+
             else:
+                mineUpgrades = [1,10,50,100]
+                for percent in mineUpgrades:
+                    title = 'mineUpgrade' + str(percent)
+                    if title in request.form:
+                        logger.info('Detected %s', title)
+                        mineHtml = True
+                        person.mineBoost += percent
+                        logger.info('The users mineBoost is now %s',person.mineBoost)
                 # Mines
                 for digger in person.ownedMines:
                     button = 'buy' + digger

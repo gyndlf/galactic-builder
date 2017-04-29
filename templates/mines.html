@@ -3,6 +3,7 @@
 <div class="species"><p>
 Increase your profits by mining for valuable resources.<br>
 Mines are different as you do not gain any money for buying mines, instead they are only there to decrease the expenses of your factories.</p></div>
+<br>
 <table id="maininfo">
     <tr>
         <td colspan="12"><b>Mines</b></td>
@@ -24,10 +25,50 @@ Mines are different as you do not gain any money for buying mines, instead they 
             </form></td>
     </tr>
     <br>
-    <br>
 </table>
     {% endfor %}
 
-<p>Mine upgrades here</p>
+<h1>Mine upgrades: </h1>
+<p>------------------</p>
+<form action="/user/{{ username }}/button" method="post">
+    <p>Upgrade the amount mined by 1% (rounded down)</p>
+    <p>Cost : §0</p>
+    <input type="submit" name="mineUpgrade1" value="Buy Upgrade">
+</form>
+<p>------------------</p>
+<br>
+
+<form action="/user/{{ username }}/button" method="post">
+    <p>Upgrade the amount mined by 10% (rounded down)</p>
+    <p>Cost : §0</p>
+    <input type="submit" name="mineUpgrade10" value="Buy Upgrade">
+</form>
+<p>------------------</p>
+<br>
+
+<form action="/user/{{ username }}/button" method="post">
+    <p>Upgrade the amount mined by 50% (rounded down)</p>
+    <p>Cost : §0</p>
+    <input type="submit" name="mineUpgrade50" value="Buy Upgrade">
+</form>
+<p>------------------</p>
+<br>
+
+<form action="/user/{{ username }}/button" method="post">
+    <p>Mines double their output!</p>
+    <p>Cost : §0</p>
+    <input type="submit" name="mineUpgrade100" value="Buy Upgrade">
+</form>
+<p>------------------</p>
+<br>
+
+<form action="/user/{{ username }}/button" method="post">
+    <p>Instead of producing one resource per mine, mines produce one more. (2,3,4,...)</p>
+    <p>Cost : §0</p>
+    <input type="submit" name="mineUpgrade" value="Buy Upgrade">
+</form>
+<p>------------------</p>
+<br>
+
 <p>future images here</p>
 {% endblock %}

@@ -9,7 +9,7 @@ class person():
         self.name = ""
         self.password = 'password'
         self.id = 0
-        self.money = 1000
+        self.money = 10000
         self.netWorth = 0
         self.salary = 0
         self.income = 0
@@ -45,4 +45,5 @@ class person():
         self.mineProduced = {}
         self.saveFactories = {}
         self.totalMines = 0
-        self.mineBoost = 1
+        self.mineBoost = 1 #Is representing a number/100. So 5 is a 5% bonus.
+        self.minePowerUpgrade = 1
