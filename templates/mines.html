@@ -32,7 +32,7 @@ Mines are different as you do not gain any money for buying mines, instead they 
 <p>------------------</p>
 <form action="/user/{{ username }}/button" method="post">
     <p>Upgrade the amount mined by 1% (rounded down)</p>
-    <p>Cost : §0</p>
+    <p>Cost : §{{ minesFunc['mineUpgrades'][1] }}</p>
     <input type="submit" name="mineUpgrade1" value="Buy Upgrade">
 </form>
 <p>------------------</p>
@@ -40,7 +40,7 @@ Mines are different as you do not gain any money for buying mines, instead they 
 
 <form action="/user/{{ username }}/button" method="post">
     <p>Upgrade the amount mined by 10% (rounded down)</p>
-    <p>Cost : §0</p>
+    <p>Cost : §{{ minesFunc['mineUpgrades'][10] }}</p>
     <input type="submit" name="mineUpgrade10" value="Buy Upgrade">
 </form>
 <p>------------------</p>
@@ -48,7 +48,7 @@ Mines are different as you do not gain any money for buying mines, instead they 
 
 <form action="/user/{{ username }}/button" method="post">
     <p>Upgrade the amount mined by 50% (rounded down)</p>
-    <p>Cost : §0</p>
+    <p>Cost : §{{ minesFunc['mineUpgrades'][50] }}</p>
     <input type="submit" name="mineUpgrade50" value="Buy Upgrade">
 </form>
 <p>------------------</p>
@@ -56,7 +56,7 @@ Mines are different as you do not gain any money for buying mines, instead they 
 
 <form action="/user/{{ username }}/button" method="post">
     <p>Mines double their output!</p>
-    <p>Cost : §0</p>
+    <p>Cost : §{{ minesFunc['mineUpgrades'][100] }}</p>
     <input type="submit" name="mineUpgrade100" value="Buy Upgrade">
 </form>
 <p>------------------</p>
@@ -64,7 +64,7 @@ Mines are different as you do not gain any money for buying mines, instead they 
 
 <form action="/user/{{ username }}/button" method="post">
     <p>Instead of producing one resource per mine, mines produce one more. (2,3,4,...)</p>
-    <p>Cost : §0</p>
+    <p>Cost : §{{ minesFunc['mineUpgrades'][2] }}</p>
     <input type="submit" name="mineUpgrade" value="Buy Upgrade">
 </form>
 <p>------------------</p>

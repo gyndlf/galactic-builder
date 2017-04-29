@@ -131,6 +131,7 @@ def total(users, values):
     foodSent = 0
     totalMoney = 0
     totalMines = 0
+    avgWealth = 0
     wealth = {}
     factories = {}
     for factoryh in values.factoryValues:
@@ -151,13 +152,20 @@ def total(users, values):
         for factoryh in person.ownedFactories:
             factories[factoryh] += person.ownedFactories[factoryh]
 
+    count = 0
+    for item in wealth:
+        avgWealth += wealth[item]
+        count += 1
+    avgWealth = int(round((avgWealth/count),0))
+
     # Put them in a dictionary
     calculated = {
         'foodSent': foodSent,
         'totalMoney': totalMoney,
         'totalMines': totalMines,
         'factoryCount': factories,
-        'wealth': wealth
+        'wealth': wealth,
+        'avgWealth' : avgWealth
     }
     logger.debug('Calculated factory count %s', factories)
     return calculated
@@ -198,6 +206,23 @@ def mine(values, totals):
             mine) + str(mineCost)
         logger.debug(msg)
         calculated[mine] = mineCost
+
+    #Mine upgrades
+    base = int(totals['avgWealth']/10)
+    if base < 100:
+        base = 100
+    root10 = base * 10
+    root50 = base * 50
+    root100 = base * 100
+    root2 = root100 * root50 * root10 * base
+    mineUpgrades = {
+        1 : base,
+        10 : root10,
+        50 : root50,
+        100 : root100,
+        2 : root2
+    }
+    calculated['mineUpgrades'] = mineUpgrades
     return calculated
 
 
@@ -550,8 +575,14 @@ def userButton(name=None):
             # Mines --------------------#
             elif 'mineUpgrade' in request.form:
                 logger.debug('Detected mineUpgrade')
-                person.minePowerUpgrade += 1
                 mineHtml = True
+                if hasMoney(person, mines['mineUpgrades'][2]):
+                    person.minePowerUpgrade += 1
+                    person.money -= mines['mineUpgrades'][2]
+                    logger.info("Upgraded mine power upgrade brought")
+                else:
+                    logger.error("Money Error: Not enough money")
+                    error = 'notEnoughMoney'
 
             else:
                 mineUpgrades = [1,10,50,100]
@@ -560,8 +591,14 @@ def userButton(name=None):
                     if title in request.form:
                         logger.info('Detected %s', title)
                         mineHtml = True
-                        person.mineBoost += percent
-                        logger.info('The users mineBoost is now %s',person.mineBoost)
+                        if hasMoney(person, mines['mineUpgrades'][percent]):
+                            person.mineBoost += percent
+                            person.money -= mines['mineUpgrades'][percent]
+                            logger.info("Upgraded mine produced")
+                        else:
+                            logger.error("Money Error: Not enough money")
+                            error = 'notEnoughMoney'
+                        logger.info('The users mineBoost is now %s', person.mineBoost)
                 # Mines
                 for digger in person.ownedMines:
                     button = 'buy' + digger
