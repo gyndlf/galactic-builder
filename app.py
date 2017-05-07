@@ -18,7 +18,7 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler = logging.FileHandler('logs.log')
 handler.setFormatter(formatter)
 
-''' #Add quotes here for normal output
+ #Add quotes here for normal output
 logger = logging.getLogger('')
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
@@ -26,9 +26,9 @@ logger.setLevel(logging.INFO)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-#Add quotes here for only printing to the log
+'''#Add quotes here for only printing to the log
 
-seed = 943787649038865876796748967943
+seed = 9290385793608437924738297523
 random.seed(seed)
 logger.info('The seed is %s', seed)
 app = Flask(__name__)
@@ -652,5 +652,5 @@ def userButton(name=None):
 if __name__ == "__main__":
     # app.run(debug=True)
     logger.info('Running app')
-    app.run()
-    #app.run('0.0.0.0', 80)
+    #app.run()
+    app.run('0.0.0.0', 80)
