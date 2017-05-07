@@ -27,7 +27,7 @@ Mines are different as you do not gain any money for buying mines, instead they 
     {% endfor %}
 
 <h1>Mine upgrades: </h1>
-<table>
+<table id="maininfo">
 <form action="/user/{{ username }}/button" method="post">
     <td><tr><p>Upgrade the amount mined by 1% (rounded down)</p></td></tr>
     <tr><td><p>Cost : §{{ minesFunc['mineUpgrades'][1] }}</p></td></tr>
@@ -36,15 +36,16 @@ Mines are different as you do not gain any money for buying mines, instead they 
 </table>
 
 <br>
-<table>
+<table id="maininfo">
 <form action="/user/{{ username }}/button" method="post">
-    <p>Upgrade the amount mined by 10% (rounded down)</p></td></tr>
-    <p>Cost : §{{ minesFunc['mineUpgrades'][10] }}</p></td></tr>
-    <input type="submit" name="mineUpgrade10" value="Buy Upgrade"></td></tr>
+    <tr><td><p>Upgrade the amount mined by 10% (rounded down)</p></td></tr>
+    <tr><td><p>Cost : §{{ minesFunc['mineUpgrades'][10] }}</p></td></tr>
+    <tr><td><input type="submit" name="mineUpgrade10" value="Buy Upgrade"></td></tr>
 </form>
 </table>
+
 <br>
-<table>
+<table id="maininfo">
 <form action="/user/{{ username }}/button" method="post">
     <tr><td><p>Upgrade the amount mined by 50% (rounded down)</p></td></tr>
     <tr><td><p>Cost : §{{ minesFunc['mineUpgrades'][50] }}</p></td></tr>
@@ -52,7 +53,7 @@ Mines are different as you do not gain any money for buying mines, instead they 
 </form>
 </table>
 <br>
-<table>
+<table id="maininfo">
 <form action="/user/{{ username }}/button" method="post">
     <tr><td><p>Mines double their output!</p></td></tr>
     <tr><td><p>Cost : §{{ minesFunc['mineUpgrades'][100] }}</p></td></tr>
@@ -60,7 +61,7 @@ Mines are different as you do not gain any money for buying mines, instead they 
 </form>
 </table>
 <br>
-<table>
+<table id="maininfo">
 <form action="/user/{{ username }}/button" method="post">
     <tr><td><p>Instead of producing one resource per mine, mines produce one more. (2,3,4,...)</p></td></tr>
     <tr><td><p>Cost : §{{ minesFunc['mineUpgrades'][2] }}</p></td></tr>
