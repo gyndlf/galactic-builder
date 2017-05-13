@@ -6,7 +6,7 @@
 # export FLASK_APP=mainpythonfile.py
 # python -m flask run
 
-#Is this the final test???
+#Nope.
 
 import pickle
 import os
