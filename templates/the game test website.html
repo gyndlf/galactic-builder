@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+body {
+    margin: 0;
+}
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
+</head>
+
+<body onload="startGame()">
+<img id = "test" src="Destroyertop.jpg">
+<img id = "test1" src="SSD-SWE.png">
+<script>
+var myGamePiece;
+var myShip = new Array(10);
+var myshipNumber = 1;
+var enemyshipNumber = 10;
+var enemyShip = new Array(10);
+function startGame() {
+	
+	for (i = 0; i < myshipNumber; i++){
+		myShip[i] = new component(500, 200, "red", 40, 200 * i, 1000, 500, 600, 2, "test1");
+	}
+	for (i = 0; i < enemyshipNumber; i++){
+		enemyShip[i] = new component(150, 100, "green", 1000, 100 * i, 100, 200, 0, 0, "test");
+		for (y = 0; y < myshipNumber; y++){
+		myShip[y].target[i] = false;
+	}
+	}
+	timer = new update();
+    myGameArea.start(); 
+}
+
+
+var myGameArea = {
+	
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 2000;
+        this.canvas.height = 1000;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.interval = setInterval(updateGameArea, 20);
+        window.addEventListener('mousedown', function (e) {
+            myGameArea.x = e.pageX;
+            myGameArea.y = e.pageY;
+        })
+        window.addEventListener('mouseup', function (e) {
+            myGameArea.x = false;
+            myGameArea.y = false;
+        })
+        window.addEventListener('touchstart', function (e) {
+            myGameArea.x = e.pageX;
+            myGameArea.y = e.pageY;
+        })
+        window.addEventListener('touchend', function (e) {
+            myGameArea.x = false;
+            myGameArea.y = false;
+        })
+    }, 
+	
+    clear : function(){
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+function update(){
+	this.time = 0;
+	this.update = function() {
+		var timer = false;
+		this.time += 1;
+		if (this.time == 1){
+			timer = true;
+			this.time = 0;
+		}else{
+			timer = false;
+		}
+		return timer;
+	}
+}
+function component(width, height, color, x, y, health, range, rrange, speed, image) {
+	this.futureX = x;
+	this.image = document.getElementById(image);
+	this.futureY = y;
+	this.rrange = rrange;
+	this.health = health;
+	this.range = range;
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;
+	this.color = color;
+	this.speed = speed;
+	this.futureY = y;
+	this.futureX = x;
+    this.x = x;
+    this.y = y;  
+	this.ydiff = 0;
+	this.xdiff = rrange;
+	this.alive = true;	
+	this.targeted = false;
+	var number = 0;
+	var number1 = 0;
+	var number2 = 0;
+	var angle1 = Math.PI;
+	this.target = new Array(enemyshipNumber);
+	var distx;
+	var disty;
+	var distt;
+	var angle;
+	this.swarm = false;
+		this.update = function() {
+			if(this.health < 0){
+				this.alive = false;
+			}
+			if(this.alive == true) {
+			number += 1;
+			number1 += 1;
+			number2 += 1;
+			ctx = myGameArea.context;
+			ctx.fillStyle = this.color;
+			ctx.fillRect(this.x - this.width / 2, this.y - this.height / 2, this.width, this.height);
+			ctx.drawImage(this.image, this.x - (this.width/2 - 1), this.y - (this.height/2 - 1), this.width - 2, this.height - 2);
+			ctx.beginPath();
+			ctx.arc(this.x, this.y, this.range,0 , 2*Math.PI);
+			ctx.stroke();
+			ctx.beginPath();
+			ctx.moveTo(this.x, this.y);
+			ctx.lineTo(this.x + this.xdiff, this.y + this.ydiff);
+			ctx.stroke();
+			ctx.font = "10px Arial";
+			ctx.strokeText(this.health,this.x - 15, this.y);
+			}
+		}
+		this.clicked = function() {
+			var myleft = this.x - this.width / 2;
+			var myright = this.x + (this.width) - this.width / 2;
+			var mytop = this.y - this.height / 2;
+			var mybottom = this.y + (this.height) - this.height / 2;
+			var clicked = true;
+			if ((mybottom < myGameArea.y) || (mytop > myGameArea.y) || (myright < myGameArea.x) || (myleft > myGameArea.x)) {
+				clicked = false;
+			}
+			return clicked;
+		}
+		this.newPos = function() {
+			if(this.alive == true) {
+			this.x += this.speedX;
+			this.y += this.speedY;  
+			}
+		}
+		this.attack = function(enemy) {
+			if(this.alive == true) {
+			var diff = 0;
+			var altdiff = 0;
+			if (this.x > enemy.x){
+			diff = this.x - enemy.x;
+			} else if (this.x < enemy.x){
+			diff = enemy.x - this.x;
+			}
+			if (this.y > enemy.y){
+			altdiff = this.y - enemy.y;
+			} else if (this.y < enemy.y){
+			altdiff = enemy.y - this.y;
+			}
+			if (Math.sqrt(diff * diff + altdiff * altdiff) < this.range){enemy.health -= 1; }
+			
+			}
+		}
+		this.squareattack = function(enemy, num){
+		if(this.alive == true && enemy.alive == true) {
+			//if (enemy.x > this.x - this.range && enemy.x < this.x + this.range && enemy.y > this.y - this.range && enemy.y < this.y + this.range ) {enemy.health -= 1;}
+			
+			if (enemy.clicked() == true && this.color == "blue"){
+				this.target[num] = true;
+				number2 = 0;
+			}
+			if(this.target[num] == true){
+			distx = enemy.x - this.x;
+			disty = enemy.y - this.y;
+			distt = Math.sqrt(distx * distx + disty * disty);
+			
+			if (this.y < enemy.y){
+				angle = 1.5708 + Math.atan(distx/disty);
+			} else if (this.y > enemy.y){
+				angle = -(1.5708 - Math.atan(distx/disty));
+			}
+			if (angle1 < angle - 0.01){
+			angle1 += 0.01;
+			} else if (angle1 > angle + 0.01){
+			angle1 -= 0.01;
+			}
+			if (angle1 > angle - 0.01 && angle1 < angle + 0.01 && rrange > distt){
+			enemy.health -= 1;
+			}
+			this.xdiff = Math.sin(angle1-1.5708) * rrange;
+			this.ydiff = Math.cos(angle1-1.5708) * rrange;
+			}
+			
+			if (enemy.alive == false){
+			this.target[num] = false;
+			}
+		}
+		}
+		this.move = function() {
+			this.speedX = 0;
+			this.speedY = 0;    
+			var B = Math.atan((this.futureY - this.y)/(this.futureX - this.x));
+			var b = Math.cos(B) * this.speed;
+			var a = Math.sin(B) * this.speed;
+			if (this.x > this.futureX + speed/2 && this.y > this.futureY + speed/2) {this.speedX = -b; this.speedY = -a;}
+			if (this.x < this.futureX - speed/2 && this.y < this.futureY - speed/2) {this.speedX = b; this.speedY = a;}
+			if (this.y > this.futureY + speed/2 && this.x < this.futureX - speed/2) {this.speedY = a;  this.speedX = b;}
+			if (this.x > this.futureX + speed/2 && this.y < this.futureY - speed/2) {this.speedY = -a; this.speedX = -b;} 
+		}
+		this.setfuture = function(other) {
+			if (this.clicked() && this.color == "red" && number1 > 10) {
+				this.color = "blue";
+				number = 0;
+			} else if (this.color == "blue" && this.clicked() && number > 10){
+			this.color = "red";
+			number1 = 0;
+			}
+			else if (this.color == "blue" && number2 > 10){
+				this.futureX = other.x;
+				this.futureY = other.y;
+				if (this.futureX > myGameArea.canvas.width){
+				this.futureX = myGameArea.canvas.width - 10;
+				}else if (this.futureX < 0){
+				this.futureX = 10;
+				}else if (this.futureY > myGameArea.canvas.height){
+				this.futureY = myGameArea.canvas.height - 10;
+				}else if (this.futureY < 0){
+				this.futureX = 10;
+				}
+			} else {}
+		}
+		this.aiswarm = function(enemy, enemynum) {
+			 if(enemy.alive == true && this.swarm == false){
+				this.futureX = enemy.x;
+				this.futureY = enemy.y;
+				this.swarm = true;
+				this.target[enemynum] = true;
+			 }else if(enemy.alive == false){
+				this.swarm = false;
+			 }
+		}
+	
+}
+function updateGameArea() {
+    myGameArea.clear();
+	
+    
+	for (i = 0; i < myshipNumber; i++){
+		myShip[i].move();
+		}
+		for (i = 0; i < enemyshipNumber; i++){
+		enemyShip[i].move();
+		}
+	if (timer.update()){
+	for (i = 0; i < myshipNumber; i++){
+	for (y = 0; y < enemyshipNumber; y++){
+					enemyShip[y].attack(myShip[i]);
+					enemyShip[y].squareattack(myShip[i], i);
+					enemyShip[y].newPos();
+					enemyShip[y].aiswarm(myShip[i], i);
+		}
+		}
+		for (i = 0; i < myshipNumber; i++){
+			for (y = 0; y < enemyshipNumber; y++){
+				myShip[i].attack(enemyShip[y]);
+				myShip[i].squareattack(enemyShip[y], y);
+			}
+			myShip[i].newPos();
+		}
+	}
+	if (myGameArea.x && myGameArea.y) {
+		for (i = 0; i < myshipNumber; i++){
+		myShip[i].setfuture(myGameArea);
+		}
+    }
+		for (i = 0; i < myshipNumber; i++){
+			myShip[i].update();
+		}
+		for (i = 0; i < enemyshipNumber; i++){
+			enemyShip[i].update();
+		}
+}
+</script>
+
+</body>
+</html>
