@@ -6,6 +6,8 @@
 # export FLASK_APP=mainpythonfile.py
 # python -m flask run
 
+#Nope.
+
 import pickle
 import os
 from flask import *
@@ -28,7 +30,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 #Add quotes here for only printing to the log
 
-seed = 943787649038865876796748967943
+seed = 9290385793608437924738297523
 random.seed(seed)
 logger.info('The seed is %s', seed)
 app = Flask(__name__)
