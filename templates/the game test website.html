@@ -18,17 +18,63 @@ canvas {
 <img id = "test1" src="SSD-SWE.png">
 <script>
 var myGamePiece;
-var myShip = new Array(10);
-var myshipNumber = 1;
+var myShip = new Array(100);
+var myShips = new Array();
+myShips[0] = 1; //J-10 Exploration series
+myShips[1] = 1; //J-9 Exploration series
+myShips[2] = 1; //J-8 Exploration series
+myShips[3] = 1; //J-7 Exploration series
+myShips[4] = 1; //J-6 Exploration series
+myShips[5] = 1; //J-5 Exploration series
+myShips[6] = 1; //J-4 Exploration series
+myShips[7] = 1; //J-3 Exploration series
+myShips[8] = 1; //J-2 Exploration series
+myShips[9] = 1; //J-1 Exploration series
+myShips[10] = 1; //Exploration series fighter swarm
+
+var myshipNumber;
 var enemyshipNumber = 10;
 var enemyShip = new Array(10);
 function startGame() {
 	
-	for (i = 0; i < myshipNumber; i++){
-		myShip[i] = new component(500, 200, "red", 40, 200 * i, 1000, 500, 600, 2, "test1");
-	}
+	myshipNumber = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10];
+	
+	for (i = 0; i < myShips[0]; i++){
+		myShip[i] = new component(530, 120, "red", 40, 120 * i, 10000, 500, 600, 0.1, "test1", 10000, 2, false);
+		}
+		for (i = myShips[0]; i < myShips[0] + myShips[1]; i ++)	{
+		myShip[i] = new component(150, 80, "red", 40, 120 * i, 1000, 200, 0, 0.5, "test1", 0, 2, false);
+		}
+		for (i = myShips[0] + myShips[1]; i < myShips[0] + myShips[1] + myShips[2]; i ++)	{
+		myShip[i] = new component(160, 60, "red", 40, 120 * i, 500, 200, 0, 0.5, "test1", 0, 2, false);
+		}
+		for (i = myShips[0] + myShips[1] + myShips[2]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3]; i ++)	{
+		myShip[i] = new component(170, 60, "red", 40, 120 * i, 500, 100, 0, 0.6, "test1", 10100, 1, false);
+		}
+		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]; i ++)	{
+		myShip[i] = new component(130, 60, "red", 40, 120 * i, 200, 100, 0, 0.5, "test1", 0, 4, false);
+		}
+		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]; i ++)	{
+		myShip[i] = new component(90, 70, "red", 40, 120 * i, 200, 0, 700, 0.2, "test1", 0, 8, false);
+		}
+		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]; i ++)	{
+		myShip[i] = new component(100, 60, "red", 40, 120 * i, 800, 100, 0, 0.8, "test1", 0, 2, false);
+		}
+		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]; i ++)	{
+		myShip[i] = new component(100, 60, "red", 40, 120 * i, 100, 0, 0, 1, "test1", 0, 0, false);
+		}
+		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]+ myShips[7]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]; i ++)	{
+		myShip[i] = new component(60, 40, "red", 40, 120 * i, 50, 50, 0, 1, "test1", 0, 1, false);
+		}
+		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]; i ++)	{
+		myShip[i] = new component(60, 40, "red", 40, 120 * i, 50, 50, 0, 1, "test1", 0, 1, false);
+		}
+		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10]; i ++)	{
+		myShip[i] = new component(20, 20, "yellow", 40, 120 * i, 200, 50, 0, 5, "test1", 0, 1, true);
+		}
+	
 	for (i = 0; i < enemyshipNumber; i++){
-		enemyShip[i] = new component(150, 100, "green", 1000, 100 * i, 100, 200, 0, 0, "test");
+		enemyShip[i] = new component(150, 100, "green", 1000, 100 * i + 50, 1000, 400, 0, 0, "test", 0, 1, true);
 		for (y = 0; y < myshipNumber; y++){
 		myShip[y].target[i] = false;
 	}
@@ -83,8 +129,9 @@ function update(){
 		return timer;
 	}
 }
-function component(width, height, color, x, y, health, range, rrange, speed, image) {
+function component(width, height, color, x, y, health, range, rrange, speed, image, fighterP, damage, swarm) {
 	this.futureX = x;
+	this.damage = damage;
 	this.image = document.getElementById(image);
 	this.futureY = y;
 	this.rrange = rrange;
@@ -103,12 +150,17 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 	this.ydiff = 0;
 	this.xdiff = rrange;
 	this.alive = true;	
+	this.swarmai =swarm;
 	this.targeted = false;
 	var number = 0;
 	var number1 = 0;
 	var number2 = 0;
 	var angle1 = Math.PI;
 	this.target = new Array(enemyshipNumber);
+	this.fighterN = 0;
+	this.fighterNN = 0;
+	this.fighterP = fighterP;
+	this.myfighters = new Array(100);
 	var distx;
 	var disty;
 	var distt;
@@ -168,7 +220,7 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 			} else if (this.y < enemy.y){
 			altdiff = enemy.y - this.y;
 			}
-			if (Math.sqrt(diff * diff + altdiff * altdiff) < this.range){enemy.health -= 1; }
+			if (Math.sqrt(diff * diff + altdiff * altdiff) < this.range){enemy.health -= this.damage; }
 			
 			}
 		}
@@ -196,7 +248,7 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 			angle1 -= 0.01;
 			}
 			if (angle1 > angle - 0.01 && angle1 < angle + 0.01 && rrange > distt){
-			enemy.health -= 1;
+			enemy.health -=  this.damage * 2;
 			}
 			this.xdiff = Math.sin(angle1-1.5708) * rrange;
 			this.ydiff = Math.cos(angle1-1.5708) * rrange;
@@ -205,7 +257,19 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 			if (enemy.alive == false){
 			this.target[num] = false;
 			}
-		}
+			if(this.swarmai == true){
+			if(enemy.alive == true && this.swarm == false){
+				this.futureX = enemy.x;
+				this.futureY = enemy.y;
+				this.swarm = true;
+				this.target[num] = true;
+			 }
+			 
+			 }
+		}else if
+			 (enemy.alive == false){
+				this.swarm = false;
+			 }
 		}
 		this.move = function() {
 			this.speedX = 0;
@@ -240,21 +304,24 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 				}
 			} else {}
 		}
-		this.aiswarm = function(enemy, enemynum) {
-			 if(enemy.alive == true && this.swarm == false){
-				this.futureX = enemy.x;
-				this.futureY = enemy.y;
-				this.swarm = true;
-				this.target[enemynum] = true;
-			 }else if(enemy.alive == false){
-				this.swarm = false;
-			 }
+		this.fighter = function(){
+		if(this.alive == true) {
+			if (this.fighterP > 0){
+				this.fighterNN += 1;
+				if (this.fighterNN > this.fighterP){
+				this.fighterNN = 0;
+				this.fighterN += 1;
+				myShips[10] += 1;
+				myShip[myshipNumber] = new component(20, 20, "yellow", this.x, this.y, 200, 50, 0, 5, "test1", 0, 0.5, true);
+				}
+			
+			}
+			}
 		}
-	
 }
 function updateGameArea() {
     myGameArea.clear();
-	
+	myshipNumber = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10];
     
 	for (i = 0; i < myshipNumber; i++){
 		myShip[i].move();
@@ -268,13 +335,14 @@ function updateGameArea() {
 					enemyShip[y].attack(myShip[i]);
 					enemyShip[y].squareattack(myShip[i], i);
 					enemyShip[y].newPos();
-					enemyShip[y].aiswarm(myShip[i], i);
+					
 		}
 		}
 		for (i = 0; i < myshipNumber; i++){
 			for (y = 0; y < enemyshipNumber; y++){
 				myShip[i].attack(enemyShip[y]);
 				myShip[i].squareattack(enemyShip[y], y);
+				myShip[i].fighter();
 			}
 			myShip[i].newPos();
 		}
