@@ -3,8 +3,10 @@
 
 
 <body onload="startGame()">
-<img id = "test" src="Destroyertop.jpg">
-<img id = "test1" src="SSD-SWE.png">
+<div id="thisdiv"></div>
+<img id = "test" src="/static/Destroyertop.jpg">
+<img id = "test1" src="/static/SSD-SWE.png">
+
 <script>
 var myGamePiece;
 var myShip = new Array(100);
@@ -76,6 +78,7 @@ function startGame() {
 var myGameArea = {
 
     canvas : document.createElement("canvas"),
+	
     start : function() {
         this.canvas.width = 2000;
         this.canvas.height = 1000;
