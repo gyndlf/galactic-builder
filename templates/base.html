@@ -2,11 +2,11 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="main.css">
         <title>Galactic Builder</title>
 
 <style>
 		body{
-            /*background-image: url(space_bg.gif)*/
             background: linear-gradient(132deg, #ec5218, #1665c1);
             background-size: 400% 400%;
             animation: BackgroundGradient 30s ease infinite;
@@ -82,29 +82,17 @@ font-size: 17px
                color: #666;
              background-color: #4CAF50;
              border: none;
-
                border-radius: 15px;
             box-shadow: 0 9px #727272;
 
      }
 
  .button:hover {background-color: #3e8e41}
-
-
-
-
-
+ 
          .button:active {
-
-
                background-color: #3e8e41;
-
-
              box-shadow: 0 5px #666;
-
-
                transform: translateY(4px);
-
            }
 
 
@@ -112,99 +100,42 @@ font-size: 17px
 
 
            .button {
-
-
             position: relative;
-
-
              background-color: #4CAF50;
-
-
               border: none;
-
              font-size: 15px;
-
-
              color: #FFFFFF;
-
-
             padding: 15px;
-
-
             width: 125px;
-
            text-align: center;
-
-
            -webkit-transition-duration: 0.4s; /* Safari */
-
-
              transition-duration: 0.4s;
-
-
              text-decoration: none;
-
-
             overflow: hidden;
-
               cursor: pointer;
-
-
           }
 
 
-
-
-
            .button:after {
-
-
               content: "";
-
-
              background: #f1f1f1;
-
-
              display: block;
-
               position: absolute;
-
-
              padding-top: 300%;
-
-
             padding-left: 350%;
-
-
              margin-left: -20px !important;
-
-
              margin-top: -120%;
-
-
             opacity: 0;
-
-
              transition: all 0.8s
-
-
          }
 
 
 
 
          .button:active:after {
-
-
              padding: 0;
-
-
              margin: 0;
-
-
               opacity: 1;
-
-
               transition: 0s
 
 
