@@ -49,3 +49,205 @@
 2017-05-14 16:26:57,054 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
 2017-05-14 16:26:57,055 - root - INFO - Shuffled characters ?8TFwG~mkJ2_Etrnof>e@jyK9V4p0!(CLA=RIbYvca*xQdU<BXSg}^sHPWq5%{N[u|l$#;Dh.-M&]Z 3O6+1zi7:)/
 2017-05-14 16:26:57,099 - root - INFO - Running app
+2017-05-24 19:16:46,885 - root - INFO - The seed is 759478698707086794535275
+2017-05-24 19:16:46,888 - root - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-05-24 19:16:46,888 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-05-24 19:16:46,888 - root - INFO - Shuffled characters vI:HX;l+2(}kZFmnWUu>AqdxRN]D<@6!MJYoy%$ef7)Bt|~iSTh/L[53E1= ?z._gGCP&-Oj49Ksr*cw^{bQpaV80#
+2017-05-24 19:16:46,890 - root - INFO - Running app
+2017-05-24 19:17:10,896 - root - INFO - The seed is 759478698707086794535275
+2017-05-24 19:17:10,901 - root - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-05-24 19:17:10,901 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-05-24 19:17:10,901 - root - INFO - Shuffled characters c.nuTvrkgSo{HV^NDz+84LmY>Xf/ZGEyP[ UwRF@WeCjp-#i}J&QB_<x$0K29a31qAd]!(?*;t%b:M~s|O)l67h=5I
+2017-05-24 19:17:10,907 - root - INFO - Running app
+2017-05-24 19:17:11,210 - werkzeug - INFO -  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2017-05-24 19:17:25,684 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:17:25] "GET / HTTP/1.1" 200 -
+2017-05-24 19:17:25,712 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:17:25] "GET /favicon.ico HTTP/1.1" 404 -
+2017-05-24 19:17:26,144 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:17:26] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-05-24 19:18:32,761 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:18:32] "GET / HTTP/1.1" 200 -
+2017-05-24 19:18:32,793 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:18:32] "GET /favicon.ico HTTP/1.1" 404 -
+2017-05-24 19:18:32,933 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:18:32] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-05-24 19:18:52,562 - root - INFO - The seed is 759478698707086794535275
+2017-05-24 19:18:52,565 - root - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-05-24 19:18:52,565 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-05-24 19:18:52,565 - root - INFO - Shuffled characters c.nuTvrkgSo{HV^NDz+84LmY>Xf/ZGEyP[ UwRF@WeCjp-#i}J&QB_<x$0K29a31qAd]!(?*;t%b:M~s|O)l67h=5I
+2017-05-24 19:18:52,571 - root - INFO - Running app
+2017-05-24 19:18:52,576 - werkzeug - INFO -  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2017-05-24 19:18:56,006 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:18:56] "GET / HTTP/1.1" 200 -
+2017-05-24 19:18:56,049 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:18:56] "GET /favicon.ico HTTP/1.1" 404 -
+2017-05-24 19:18:56,282 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:18:56] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-05-24 19:19:00,389 - root - INFO - [1] Loading users
+2017-05-24 19:19:00,404 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:19:00] "POST /loginuser HTTP/1.1" 500 -
+2017-05-24 19:19:00,586 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:19:00] "GET /favicon.ico HTTP/1.1" 404 -
+2017-05-24 19:21:55,120 - root - INFO - The seed is 759478698707086794535275
+2017-05-24 19:21:55,121 - root - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-05-24 19:21:55,121 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-05-24 19:21:55,121 - root - INFO - Shuffled characters vI:HX;l+2(}kZFmnWUu>AqdxRN]D<@6!MJYoy%$ef7)Bt|~iSTh/L[53E1= ?z._gGCP&-Oj49Ksr*cw^{bQpaV80#
+2017-05-24 19:21:55,124 - root - INFO - Running app
+2017-05-24 19:21:55,147 - werkzeug - INFO -  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2017-05-24 19:22:00,681 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:00] "GET / HTTP/1.1" 200 -
+2017-05-24 19:22:00,722 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:00] "GET /favicon.ico HTTP/1.1" 404 -
+2017-05-24 19:22:02,947 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:02] "GET / HTTP/1.1" 200 -
+2017-05-24 19:22:02,976 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:02] "GET /favicon.ico HTTP/1.1" 404 -
+2017-05-24 19:22:03,114 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:03] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-05-24 19:22:04,539 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:04] "GET / HTTP/1.1" 200 -
+2017-05-24 19:22:04,566 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:04] "GET /favicon.ico HTTP/1.1" 404 -
+2017-05-24 19:22:04,695 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:04] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-05-24 19:22:07,560 - root - INFO - [1] Loading users
+2017-05-24 19:22:07,577 - root - INFO - Logging in to james
+2017-05-24 19:22:07,579 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:07] "POST /loginuser HTTP/1.1" 302 -
+2017-05-24 19:22:07,591 - root - INFO - ----------Finances----------
+2017-05-24 19:22:07,591 - root - INFO - [1] Load values
+2017-05-24 19:22:07,597 - root - INFO - [1] Loading users
+2017-05-24 19:22:07,599 - root - INFO - [2] Running total definition
+2017-05-24 19:22:07,600 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:22:07,600 - root - INFO - [3] Running farms def
+2017-05-24 19:22:07,600 - root - INFO - [3] Running mine def
+2017-05-24 19:22:07,600 - root - INFO - [3] Running factory def
+2017-05-24 19:22:07,601 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:22:07,602 - root - INFO - Rendering home html...
+2017-05-24 19:22:07,623 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:07] "GET /user/james/home HTTP/1.1" 200 -
+2017-05-24 19:22:07,653 - root - INFO - ----------Finances----------
+2017-05-24 19:22:07,654 - root - INFO - [1] Load values
+2017-05-24 19:22:07,654 - root - INFO - [1] Loading users
+2017-05-24 19:22:07,656 - root - INFO - [2] Running total definition
+2017-05-24 19:22:07,657 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:22:07,657 - root - INFO - [3] Running farms def
+2017-05-24 19:22:07,657 - root - INFO - [3] Running mine def
+2017-05-24 19:22:07,657 - root - INFO - [3] Running factory def
+2017-05-24 19:22:07,657 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:22:07,658 - root - ERROR - Invalid page name!
+2017-05-24 19:22:07,659 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:07] "GET /user/james/main.css HTTP/1.1" 200 -
+2017-05-24 19:22:07,671 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:07] "GET /static/Chart.min.js HTTP/1.1" 200 -
+2017-05-24 19:22:09,911 - root - INFO - ----------Finances----------
+2017-05-24 19:22:09,911 - root - INFO - [1] Load values
+2017-05-24 19:22:09,911 - root - INFO - [1] Loading users
+2017-05-24 19:22:09,912 - root - INFO - [2] Running total definition
+2017-05-24 19:22:09,913 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:22:09,913 - root - INFO - [3] Running farms def
+2017-05-24 19:22:09,913 - root - INFO - [3] Running mine def
+2017-05-24 19:22:09,913 - root - INFO - [3] Running factory def
+2017-05-24 19:22:09,913 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:22:09,913 - root - INFO - Rendering home html...
+2017-05-24 19:22:09,915 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:09] "GET /user/james/home HTTP/1.1" 200 -
+2017-05-24 19:22:09,938 - root - INFO - ----------Finances----------
+2017-05-24 19:22:09,938 - root - INFO - [1] Load values
+2017-05-24 19:22:09,938 - root - INFO - [1] Loading users
+2017-05-24 19:22:09,940 - root - INFO - [2] Running total definition
+2017-05-24 19:22:09,941 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:22:09,941 - root - INFO - [3] Running farms def
+2017-05-24 19:22:09,941 - root - INFO - [3] Running mine def
+2017-05-24 19:22:09,941 - root - INFO - [3] Running factory def
+2017-05-24 19:22:09,941 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:22:09,942 - root - ERROR - Invalid page name!
+2017-05-24 19:22:09,942 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:09] "GET /user/james/main.css HTTP/1.1" 200 -
+2017-05-24 19:22:10,443 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:10] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-05-24 19:22:16,388 - root - INFO - [1] Loading users
+2017-05-24 19:22:16,390 - root - INFO - Logging in to james
+2017-05-24 19:22:16,391 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:16] "POST /loginuser HTTP/1.1" 302 -
+2017-05-24 19:22:16,410 - root - INFO - ----------Finances----------
+2017-05-24 19:22:16,410 - root - INFO - [1] Load values
+2017-05-24 19:22:16,411 - root - INFO - [1] Loading users
+2017-05-24 19:22:16,411 - root - INFO - [2] Running total definition
+2017-05-24 19:22:16,411 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:22:16,412 - root - INFO - [3] Running farms def
+2017-05-24 19:22:16,412 - root - INFO - [3] Running mine def
+2017-05-24 19:22:16,412 - root - INFO - [3] Running factory def
+2017-05-24 19:22:16,412 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:22:16,413 - root - INFO - Rendering home html...
+2017-05-24 19:22:16,415 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:16] "GET /user/james/home HTTP/1.1" 200 -
+2017-05-24 19:22:16,448 - root - INFO - ----------Finances----------
+2017-05-24 19:22:16,452 - root - INFO - [1] Load values
+2017-05-24 19:22:16,452 - root - INFO - [1] Loading users
+2017-05-24 19:22:16,454 - root - INFO - [2] Running total definition
+2017-05-24 19:22:16,454 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:22:16,454 - root - INFO - [3] Running farms def
+2017-05-24 19:22:16,454 - root - INFO - [3] Running mine def
+2017-05-24 19:22:16,454 - root - INFO - [3] Running factory def
+2017-05-24 19:22:16,454 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:22:16,455 - root - ERROR - Invalid page name!
+2017-05-24 19:22:16,456 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:16] "GET /user/james/main.css HTTP/1.1" 200 -
+2017-05-24 19:22:34,952 - root - INFO - The seed is 759478698707086794535275
+2017-05-24 19:22:34,953 - root - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-05-24 19:22:34,953 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-05-24 19:22:34,953 - root - INFO - Shuffled characters vI:HX;l+2(}kZFmnWUu>AqdxRN]D<@6!MJYoy%$ef7)Bt|~iSTh/L[53E1= ?z._gGCP&-Oj49Ksr*cw^{bQpaV80#
+2017-05-24 19:22:34,955 - root - INFO - Running app
+2017-05-24 19:22:34,972 - werkzeug - INFO -  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2017-05-24 19:22:41,248 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:41] "GET / HTTP/1.1" 200 -
+2017-05-24 19:22:41,284 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:41] "GET /favicon.ico HTTP/1.1" 404 -
+2017-05-24 19:22:50,513 - root - INFO - [1] Loading users
+2017-05-24 19:22:50,516 - root - INFO - Logging in to james
+2017-05-24 19:22:50,517 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:50] "POST /loginuser HTTP/1.1" 302 -
+2017-05-24 19:22:50,535 - root - INFO - ----------Finances----------
+2017-05-24 19:22:50,535 - root - INFO - [1] Load values
+2017-05-24 19:22:50,536 - root - INFO - [1] Loading users
+2017-05-24 19:22:50,537 - root - INFO - [2] Running total definition
+2017-05-24 19:22:50,538 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:22:50,538 - root - INFO - [3] Running farms def
+2017-05-24 19:22:50,538 - root - INFO - [3] Running mine def
+2017-05-24 19:22:50,538 - root - INFO - [3] Running factory def
+2017-05-24 19:22:50,538 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:22:50,539 - root - INFO - Rendering home html...
+2017-05-24 19:22:50,562 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:50] "GET /user/james/home HTTP/1.1" 200 -
+2017-05-24 19:22:50,611 - root - INFO - ----------Finances----------
+2017-05-24 19:22:50,612 - root - INFO - [1] Load values
+2017-05-24 19:22:50,612 - root - INFO - [1] Loading users
+2017-05-24 19:22:50,613 - root - INFO - [2] Running total definition
+2017-05-24 19:22:50,613 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:22:50,614 - root - INFO - [3] Running farms def
+2017-05-24 19:22:50,614 - root - INFO - [3] Running mine def
+2017-05-24 19:22:50,614 - root - INFO - [3] Running factory def
+2017-05-24 19:22:50,614 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:22:50,614 - root - ERROR - Invalid page name!
+2017-05-24 19:22:50,615 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:50] "GET /user/james/main.css HTTP/1.1" 200 -
+2017-05-24 19:22:56,425 - root - INFO - ----------Finances----------
+2017-05-24 19:22:56,425 - root - INFO - [1] Load values
+2017-05-24 19:22:56,425 - root - INFO - [1] Loading users
+2017-05-24 19:22:56,427 - root - INFO - [2] Running total definition
+2017-05-24 19:22:56,428 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:22:56,428 - root - INFO - [3] Running farms def
+2017-05-24 19:22:56,428 - root - INFO - [3] Running mine def
+2017-05-24 19:22:56,429 - root - INFO - [3] Running factory def
+2017-05-24 19:22:56,429 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:22:56,429 - root - INFO - Rendering war html
+2017-05-24 19:22:56,434 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:56] "GET /user/james/war HTTP/1.1" 200 -
+2017-05-24 19:22:56,456 - root - INFO - ----------Finances----------
+2017-05-24 19:22:56,457 - root - INFO - [1] Load values
+2017-05-24 19:22:56,457 - root - INFO - [1] Loading users
+2017-05-24 19:22:56,458 - root - INFO - [2] Running total definition
+2017-05-24 19:22:56,459 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:22:56,459 - root - INFO - [3] Running farms def
+2017-05-24 19:22:56,459 - root - INFO - [3] Running mine def
+2017-05-24 19:22:56,459 - root - INFO - [3] Running factory def
+2017-05-24 19:22:56,460 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:22:56,460 - root - ERROR - Invalid page name!
+2017-05-24 19:22:56,461 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:56] "GET /user/james/main.css HTTP/1.1" 200 -
+2017-05-24 19:22:56,542 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:56] "GET /static/gameWebsite.html HTTP/1.1" 200 -
+2017-05-24 19:22:56,597 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:56] "GET /static/Destroyertop.jpg HTTP/1.1" 200 -
+2017-05-24 19:22:56,609 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:56] "GET /static/SSD-SWE.png HTTP/1.1" 200 -
+2017-05-24 19:22:59,216 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:59] "GET / HTTP/1.1" 200 -
+2017-05-24 19:22:59,248 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:22:59] "GET /favicon.ico HTTP/1.1" 404 -
+2017-05-24 19:23:11,186 - root - INFO - [1] Loading users
+2017-05-24 19:23:11,189 - root - INFO - Logging in to cael
+2017-05-24 19:23:11,191 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:23:11] "POST /loginuser HTTP/1.1" 302 -
+2017-05-24 19:23:11,211 - root - INFO - ----------Finances----------
+2017-05-24 19:23:11,212 - root - INFO - [1] Load values
+2017-05-24 19:23:11,212 - root - INFO - [1] Loading users
+2017-05-24 19:23:11,213 - root - INFO - [2] Running total definition
+2017-05-24 19:23:11,213 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:23:11,213 - root - INFO - [3] Running farms def
+2017-05-24 19:23:11,213 - root - INFO - [3] Running mine def
+2017-05-24 19:23:11,213 - root - INFO - [3] Running factory def
+2017-05-24 19:23:11,213 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:23:11,214 - root - INFO - Rendering home html...
+2017-05-24 19:23:11,216 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:23:11] "GET /user/cael/home HTTP/1.1" 200 -
+2017-05-24 19:23:11,245 - root - INFO - ----------Finances----------
+2017-05-24 19:23:11,246 - root - INFO - [1] Load values
+2017-05-24 19:23:11,246 - root - INFO - [1] Loading users
+2017-05-24 19:23:11,247 - root - INFO - [2] Running total definition
+2017-05-24 19:23:11,248 - root - INFO - Calculating dynamic varibles...
+2017-05-24 19:23:11,248 - root - INFO - [3] Running farms def
+2017-05-24 19:23:11,248 - root - INFO - [3] Running mine def
+2017-05-24 19:23:11,248 - root - INFO - [3] Running factory def
+2017-05-24 19:23:11,249 - root - INFO - [4] Running dynamic personal calulator def
+2017-05-24 19:23:11,249 - root - ERROR - Invalid page name!
+2017-05-24 19:23:11,250 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:23:11] "GET /user/cael/main.css HTTP/1.1" 200 -
