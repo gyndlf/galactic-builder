@@ -92,7 +92,7 @@ var myGameArea = {
         this.canvas.width = 2000;
         this.canvas.height = 1000;
         this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[10]);
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
         window.addEventListener('mousedown', function (e) {
             myGameArea.x = e.pageX;
