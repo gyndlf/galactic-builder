@@ -1,228 +1,26 @@
 <html>
+
     <head>
+    
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="/static/main.css">
         <title>Galactic Builder</title>
-
-<style>
-		body{
-            /*background-image: url(space_bg.gif)*/
-            background: linear-gradient(132deg, #ec5218, #1665c1);
-            background-size: 400% 400%;
-            animation: BackgroundGradient 30s ease infinite;
-            text-align: center;
-        }
         
-        @keyframes BackgroundGradient {
-        0% {background-position: 0% 50%;}
-        50% {background-position: 100% 50%;}
-        100% {background-position: 0% 50%;}
-        }
+    <script>            
+            
+            function myFunction(x) {
+    x.classList.toggle("change");
+}
+            function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+        </script>
         
-        #community {
-            background-color ;
-            text-align: center;
-        }
-        p {
-    line-height: 2;
-font-size: 17px
-		}
-        h1{
-            color: azure;
-        }
-        
-        td{
-            text-align: center;
-            border-bottom:1px solid #33cc33;
-            padding:15px;
-            width: 100px;
-        }
-        
-        tr{
-            border-bottom:1px solid #33cc33;
-        }
-        
-        #maininfo{
-            border:5px solid #33cc33;
-            background-color: azure;
-            text-align: center;
-            width: 100%;
-			background-repeat: no-repeat;
-			background-size: 100% 100%;
-        }
-        
-        .module{
-            border-bottom:0px solid black;
-            text-align: center;
-        }
-        article{
-
-		width: 100%;
-		}
-        div{
-            padding-left: 4%;
-            padding-right: 4% ;
-        }
-		nav{
-
-		width: 100%;
-		}
-		canvas {
-			border:1px solid #d3d3d3;
-			background-color: #f1f1f1;
-		}
-        .button {
-             display: inline-block;
-             padding: 15px 25px;
-              font-size: 20px;
-               cursor: pointer;
-                text-align: center;
-               text-decoration: none;
-               outline: none;
-               color: #666;
-             background-color: #4CAF50;
-             border: none;
-
-               border-radius: 15px;
-            box-shadow: 0 9px #727272;
-
-     }
-
- .button:hover {background-color: #3e8e41}
-
-
-
-
-
-         .button:active {
-
-
-               background-color: #3e8e41;
-
-
-             box-shadow: 0 5px #666;
-
-
-               transform: translateY(4px);
-
-           }
-
-
-
-
-
-           .button {
-
-
-            position: relative;
-
-
-             background-color: #4CAF50;
-
-
-              border: none;
-
-             font-size: 15px;
-
-
-             color: #FFFFFF;
-
-
-            padding: 15px;
-
-
-            width: 125px;
-
-           text-align: center;
-
-
-           -webkit-transition-duration: 0.4s; /* Safari */
-
-
-             transition-duration: 0.4s;
-
-
-             text-decoration: none;
-
-
-            overflow: hidden;
-
-              cursor: pointer;
-
-
-          }
-
-
-
-
-
-           .button:after {
-
-
-              content: "";
-
-
-             background: #f1f1f1;
-
-
-             display: block;
-
-              position: absolute;
-
-
-             padding-top: 300%;
-
-
-            padding-left: 350%;
-
-
-             margin-left: -20px !important;
-
-
-             margin-top: -120%;
-
-
-            opacity: 0;
-
-
-             transition: all 0.8s
-
-
-         }
-
-
-
-
-         .button:active:after {
-
-
-             padding: 0;
-
-
-             margin: 0;
-
-
-              opacity: 1;
-
-
-              transition: 0s
-
-
-         }
-         a:link, a:visited, a:hover, a:active {
-            text-decoration: none;
-            color: azure;
-		}
-        .species{
-			padding-left: 4%;
-            padding-right: 4%;
-			border:5px solid #33cc33;
-            background-color: azure;
-            text-align: center;
-            width: 91.5%;
-		}
-        </style>
-
     </head>
 
     <body>
@@ -243,18 +41,41 @@ font-size: 17px
 
             <table id="maininfo">
                 <tr>
-                    <td><b><a href=" {{ url_for('user', name=username, page='farms') }} "><button class="button">Farms</button></a></b>
-                    </td>
-                    <td><b><a href=" {{ url_for('user', name=username, page='community') }} "><button class="button">Community</button></a></b>
-                    </td>
-                    <td><b><a href=" {{ url_for('user', name=username, page='home') }} "><button class="button">Home</button></a></b>
-                    </td>
-                    <td><b><a href=" {{ url_for('user', name=username, page='factories') }} "><button class="button">Factories</button></a></b>
-                    </td>
-                    <td><b><a href=" {{ url_for('user', name=username, page='mines') }} "><button class="button">Mines</button></a></b>
-                    </td>
-					<td><b><a href=" {{ url_for('user', name=username, page='war') }} "><button class="button">War</button></a></b>
-                    </td>
+                <!--Menu-->
+     <div id="menu">
+     <div class="container" onclick="myFunction(this)" align="left">
+        <table align="left">
+            
+            <tr>
+                <td>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">Menu</span>
+                </td>
+                
+                <td onclick="openNav()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                </td>
+                
+            </tr>
+            
+
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+    <a href=" {{ url_for('user', name=username, page='farms') }} ">Farms</a>
+    <a href=" {{ url_for('user', name=username, page='community') }} ">Community</a>
+    <a href=" {{ url_for('user', name=username, page='home') }} ">Home</a>
+    <a href=" {{ url_for('user', name=username, page='factories') }} ">Factories</a>
+    <a href=" {{ url_for('user', name=username, page='mines') }} ">Mines</a>
+    <a href=" {{ url_for('user', name=username, page='war') }} ">War</a>
+  </div>
+</div>  
+
+        </table>
+    </div>
+</div>
+<!--Menu Ends-->
                 </tr>
             </table>
             <p>

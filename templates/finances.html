@@ -1,31 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 <table id="maininfo">
-    <tr>
-        <td colspan="7"><b>Welcome back {{ username }}!</b>
+    <tr id="tr">
+        <td colspan="7" id="td"><b>Welcome back {{ username }}!</b>
         </td>
     </tr>
-	<p>Since the game is in Alpha, there wil be database resets as we add new features and edit varibles. To give you something to do, we have a challenge for you, your goal is to be the first to get §1 billion dollars. Sorry about that.</p>
+	<p>Since the game is in Alpha, there will be database resets as we add new features and edit varibles. To give you something to do, we have a challenge for you, your goal is to be the first to get §1 billion dollars. Sorry about that.</p>
 </table>
 <br>
 <table id="maininfo">
-    <tr>
-        <td colspan="7"><b>Finances</b>
+    <tr id="tr">
+        <td colspan="7" id="td"><b>Finances</b>
         </td>
     </tr>
-    <tr>
-        <td>Money</td>
-        <td>Net Income</td>
-        <td>Income</td>
-        <td>Expenses</td>
-        <td>Net Worth</td>
+    <tr id="tr">
+        <td id="td">Money</td>
+        <td id="td">Net Income</td>
+        <td id="td">Income</td>
+        <td id="td">Expenses</td>
+        <td id="td">Net Worth</td>
     </tr>
-    <tr>
-        <td class="module">§{{ money }}</td>
-        <td class="module">§{{ netIncome }}</td>
-        <td class="module">§{{ income }}</td>
-        <td class="module">§{{ expenses }}</td>
-        <td class="module">§{{ netWorth }}</td>
+    <tr id="tr">
+        <td class="module" id="td">§{{ money }}</td>
+        <td class="module" id="td">§{{ netIncome }}</td>
+        <td class="module" id="td">§{{ income }}</td>
+        <td class="module" id="td">§{{ expenses }}</td>
+        <td class="module" id="td">§{{ netWorth }}</td>
     </tr>
 </table>
 

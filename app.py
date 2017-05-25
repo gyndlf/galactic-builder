@@ -30,7 +30,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 #Add quotes here for only printing to the log
 
-seed = 9290385793608437924738297523
+seed = 759478698707086794535275
 random.seed(seed)
 logger.info('The seed is %s', seed)
 app = Flask(__name__)

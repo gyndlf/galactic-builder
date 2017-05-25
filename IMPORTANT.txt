@@ -12,3 +12,5 @@ Farm selling value = $
 
 This is so people have sufficiant infomation for investing in farms.
 Tell James when you are done.
+
+Test edit.

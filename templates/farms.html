@@ -5,28 +5,28 @@ Feed the people of the galaxy with farms.<br>
 Farms are a cheap investment that can give you money over time, the more farms you get the less money they are worth and so you want a balance to give you the most money. I would sugest that you get the farm upgrades first as if you upgrade them when you have lots of farms you might go into the negatives.</p></div>
 <br>
 <table id="maininfo">
-    <tr>
-        <td colspan="12"><b>Farms</b>
+    <tr id="tr">
+        <td colspan="12" id="td"><b>Farms</b>
         </td>
     </tr>
-    <tr>
-        <td class="module", colspan="3.5">Farm Income: §{{ farmIncome }}</td>
-        <td class="module", colspan="3.5">Number of farms: {{ numOfFarms }}</td>
-        <td class="module", colspan="3.5">Farm level: {{ farmLevel }}</td>
-        <td class="module", colspan="3.5">Farm cost: §{{ farmCost }}</td>
+    <tr id="td">
+        <td class="module", colspan="3.5" id="td">Farm Income: §{{ farmIncome }}</td>
+        <td class="module", colspan="3.5" id="td">Number of farms: {{ numOfFarms }}</td>
+        <td class="module", colspan="3.5" id="td">Farm level: {{ farmLevel }}</td>
+        <td class="module", colspan="3.5" id="td">Farm cost: §{{ farmCost }}</td>
     </tr>
-    <tr>
-        <td class= "module", colspan="4">Population: {{ population }}</td>
-        <td class= "module", colspan="4">Value per farm: §{{ farmValue }}</td>
-        <td class= "module", colspan="4">Food Produced: {{ foodProduced }}</td>
+    <tr id="tr">
+        <td class= "module", colspan="4" id="td">Population: {{ population }}</td>
+        <td class= "module", colspan="4" id="td">Value per farm: §{{ farmValue }}</td>
+        <td class= "module", colspan="4" id="td">Food Produced: {{ foodProduced }}</td>
     </tr>
-    <tr>
-        <td class= "module", colspan="4"><form action="/user/{{ username }}/button" method="post">
+    <tr id="tr">
+        <td class= "module", colspan="4" id="td"><form action="/user/{{ username }}/button" method="post">
                 <input type="submit" name="buyFarm" value="Buy Farm">
             </form>
         </td>
-        <td class= "module", colspan="4">Level cost: {{ farmLevelCost }}</td>
-        <td class= "module", colspan="4"><form action="/user/{{ username }}/button" method="post">
+        <td class= "module", colspan="4" id="td">Level cost: {{ farmLevelCost }}</td>
+        <td class= "module", colspan="4" id="td"><form action="/user/{{ username }}/button" method="post">
                 <input type="submit" name="upgradeFarm" value="Upgrade farm level">
             </form>
         </td>
