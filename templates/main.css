@@ -23,14 +23,14 @@ font-size: 17px
             color: azure;
         }
         
-        td{
+        #td{
             text-align: center;
             border-bottom:1px solid #33cc33;
             padding:15px;
             width: 100px;
         }
         
-        tr{
+        #tr{
             border-bottom:1px solid #33cc33;
         }
         
