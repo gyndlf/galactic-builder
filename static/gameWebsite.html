@@ -13,10 +13,17 @@ canvas {
 </style>
 </head>
 <body onload="startGame()">
-<img id = "test" src="/static/Destroyertop.jpg">
-<img id = "test1" src="/static/SSD-SWE.png">
+<img id="test" src="/static/Destroyertop.jpg">
+<img id="test1" src="/static/SSD-SWE.png">
+<img id="J10EXS" src="/static/J10EX.jpg">
+<img id="J9EXS" src="/static/J9EXS.jpg">
+<img id="J8EXS" src="/static/J8EXS.jpg">
+<img id="J7EXS" src="/static/J7EXS.jpg">
+<img id="J6EXS" src="/static/J6EXS.jpg">
+<img id="J5EXS" src="/static/J5EXS.jpg">
 
 <script>
+
 var myGamePiece;
 var myShip = new Array(100);
 var myShips = new Array();
@@ -26,36 +33,36 @@ myShips[2] = 1; //J-8 Exploration series
 myShips[3] = 1; //J-7 Exploration series
 myShips[4] = 1; //J-6 Exploration series
 myShips[5] = 1; //J-5 Exploration series
-myShips[6] = 1; //J-4 Exploration series
-myShips[7] = 1; //J-3 Exploration series
-myShips[8] = 1; //J-2 Exploration series
-myShips[9] = 1; //J-1 Exploration series
-myShips[10] = 1; //Exploration series fighter swarm
-
+myShips[6] = 0; //J-4 Exploration series
+myShips[7] = 0; //J-3 Exploration series
+myShips[8] = 0; //J-2 Exploration series
+myShips[9] = 0; //J-1 Exploration series
+myShips[10] = 0; //Exploration series fighter swarm
+myShips[11] = 0; //J-10 K series
 var myshipNumber;
-var enemyshipNumber = 10;
+var enemyshipNumber = 1;
 var enemyShip = new Array(10);
 function startGame() {
-
+	
 	myshipNumber = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10];
-
-	for (i = 0; i < myShips[0]; i++){
-		myShip[i] = new component(530, 120, "red", 40, 120 * i, 10000, 500, 600, 0.1, "test1", 10000, 2, false);
+	
+		for (i = 0; i < myShips[0]; i++){
+		myShip[i] = new component(530, 120, "red", 40, 120 * i, 10000, 500, 600, 0.1, "J10EXS", 10000 + i, 2, false);
 		}
 		for (i = myShips[0]; i < myShips[0] + myShips[1]; i ++)	{
-		myShip[i] = new component(150, 80, "red", 40, 120 * i, 1000, 200, 0, 0.5, "test1", 0, 2, false);
+		myShip[i] = new component(150, 80, "red", 40, 120 * i, 1000, 200, 0, 0.5, "J9EXS", 0, 2, false);
 		}
 		for (i = myShips[0] + myShips[1]; i < myShips[0] + myShips[1] + myShips[2]; i ++)	{
-		myShip[i] = new component(160, 60, "red", 40, 120 * i, 500, 200, 0, 0.5, "test1", 0, 2, false);
+		myShip[i] = new component(160, 60, "red", 40, 120 * i, 500, 200, 0, 0.5, "J8EXS", 0, 2, false);
 		}
 		for (i = myShips[0] + myShips[1] + myShips[2]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3]; i ++)	{
-		myShip[i] = new component(170, 60, "red", 40, 120 * i, 500, 100, 0, 0.6, "test1", 10100, 1, false);
+		myShip[i] = new component(170, 60, "red", 40, 120 * i, 500, 100, 0, 0.6, "J7EXS", 10100, 1, false);
 		}
 		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]; i ++)	{
-		myShip[i] = new component(130, 60, "red", 40, 120 * i, 200, 100, 0, 0.5, "test1", 0, 4, false);
+		myShip[i] = new component(130, 60, "red", 40, 120 * i, 200, 100, 0, 0.5, "J5EXS", 0, 4, false);
 		}
 		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]; i ++)	{
-		myShip[i] = new component(90, 70, "red", 40, 120 * i, 200, 0, 700, 0.2, "test1", 0, 8, false);
+		myShip[i] = new component(90, 70, "red", 40, 120 * i, 200, 0, 700, 0.2, "J6EXS", 0, 8, false);
 		}
 		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]; i ++)	{
 		myShip[i] = new component(100, 60, "red", 40, 120 * i, 800, 100, 0, 0.8, "test1", 0, 2, false);
@@ -72,22 +79,24 @@ function startGame() {
 		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10]; i ++)	{
 		myShip[i] = new component(20, 20, "yellow", 40, 120 * i, 200, 50, 0, 5, "test1", 0, 1, true);
 		}
-
+		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10]+ myShips[11]; i ++)	{
+		myShip[i] = new component(530, 120, "red", 40, 120 * i, 10000, 500, 600, 0.1, "test1", 10000 + i, 2, false);
+		}
+	
 	for (i = 0; i < enemyshipNumber; i++){
-		enemyShip[i] = new component(150, 100, "green", 1000, 100 * i + 50, 1000, 400, 0, 0, "test", 0, 1, true);
+		enemyShip[i] = new component(530, 120, "green", 1240, 120 * i + 100, 10000, 500, 600, 0.01, "test1", 10000 + i, 2, true);
 		for (y = 0; y < myshipNumber; y++){
 		myShip[y].target[i] = false;
 	}
 	}
 	timer = new update();
-    myGameArea.start();
+    myGameArea.start(); 
 }
 
 
 var myGameArea = {
-
-    canvas : document.createElement("canvas"),
 	
+    canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = 2000;
         this.canvas.height = 1000;
@@ -110,8 +119,8 @@ var myGameArea = {
             myGameArea.x = false;
             myGameArea.y = false;
         })
-    },
-
+    }, 
+	
     clear : function(){
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
@@ -147,10 +156,10 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 	this.futureY = y;
 	this.futureX = x;
     this.x = x;
-    this.y = y;
+    this.y = y;  
 	this.ydiff = 0;
 	this.xdiff = rrange;
-	this.alive = true;
+	this.alive = true;	
 	this.swarmai =swarm;
 	this.targeted = false;
 	var number = 0;
@@ -186,8 +195,9 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 			ctx.moveTo(this.x, this.y);
 			ctx.lineTo(this.x + this.xdiff, this.y + this.ydiff);
 			ctx.stroke();
-			ctx.font = "10px Arial";
-			ctx.strokeText(this.health,this.x - 15, this.y);
+			ctx.font = "20px Comic Sans MS";
+			ctx.fillStyle = "black";
+			ctx.fillText(this.health,this.x - 15, this.y);
 			}
 		}
 		this.clicked = function() {
@@ -204,7 +214,7 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 		this.newPos = function() {
 			if(this.alive == true) {
 			this.x += this.speedX;
-			this.y += this.speedY;
+			this.y += this.speedY;  
 			}
 		}
 		this.attack = function(enemy) {
@@ -222,13 +232,13 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 			altdiff = enemy.y - this.y;
 			}
 			if (Math.sqrt(diff * diff + altdiff * altdiff) < this.range){enemy.health -= this.damage; }
-
+			
 			}
 		}
 		this.squareattack = function(enemy, num){
 		if(this.alive == true && enemy.alive == true) {
 			//if (enemy.x > this.x - this.range && enemy.x < this.x + this.range && enemy.y > this.y - this.range && enemy.y < this.y + this.range ) {enemy.health -= 1;}
-
+			
 			if (enemy.clicked() == true && this.color == "blue"){
 				this.target[num] = true;
 				number2 = 0;
@@ -237,7 +247,7 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 			distx = enemy.x - this.x;
 			disty = enemy.y - this.y;
 			distt = Math.sqrt(distx * distx + disty * disty);
-
+			
 			if (this.y < enemy.y){
 				angle = 1.5708 + Math.atan(distx/disty);
 			} else if (this.y > enemy.y){
@@ -254,7 +264,7 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 			this.xdiff = Math.sin(angle1-1.5708) * rrange;
 			this.ydiff = Math.cos(angle1-1.5708) * rrange;
 			}
-
+			
 			if (enemy.alive == false){
 			this.target[num] = false;
 			}
@@ -265,7 +275,7 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 				this.swarm = true;
 				this.target[num] = true;
 			 }
-
+			 
 			 }
 		}else if
 			 (enemy.alive == false){
@@ -274,14 +284,14 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 		}
 		this.move = function() {
 			this.speedX = 0;
-			this.speedY = 0;
+			this.speedY = 0;    
 			var B = Math.atan((this.futureY - this.y)/(this.futureX - this.x));
 			var b = Math.cos(B) * this.speed;
 			var a = Math.sin(B) * this.speed;
 			if (this.x > this.futureX + speed/2 && this.y > this.futureY + speed/2) {this.speedX = -b; this.speedY = -a;}
 			if (this.x < this.futureX - speed/2 && this.y < this.futureY - speed/2) {this.speedX = b; this.speedY = a;}
 			if (this.y > this.futureY + speed/2 && this.x < this.futureX - speed/2) {this.speedY = a;  this.speedX = b;}
-			if (this.x > this.futureX + speed/2 && this.y < this.futureY - speed/2) {this.speedY = -a; this.speedX = -b;}
+			if (this.x > this.futureX + speed/2 && this.y < this.futureY - speed/2) {this.speedY = -a; this.speedX = -b;} 
 		}
 		this.setfuture = function(other) {
 			if (this.clicked() && this.color == "red" && number1 > 10) {
@@ -313,9 +323,9 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 				this.fighterNN = 0;
 				this.fighterN += 1;
 				myShips[10] += 1;
-				myShip[myshipNumber] = new component(20, 20, "yellow", this.x, this.y, 200, 50, 0, 5, "test1", 0, 0.5, true);
+				myShip[myshipNumber + 1] = new component(20, 20, "yellow", this.x, this.y, 200, 50, 0, 5, "test1", 0, 0.5, true, 0);
 				}
-
+			
 			}
 			}
 		}
@@ -323,7 +333,7 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 function updateGameArea() {
     myGameArea.clear();
 	myshipNumber = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10];
-
+    
 	for (i = 0; i < myshipNumber; i++){
 		myShip[i].move();
 		}
@@ -336,7 +346,7 @@ function updateGameArea() {
 					enemyShip[y].attack(myShip[i]);
 					enemyShip[y].squareattack(myShip[i], i);
 					enemyShip[y].newPos();
-
+					
 		}
 		}
 		for (i = 0; i < myshipNumber; i++){
