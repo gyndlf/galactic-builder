@@ -371,8 +371,8 @@ def dynamicPersonalCalc(object, farms, values):
 @app.route('/')
 def home():
     '''The main login page / Index'''
-    return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
-    #return render_template('index.html')
+    #return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging. Remember to remove cookie stuff
+    return render_template('index.html')
 
 
 @app.route('/loginuser', methods=['POST'])
@@ -403,7 +403,7 @@ def calcmessage():
 def user(name=None, page=None, data=None):
     '''The main script. Run whenever logged in'''
     logger.info("-" * 10 + str("Finances") + "-" * 10)
-    '''
+
     #Make sure the user is allowed to be here!
     try:  # Load the session cookie
         cookie = request.cookies.get('sessionID')
@@ -417,7 +417,7 @@ def user(name=None, page=None, data=None):
     if cookie != name:
         logger.error('Cookie is not the same as %s', name)
         return 'You do not have access to this location'
-    '''
+
     #Have you been sent here with an error? Get ready to display it!
     if data == 'notEnoughMoney':
         dialogMessage = 'Not enough money!'
@@ -515,7 +515,7 @@ def user(name=None, page=None, data=None):
 def userButton(name=None):
     '''The script runs once ANY button is pressed'''
     logger.info("-" * 10 + str("Button") + "-" * 10)
-    '''
+
     try:  # Load the session cookie
         cookie = request.cookies.get('sessionID')
         logger.debug('Username via cookie: %s', cookie)
@@ -527,7 +527,7 @@ def userButton(name=None):
     if cookie != name:
         logger.error('Cookie does not match database')
         return 'You do not have access to this location'
-    '''
+
     # Run recipies
     logger.info("Loading recipies...")
     users = loadUsers()
