@@ -31,36 +31,36 @@ class basic ():
         
         self.j10exs = {
         	'name' : 'J-10 Explorer Series',
-        	'desc' : 'REALLY GOOD SHIP',
+        	'desc' : 'This ship is the peak of Benion engineering Being 5.3km long it is the largest ship in the galaxy. This Ship was designed to take out any opposing fleet that went against them and so they added a long range weapon put hungers on it and also put a range of long range weapons on the hull. The only problem is that it is extremely slow.',
         	'cost' : 40000000000,
         	'class' : 'Super Weapon'
         }
         
         self.j9exs = {
         	'name' : 'J-9 Explorer Series',
-        	'desc' : 'Cool ship',
+        	'desc' : 'The most expensive tank there is in the Explorer Series often used as command ships.',
         	'class' : 'tank',
         	'cost' : 20000000000
         }
         
         self.j8exs = {
         	'name' : 'J-8 Explorer Series',
-        	'desc' : 'I hate this job',
+        	'desc' : 'Basically the J-9 Explorer tank but with half health.',
         	'cost' : 1000000000,
         	'class' : 'tank'
         }
         
         self.j7exs = {
         	'name' : 'J-7 Explorer Series',
-        	'desc' : 'ADdd latter bro',
-        	'cost' : 5000000000,
-        	'class' : 'fighter'
+        	'desc' : 'J-7 is a ship that carries lots of ships and brings them to combat.',
+        	'cost' : 500000000,
+        	'class' : 'fighter carrier'
         }
         
         self.j6exs = {
         	'name' : 'J-6 Explorer Series',
-        	'desc' : 'Super cool ship',
-        	'cost' : 50000000000,
+        	'desc' : 'Long range gun ship designed to take out ememy tanks.',
+        	'cost' : 250000000,
         	'class' : 'anti tank'
         }
         
