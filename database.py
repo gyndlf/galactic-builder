@@ -44,6 +44,13 @@ class person():
             'Pii Fighter' : 0, #50 steel, 20 titianium, 10 hydrogen, 1 white crystal, weapon lisence core, fighter license
             '4d Printer' : 0 #10 steel, 10 copper, 10 silicon, 1 white crystal, 1 yellow crystal
         }
+        self.ownedShips = {
+        	'j10exs' : 0,
+        	'j9exs' : 0,
+        	'j8exs' : 0,
+        	'j7exs' : 0,
+        	'j6exs' : 0
+        }
         self.mineProduced = {}
         self.saveFactories = {}
         self.totalMines = 0

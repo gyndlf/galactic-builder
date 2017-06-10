@@ -20,7 +20,7 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler = logging.FileHandler('logs.log')
 handler.setFormatter(formatter)
 
- #Add quotes here for normal output
+''' #Add quotes here for normal output
 logger = logging.getLogger('')
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
@@ -28,9 +28,9 @@ logger.setLevel(logging.INFO)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-'''#Add quotes here for only printing to the log
+#Add quotes here for only printing to the log
 
-seed = 39846724875280762358037265203487528036583264892374023894
+seed = 759478698707086794535275
 random.seed(seed)
 logger.info('The seed is %s', seed)
 app = Flask(__name__)
@@ -371,8 +371,8 @@ def dynamicPersonalCalc(object, farms, values):
 @app.route('/')
 def home():
     '''The main login page / Index'''
-    # return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
-    return render_template('index.html')
+    return redirect(url_for('user', name='james', page='home'))  # A little hotwire for debuging
+    #return render_template('index.html')
 
 
 @app.route('/loginuser', methods=['POST'])
@@ -403,7 +403,7 @@ def calcmessage():
 def user(name=None, page=None, data=None):
     '''The main script. Run whenever logged in'''
     logger.info("-" * 10 + str("Finances") + "-" * 10)
-
+    '''
     #Make sure the user is allowed to be here!
     try:  # Load the session cookie
         cookie = request.cookies.get('sessionID')
@@ -417,7 +417,7 @@ def user(name=None, page=None, data=None):
     if cookie != name:
         logger.error('Cookie is not the same as %s', name)
         return 'You do not have access to this location'
-
+    '''
     #Have you been sent here with an error? Get ready to display it!
     if data == 'notEnoughMoney':
         dialogMessage = 'Not enough money!'
@@ -499,6 +499,10 @@ def user(name=None, page=None, data=None):
             elif page == 'war':
                 logger.info('Rendering war html')
                 return render_template('war.html', username=person.name, dialogMessage=dialogMessage)
+                
+            elif page == 'shipBuying':
+                logger.info('Rendering shipBuying html')
+                return render_template('shipBuying.html', username=person.name, dialogMessage=dialogMessage, values=values)
 
             else:
                 logger.error('Invalid page name!')
@@ -511,7 +515,7 @@ def user(name=None, page=None, data=None):
 def userButton(name=None):
     '''The script runs once ANY button is pressed'''
     logger.info("-" * 10 + str("Button") + "-" * 10)
-
+    '''
     try:  # Load the session cookie
         cookie = request.cookies.get('sessionID')
         logger.debug('Username via cookie: %s', cookie)
@@ -523,7 +527,7 @@ def userButton(name=None):
     if cookie != name:
         logger.error('Cookie does not match database')
         return 'You do not have access to this location'
-
+    '''
     # Run recipies
     logger.info("Loading recipies...")
     users = loadUsers()
@@ -537,6 +541,7 @@ def userButton(name=None):
     farmHtml = False
     mineHtml = False
     factoryHtml = False
+    shipBuyHtml = False
 
     #Has there been an error you should know about?
     error = None
@@ -627,6 +632,22 @@ def userButton(name=None):
                         else:
                             logger.error("Money Error: Not enough money")
                             error = 'notEnoughMoney'
+                            
+                for ship in person.ownedShips:
+                    button = 'buy' + ship
+                    if button in request.form:
+                        logger.info('shipBuy detected')
+                        logger.info('Detected %s', ship)
+                        shipBuyHtml = True
+                        '''
+                        if hasMoney(person, factories[factoryl]):
+                            person.ownedFactories[factoryl] += 1
+                            person.money -= factories[factoryl]
+                            logger.info('Brought one %s factory', factoryl)
+                        else:
+                            logger.error("Money Error: Not enough money")
+                            error = 'notEnoughMoney'
+                        '''
 
             # Save upated personal data
             logger.info('Saving...')
@@ -646,6 +667,9 @@ def userButton(name=None):
     elif factoryHtml:
         logger.info('Redirecting back to factories')
         return redirect(url_for('user', name=name, page='factories', data=error))
+    elif shipBuyHtml:
+        logger.info('Redirecting back to shipBuyHtml')
+        return redirect(url_for('user', name=name, page='shipBuying', data=error))
     else:
         logger.info('Redirecting to home')
         return redirect(url_for('user', name=name, page='home', data=error))
@@ -654,5 +678,5 @@ def userButton(name=None):
 if __name__ == "__main__":
     # app.run(debug=True)
     logger.info('Running app')
-    #app.run()
-    app.run('0.0.0.0', 80)
+    app.run()
+    #app.run('0.0.0.0', 80)

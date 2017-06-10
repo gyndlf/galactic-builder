@@ -1,22 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% for ship in values.shipDesc %}
 
 <table id="maininfo">
 <tr>
-	<th colspan="4">J-10 Explorer Series Super Weapon</th>
+	<th colspan="4">{{ values.shipDesc[ship]['name'] }}</th>
 	</tr>
+	
     <tr>
-	<th rowspan="2"><img id = "test" src="/static/J10EXS.jpg"></th>
-	<td rowspan="2"><p>This ship is the peak of Benion engineering Being 5.3km long it is the largest ship in the galaxy. This Ship was designed to take out any opposing fleet that went against them and so they added a long range weapon put hungers on it and also put a range of long range weapons on the hull. The only problem is that it is extremely slow.</p></td>
-	<td>Class: Super Weapon</td>
-	<td>Cost: 4000000</td>
+	<th rowspan="2"><!--<img id = "test" src="/static/J10EXS.jpg" width= "53px" height="12px">--></th>
+	<td rowspan="2"><p>{{ values.shipDesc[ship]['desc'] }}</p></td>
+	<td>Class: {{ values.shipDesc[ship]['class'] }}</td>
+	<td>Cost: §{{ values.shipDesc[ship]['cost'] }}</td>
 	</tr>
 	<tr>
-	<td>Buy button goes here</td>
+	<td id="td"><form action="/user/{{ username }}/button" method="post">
+        <input type="submit" name="{{ 'buy' + ship }}" value="Buy Ship">
+    </form></td>
 	<td></td>
 	</tr>
 </table>
+{% endfor %}
 
 <br><br>
 <p>Possibly some graphics down here? Some images? Graphs?</p>
