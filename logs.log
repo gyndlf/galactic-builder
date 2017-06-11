@@ -251,3 +251,8 @@
 2017-05-24 19:23:11,249 - root - INFO - [4] Running dynamic personal calulator def
 2017-05-24 19:23:11,249 - root - ERROR - Invalid page name!
 2017-05-24 19:23:11,250 - werkzeug - INFO - 127.0.0.1 - - [24/May/2017 19:23:11] "GET /user/cael/main.css HTTP/1.1" 200 -
+2017-06-11 15:48:58,061 - root - INFO - The seed is 759478698707086794535275
+2017-06-11 15:48:58,066 - root - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-06-11 15:48:58,066 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-06-11 15:48:58,067 - root - INFO - Shuffled characters vI:HX;l+2(}kZFmnWUu>AqdxRN]D<@6!MJYoy%$ef7)Bt|~iSTh/L[53E1= ?z._gGCP&-Oj49Ksr*cw^{bQpaV80#
+2017-06-11 15:48:58,075 - root - INFO - Running app
