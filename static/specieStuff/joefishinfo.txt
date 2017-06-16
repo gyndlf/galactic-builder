@@ -1,5 +1,5 @@
 <h2>Joefish</h2>
-		<img src="/static/joefish_flag.jpg" alt="Weilder System">
+		<img src="/static/specieStuff/joefish_flag.jpg" alt="Weilder System">
 		<h3>General Info</h3>
 		<p>Joefish are a species that resemble both fish and reptiles this is because they have gills but their skin is similar to lizards. They are about 2 meters tall and with gills on the sides and webbing on the hands and feet.
 		The purpose of the gills is to filter out the fine dust of the planet Weilder and the webbing on the feet is to stabilise the feet of the fish. They come in different colour that vary in what they are good at with green science,
@@ -16,8 +16,8 @@
 		holes about 5 meters deep and they cook the plants that live there to eat. There are also some animals and they live nearer to the volcanos under the dried up stone from the volcano. When they make the burrows they find stone 
 		</p>
 		<br>
-		<img src="/static/weilder_system.jpg" alt="Weilder System">
-		<img src="/static/planet_weilder.jpg" alt="Weilder Planet">
+		<img src="/static/specieStuff/weilder_system.jpg" alt="Weilder System">
+		<img src="/static/specieStuff/planet_weilder.jpg" alt="Weilder Planet">
 		<br>
 		<p>The images above are the Weilder system and Weilder the planet</p>
 		<h3>History</h3>

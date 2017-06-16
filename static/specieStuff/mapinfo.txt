@@ -1,0 +1,1 @@
+		<img src="/static/specieStuff/star_map.jpg" alt="The Galaxy" style="width:1000px;height:1000px;">

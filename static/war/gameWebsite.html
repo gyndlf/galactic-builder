@@ -13,35 +13,21 @@ canvas {
 </style>
 </head>
 <body onload="startGame()">
-<img id="test" src="/static/Destroyertop.jpg">
-<img id="test1" src="/static/SSD-SWE.png">
-<img id="J10EXS" src="/static/J10EX.jpg">
-<img id="J9EXS" src="/static/J9EXS.jpg">
-<img id="J8EXS" src="/static/J8EXS.jpg">
-<img id="J7EXS" src="/static/J7EXS.jpg">
-<img id="J6EXS" src="/static/J6EXS.jpg">
-<img id="J5EXS" src="/static/J5EXS.jpg">
+<img id="test" src="/static/war/Destroyertop.jpg">
+<img id="test1" src="/static/war/SSD-SWE.png">
+<img id="J10EXS" src="/static/war/J10EX.jpg">
+<img id="J9EXS" src="/static/war/J9EXS.jpg">
+<img id="J8EXS" src="/static/war/J8EXS.jpg">
+<img id="J7EXS" src="/static/war/J7EXS.jpg">
+<img id="J6EXS" src="/static/war/J6EXS.jpg">
+<img id="J5EXS" src="/static/war/J5EXS.jpg">
 
 <script>
-$(document).ready(function(){
-	$("img").hide();
-});
+
 
 var myGamePiece;
 var myShip = new Array(100);
-var myShips = new Array();
-myShips[0] = 1; //J-10 Exploration series
-myShips[1] = 1; //J-9 Exploration series
-myShips[2] = 1; //J-8 Exploration series
-myShips[3] = 1; //J-7 Exploration series
-myShips[4] = 1; //J-6 Exploration series
-myShips[5] = 1; //J-5 Exploration series
-myShips[6] = 0; //J-4 Exploration series
-myShips[7] = 0; //J-3 Exploration series
-myShips[8] = 0; //J-2 Exploration series
-myShips[9] = 0; //J-1 Exploration series
-myShips[10] = 0; //Exploration series fighter swarm
-myShips[11] = 0; //J-10 K series
+
 var myshipNumber;
 var enemyshipNumber = 1;
 var enemyShip = new Array(10);
