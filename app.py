@@ -382,6 +382,7 @@ def calcmessage():
     try:
         username = request.form['username']
         password = request.form['password']
+        username = username.lower()
     except:
         logger.error('Invalid username or password')
         return redirect(url_for('home'))
