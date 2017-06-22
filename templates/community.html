@@ -40,4 +40,95 @@
    new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);
 </script>
 
+<script>
+
+
+var factionNum = 3;
+var factions = new Array();
+var middle = 400;
+var radius = 200;
+var name = ["Joefish", "Slang", "Benions"];
+
+function startGame() {
+	var degreeDiff = (2 * Math.PI)/factionNum;
+	for(i=0; i < factionNum; i++){
+			var B = (degreeDiff) * i;
+			var x = middle + (radius * Math.cos(B));
+			var y = middle + (radius * Math.sin(B));
+			factions[i] = new faction( name[i] , "green", 100, x, y)
+
+	}
+    myGameArea.start();
+}
+
+
+var myGameArea = {
+
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 800;
+        this.canvas.height = 800;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.interval = setInterval(updateGameArea, 20);
+        window.addEventListener('mousedown', function (e) {
+            myGameArea.x = e.pageX;
+            myGameArea.y = e.pageY;
+        })
+        window.addEventListener('mouseup', function (e) {
+            myGameArea.x = false;
+            myGameArea.y = false;
+        })
+        window.addEventListener('touchstart', function (e) {
+            myGameArea.x = e.pageX;
+            myGameArea.y = e.pageY;
+        })
+        window.addEventListener('touchend', function (e) {
+            myGameArea.x = false;
+            myGameArea.y = false;
+        })
+    },
+
+    clear : function(){
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+function faction(name, status, strength, x, y){
+this.name = name;
+this.status = status;
+this.strength = strength;
+this.x = x;
+this.y = y;
+this.update = function() {
+			ctx = myGameArea.context;
+			ctx.fillStyle = "yellow";
+			ctx.fillRect(this.x - 40, this.y - 20, 80, 40);
+			ctx.stroke();
+			ctx.font = "20px Comic Sans MS";
+			ctx.fillStyle = "black";
+			ctx.fillText(this.name,this.x - 40, this.y);
+			}
+this.relationship = function(target){
+			ctx = myGameArea.context;
+			ctx.strokeStyle = target.status;
+			ctx.stroke();
+			ctx.beginPath();
+			ctx.moveTo(this.x, this.y);
+			ctx.lineTo(target.x, target.y);
+			ctx.stroke();
+}
+this.setname = function(name){
+this.name = name;
+}
+}
+function updateGameArea() {
+for(i = 0; i < factionNum; i++){
+	factions[i].setname(name[1]);
+   factions[i].update();
+   for(y = 0; y < factionNum; y++)
+   factions[i].relationship(factions[y]);
+   }
+}
+</script>
+
 {% endblock %}
