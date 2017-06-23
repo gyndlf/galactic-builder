@@ -24,20 +24,24 @@ array[
 	name = "name"
 	status = "sdgi]
 */
-var factionNum = 3;
+
 var factions = new Array();
 var middle = 400;
-var radius = 200;
-var name = ["Joefish", "Slang", "Benions"];
+var radius = 300;
+var names = ["Joefish", "Slang", "Benions", "Vexxors", "Vinitipu", "Humans", "Gagners"]
+var factionNum = names.length;
+var relationships1 = [
+names[1] = ["white", "green", "yellow", "green", "green", ""]
 
+
+]
 function startGame() {
 	var degreeDiff = (2 * Math.PI)/factionNum;
 	for(i=0; i < factionNum; i++){ 
 			var B = (degreeDiff) * i;
 			var x = middle + (radius * Math.cos(B)); 
 			var y = middle + (radius * Math.sin(B));
-			factions[i] = new faction( name[i] , "green", 100, x, y)
-			
+			factions[i] = new faction( ""+names[i], "green", 100, x, y)
 	}
     myGameArea.start(); 
 }
@@ -98,13 +102,10 @@ this.relationship = function(target){
 			ctx.lineTo(target.x, target.y);
 			ctx.stroke();
 }
-this.setname = function(name){
-this.name = name;
-}
+
 }
 function updateGameArea() {
 for(i = 0; i < factionNum; i++){
-	factions[i].setname(name[1]);
    factions[i].update();
    for(y = 0; y < factionNum; y++)
    factions[i].relationship(factions[y]);
