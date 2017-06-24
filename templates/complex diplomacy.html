@@ -31,7 +31,6 @@ array[
 var factions = new Array();
 var middle = 400;
 var radius = 300;
-<<<<<<< HEAD
 var data = [
 {
 name:"Joefish",
@@ -70,26 +69,14 @@ strength: 100,
 }
 ];
 var factionNum = data.length;
-=======
-var names = ["Joefish", "Slang", "Benions", "Vexxors", "Vinitipu", "Humans", "Gagners"]
-var factionNum = names.length;
-var relationships1 = [
-names[1] = ["white", "green", "yellow", "green", "green", ""]
 
->>>>>>> 6638feaa79a0c67b280c4d86e495c747d149542d
-
-]
 function startGame() {
 	var degreeDiff = (2 * Math.PI)/factionNum;
 	for(i=0; i < factionNum; i++){ 
 			var B = (degreeDiff) * i;
 			var x = middle + (radius * Math.cos(B)); 
 			var y = middle + (radius * Math.sin(B));
-<<<<<<< HEAD
 			factions[i] = new faction( data[i].name, data[i].strength, x, y)
-=======
-			factions[i] = new faction( ""+names[i], "green", 100, x, y)
->>>>>>> 6638feaa79a0c67b280c4d86e495c747d149542d
 	}
     myGameArea.start(); 
 }
@@ -170,7 +157,6 @@ this.relationship = function(target, relationships1){
 			ctx.lineTo(target.x, target.y);
 			ctx.stroke();
 }
-<<<<<<< HEAD
 this.screen = function(){
 if(this.clicked() && number > 10){
 number = 0;
@@ -196,21 +182,12 @@ if(this.open){
 }
 
 }
-=======
-
->>>>>>> 6638feaa79a0c67b280c4d86e495c747d149542d
 }
 function updateGameArea() {
 myGameArea.clear();
 for(i = 0; i < factionNum; i++){
-<<<<<<< HEAD
    for(y = 0; y < factionNum; y++){
    factions[i].relationship(factions[y], data[i].relations[y]);
-=======
-   factions[i].update();
-   for(y = 0; y < factionNum; y++)
-   factions[i].relationship(factions[y]);
->>>>>>> 6638feaa79a0c67b280c4d86e495c747d149542d
    }
    factions[i].update();
    factions[i].screen();
