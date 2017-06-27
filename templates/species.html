@@ -9,6 +9,7 @@
 			<td><button id= "gagners" class="button">Gagners</button></td>
 			<td><button id= "anz" class="button">Anz</button></td>
 						<td><button id= "vinitipu" class="button">Vinitipu</button ></td>
+						<td><button id= "benion" class="button">Benions</button ></td>
 		</tr>
 		<tr id="page2">
 		<td><button id= "slang" class="button">Slang</button ></td>
@@ -40,6 +41,8 @@
 		</div>
 		<div id="vexxorsinfo" class="species">
 		</div>
+		<div id="benioninfo" class="species">
+		</div>
 		<div id="mapinfo" class="species">
 		</div>
 		<div id="galactichistoryinfo" class="species">
@@ -70,6 +73,11 @@ $("#page2").hide();
 		$(".species").hide();
         $("#gagnersinfo").show();
 		$("#gagnersinfo").load("/static/specieStuff/gagnersinfo.txt");
+    });
+	$("#benion").click(function(){
+		$(".species").hide();
+        $("#benioninfo").show();
+		$("#benioninfo").load("/static/specieStuff/benioninfo.txt");
     });
 	$("#anz").click(function(){
 		$(".species").hide();
