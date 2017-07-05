@@ -18,4 +18,24 @@ myShips[10] = 0; //Exploration series fighter swarm
 myShips[11] = 0; //J-10 K series
 localStorage.setItem("myShips",myShips);
 </script>
+
+<!--
+So the iframe looks like this:
+
+<script>
+function init() { window.parent.setUpFrame(); return true; }
+function yourMethod(arg) { ... }
+</script>
+<body onload="init();">...</body>
+
+And the container like this: (Which is this current page)
+
+<script>
+function setUpFrame() { 
+    var frame = window.frames['frame-id'];
+    frame.yourMethod('hello');
+}
+</script>
+<body><iframe name="frame-id" src="..."></iframe></body>
+-->
 {% endblock %}
