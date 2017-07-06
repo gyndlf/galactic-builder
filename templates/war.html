@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <div id="thisdiv"></div>
-<iframe src="/static/war/gameWebsite.html" width = 95% height = 1000px></iframe>
+<iframe src="/static/war/gameWebsite.html" width = 95% height = 1000px name="YBframed"></iframe>
 <script>
+
 var myShips = new Array();
 myShips[0] = 1; //J-10 Exploration series
 myShips[1] = 1; //J-9 Exploration series
@@ -15,8 +16,13 @@ myShips[7] = 0; //J-3 Exploration series
 myShips[8] = 0; //J-2 Exploration series
 myShips[9] = 0; //J-1 Exploration series
 myShips[10] = 0; //Exploration series fighter swarm
-myShips[11] = 0; //J-10 K series
-localStorage.setItem("myShips",myShips);
+myShips[11] = 0; //J-10 K serieslocalStorage.setItem("myShips",myShips);
+<script>
+function setUpFrame() { 
+    var frame = window.frames['YBframed'];
+    frame.startGame(myShips);
+}
+
 </script>
 
 <!--
