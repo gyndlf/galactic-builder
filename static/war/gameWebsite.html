@@ -12,7 +12,7 @@ canvas {
 }
 </style>
 </head>
-<body onload="startGame()">
+<body onload="init();">
 <img id="test" src="/static/war/Destroyertop.jpg">
 <img id="test1" src="/static/war/SSD-SWE.png">
 <img id="J10EXS" src="/static/war/J10EX.jpg">
@@ -23,7 +23,7 @@ canvas {
 <img id="J5EXS" src="/static/war/J5EXS.jpg">
 
 <script>
-var form = parent.document.forms[0];
+function init() { window.parent.setUpFrame(); return true; }
 
 var myGamePiece;
 var myShip = new Array(100);
@@ -31,7 +31,7 @@ var myShips = form.myShips;
 var myshipNumber;
 var enemyshipNumber = 1;
 var enemyShip = new Array(10);
-function startGame() {
+function startGame(myships) {
 	
 	myshipNumber = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10];
 	
