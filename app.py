@@ -505,6 +505,10 @@ def user(name=None, page=None, data=None):
                 logger.info('Rendering shipBuying html')
                 return render_template('shipBuying.html', username=person.name, dialogMessage=dialogMessage, values=values)
 
+            elif page == 'diplomacy':
+                logger.info('Rendering shipBuying html')
+                return render_template('diplomacy.html', username=person.name, dialogMessage=dialogMessage)
+
             else:
                 logger.error('Invalid page name!')
                 return "Invalid page name"
