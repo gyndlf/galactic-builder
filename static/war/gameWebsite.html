@@ -233,6 +233,11 @@ function component(width, height, color, x, y, health, range, rrange, speed, ima
 				number2 = 0;
 			}
 			if(this.target[num] == true){
+			ctx.strokeStyle = "light blue";
+			ctx.beginPath();
+			ctx.moveTo(this.x, this.y);
+			ctx.lineTo(enemy.x, enemy.y);
+			ctx.stroke();
 			distx = enemy.x - this.x;
 			disty = enemy.y - this.y;
 			distt = Math.sqrt(distx * distx + disty * disty);
