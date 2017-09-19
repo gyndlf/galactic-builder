@@ -3,6 +3,7 @@
     <head>
     
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <link rel="stylesheet" type="text/css" href="/static/main.css">
         <title>Galactic Builder</title>
@@ -39,47 +40,37 @@ function closeNav() {
         <div id="mainpage">
             <a href=" {{ url_for('home') }} "><h1><b>Galactic Builder</b></h1></a>
 
-            <table id="maininfo">
-                <tr>
+            <!--<div id="maininfo" class="row">-->
                 <!--Menu-->
-     <div id="menu">
-     <div class="container" onclick="myFunction(this)" align="left">
-        <table align="left">
-            
-            <tr>
-                <td>
-                <span style="font-size:30px;cursor:pointer" onclick="openNav()">Menu</span>
-                </td>
-                
-                <td onclick="openNav()">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-                </td>
-                
-            </tr>
-            
-
-<div id="myNav" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="overlay-content">
-    <a href=" {{ url_for('user', name=username, page='home') }} ">Home</a>
-    <a href=" {{ url_for('user', name=username, page='community') }} ">Community</a>
-    <a href=" {{ url_for('user', name=username, page='farms') }} ">Farms</a>
-    <a href=" {{ url_for('user', name=username, page='factories') }} ">Factories</a>
-    <a href=" {{ url_for('user', name=username, page='mines') }} ">Mines</a>
-    <a href=" {{ url_for('user', name=username, page='war') }} ">War</a>
-    <a href=" {{ url_for('user', name=username, page='shipBuying') }} ">Ship Buying</a>
-	<a href=" {{ url_for('user', name=username, page='diplomacy') }} ">Diplomacy</a>
-  </div>
-</div>  
-
-        </table>
-    </div>
-</div>
+                     <div id="menu">
+                         <div class="container" onclick="myFunction(this)" align="left">
+                            <div align="left"class="row">
+                                    <div class="col-sm-12">
+                                        <span style="font-size:30px;cursor:pointer" onclick="openNav()">Menu</span>
+                                    </div>
+                                    <div onclick="openNav()" class="col-sm-12">
+                                        <div class="bar1"></div>
+                                        <div class="bar2"></div>
+                                        <div class="bar3"></div>
+                                    </div>
+                                    </div>
+                                <div id="myNav" class="overlay">
+                                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                    <div class="overlay-content">
+                                        <a href=" {{ url_for('user', name=username, page='home') }} ">Home</a>
+                                        <a href=" {{ url_for('user', name=username, page='community') }} ">Community</a>
+                                        <a href=" {{ url_for('user', name=username, page='farms') }} ">Farms</a>
+                                        <a href=" {{ url_for('user', name=username, page='factories') }} ">Factories</a>
+                                        <a href=" {{ url_for('user', name=username, page='mines') }} ">Mines</a>
+                                        <a href=" {{ url_for('user', name=username, page='war') }} ">War</a>
+                                        <a href=" {{ url_for('user', name=username, page='shipBuying') }} ">Ship Buying</a>
+	                                    <a href=" {{ url_for('user', name=username, page='diplomacy') }} ">Diplomacy</a>
+                                    </div>
+                                </div>  
+                        </div>
+                    </div>
 <!--Menu Ends-->
-                </tr>
-            </table>
+            <!--</div>-->
             <p>
                 <br>
                 <br>
