@@ -10,28 +10,28 @@ Factories are where the real money is made, you buy factories and thouse factori
 </table>
 <br>
     {% for factory in cost %}
-    <table id="maininfo">
-    <tr id="tr">
-    <td id="td">Factory name: {{ factory }}</td>
-    <td id="td">Factory cost: §{{ cost[factory] }} </td>
-    <td id="td">Amount produced by yourself: {{ formulas[factory]['produced'] }}</td>
-    <td id="td">Amount produced by everyone: {{ totals['factoryCount'][factory] }}</td>
-    </tr>
-    <tr>
-    <td id="td">Factory count: {{ person.ownedFactories[factory] }}</td>
-    <td id="td">Income: §{{ formulas[factory]['income'] }}</td>
-    <td id="td">Profit: §{{ formulas[factory]['profit'] }}</td>
-    <td id="td"><form action="/user/{{ username }}/button" method="post">
+    <div id="maininfo">
+    <div id="tr" class="row">
+    <div id="td" class="col-sm-3">Factory name: {{ factory }}</div>
+    <div id="td" class="col-sm-3">Factory cost: §{{ cost[factory] }} </div>
+    <div id="td" class="col-sm-3">Amount produced by yourself: {{ formulas[factory]['produced'] }}</div>
+    <div id="td" class="col-sm-3">Amount produced by everyone: {{ totals['factoryCount'][factory] }}</div>
+    </div>
+    <div class="row">
+    <div id="td" class="col-sm-3">Factory count: {{ person.ownedFactories[factory] }}</div>
+    <div id="td" class="col-sm-3">Income: §{{ formulas[factory]['income'] }}</div>
+    <div id="td" class="col-sm-3">Profit: §{{ formulas[factory]['profit'] }}</div>
+    <div id="td" class="col-sm-3"><form action="/user/{{ username }}/button" method="post">
         <input type="submit" name="{{ 'buy' + factory }}" value="Buy factory">
-    </form></td>
-    </tr>
-	<tr id="tr">
-	<td id="td">Materials You Need To Supply:  </td>
-	<td id="td">{{ formulas[factory]['needed'] }}</td>
-    <td id="td">Materials That You Currently Supply:</td>
-    <td id="td">{{ formulas[factory]['materialsMade'] }}</td>
-	</tr>
-    </table>
+    </form></div>
+    </div>
+	<div id="tr" class="row">
+	<div id="td" class="col-sm-3">Materials You Need To Supply:  </div>
+	<div id="td" class="col-sm-3">{{ formulas[factory]['needed'] }}</div>
+    <div id="td" class="col-sm-3">Materials That You Currently Supply:</div>
+    <div id="td" class="col-sm-3">{{ formulas[factory]['materialsMade'] }}</div>
+	</div>
+    </div>
 	<br>
     {% endfor %}
 
