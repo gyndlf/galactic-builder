@@ -40,7 +40,7 @@ function closeNav() {
         <div id="mainpage">
             <a href=" {{ url_for('home') }} "><h1><b>Galactic Builder</b></h1></a>
 
-            <!--<div id="maininfo" class="row">-->
+            <div id="maininfo">
                 <!--Menu-->
                      <div id="menu">
                          <div class="container" onclick="myFunction(this)" align="left">
@@ -48,10 +48,12 @@ function closeNav() {
                                     <div class="col-sm-12">
                                         <span style="font-size:30px;cursor:pointer" onclick="openNav()">Menu</span>
                                     </div>
+                                    <div class="row">
                                     <div onclick="openNav()" class="col-sm-12">
                                         <div class="bar1"></div>
                                         <div class="bar2"></div>
                                         <div class="bar3"></div>
+                                    </div>
                                     </div>
                                     </div>
                                 <div id="myNav" class="overlay">
@@ -70,7 +72,7 @@ function closeNav() {
                         </div>
                     </div>
 <!--Menu Ends-->
-            <!--</div>-->
+            </div>
             <p>
                 <br>
                 <br>
