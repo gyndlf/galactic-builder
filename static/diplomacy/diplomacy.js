@@ -35,3 +35,4 @@ relations: [ "red", "", "", "", "", "",""],
 strength: 100,
 }
 ];
+var factionNum = data.length;
