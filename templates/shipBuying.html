@@ -2,24 +2,32 @@
 {% block content %}
 {% for ship in values.shipDesc %}
 
-<table id="maininfo">
-<tr>
-	<th colspan="4">{{ values.shipDesc[ship]['name'] }}</th>
-	</tr>
+<div id="maininfo">
+	<div class="row">
+		<div class="col-sm-12">{{ values.shipDesc[ship]['name'] }}</div>
+	</div>
 	
-    <tr>
-	<td rowspan="2"><!--<img id = "test" src="/static/J10EXS.jpg" width= "53px" height="12px">--></td>
-	<td rowspan="2"><p>{{ values.shipDesc[ship]['desc'] }}</p></td>
-	<td>Class: {{ values.shipDesc[ship]['class'] }}</td>
-	<td>Cost: §{{ values.shipDesc[ship]['cost'] }}</td>
-	</tr>
-	<tr>
-	<td id="td"><form action="/user/{{ username }}/button" method="post">
-        <input type="submit" name="{{ 'buy' + ship }}" value="Buy Ship">
-    </form></td>
-	<td></td>
-	</tr>
-</table>
+    <div class="row">
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-sm-6"><!--<img id = "test" src="/static/J10EXS.jpg" width= "53px" height="12px">--></div>
+				<div class="col-sm-6"><p>{{ values.shipDesc[ship]['desc'] }}</p></div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-sm-6">Class: {{ values.shipDesc[ship]['class'] }}</div>
+				<div class="col-sm-6">Cost: §{{ values.shipDesc[ship]['cost'] }}</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6" id="td"><form action="/user/{{ username }}/button" method="post">
+    			    <input type="submit" name="{{ 'buy' + ship }}" value="Buy Ship">
+    			</form></div>
+				<div class="col-sm-6"></div>
+			</div>
+		</div>
+	</div>
+</div>
 <br>
 {% endfor %}
 
