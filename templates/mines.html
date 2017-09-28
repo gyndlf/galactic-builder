@@ -1,29 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="species"><p>
+<div id="maininfo"><p>
 Increase your profits by mining for valuable resources.<br>
 Mines are different as you do not gain any money for buying mines, instead they are only there to decrease the expenses of your factories.</p></div>
-<table id="maininfo">
-    <tr>
-        <td colspan="12"><b>Mines</b></td>
-    </tr>
-</table>
+<div id="maininfo">
+    <div class="row">
+        <div class="col-sm-12"><b>Mines</b></div>
+    </div>
+</div>
 <br>
     {% for mine in values.mineValues %}
-<table id="maininfo" background="/static/minephoto/{{ mine }}.jpg">
-    <tr>
-        <td class = "module">Mine name: {{ mine }}</td>
-        <td class = "module">Mine Value: §{{ values.mineValues[mine] }}</td>
-        <td class = "module">Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</td>
-        <td class = "module">Mine cost: §{{ minesFunc[mine] }}</td>
-    </tr>
-    <tr>
-        <td class = "module">Number of mines: {{ person.ownedMines[mine] }}</td>
-        <td class = "module"><form action="/user/{{ username }}/button" method="post">
+<div id="maininfo" background="/static/minephoto/{{ mine }}.jpg">
+    <div class="row">
+        <div class = "module col-sm-3">Mine name: {{ mine }}</div>
+        <div class = "module col-sm-3">Mine Value: §{{ values.mineValues[mine] }}</div>
+        <div class = "module col-sm-3">Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</div>
+        <div class = "module col-sm-3">Mine cost: §{{ minesFunc[mine] }}</div>
+    </div>
+    <div class="row">
+        <div class = "module col-sm-6">Number of mines: {{ person.ownedMines[mine] }}</div>
+        <div class = "module col-sm-6"><form action="/user/{{ username }}/button" method="post">
                 <input type="submit" name="{{ 'buy' + mine }}" value="Buy mine">
-            </form></td>
-    </tr>
-</table>
+            </form></div>
+    </div>
+</div>
 <br>
 
     {% endfor %}
