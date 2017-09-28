@@ -261,3 +261,8 @@
 2017-06-22 17:38:45,337 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
 2017-06-22 17:38:45,337 - root - INFO - Shuffled characters zYPsy#K(4AIJ>B2^xi@wONLH1?]n<Wo7}Vep+fd-8r&lu;6Rt_hSM%|0X 5.9Za3TQ{/[=b*CkFq:gUGE$~vD!)cjm
 2017-06-22 17:38:45,341 - root - INFO - Running app
+2017-09-27 17:00:52,701 - root - INFO - The seed is 19285718923740892364809237480923645
+2017-09-27 17:00:52,702 - root - INFO - All characters 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
+2017-09-27 17:00:52,702 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
+2017-09-27 17:00:52,703 - root - INFO - Shuffled characters zYPsy#K(4AIJ>B2^xi@wONLH1?]n<Wo7}Vep+fd-8r&lu;6Rt_hSM%|0X 5.9Za3TQ{/[=b*CkFq:gUGE$~vD!)cjm
+2017-09-27 17:00:52,705 - root - INFO - Running app
