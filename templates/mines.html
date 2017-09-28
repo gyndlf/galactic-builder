@@ -29,47 +29,45 @@ Mines are different as you do not gain any money for buying mines, instead they 
     {% endfor %}
 
 <h1>Mine upgrades: </h1>
-<table id="maininfo">
+<div id="maininfo">
 <form action="/user/{{ username }}/button" method="post">
-    <td><tr><p>Upgrade the amount mined by 1% (rounded down)</p></td></tr>
-    <tr><td><p>Cost : §{{ minesFunc['mineUpgrades'][1] }}</p></td></tr>
-    <tr><td><input type="submit" name="mineUpgrade1" value="Buy Upgrade"></td></tr>
+    <div class="row"><div class="col-sm-12"><p>Upgrade the amount mined by 1% (rounded down)</p></div></div>
+    <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][1] }}</p></div></div>
+    <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade1" value="Buy Upgrade"></div></div>
 </form>
-</table>
-
+</div>
 <br>
-<table id="maininfo">
+<div id="maininfo">
 <form action="/user/{{ username }}/button" method="post">
-    <tr><td><p>Upgrade the amount mined by 10% (rounded down)</p></td></tr>
-    <tr><td><p>Cost : §{{ minesFunc['mineUpgrades'][10] }}</p></td></tr>
-    <tr><td><input type="submit" name="mineUpgrade10" value="Buy Upgrade"></td></tr>
+    <div class="row"><div class="col-sm-12"><p>Upgrade the amount mined by 10% (rounded down)</p></div></div>
+    <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][10] }}</p></div></div>
+    <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade10" value="Buy Upgrade"></div></div>
 </form>
-</table>
-
+</div>
 <br>
-<table id="maininfo">
+<div id="maininfo">
 <form action="/user/{{ username }}/button" method="post">
-    <tr><td><p>Upgrade the amount mined by 50% (rounded down)</p></td></tr>
-    <tr><td><p>Cost : §{{ minesFunc['mineUpgrades'][50] }}</p></td></tr>
-    <tr><td><input type="submit" name="mineUpgrade50" value="Buy Upgrade"></td></tr>
+    <div class="row"><div class="col-sm-12"><p>Upgrade the amount mined by 50% (rounded down)</p></div></div>
+    <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][50] }}</p></div></div>
+    <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade50" value="Buy Upgrade"></div></div>
 </form>
-</table>
+</div>
 <br>
-<table id="maininfo">
+<div id="maininfo">
 <form action="/user/{{ username }}/button" method="post">
-    <tr><td><p>Mines double their output!</p></td></tr>
-    <tr><td><p>Cost : §{{ minesFunc['mineUpgrades'][100] }}</p></td></tr>
-    <tr><td><input type="submit" name="mineUpgrade100" value="Buy Upgrade"></td></tr>
+    <div class="row"><div class="col-sm-12"><p>Mines double their output!</p></div></div>
+    <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][100] }}</p></div></div>
+    <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade100" value="Buy Upgrade"></div></div>
 </form>
-</table>
+</div>
 <br>
-<table id="maininfo">
+<div id="maininfo">
 <form action="/user/{{ username }}/button" method="post">
-    <tr><td><p>Instead of producing one resource per mine, mines produce one more. (2,3,4,...)</p></td></tr>
-    <tr><td><p>Cost : §{{ minesFunc['mineUpgrades'][2] }}</p></td></tr>
-    <tr><td><input type="submit" name="mineUpgrade" value="Buy Upgrade"></td></tr>
+    <div class="row"><div class="col-sm-12"><p>Instead of producing one resource per mine, mines produce one more. (2,3,4,...)</p></div></div>
+    <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][2] }}</p></div></div>
+    <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade" value="Buy Upgrade"></div></div>
 </form>
-</table>
+</div>
 <br>
 
 <p>future images here</p>
