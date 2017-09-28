@@ -1,0 +1,13 @@
+var myShips = new Array();
+myShips[0] = 1; //J-10 Exploration series
+myShips[1] = 1; //J-9 Exploration series
+myShips[2] = 1; //J-8 Exploration series
+myShips[3] = 1; //J-7 Exploration series
+myShips[4] = 1; //J-6 Exploration series
+myShips[5] = 1; //J-5 Exploration series
+myShips[6] = 0; //J-4 Exploration series
+myShips[7] = 0; //J-3 Exploration series
+myShips[8] = 0; //J-2 Exploration series
+myShips[9] = 0; //J-1 Exploration series
+myShips[10] = 0; //Exploration series fighter swarm
+myShips[11] = 0; //J-10 K series
