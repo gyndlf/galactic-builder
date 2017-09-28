@@ -13,14 +13,16 @@ canvas {
 </style>
 </head>
 <body onload="init();">
-<img id="test" src="/static/war/Destroyertop.jpg">
-<img id="test1" src="/static/war/SSD-SWE.png">
 <img id="J10EXS" src="/static/war/J10EX.jpg">
 <img id="J9EXS" src="/static/war/J9EXS.jpg">
 <img id="J8EXS" src="/static/war/J8EXS.jpg">
 <img id="J7EXS" src="/static/war/J7EXS.jpg">
 <img id="J6EXS" src="/static/war/J6EXS.jpg">
 <img id="J5EXS" src="/static/war/J5EXS.jpg">
+<img id="J4EXS" src="/static/war/J4EXS.jpg">
+<img id="J3EXS" src="/static/war/J3EXS.jpg">
+<img id="J2EXS" src="/static/war/J2EXS.jpg">
+<img id="J1EXS" src="/static/war/J1EXS.jpg">
 <script src="/static/war/warCode.js"></script>
 
 <script>
@@ -55,26 +57,27 @@ function startGame(myships) {
 		myShip[i] = new component(90, 70, "red", 40, 120 * i, 200, 0, 700, 0.2, "J6EXS", 0, 8, false);
 		}
 		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]; i ++)	{
-		myShip[i] = new component(100, 60, "red", 40, 120 * i, 800, 100, 0, 0.8, "test1", 0, 2, false);
+		myShip[i] = new component(100, 60, "red", 40, 120 * i, 800, 100, 0, 0.8, "J4EXS", 0, 2, false);
 		}
 		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]; i ++)	{
-		myShip[i] = new component(100, 60, "red", 40, 120 * i, 100, 0, 0, 1, "test1", 0, 0, false);
+		myShip[i] = new component(100, 60, "red", 40, 120 * i, 100, 0, 0, 1, "J3EXS", 0, 0, false);
 		}
 		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]+ myShips[7]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]; i ++)	{
-		myShip[i] = new component(60, 40, "red", 40, 120 * i, 50, 50, 0, 1, "test1", 0, 1, false);
+		myShip[i] = new component(60, 40, "red", 40, 120 * i, 50, 50, 0, 1, "J2EXS", 0, 1, false);
 		}
 		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]; i ++)	{
-		myShip[i] = new component(60, 40, "red", 40, 120 * i, 50, 50, 0, 1, "test1", 0, 1, false);
+		myShip[i] = new component(60, 40, "red", 40, 120 * i, 50, 50, 0, 1, "J1EXS", 0, 1, false);
 		}
+		/*
 		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10]; i ++)	{
 		myShip[i] = new component(20, 20, "yellow", 40, 120 * i, 200, 50, 0, 5, "test1", 0, 1, true);
 		}
 		for (i = myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4]+ myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10]; i < myShips[0] + myShips[1] + myShips[2] + myShips[3] + myShips[4] + myShips[5]+ myShips[6]+ myShips[7]+ myShips[8]+ myShips[9]+ myShips[10]+ myShips[11]; i ++)	{
 		myShip[i] = new component(530, 120, "red", 40, 120 * i, 10000, 500, 600, 0.1, "test1", 10000 + i, 2, false);
-		}
+		}*/
 	
 	for (i = 0; i < enemyshipNumber; i++){
-		enemyShip[i] = new component(530, 120, "green", 1240, 120 * i + 100, 10000, 500, 600, 0.01, "test1", 10000 + i, 2, true);
+		enemyShip[i] = new component(530, 120, "green", 1240, 120 * i + 100, 10000, 500, 600, 0.01, "J10EXS", 10000 + i, 2, true);
 		for (y = 0; y < myshipNumber; y++){
 		myShip[y].target[i] = false;
 	}
