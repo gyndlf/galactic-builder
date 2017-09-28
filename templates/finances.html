@@ -1,33 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
-<table id="maininfo">
-    <tr id="tr">
-        <td colspan="7" id="td"><b>Welcome back {{ username }}!</b>
-        </td>
-    </tr>
+<div id="maininfo">
+    <div id="tr" class="row">
+        <div id="td" class="col-sm-12"><b>Welcome back {{ username }}!</b>
+        </div>
+    </div>
+    </div>
+    <br>
+    <div id="maininfo">
 	<p>Since the game is in Alpha, there will be database resets as we add new features and edit varibles. To give you something to do, we have a challenge for you, your goal is to be the first to get §1 billion dollars. Sorry about that.</p>
-</table>
+</div>
 <br>
-<table id="maininfo">
-    <tr id="tr">
-        <td colspan="7" id="td"><b>Finances</b>
-        </td>
-    </tr>
-    <tr id="tr">
-        <td id="td">Money</td>
-        <td id="td">Net Income</td>
-        <td id="td">Income</td>
-        <td id="td">Expenses</td>
-        <td id="td">Net Worth</td>
-    </tr>
-    <tr id="tr">
-        <td class="module" id="td">§{{ money }}</td>
-        <td class="module" id="td">§{{ netIncome }}</td>
-        <td class="module" id="td">§{{ income }}</td>
-        <td class="module" id="td">§{{ expenses }}</td>
-        <td class="module" id="td">§{{ netWorth }}</td>
-    </tr>
-</table>
+<div id="maininfo">
+    <div id="tr" class="row">
+        <div id="td" class="col-sm-12"><b>Finances</b></div>
+    </div>
+    <div id="tr" class="row">
+        <div id="td" class="col-sm-2">Money</div>
+        <div id="td" class="col-sm-2">Net Income</div>
+        <div id="td" class="col-sm-2">Income</div>
+        <div id="td" class="col-sm-2">Expenses</div>
+        <div id="td" class="col-sm-2">Net Worth</div>
+    </div>
+    <div id="tr" class="row">
+        <div class="module" id="td" class="col-sm-2">§{{ money }}</div>
+        <div class="module" id="td" class="col-sm-2">§{{ netIncome }}</div>
+        <div class="module" id="td" class="col-sm-2">§{{ income }}</div>
+        <div class="module" id="td" class="col-sm-2">§{{ expenses }}</div>
+        <div class="module" id="td" class="col-sm-2">§{{ netWorth }}</div>
+    </div>
+</div>
 
 <p>
     <br>
