@@ -680,6 +680,12 @@ def userButton(name=None):
         return redirect(url_for('user', name=name, page='home', data=error))
 
 
+@app.route('/testing')
+def testing():
+    data = 'This is data sent from Python to Javascript'
+    return render_template("test.html", data=data)
+
+
 if __name__ == "__main__":
     # app.run(debug=True)
     logger.info('Running app')
