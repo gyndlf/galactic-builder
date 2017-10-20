@@ -63,57 +63,57 @@ class basic ():
         	'cost' : 250000000,
         	'class' : 'anti tank'
         }
-		
-		self.j5exs = {
+
+        self.j5exs = {
         	'name' : 'J-5 Explorer Series',
         	'desc' : 'Cheap heavy sheilded ship',
         	'cost' : 125000000,
         	'class' : 'sheilded'
         }
-		
-		self.j3exs = {
+
+        self.j3exs = {
         	'name' : 'J-3 Explorer Series',
         	'desc' : 'One of the more expensive anti fighters',
         	'cost' : 31250000,
         	'class' : 'anti fighter'
         }
-		
-		self.j4exs = {
+
+        self.j4exs = {
         	'name' : 'J-3 Explorer Series',
         	'desc' : 'Cheap fighter carrier',
         	'cost' : 62500000,
         	'class' : 'fighter carrier'
         }
-		
-		self.j2exs = {
+
+        self.j2exs = {
         	'name' : 'J-2 Explorer Series',
         	'desc' : 'Cargo ship',
         	'cost' : 15625000,
         	'class' : 'support'
         }
-		
-		self.j1exs = {
+
+        self.j1exs = {
         	'name' : 'J-1 Explorer Series',
         	'desc' : 'Troop carrier with two sections, one for boarding, one for invading',
         	'cost' : 7812500,
         	'class' : 'sheilded'
         }
-		
-		self.s10exs = {
+
+        self.s10exs = {
         	'name' : 'S-10 Explorer Series',
         	'desc' : 'Most advanced fighter best suited to anti fighter',
         	'cost' : 3906250,
         	'class' : 'interceptor'
         }
-		
-		self.s9exs = {
+
+        self.s9exs = {
         	'name' : 'S-9 Explorer Series',
         	'desc' : 'Fighter best suited to anti fighter',
         	'cost' : 1953125,
         	'class' : 'interceptor'
         }
-		
-		self.s8exs = {
+
+        self.s8exs = {
         	'name' : 'S-8 Explorer Series',
         	'desc' : 'Fighter best suited to anti fighter',
         	'cost' : 976563,
