@@ -25,7 +25,7 @@ MSG=$PHR$VER
 #mv templates/index_tmp.html templates/index.html
 
 echo $MSG
-git commit --all --message "Tsting" # Commit all the changed code
+git commit --all --message "$MSG" # Commit all the changed code
 
 #git push origin # Update bitbucket
 #git push heroku # Update heroku
