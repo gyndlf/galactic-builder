@@ -18,6 +18,7 @@
 		<div class="col-sm-2"><button id= "vexxors" class="button">Vexxors</button ></div>
 		<div class="col-sm-2"><button id= "map" class="button">Map</button></div>
 		<div class="col-sm-2"><button id= "galactichistory" class="button">Galactic History</button></div>
+		<div class="col-sm-2"><button id= "system" class="button">System Simulator</button></div>
 		</div>
 		<br>
 		<div class="row">
@@ -50,6 +51,9 @@
 		</div>
 		<div id="galactichistoryinfo" class="species">
 		</div>
+		<div id="systeminfo" class="species" onload="startGame()">
+		</div>
+		<script src="/static/specieStuff/SystemSimCode.js"></script>
 		<script>
 $(document).ready(function(){
 $(".species").hide();
@@ -116,6 +120,11 @@ $("#page2").hide();
 		$(".species").hide();
         $("#galactichistoryinfo").show();
 		$("#galactichistoryinfo").load("/static/specieStuff/galactichistoryinfo.txt");
+    });
+	$("#system").click(function(){
+		$(".species").hide();
+        $("#systeminfo").show();
+		$("#systeminfo").load("/static/specieStuff/systeminfo.txt");
     });
 });
 
