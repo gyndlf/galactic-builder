@@ -24,6 +24,7 @@ MSG="$PHR$VER"
 #sed -e "206s/$NUM1.$TMP/$NUM1.$NUM2/" templates/index.html > templates/index_tmp.html # Update the new version num
 #mv templates/index_tmp.html templates/index.html
 
+echo $MSG
 git commit --all --message "Tsting" # Commit all the changed code
 
 #git push origin # Update bitbucket
