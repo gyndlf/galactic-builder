@@ -24,10 +24,10 @@ MSG="$PHR$VER"
 #sed -e "206s/$NUM1.$TMP/$NUM1.$NUM2/" templates/index.html > templates/index_tmp.html # Update the new version num
 #mv templates/index_tmp.html templates/index.html
 
-git commit --all --message $MSG # Commit all the changed code
+git commit --all --message "Tsting" # Commit all the changed code
 
-git push origin # Update bitbucket
-git push heroku # Update heroku
-git push git # Update git
+#git push origin # Update bitbucket
+#git push heroku # Update heroku
+#git push git # Update git
 #git push AAmazon # Update amazon server (legacy)
 #git push AHeroku # Update amazon / heroku sever  (legacy)
