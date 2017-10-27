@@ -18,13 +18,13 @@ echo "from"
 echo $NUM1.$TMP
 echo ""
 
-VER="$NUM1.$NUM2"
-MSG="$PHR$VER"
+VER=$NUM1.$NUM2
+MSG=$PHR$VER
 
 #sed -e "206s/$NUM1.$TMP/$NUM1.$NUM2/" templates/index.html > templates/index_tmp.html # Update the new version num
 #mv templates/index_tmp.html templates/index.html
 
-echo "$MSG"
+echo $MSG
 git commit --all --message "Tsting" # Commit all the changed code
 
 #git push origin # Update bitbucket
