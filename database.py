@@ -50,7 +50,13 @@ class person():
             'AppyLyinx' : 0, #5 titianium, 3 copper, 3 silicon, 1 noobidium
             'Toilet' : 0, #10 noobidium
             'Pii Fighter' : 0, #50 steel, 20 titianium, 10 hydrogen, 1 white crystal, weapon lisence core, fighter license
-            '4d Printer' : 0 #10 steel, 10 copper, 10 silicon, 1 white crystal, 1 yellow crystal
+            '4d Printer' : 0, #10 steel, 10 copper, 10 silicon, 1 white crystal, 1 yellow crystal
+            'X128 CPU': 0,
+            'robot': 0,
+            'batteries': 0,
+            'plasma compressor': 0,
+            'laser': 0,
+            'death star': 0
         }
         self.ownedShips = {
         	'j10exs' : 0,
