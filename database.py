@@ -34,11 +34,19 @@ class person():
             'silicon': 0,
             'copper': 0,
             'noobidium': 0,
-            'helium': 0
+            'helium': 0,
+            'gold': 0,
+            'liquid nitrogen': 0,
+            'carbon fiber': 0,
+            'oil': 0,
+            'uranium': 0,
+            'francium': 0,
+            'lead': 0,
+            'carbon': 0
         }
         self.ownedFactories = {
              'Car' : 0, #10 steel, 1 silicon,
-            'xPhone' : 0, #2 titianium, 1 copper, 1 silicon (Possible weapon license)
+            'iPhoneX' : 0, #2 titianium, 1 copper, 1 silicon (Possible weapon license)
             'AppyLyinx' : 0, #5 titianium, 3 copper, 3 silicon, 1 noobidium
             'Toilet' : 0, #10 noobidium
             'Pii Fighter' : 0, #50 steel, 20 titianium, 10 hydrogen, 1 white crystal, weapon lisence core, fighter license
