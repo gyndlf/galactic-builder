@@ -21,8 +21,8 @@ echo ""
 VER=$NUM1.$NUM2
 MSG=$PHR$VER
 
-sed -e "206s/$NUM1.$TMP/$NUM1.$NUM2/" templates/index.html > templates/index_tmp.html # Update the new version num
-mv templates/index_tmp.html templates/index.html
+#sed -e "206s/$NUM1.$TMP/$NUM1.$NUM2/" templates/index.html # Update the new version num
+#mv templates/index_tmp.html templates/index.html
 
 echo $MSG
 git commit --all --message "$MSG" # Commit all the changed code
