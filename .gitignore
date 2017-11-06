@@ -4,3 +4,6 @@ data/__pycache__/
 /userManage.py
 /working_copy.py
 /testapp.py
+/static/people.config
+
+/.gitignore
