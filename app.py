@@ -470,7 +470,8 @@ def user(name=None, page=None, data=None):
                     'values': values,
                     'person': person
                 }
-                return render_template('mines.html', username=person.name, dialogMessage=dialogMessage, **templateData)
+                return render_template('mines.html', username=person.name, money=person.money,
+                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name], dialogMessage=dialogMessage, **templateData)
 
             elif page == 'factories':
                 logger.info("Rendering factories html...")
@@ -480,7 +481,8 @@ def user(name=None, page=None, data=None):
                     'person': person,
                     'totals': totals
                 }
-                return render_template('factories.html', username=person.name, dialogMessage=dialogMessage, **templateData)
+                return render_template('factories.html', username=person.name, money=person.money,
+                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name], dialogMessage=dialogMessage, **templateData)
 
             elif page == 'community':
                 logger.info("Rendering community html..")
@@ -491,23 +493,28 @@ def user(name=None, page=None, data=None):
                     info.append(data[item])
                     labels.append(item)
                 colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD"]
-                return render_template('community.html', username=person.name, dialogMessage=dialogMessage, set=zip(info, labels, colors))
+                return render_template('community.html', username=person.name, money=person.money,
+                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name], dialogMessage=dialogMessage, set=zip(info, labels, colors))
 
             elif page == 'species':
                 logger.info('Rendering species html')
-                return render_template('species.html', username=person.name, dialogMessage=dialogMessage)
+                return render_template('species.html', username=person.name, money=person.money,
+                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name], dialogMessage=dialogMessage)
 
             elif page == 'war':
                 logger.info('Rendering war html')
-                return render_template('war.html', username=person.name, dialogMessage=dialogMessage)
+                return render_template('war.html', username=person.name, money=person.money,
+                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name], dialogMessage=dialogMessage)
                 
             elif page == 'shipBuying':
                 logger.info('Rendering shipBuying html')
-                return render_template('shipBuying.html', username=person.name, dialogMessage=dialogMessage, values=values)
+                return render_template('shipBuying.html', username=person.name, money=person.money,
+                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name], dialogMessage=dialogMessage, values=values)
 
             elif page == 'diplomacy':
                 logger.info('Rendering shipBuying html')
-                return render_template('diplomacy.html', username=person.name, dialogMessage=dialogMessage)
+                return render_template('diplomacy.html', username=person.name, money=person.money,
+                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name], dialogMessage=dialogMessage)
 
             else:
                 logger.error('Invalid page name!')
