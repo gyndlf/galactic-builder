@@ -1,5 +1,4 @@
 .idea
-data/__pycache__/
 /data/people.config
 __pycache/
 /userManage.py
@@ -8,3 +7,4 @@ __pycache/
 /static/people.config
 
 /.gitignore
+__pycache__/

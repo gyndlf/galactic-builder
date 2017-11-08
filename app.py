@@ -14,6 +14,9 @@ import string as s
 import random
 import logging
 
+import baseValues  # Only used in the inital check to see if everything is in sync
+import database  # Only used in the inital check to see if everything is in sync
+
 # create a logging format
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler = logging.FileHandler('logs.log')
@@ -67,7 +70,6 @@ DATABASE_PATH = os.path.join(PICKLE_DIR, DATABASE)
 VALUES = 'values.p'
 VALUES_PATH = os.path.join(PICKLE_DIR, VALUES)
 
-
 def loadusers():
     """Load users from the file given as USERS"""
     logger.info('[1] Loading users')
@@ -91,6 +93,17 @@ def loadvalues():
     with open(VALUES_PATH, 'rb') as f:
         values = pickle.load(f)
     return values
+
+# Before doing anything important, first make sure that all of the varibles are similar across the board
+# Check if each person has the same as the database.py and database.p files
+u = loadusers()
+v = loadvalues()
+
+for person in v:
+    pass
+
+
+
 
 
 def scrambleCookie(request, username):
@@ -129,12 +142,12 @@ def total(users, values):
     """Calculate totals across all the users"""
     logger.info('[2] Running total definition')
 
-    foodSent = 0
-    totalMoney = 0
-    totalMines = 0
-    avgWealth = 0
-    wealth = {}
-    factories = {}
+    foodSent = 0  # The total food created by all the players
+    totalMoney = 0  # The total money in circulation in the game
+    totalMines = 0  # The total count of mines in the game
+    avgWealth = 0  # Average wealth of all the payers (currently not used)
+    wealth = {}  # Lookup dictionary of a person's wealth
+    factories = {}  # Lookup dictionary of each factories count
     for factoryh in values.factoryValues:
         factories[factoryh] = 0
 
@@ -175,7 +188,6 @@ def total(users, values):
 def farm(values, totals):
     """The farms calculation. Calculates all the formulas for farms"""
     logger.info('[3] Running farms def')
-    # All farm calculations done here. Not farms.py
 
     population = values.population
     foodNeeded = population * 2
@@ -187,7 +199,7 @@ def farm(values, totals):
     calculated = {
         'foodNeeded': foodNeeded,
         'foodSent': foodSent,
-        'farmValue': farmValue,  # Selling food value
+        'farmValue': farmValue,  # Selling food value (price food sells at)
         'farmCost': farmCost,
         'levelCost': levelCost
     }
@@ -198,6 +210,7 @@ def mine(values, totals):
     """Calculate the mine costs"""
     logger.info('[3] Running mine def')
     calculated = {}
+
     # For each mine calculate its costs
     for mine in values.mineValues:
         mineCost = totals['totalMines'] * values.mineValues[mine]  # Number of mines * value of mine
@@ -212,10 +225,10 @@ def mine(values, totals):
     base = int(totals['avgWealth'] / 10)
     if base < 100:
         base = 100
-    root10 = base * 10
-    root50 = base * 50
-    root100 = base * 100
-    root2 = root100 * root50 * root10 * base
+    root10 = base * 9
+    root50 = base * 45
+    root100 = base * 90
+    root2 = root100 * root50
     mineUpgrades = {
         1: base,
         10: root10,
@@ -245,7 +258,7 @@ def factory(values, totals):
     # Calculate factory costs
     for factoryt in values.factoryValues:
 
-        # Make sure that the scaling is correct. Now timesing by 0
+        # Make sure that the scaling is correct. Now multiplying by 0
         if totals['factoryCount'][factoryt] == 0:
             calculated[factoryt] = values.factoryValues[factoryt] * 2
         else:
@@ -255,6 +268,8 @@ def factory(values, totals):
         if calculated[factoryt] < 10:
             calculated[factoryt] = 10
     logger.debug('Calculated factory cost %s', calculated)
+
+    # Code from the spreadsheet
     # productCost = 0
     # factoryLevel = 1
     # amountProduced = 2^factoryLevel*2
@@ -287,7 +302,7 @@ def dynamicPersonalCalc(object, farms, values):
     factoryDict = {}
     totalFacIncome = 0
     materialsNeeded = {}
-    for material in values.mineValues:
+    for material in values.mineValues:  # Initialise the materials
         materialsNeeded[material] = 0
     # amountProduced = numberOfFactories * Bonus(edited)
     # income = productCost * amountProduced
@@ -297,7 +312,7 @@ def dynamicPersonalCalc(object, farms, values):
         facIncome = values.factoryValues[factory] * facProduced
         facProfit = facIncome - 0  # Need to add materials next
 
-        localMaterialsNeeded = {}
+        localMaterialsNeeded = {} # Will not need the the local only global. Depends on our choice.
         for material in values.factoryRecipies[factory]:  # Find out how many materials are needed
             materialsNeeded[material] += values.factoryRecipies[factory][material] * facProduced
             # Put a minimum value in case they produce nothing in that factory
@@ -313,12 +328,14 @@ def dynamicPersonalCalc(object, farms, values):
             'income': facIncome,
             'profit': facProfit,
             'needed': localMaterialsNeeded,
-            'materialsMade': '(Included in a future update)'
+            'materialsMade': '(Legacy section. Please remove HTML)'
         }
 
         factoryDict[factory] = tmp
     logger.debug('Materials needed in total %s', materialsNeeded)
     logger.debug('Materials produced: %s', minesDict)
+
+    # From here the code will change to do factories in TOTAL
 
     # Effectivly materialsNeeded - materialsProduced
     materialsToBuy = {k: materialsNeeded.get(k, 0) - minesDict.get(k, 0) for k in set(materialsNeeded) & set(minesDict)}
@@ -333,11 +350,11 @@ def dynamicPersonalCalc(object, farms, values):
     logger.debug('You have a factory material cost of %s', materialCost)
 
     # General
-    income = Fincome + totalFacIncome  # Add factory income and mine income here
+    income = Fincome + totalFacIncome  # Add farm income and factory income here
     expenses = int(income / 5) + materialCost  # (Tax) Add all expenses here
     netIncome = income - expenses
 
-    # Chuck in a dictionary
+    # Chuck (Norris) in a dictionary == Unkillable
     calculated = {
         'Fproduced': Fproduced,
         'Fincome': Fincome,
@@ -347,7 +364,9 @@ def dynamicPersonalCalc(object, farms, values):
         'minesDict': minesDict,
         'factories': factoryDict
     }
-    # Input new varibles into "object" object
+
+    # Any point having the code below? It's never used
+    # Input new dynamic varibles into "object" object
     object.foodProduced = Fproduced
     object.income = income
     object.expenses = expenses
@@ -419,7 +438,7 @@ def user(name=None, page=None, data=None):
         return 'You do not have access to this location'
 
     # Have you been sent here with an error? Get ready to display it!
-    if data == 'notEnoughMoney':
+    if data == 'notEnoughMoney':  # Could change to having the string have the sentance shown. Get rid of if/else
         dialogMessage = 'Not enough money!'
     elif data == 'maxFarmLevel':
         dialogMessage = 'The max farm level is 5'
@@ -439,7 +458,7 @@ def user(name=None, page=None, data=None):
 
     # Identify the user
     for person in users:
-        if name == person.name:
+        if name == person.name:  # Name is from the url
             # Calculate dynamic personal varibles
             dynamicPersonal = dynamicPersonalCalc(person, farms, values)
 
@@ -546,7 +565,7 @@ def userButton(name=None):
         logger.error('Cookie does not match database')
         return 'You do not have access to this location'
 
-    # Run recipies
+    # Run recipies. Because other users could be online and you want to be upto date
     logger.info("Loading recipies...")
     users = loadusers()
     values = loadvalues()
