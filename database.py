@@ -3,9 +3,10 @@
 
 # No formulas in here!!! Cheeky cheeky!
 
-#Anything?
+# Anything?
 
-class person():
+
+class person:
     def __init__(self):
         # General
         self.name = ""
@@ -45,12 +46,13 @@ class person():
             'carbon': 0
         }
         self.ownedFactories = {
-             'Car' : 0, #10 steel, 1 silicon,
-            'iPhoneX' : 0, #2 titianium, 1 copper, 1 silicon (Possible weapon license)
-            'AppyLyinx' : 0, #5 titianium, 3 copper, 3 silicon, 1 noobidium
-            'Toilet' : 0, #10 noobidium
-            'Pii Fighter' : 0, #50 steel, 20 titianium, 10 hydrogen, 1 white crystal, weapon lisence core, fighter license
-            '4d Printer' : 0, #10 steel, 10 copper, 10 silicon, 1 white crystal, 1 yellow crystal
+            'Car': 0,  # 10 steel, 1 silicon,
+            'iPhoneX': 0,  # 2 titianium, 1 copper, 1 silicon (Possible weapon license)
+            'AppyLyinx': 0,  # 5 titianium, 3 copper, 3 silicon, 1 noobidium
+            'Toilet': 0,  # 10 noobidium
+            'Pii Fighter': 0,
+            # 50 steel, 20 titianium, 10 hydrogen, 1 white crystal, weapon lisence core, fighter license
+            '4d Printer': 0,  # 10 steel, 10 copper, 10 silicon, 1 white crystal, 1 yellow crystal
             'X128 CPU': 0,
             'robot': 0,
             'batteries': 0,
@@ -59,14 +61,14 @@ class person():
             'death star': 0
         }
         self.ownedShips = {
-        	'j10exs' : 0,
-        	'j9exs' : 0,
-        	'j8exs' : 0,
-        	'j7exs' : 0,
-        	'j6exs' : 0
+            'j10exs': 0,
+            'j9exs': 0,
+            'j8exs': 0,
+            'j7exs': 0,
+            'j6exs': 0
         }
         self.mineProduced = {}
         self.saveFactories = {}
         self.totalMines = 0
-        self.mineBoost = 1 #Is representing a number/100. So 5 is a 5% bonus.
+        self.mineBoost = 1  # Is representing a number/100. So 5 is a 5% bonus.
         self.minePowerUpgrade = 1
