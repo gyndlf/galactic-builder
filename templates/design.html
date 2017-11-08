@@ -11,8 +11,8 @@
 			text-align:center;
 		}
 		#maininfo {
-			 border:5px solid #33cc33;
-            background-color: azure;
+			 border:5px solid grey;
+            background-color: rgba(240, 255, 255, 0.90);
             text-align: center;
             width: 100%;
 			background-repeat: no-repeat;
@@ -30,6 +30,25 @@
 		<div class="row">
 			<div class="col-sm-12"><h3>Hello Joe!</h3></div>
 		</div>
+		<!--money-->
+		<div class="row">
+			<div class="col-sm-6">
+				<div><h5>Money</h5></div>
+			</div>
+			<div class="col-sm-6">
+				<p>//Money//</p>
+			</div>
+		</div>
+		<!--netincome-->
+		<div class="row">
+			<div class="col-sm-6">
+				<div><h5>NetIncome</h5></div>
+			</div>
+			<div class="col-sm-6">
+				<p>//NetIncome//</p>
+			</div>
+		</div>
+		<!--income-->
 		<div class="row">
 			<div class="col-sm-6">
 				<div><h5>Income</h5></div><br>
@@ -46,8 +65,43 @@
 				<div class="col-sm-12"><h3>Hello Joe!</h3></div>
 			</div>
 		</div>
+		<!--NetWorth-->
+		<div class="row">
+			<div class="col-sm-6">
+				<div><h5>NetWorth</h5></div><br>
+				<div><button data-toggle = "collapse" href = "#DetailedNetWorth">Detailed</button></div>
+			</div>
+			<div class="col-sm-6">
+				<br>
+				<p>//NetWorth//</p>
+			</div>
+		</div>
+		<div class="collapse" id="DetailedNetWorth">
+			<div class="row">
+				<!--Where a for loop can be put to show each thing that affects Networth, ultimately it is up to us how we want it-->
+				<div class="col-sm-12"><h3>Hello Joe!</h3></div>
+			</div>
+		</div>
+		<!--Expenses-->
+		<div class="row">
+			<div class="col-sm-6">
+				<div><h5>Expenses</h5></div><br>
+				<div><button data-toggle = "collapse" href = "#DetailedExpenses">Detailed</button></div>
+			</div>
+			<div class="col-sm-6">
+				<br>
+				<p>//Expenses//</p>
+			</div>
+		</div>
+		<div class="collapse" id="DetailedExpenses">
+			<div class="row">
+				<!--Where a for loop can be put to show each thing that affects Expenses, ultimately it is up to us how we want it-->
+				<div class="col-sm-12"><h3>Hello Joe!</h3></div>
+			</div>
+		</div>
 	</div>
 <script>
+//can be put in  a script file
 var solar_system = new Array();
 var astroid = new Array();
  /*Shows orbital lines when false*/
@@ -55,13 +109,24 @@ var astroid = new Array();
  /*How many times faster the simulation is*/
  var speedSim = 1;
  var time = 0;
+  /**/
+ var AstroidSize = 0.3;
+ var averageAstroidSpeed = 0.0002
 function startGame() {
 		myGameArea.start(); 
 		/*Celestial Objects*/
-		solar_system[0] = new Celestial_Ob_Fx(0, myGameArea.canvas.width/2, myGameArea.canvas.height/2, 100, 100, "#ffffcc");
-		solar_system[1] = new Celestial_Ob(750, solar_system[0], 10, 10, 0.001, "yellow");
-		solar_system[2] = new Celestial_Ob(500, solar_system[0], 20, 20, 0.004, "orange");
-		solar_system[3] = new Celestial_Ob(300, solar_system[0], 5, 5, 0.008, "red");
+		solar_system[0] = new Celestial_Ob_Fx(0, myGameArea.canvas.width/2, myGameArea.canvas.height/2, 50, 50, "yellow");
+		solar_system[1] = new Celestial_Ob(200, solar_system[0], 10, 10, 0.01, "blue");
+		solar_system[2] = new Celestial_Ob(20, solar_system[1], 1, 1, 0.05, "grey");
+		solar_system[3] = new Celestial_Ob(80, solar_system[0], 6, 6, 0.06, "gray");
+		solar_system[4] = new Celestial_Ob(140, solar_system[0], 9, 9, 0.03, "#ffffcc");
+		solar_system[5] = new Celestial_Ob(270, solar_system[0], 9, 9, 0.005, "red");
+		solar_system[6] = new Celestial_Ob(400, solar_system[0], 20, 20, 0.001, "#ff6600");
+		solar_system[7] = new Celestial_Ob(500, solar_system[0], 13, 13, 0.0005, "#ffcc66");
+		solar_system[8] = new Celestial_Ob(600, solar_system[0], 8, 8, 0.0001, "#3399ff");
+		solar_system[9] = new Celestial_Ob(750, solar_system[0], 12, 12, 0.00005, "#0066ff");
+		astroid[0] = new Astroid_Rg(320, solar_system[0], 400, 30, "#800000");
+		astroid[1] = new Astroid_Rg(20, solar_system[7], 4, 4, "#800000");
 }
 var myGameArea = {
     canvas : document.createElement("canvas"),
@@ -122,16 +187,38 @@ function Astroid_Rg(distance, master, mass, width, colour){
 	this.x = 0;
 	this.y = 0;
 	this.width = width;
+	this.astroids = new Array();
+	for(i = 0; i < this.mass; i++){
+		this.astroids[i] = new Astroid(Math.floor((Math.random() * (this.width)) + (this.distance)), Math.floor((Math.random() * (3 * AstroidSize)) + (2 * AstroidSize)), (Math.random() * (2*Math.PI)), master, (Math.random() * (averageAstroidSpeed)));
+	}
 	this.update = function(){
 		ctx = myGameArea.context;
+		for(i = 0; i < this.mass; i++){
+			this.astroids[i].update(master);
+		}	
+	}
+}
+function Astroid(distance, size, orbit, master, speed){
+	this.distance = distance;
+	this.master = master;
+	this.speed = speed;
+	this.size = size;
+	this.colour = "grey";
+	this.x = 0;
+	this.y = 0;
+	this.rotations = orbit;
+	this.update = function(master1){
+		ctx = myGameArea.context;
+		var distx;
+		var disty;
+		this.rotations += this.speed * speedSim;
+		distx = Math.sin(this.rotations)*this.distance;
+		disty = Math.cos(this.rotations)*this.distance;
+		this.x = master1.x + distx;
+		this.y = master1.y + disty;
 		ctx.fillStyle = this.colour;
 		ctx.beginPath();
-		ctx.arc(master.x, master.y, this.distance, 0, 2*Math.PI);
-		ctx.fill();
-		ctx.closePath();
-		ctx.fillStyle = "white";
-		ctx.beginPath();
-		ctx.arc(master.x, master.y, this.distance - this.width, 0, 2*Math.PI);
+		ctx.arc(this.x, this.y, this.size, 0, 2*Math.PI);
 		ctx.fill();
 		ctx.closePath();
 	}
