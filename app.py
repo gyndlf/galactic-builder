@@ -38,17 +38,17 @@ logger.info('The seed is %s', seed)
 app = Flask(__name__)
 
 CHAR_SET = s.printable[:-5]  # All valid characters
-logger.info('All characters %s', CHAR_SET)
+logger.debug('All characters %s', CHAR_SET)
 CHAR_SET = CHAR_SET.replace("\\", "")  # Remove backslash
 CHAR_SET = CHAR_SET.replace("'", '')  # Remove single quote
 CHAR_SET = CHAR_SET.replace('"', '')  # Remove double quote
 CHAR_SET = CHAR_SET.replace(',', '')  # Remove commar
 CHAR_SET = CHAR_SET.replace('`', '')  # Remove thingy
 word = list(CHAR_SET)
-logger.info('Valid character %s', CHAR_SET)
+logger.debug('Valid character %s', CHAR_SET)
 random.shuffle(word)
 CHAR_SET = ''.join(word)
-logger.info('Shuffled characters %s', CHAR_SET)
+logger.debug('Shuffled characters %s', CHAR_SET)
 SUBSTITUTION_CHARS = CHAR_SET[-3:] + CHAR_SET[:-3]  # Moves them over by 3
 
 # Create the encryption and decryption dictionaries
@@ -112,11 +112,12 @@ if values is not actual:
     logger.error('CRITICAL ERROR: Values.p does NOT match baseValues.py\nReset database or update the variables')
     quit()
 
-for person in v:
+for person in u:
     if (len(person.ownedMines) + len(person.ownedFactories) + len(person.ownedShips)) is not sample:
         logger.error('CRITICAL ERROR: ' + str(person.name) + "'s varibles do NOT match.\nReset database or update"
                                                              "variables")
         quit()
+logger.info('Passed the cross reference variable test')
 
 
 
