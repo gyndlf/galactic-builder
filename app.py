@@ -490,6 +490,15 @@ def user(name=None, page=None, data=None):
             # Calculate dynamic personal varibles
             dynamicPersonal = dynamicPersonalCalc(person, farms, values)
 
+            templateData = {
+                'minesFunc': mines,
+                'dialogMessage': dialogMessage,
+                'dynamicPersonal': dynamicPersonal,
+                'values': values,
+                'person': person,
+                'totals': totals
+            }
+
             # Return the html
             if page == 'home':
                 logger.info("Rendering home html...")  # Need to upgrade to send the whole person
@@ -510,14 +519,7 @@ def user(name=None, page=None, data=None):
 
             elif page == 'mines':
                 logger.info('Rendering mines html...')
-                templateData = {
-                    'minesFunc': mines,
-                    'dynamicPersonal': dynamicPersonal,
-                    'values': values,
-                    'person': person
-                }
-                return render_template('mines.html',  dynamicPersonal=dynamicPersonal, person=person, totals=totals,
-                                       dialogMessage=dialogMessage, **templateData)
+                return render_template('mines.html', **templateData)
 
             elif page == 'factories':
                 logger.info("Rendering factories html...")
