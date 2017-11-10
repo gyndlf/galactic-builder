@@ -327,49 +327,59 @@ def dynamicPersonalCalc(object, farms, values):
         facIncome = values.factoryValues[factory] * facProduced
         facProfit = facIncome - 0  # Need to add materials next
 
-        localMaterialsNeeded = {} # Will not need the the local only global. Depends on our choice.
         for material in values.factoryRecipies[factory]:  # Find out how many materials are needed
             materialsNeeded[material] += values.factoryRecipies[factory][material] * facProduced
-            # Put a minimum value in case they produce nothing in that factory
-            toSet = values.factoryRecipies[factory][material] * facProduced
-            if toSet > 0:
-                localMaterialsNeeded[material] = toSet
-            else:
-                localMaterialsNeeded[material] = values.factoryRecipies[factory][material]
         totalFacIncome += facProfit
 
         tmp = {
             'produced': facProduced,
             'income': facIncome,
             'profit': facProfit,
-            'needed': localMaterialsNeeded,
-            'materialsMade': '(Legacy section. Please remove HTML)'
+            'materialsRequired': values.factoryRecipies[factory]
         }
 
         factoryDict[factory] = tmp
+
     logger.debug('Materials needed in total %s', materialsNeeded)
     logger.debug('Materials produced: %s', minesDict)
 
-    # From here the code will change to do factories in TOTAL
+    # Calculate sales
+    # You produce 400 iron in total but only need 324. The excess 76 will be sold.
+    # You produce 200 gold but need 253 and so you will buy 53 gold.
 
-    # Effectivly materialsNeeded - materialsProduced
-    materialsToBuy = {k: materialsNeeded.get(k, 0) - minesDict.get(k, 0) for k in set(materialsNeeded) & set(minesDict)}
-    for material in materialsToBuy:  # Make sure they are not negative numbers!
-        if materialsToBuy[material] < 0:
-            materialsToBuy[material] = 0
-    logger.debug('Materials to buy: %s', materialsToBuy)
+    messages = {}
+    materialsSelling = {}
+    materialsBuying = {}
+    materialsTotalCost = 0
+    mineProfitMade = 0
 
-    materialCost = 0  # Add up all the costs
-    for material in materialsToBuy:
-        materialCost += materialsToBuy[material] * values.mineValues[material]
-    logger.debug('You have a factory material cost of %s', materialCost)
+    for material in minesDict:
+        materialsSelling[material] = 0
+        materialsBuying[material] = 0
+
+    for material in materialsNeeded:
+        needed = material - minesDict[material]
+        if needed > 0:  # Greater than §0. Sell the excess
+            selling = material * values.mineValues[material]
+            materialsSelling[material] = selling
+            mineProfitMade += selling
+            messages[material] = 'You have ' + str(needed) + ' extra ' + str('[RESOURCE NAME]') + \
+                                 ' This will be sold for §' + str(selling)
+        elif needed < 0:
+            buying = material * values.mineValues[material]
+            materialsBuying[material] = buying
+            materialsTotalCost += buying
+            messages[material] = 'You need ' + str(needed) + ' more ' + str('[RESOURCE NAME]') + \
+                             ' This will be brought for §' + str(buying)
+        else:
+            messages[material] = 'Lol. You produce just the right amount of resources. Good job.'
 
     # General
-    income = Fincome + totalFacIncome  # Add farm income and factory income here
-    expenses = int(income / 5) + materialCost  # (Tax) Add all expenses here
+    income = Fincome + totalFacIncome + mineProfitMade # Add farm income, mines and factory income here
+    expenses = int(income / 5) + materialsTotalCost  # (Tax) Add all expenses here
     netIncome = income - expenses
 
-    # Chuck (Norris) in a dictionary == Unkillable
+    # Chuck (Norris) it in a dictionary (== Unkillable)
     calculated = {
         'Fproduced': Fproduced,
         'Fincome': Fincome,
@@ -377,7 +387,10 @@ def dynamicPersonalCalc(object, farms, values):
         'expenses': expenses,
         'netIncome': netIncome,
         'minesDict': minesDict,
-        'factories': factoryDict
+        'factories': factoryDict,
+        'materialsSelling': materialsSelling,
+        'materialsBuying': materialsBuying,
+        'mineMessages': messages
     }
 
     # Any point having the code below? It's never used
