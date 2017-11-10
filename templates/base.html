@@ -48,8 +48,8 @@
                 <div class="col-sm-12">
                     <table>
                     <td>
-                    <div align="left" class="row"><p>Money: §{{ money }} Net Income: §{{ netIncome }}
-                Net Worth §{{ netWorth }}</p></div>
+                    <div align="left" class="row"><p>Money: §{{ person.money }} Net Income: §{{ person.netIncome }}
+                Net Worth §{{ person.netWorth }}</p></div>
                         </td>
                         <td>
                             <div class="row">
@@ -72,15 +72,15 @@
             <div id="myNav" class="overlay">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="overlay-content">
-                    <a href=" {{ url_for('user', name=username, page='home') }} ">Home</a>
-                    <a href=" {{ url_for('user', name=username, page='community') }} ">Community</a>
-                    <a href=" {{ url_for('user', name=username, page='farms') }} ">Farms</a>
-                    <a href=" {{ url_for('user', name=username, page='factories') }} ">Factories</a>
-                    <a href=" {{ url_for('user', name=username, page='mines') }} ">Mines</a>
-                    <!--<a href=" {{ url_for('user', name=username, page='war') }} ">War</a>-->
-                    <a href=" {{ url_for('user', name=username, page='shipBuying') }} ">Ship Buying</a>
-                    <!--<a href=" {{ url_for('user', name=username, page='diplomacy') }} ">Diplomacy</a>-->
-                    <a href=" {{ url_for('user', name=username, page='species') }} ">Species</a>
+                    <a href=" {{ url_for('user', name=person.name, page='home') }} ">Home</a>
+                    <a href=" {{ url_for('user', name=person.name, page='community') }} ">Community</a>
+                    <a href=" {{ url_for('user', name=person.name, page='farms') }} ">Farms</a>
+                    <a href=" {{ url_for('user', name=person.name, page='factories') }} ">Factories</a>
+                    <a href=" {{ url_for('user', name=person.name, page='mines') }} ">Mines</a>
+                    <!--<a href=" {{ url_for('user', name=person.name, page='war') }} ">War</a>-->
+                    <a href=" {{ url_for('user', name=person.name, page='shipBuying') }} ">Ship Buying</a>
+                    <!--<a href=" {{ url_for('user', name=person.name, page='diplomacy') }} ">Diplomacy</a>-->
+                    <a href=" {{ url_for('user', name=person.name, page='species') }} ">Species</a>
                 </div>
             </div>
         </div>
