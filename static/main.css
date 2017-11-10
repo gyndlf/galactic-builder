@@ -62,7 +62,15 @@ font-size: 17px
 		canvas {
 			border:1px solid #d3d3d3;
 			background-color: #f1f1f1;
+			position:absolute;
+			margin-left: -50%;
 		}
+		.sides {
+			height: 95%;
+		 }
+		 .centerContent {
+			height: 80%;
+		 }
         .button {
              display: inline-block;
              padding: 15px 25px;
