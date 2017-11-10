@@ -15,8 +15,6 @@
             background-color: rgba(240, 255, 255, 0.90);
             text-align: center;
             width: 100%;
-			background-repeat: no-repeat;
-			background-size: 100% 100%;
 			padding:10px;
 			margin-top: 10px;
 		}
@@ -25,83 +23,122 @@
 			align: auto;
 			margin-left: -50%;
 		}
+		.test{
+			color = blue;
+		}
+		.button {
+             display: inline-block;
+             padding: 10px 0px;
+              font-size: 15px;
+               cursor: pointer;
+                text-align: center;
+               text-decoration: none;
+               outline: none;
+               color: #666;
+             background-color: #4CAF50;
+             border: none;
+               border-radius: 15px;
+            box-shadow: 0 9px #727272;
+
+     }
+
+ .button:hover {background-color: #666666}
+ 
+         .button:active {
+               background-color: #grey;
+             box-shadow: 0 5px #666;
+               transform: translateY(4px);
+           }
+           .button {
+            position: relative;
+             background-color: grey;
+              border: none;
+             font-size: 13px;
+             color: #FFFFFF;
+            padding: 15px;
+            width: 100px;
+           text-align: center;
+           -webkit-transition-duration: 0.4s; /* Safari */
+             transition-duration: 0.4s;
+             text-decoration: none;
+            overflow: hidden;
+              cursor: pointer;
+          }
+
+
+           .button:after {
+              content: "";
+             background: grey;
+             display: block;
+              position: absolute;
+             padding-top: 300%;
+            padding-left: 350%;
+             margin-left: -20px !important;
+             margin-top: -120%;
+            opacity: 0;
+             transition: all 0.8s
+         }
+
+
+
+
+         .button:active:after {
+             padding: 0;
+             margin: 0;
+              opacity: 1;
+              transition: 0s
+         }
+		 .sides {
+			height: 95%;
+		 }
+		 .centerContent {
+			height: 80%;
+		 }
 	</style>
 </head>
 <body class="container" onload="setDynamicBackground();">
-	<div id="maininfo">
-		<div class="row">
-			<div class="col-sm-12"><h3>Hello Joe!</h3></div>
-		</div>
-		<!--money-->
-		<div class="row">
-			<div class="col-sm-6">
-				<div><h5>Money</h5></div>
-			</div>
-			<div class="col-sm-6">
-				<p>//Money//</p>
-			</div>
-		</div>
-		<!--netincome-->
-		<div class="row">
-			<div class="col-sm-6">
-				<div><h5>NetIncome</h5></div>
-			</div>
-			<div class="col-sm-6">
-				<p>//NetIncome//</p>
-			</div>
-		</div>
-		<!--income-->
-		<div class="row">
-			<div class="col-sm-6">
-				<div><h5>Income</h5></div><br>
-				<div><button data-toggle = "collapse" href = "#DetailedIncome">Detailed</button></div>
-			</div>
-			<div class="col-sm-6">
-				<br>
-				<p>//Income//</p>
-			</div>
-		</div>
-		<div class="collapse" id="DetailedIncome">
-			<div class="row">
-				<!--Where a for loop can be put to show each income, ultimately it is up to us how we want it-->
-				<div class="col-sm-12"><h3>Hello Joe!</h3></div>
-			</div>
-		</div>
-		<!--NetWorth-->
-		<div class="row">
-			<div class="col-sm-6">
-				<div><h5>NetWorth</h5></div><br>
-				<div><button data-toggle = "collapse" href = "#DetailedNetWorth">Detailed</button></div>
-			</div>
-			<div class="col-sm-6">
-				<br>
-				<p>//NetWorth//</p>
-			</div>
-		</div>
-		<div class="collapse" id="DetailedNetWorth">
-			<div class="row">
-				<!--Where a for loop can be put to show each thing that affects Networth, ultimately it is up to us how we want it-->
-				<div class="col-sm-12"><h3>Hello Joe!</h3></div>
-			</div>
-		</div>
-		<!--Expenses-->
-		<div class="row">
-			<div class="col-sm-6">
-				<div><h5>Expenses</h5></div><br>
-				<div><button data-toggle = "collapse" href = "#DetailedExpenses">Detailed</button></div>
-			</div>
-			<div class="col-sm-6">
-				<br>
-				<p>//Expenses//</p>
-			</div>
-		</div>
-		<div class="collapse" id="DetailedExpenses">
-			<div class="row">
-				<!--Where a for loop can be put to show each thing that affects Expenses, ultimately it is up to us how we want it-->
-				<div class="col-sm-12"><h3>Hello Joe!</h3></div>
-			</div>
+	<div class="row">
+	<div class="col-sm-2" id="tabs">
+		<div id="maininfo" class="sides">
+		<br>
+		<br>
+		<br>
+			<button class="button">Money</button>
+		<br>
+		<br>
+			<button class="button">Net Income</button>
+		<br>
+		<br>
+			<button class="button">Income</button>
+		<br>
+		<br>
+			<button class="button">Expenses</button>
+		<br>
+		<br>
+			<button class="button">Net Worth</button>
+		<br>
+		<br>
 		</div>
 	</div>
+	<div class="col-sm-8" id="tabs">
+		<div id="maininfo">
+			<h3>Galactic Builder</h3>
+		</div>
+		<br>
+		<div id="maininfo" class="Money centerContent">
+			<!--money stats-->
+		</div>
+	</div>
+	<div class="col-sm-2" id="tabs">
+	<!--can put content here-->
+	<div class="sides" id="maininfo">
+	</div>
+	</div>
+
+	</div>
+	<script>
+		
+	</script>
 <script>
 //can be put in  a script file
 var solar_system = new Array();
@@ -117,8 +154,8 @@ var star = new Array();
  var averageAstroidSpeed = 0.0002
  /*Star Variables*/
   var starNum = 5000;
-  var starSize = 0.5;
-  var starColors = ["white", "yellow", "yellow", "blue", "white", "white"];
+  var starSize = 0.7;
+  var starColors = ["white", "yellow", "yellow", "blue", "white", "white", "#cc0099", "red", "red"];
 function startGame() {
 		myGameArea.start(); 
 		/*Star Background*/
@@ -127,6 +164,9 @@ function startGame() {
 			curentColor = Math.round(Math.random() * starColors.length, 0);
 			star[r] = new starF(Math.random() * myGameArea.canvas.width, Math.random() * starSize, Math.random() * 2*Math.PI, myGameArea.canvas.width/2, myGameArea.canvas.height/2 , 0.0000001, starColors[curentColor]);
 		}
+		//star[starNum] = new nebula(Math.random() * myGameArea.canvas.width, 100, Math.random() * 2*Math.PI, myGameArea.canvas.width/2, myGameArea.canvas.height/2 , 0.0000001, starColors[6], 40)
+		///star[starNum + 1] = new nebula(Math.random() * myGameArea.canvas.width, 100, Math.random() * 2*Math.PI, myGameArea.canvas.width/2, myGameArea.canvas.height/2 , 0.0000001, starColors[6], 10)
+		//astar[starNum + 2] = new nebula(Math.random() * myGameArea.canvas.width, 100, Math.random() * 2*Math.PI, myGameArea.canvas.width/2, myGameArea.canvas.height/2 , 0.0000001, starColors[6], 20)
 		/*Celestial Objects*/
 		solar_system[0] = new Celestial_Ob_Fx(0, myGameArea.canvas.width/2, myGameArea.canvas.height/2, 50, 50, "yellow");
 		solar_system[1] = new Celestial_Ob(200, solar_system[0], 10, 10, 0.01, "blue");
@@ -139,7 +179,7 @@ function startGame() {
 		solar_system[8] = new Celestial_Ob(600, solar_system[0], 8, 8, 0.0001, "#3399ff");
 		solar_system[9] = new Celestial_Ob(750, solar_system[0], 12, 12, 0.00005, "#0066ff");
 		astroid[0] = new Astroid_Rg(320, solar_system[0], 500, 30, "#800000");
-		astroid[1] = new Astroid_Rg(20, solar_system[7], 50, 4, "#800000");
+		astroid[1] = new Astroid_Rg(20, solar_system[7], 30, 4, "#800000");
 }
 var myGameArea = {
     canvas : document.createElement("canvas"),
@@ -263,6 +303,35 @@ function starF(distance, size, orbit, cX, cY, speed, color){
 		ctx.arc(this.x, this.y, this.size, 0, 2*Math.PI);
 		ctx.fill();
 		ctx.closePath();
+	}
+}
+function nebula(distance, size, orbit, cX, cY, speed, color, width){
+	this.distance = distance;
+	this.speed = speed;
+	this.size = size;
+	this.colour = color;
+	this.cX = cX;
+	this.cY = cY;
+	this.x = 0;
+	this.y = 0;
+	this.width = width
+	this.rotations = orbit;
+	this.nebulaPart = new Array();
+	for(r = 0; r < this.size; r++){
+			this.nebulaPart[r] = new starF(Math.random() * this.width, Math.random() * starSize, Math.random() * 2*Math.PI, this.x, this.y, 0, this.colour);
+		}
+	this.update = function(){
+	ctx = myGameArea.context;
+		var distx;
+		var disty;
+		this.rotations += this.speed * speedSim;
+		distx = Math.sin(this.rotations)*this.distance;
+		disty = Math.cos(this.rotations)*this.distance;
+		this.x = this.cX + distx;
+		this.y = this.cY + disty;
+		for(r = 0; r < this.size; r++){
+			this.nebulaPart[r].update();
+		}
 	}
 }
 function Celestial_Ob(distance, master, mass, size, speed, colour){

@@ -1,5 +1,6 @@
 var solar_system = new Array();
 var astroid = new Array();
+var star = new Array();
  /*Shows orbital lines when false*/
  var hideLines = true;
  /*How many times faster the simulation is*/
@@ -12,6 +13,7 @@ function startGame() {
 		solar_system[1] = new Celestial_Ob(750, solar_system[0], 10, 10, 0.001, "yellow");
 		solar_system[2] = new Celestial_Ob(500, solar_system[0], 20, 20, 0.004, "orange");
 		solar_system[3] = new Celestial_Ob(300, solar_system[0], 5, 5, 0.008, "red");
+		
 }
 var myGameArea = {
     canvas : document.getElementById("systemSim"),
