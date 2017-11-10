@@ -15,7 +15,7 @@ Mines are different as you do not gain any money for buying mines, instead they 
     <div class="row">
         <div class = "module col-sm-3">Mine name: {{ mine }}</div>
         <div class = "module col-sm-3">Mine Value: §{{ values.mineValues[mine] }}</div>
-        <div class = "module col-sm-3">{{ dynamicPersonal[mineMessages][mine] }}</div>
+        <div class = "module col-sm-3">{{ dynamicPersonal['mineMessages'][mine] }}</div>
         <div class = "module col-sm-3">Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</div>
         <div class = "module col-sm-3">Mine cost: §{{ minesFunc[mine] }}</div>
     </div>

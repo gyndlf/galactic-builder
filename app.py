@@ -516,8 +516,7 @@ def user(name=None, page=None, data=None):
                     'values': values,
                     'person': person
                 }
-                return render_template('mines.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
-                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
+                return render_template('mines.html',  dynamicPersonal=dynamicPersonal, person=person, totals=totals,
                                        dialogMessage=dialogMessage, **templateData)
 
             elif page == 'factories':
@@ -528,8 +527,7 @@ def user(name=None, page=None, data=None):
                     'person': person,
                     'totals': totals
                 }
-                return render_template('factories.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
-                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
+                return render_template('factories.html', dynamicPersonal=dynamicPersonal, person=person, totals=totals,
                                        dialogMessage=dialogMessage, **templateData)
 
             elif page == 'community':
@@ -541,8 +539,7 @@ def user(name=None, page=None, data=None):
                     info.append(data[item])
                     labels.append(item)
                 colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD"]
-                return render_template('community.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
-                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
+                return render_template('community.html', dynamicPersonal=dynamicPersonal, person=person, totals=totals,
                                        dialogMessage=dialogMessage, set=zip(info, labels, colors))
 
             elif page == 'species':
@@ -743,7 +740,7 @@ def userButton(name=None):
 @app.route('/testing')
 def testing():
     data = 'This is data sent from Python to Javascript'
-    return render_template("test.html", data=data)
+    return render_template("newFinances.html")
 
 
 if __name__ == "__main__":
