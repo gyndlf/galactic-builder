@@ -534,27 +534,19 @@ def user(name=None, page=None, data=None):
 
             elif page == 'species':
                 logger.info('Rendering species html')
-                return render_template('species.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
-                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
-                                       dialogMessage=dialogMessage)
+                return render_template('species.html', **templateData)
 
             elif page == 'war':
                 logger.info('Rendering war html')
-                return render_template('war.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
-                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
-                                       dialogMessage=dialogMessage)
+                return render_template('war.html', **templateData)
 
             elif page == 'shipBuying':
                 logger.info('Rendering shipBuying html')
-                return render_template('shipBuying.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
-                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
-                                       dialogMessage=dialogMessage, values=values)
+                return render_template('shipBuying.html', **templateData)
 
             elif page == 'diplomacy':
                 logger.info('Rendering shipBuying html')
-                return render_template('diplomacy.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
-                                       netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
-                                       dialogMessage=dialogMessage)
+                return render_template('diplomacy.html', **templateData)
 
             else:
                 logger.error('Invalid page name!')
