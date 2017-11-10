@@ -359,13 +359,13 @@ def dynamicPersonalCalc(object, farms, values):
 
     for material in values.mineValues:
         needed = materialsNeeded[material] - minesDict[material]
-        if needed > 0:  # Greater than §0. Sell the excess
+        if needed < 0:  # Greater than §0. Sell the excess
             selling = needed * values.mineValues[material]
             materialsSelling[material] = selling
             mineProfitMade += selling
             messages[material] = 'You have ' + str(needed) + ' extra ' + str('[RESOURCE NAME]') + \
                                  ' This will be sold for §' + str(selling)
-        elif needed < 0:
+        elif needed > 0:
             buying = needed * values.mineValues[material]
             materialsBuying[material] = buying
             materialsTotalCost += buying
@@ -390,7 +390,10 @@ def dynamicPersonalCalc(object, farms, values):
         'factories': factoryDict,
         'materialsSelling': materialsSelling,
         'materialsBuying': materialsBuying,
-        'mineMessages': messages
+        'mineMessages': messages,
+        'mineProfitMade': mineProfitMade,
+        'materialsTotalCost': materialsTotalCost,
+        'totalFacIncome': totalFacIncome
     }
 
     # Any point having the code below? It's never used
@@ -496,26 +499,19 @@ def user(name=None, page=None, data=None):
                 'dynamicPersonal': dynamicPersonal,
                 'values': values,
                 'person': person,
-                'totals': totals
+                'totals': totals,
+                'factories': factories,
+                'farms': farms
             }
 
             # Return the html
             if page == 'home':
-                logger.info("Rendering home html...")  # Need to upgrade to send the whole person
-                return render_template('finances.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
-                                       netIncome=person.netIncome,
-                                       income=person.income, expenses=person.expenses,
-                                       netWorth=totals['wealth'][person.name], dialogMessage=dialogMessage)
+                logger.info("Rendering home html...")
+                return render_template('finances.html', **templateData)
 
             elif page == 'farms':
-                logger.info('Rendering farm html...')  # Use dictionaries below in the future
-                return render_template('farms.html', dynamicPersonal=dynamicPersonal, username=person.name, farmIncome=dynamicPersonal['Fincome'],
-                                       numOfFarms=person.numberFarms,
-                                       amountProduced=dynamicPersonal['Fproduced'],
-                                       farmCost=farms['farmCost'], farmLevel=person.farmLevel,
-                                       farmLevelCost=farms['levelCost'], farmValue=farms['farmValue'],
-                                       population=values.population,
-                                       foodProduced=dynamicPersonal['Fproduced'], dialogMessage=dialogMessage)
+                logger.info('Rendering farm html...')
+                return render_template('farms.html', **templateData)
 
             elif page == 'mines':
                 logger.info('Rendering mines html...')
@@ -523,14 +519,7 @@ def user(name=None, page=None, data=None):
 
             elif page == 'factories':
                 logger.info("Rendering factories html...")
-                templateData = {
-                    'formulas': dynamicPersonal['factories'],
-                    'cost': factories,
-                    'person': person,
-                    'totals': totals
-                }
-                return render_template('factories.html', dynamicPersonal=dynamicPersonal, person=person, totals=totals,
-                                       dialogMessage=dialogMessage, **templateData)
+                return render_template('factories.html', **templateData)
 
             elif page == 'community':
                 logger.info("Rendering community html..")
@@ -541,8 +530,7 @@ def user(name=None, page=None, data=None):
                     info.append(data[item])
                     labels.append(item)
                 colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD"]
-                return render_template('community.html', dynamicPersonal=dynamicPersonal, person=person, totals=totals,
-                                       dialogMessage=dialogMessage, set=zip(info, labels, colors))
+                return render_template('community.html', **templateData, set=zip(info, labels, colors))
 
             elif page == 'species':
                 logger.info('Rendering species html')

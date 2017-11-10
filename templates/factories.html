@@ -10,31 +10,30 @@ Factories are where the real money is made, you buy factories and thouse factori
     </div>
 </div>
     <br>
-        <p>Total </p>
 
 
     <br>
-    {% for factory in cost %}
+    {% for factory in factories %}
     <div id="maininfo">
     <div id="tr" class="row">
     <div id="td" class="col-sm-3">Factory name: {{ factory }}</div>
-    <div id="td" class="col-sm-3">Factory cost: §{{ cost[factory] }} </div>
-    <div id="td" class="col-sm-3">Amount produced by yourself: {{ formulas[factory]['produced'] }}</div>
+    <div id="td" class="col-sm-3">Factory cost: §{{ factories[factory] }} </div>
+    <div id="td" class="col-sm-3">Amount produced by yourself: {{ dynamicPersonal['factories'][factory]['produced'] }}</div>
     <div id="td" class="col-sm-3">Amount produced by everyone: {{ totals['factoryCount'][factory] }}</div>
     </div>
     <div class="row">
     <div id="td" class="col-sm-3">Factory count: {{ person.ownedFactories[factory] }}</div>
-    <div id="td" class="col-sm-3">Income: §{{ formulas[factory]['income'] }}</div>
-    <div id="td" class="col-sm-3">Profit: §{{ formulas[factory]['profit'] }}</div>
-    <div id="td" class="col-sm-3"><form action="/user/{{ username }}/button" method="post">
+    <div id="td" class="col-sm-3">Income: §{{ dynamicPersonal['factories'][factory]['income'] }}</div>
+    <div id="td" class="col-sm-3">Profit: §{{ dynamicPersonal['factories'][factory]['profit'] }}</div>
+    <div id="td" class="col-sm-3"><form action="/user/{{ person.name }}/button" method="post">
         <input type="submit" name="{{ 'buy' + factory }}" value="Buy factory">
     </form></div>
     </div>
 	<div id="tr" class="row">
 	<div id="td" class="col-sm-3">Materials You Need To Supply:  </div>
-	<div id="td" class="col-sm-3">{{ formulas[factory]['needed'] }}</div>
+	<div id="td" class="col-sm-3">{{ dynamicPersonal['factories'][factory]['needed'] }}</div>
     <div id="td" class="col-sm-3">Materials That You Currently Supply:</div>
-    <div id="td" class="col-sm-3">{{ formulas[factory]['materialsMade'] }}</div>
+    <div id="td" class="col-sm-3">{{ dynamicPersonal['factories'][factory]['materialsMade'] }}</div>
 	</div>
     </div>
 	<br>

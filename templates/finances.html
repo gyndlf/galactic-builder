@@ -2,7 +2,7 @@
 {% block content %}
 <div id="maininfo">
     <div id="tr" class="row">
-        <div id="td" class="col-sm-12"><b>Welcome back {{ username }}!</b>
+        <div id="td" class="col-sm-12"><b>Welcome back {{ person.name }}!</b>
         </div>
     </div>
     </div>
@@ -23,11 +23,11 @@
         <div id="td" class="col-sm-2">Net Worth</div>
     </div>
     <div id="tr" class="row">
-        <div id="td" class="col-sm-2 module">§{{ money }}</div>
-        <div id="td" class="col-sm-2 module">§{{ netIncome }}</div>
-        <div id="td" class="col-sm-2 module">§{{ income }}</div>
-        <div id="td" class="col-sm-2 module">§{{ expenses }}</div>
-        <div id="td" class="col-sm-2 module">§{{ netWorth }}</div>
+        <div id="td" class="col-sm-2 module">§{{ person.money }}</div>
+        <div id="td" class="col-sm-2 module">§{{ person.netIncome }}</div>
+        <div id="td" class="col-sm-2 module">§{{ person.income }}</div>
+        <div id="td" class="col-sm-2 module">§{{ person.expenses }}</div>
+        <div id="td" class="col-sm-2 module">§{{ person.netWorth }}</div>
     </div>
 </div>
     <br>
@@ -39,12 +39,12 @@
     </div>
 	<div id="tr" class="row">
         <div id="td" class="col-sm-4 module"><b>Mine</b></div>
-        <div id="td" class="col-sm-4 module">//MineIncome//</div>
-        <div id="td" class="col-sm-4 module">//MineExpenses//</div>
+        <div id="td" class="col-sm-4 module">{{ dynamicPersonal['mineProfitMade'] }}</div>
+        <div id="td" class="col-sm-4 module">{{ dynamicPersonal['materialsTotalCost'] }}</div>
     </div>
 	<div id="tr" class="row">
         <div id="td" class="col-sm-4 module"><b>Factory</b></div>
-        <div id="td" class="col-sm-4 module">//FactoryIncome//</div>
+        <div id="td" class="col-sm-4 module">{{ dynamicPersonal['totalFacIncome'] }}</div>
         <div id="td" class="col-sm-4 module">//FactoryExpenses//</div>
     </div>
 	<div id="tr" class="row">

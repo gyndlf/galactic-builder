@@ -10,23 +10,23 @@ Farms are a cheap investment that can give you money over time, the more farms y
         </div>
     </div>
     <div id="td" class="row">
-        <div class="module col-sm-3" id="td">Farm Income: §{{ farmIncome }}</div>
-        <div class="module col-sm-3" id="td">Number of farms: {{ numOfFarms }}</div>
-        <div class="module col-sm-3" id="td">Farm level: {{ farmLevel }}</div>
-        <div class="module col-sm-3" id="td">Farm cost: §{{ farmCost }}</div>
+        <div class="module col-sm-3" id="td">Farm Income: §{{ dynamicPersonal['Fincome'] }}</div>
+        <div class="module col-sm-3" id="td">Number of farms: {{ peson.numberFarms }}</div>
+        <div class="module col-sm-3" id="td">Farm level: {{ person.farmLevel }}</div>
+        <div class="module col-sm-3" id="td">Farm cost: §{{ farms['farmCost'] }}</div>
     </div>
     <div id="tr" class="row">
-        <div class="module col-sm-4" id="td">Population: {{ population }}</div>
-        <div class="module col-sm-4" id="td">Value per farm: §{{ farmValue }}</div>
-        <div class="module col-sm-4" id="td">Food Produced: {{ foodProduced }}</div>
+        <div class="module col-sm-4" id="td">Population: {{ values.population }}</div>
+        <div class="module col-sm-4" id="td">Value per farm: §{{ farms['farmValue'] }}</div>
+        <div class="module col-sm-4" id="td">Food Produced: {{ dynamicPersonal['Fproduced'] }}</div>
     </div>
     <div id="tr" class="row">
-        <div class="module col-sm-4" id="td"><form action="/user/{{ username }}/button" method="post">
+        <div class="module col-sm-4" id="td"><form action="/user/{{ person.name }}/button" method="post">
                 <input type="submit" name="buyFarm" value="Buy Farm">
             </form>
         </div>
-        <div class="module col-sm-4" id="td">Level cost: {{ farmLevelCost }}</div>
-        <div class="module col-sm-4" id="td"><form action="/user/{{ username }}/button" method="post">
+        <div class="module col-sm-4" id="td">Level cost: {{ farms['levelCost'] }}</div>
+        <div class="module col-sm-4" id="td"><form action="/user/{{ person.name }}/button" method="post">
                 <input type="submit" name="upgradeFarm" value="Upgrade farm level">
             </form>
         </div>
