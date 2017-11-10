@@ -357,16 +357,16 @@ def dynamicPersonalCalc(object, farms, values):
         materialsSelling[material] = 0
         materialsBuying[material] = 0
 
-    for material in materialsNeeded:
-        needed = material - minesDict[material]
+    for material in values.mineValues:
+        needed = materialsNeeded[material] - minesDict[material]
         if needed > 0:  # Greater than §0. Sell the excess
-            selling = material * values.mineValues[material]
+            selling = needed * values.mineValues[material]
             materialsSelling[material] = selling
             mineProfitMade += selling
             messages[material] = 'You have ' + str(needed) + ' extra ' + str('[RESOURCE NAME]') + \
                                  ' This will be sold for §' + str(selling)
         elif needed < 0:
-            buying = material * values.mineValues[material]
+            buying = needed * values.mineValues[material]
             materialsBuying[material] = buying
             materialsTotalCost += buying
             messages[material] = 'You need ' + str(needed) + ' more ' + str('[RESOURCE NAME]') + \
@@ -493,14 +493,14 @@ def user(name=None, page=None, data=None):
             # Return the html
             if page == 'home':
                 logger.info("Rendering home html...")  # Need to upgrade to send the whole person
-                return render_template('finances.html', username=person.name, money=person.money,
+                return render_template('finances.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
                                        netIncome=person.netIncome,
                                        income=person.income, expenses=person.expenses,
                                        netWorth=totals['wealth'][person.name], dialogMessage=dialogMessage)
 
             elif page == 'farms':
                 logger.info('Rendering farm html...')  # Use dictionaries below in the future
-                return render_template('farms.html', username=person.name, farmIncome=dynamicPersonal['Fincome'],
+                return render_template('farms.html', dynamicPersonal=dynamicPersonal, username=person.name, farmIncome=dynamicPersonal['Fincome'],
                                        numOfFarms=person.numberFarms,
                                        amountProduced=dynamicPersonal['Fproduced'],
                                        farmCost=farms['farmCost'], farmLevel=person.farmLevel,
@@ -516,7 +516,7 @@ def user(name=None, page=None, data=None):
                     'values': values,
                     'person': person
                 }
-                return render_template('mines.html', username=person.name, money=person.money,
+                return render_template('mines.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
                                        netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
                                        dialogMessage=dialogMessage, **templateData)
 
@@ -528,7 +528,7 @@ def user(name=None, page=None, data=None):
                     'person': person,
                     'totals': totals
                 }
-                return render_template('factories.html', username=person.name, money=person.money,
+                return render_template('factories.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
                                        netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
                                        dialogMessage=dialogMessage, **templateData)
 
@@ -541,31 +541,31 @@ def user(name=None, page=None, data=None):
                     info.append(data[item])
                     labels.append(item)
                 colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD"]
-                return render_template('community.html', username=person.name, money=person.money,
+                return render_template('community.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
                                        netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
                                        dialogMessage=dialogMessage, set=zip(info, labels, colors))
 
             elif page == 'species':
                 logger.info('Rendering species html')
-                return render_template('species.html', username=person.name, money=person.money,
+                return render_template('species.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
                                        netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
                                        dialogMessage=dialogMessage)
 
             elif page == 'war':
                 logger.info('Rendering war html')
-                return render_template('war.html', username=person.name, money=person.money,
+                return render_template('war.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
                                        netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
                                        dialogMessage=dialogMessage)
 
             elif page == 'shipBuying':
                 logger.info('Rendering shipBuying html')
-                return render_template('shipBuying.html', username=person.name, money=person.money,
+                return render_template('shipBuying.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
                                        netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
                                        dialogMessage=dialogMessage, values=values)
 
             elif page == 'diplomacy':
                 logger.info('Rendering shipBuying html')
-                return render_template('diplomacy.html', username=person.name, money=person.money,
+                return render_template('diplomacy.html', dynamicPersonal=dynamicPersonal, username=person.name, money=person.money,
                                        netIncome=person.netIncome, netWorth=totals['wealth'][person.name],
                                        dialogMessage=dialogMessage)
 
