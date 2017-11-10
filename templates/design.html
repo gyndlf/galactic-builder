@@ -103,19 +103,19 @@
 		<br>
 		<br>
 		<br>
-			<button class="button">Money</button>
+			<button class="button" id="Money">Money</button>
 		<br>
 		<br>
-			<button class="button">Net Income</button>
+			<button class="button" id="NetIncome">Net Income</button>
 		<br>
 		<br>
-			<button class="button">Income</button>
+			<button class="button" id="Income">Income</button>
 		<br>
 		<br>
-			<button class="button">Expenses</button>
+			<button class="button" id="Expenses">Expenses</button>
 		<br>
 		<br>
-			<button class="button">Net Worth</button>
+			<button class="button" id="NetWorth">Net Worth</button>
 		<br>
 		<br>
 		</div>
@@ -126,7 +126,24 @@
 		</div>
 		<br>
 		<div id="maininfo" class="Money centerContent">
+		<p>money</p>
 			<!--money stats-->
+		</div>
+		<div id="maininfo" class="NetIncome centerContent">
+		<p>netincome</p>
+			<!--Net income stats-->
+		</div>
+		<div id="maininfo" class="Income centerContent">
+		<p>income</p>
+			<!--Income stats-->
+		</div>
+		<div id="maininfo" class="Expenses centerContent">
+		<p>expenses</p>
+			<!--Expenses stats-->
+		</div>
+		<div id="maininfo" class="NetWorth centerContent">
+		<p>net worth</p>
+			<!--NetWorth stats-->
 		</div>
 	</div>
 	<div class="col-sm-2" id="tabs">
@@ -134,10 +151,31 @@
 	<div class="sides" id="maininfo">
 	</div>
 	</div>
-
 	</div>
 	<script>
-		
+$(document).ready(function(){
+	$(".centerContent").hide();
+	$("#Money").click(function(){
+		$(".centerContent").hide();
+        $(".Money").toggle();
+    });
+	$("#NetIncome").click(function(){
+		$(".centerContent").hide();
+        $(".NetIncome").toggle();
+    });
+	$("#Income").click(function(){
+		$(".centerContent").hide();
+        $(".Income").toggle();
+    });
+	$("#Expenses").click(function(){
+		$(".centerContent").hide();
+        $(".Expenses").toggle();
+    });
+	$("#NetWorth").click(function(){
+		$(".centerContent").hide();
+        $(".NetWorth").toggle();
+    });
+});
 	</script>
 <script>
 //can be put in  a script file
