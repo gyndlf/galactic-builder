@@ -241,10 +241,5 @@ function updateGameArea() {
 	}
 }
 function setDynamicBackground(){
-  //generate the image from the canvas
-  var imageDataURL = myGameArea.canvas.toDataURL();
 	startGame();
-  //set the dynamic image as the background
-  document.body.style.background = 
-   "transparent url('"+imageDataURL+"') repeat";
 }
