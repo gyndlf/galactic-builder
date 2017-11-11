@@ -6,6 +6,7 @@
 # export FLASK_APP=mainpythonfile.py
 # python -m flask run
 
+# Convert all the def's to their own files
 
 import pickle
 import os
