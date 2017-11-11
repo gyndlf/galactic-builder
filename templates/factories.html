@@ -30,10 +30,8 @@ Factories are where the real money is made, you buy factories and thouse factori
     </form></div>
     </div>
 	<div id="tr" class="row">
-	<div id="td" class="col-sm-3">Materials You Need To Supply:  </div>
-	<div id="td" class="col-sm-3">{{ dynamicPersonal['factories'][factory]['needed'] }}</div>
-    <div id="td" class="col-sm-3">Materials That You Currently Supply:</div>
-    <div id="td" class="col-sm-3">{{ dynamicPersonal['factories'][factory]['materialsMade'] }}</div>
+	<div id="td" class="col-sm-3">Materials You Need To Supply per factory:  </div>
+	<div id="td" class="col-sm-3">{{ values['factoryRecipies'][factory] }}</div>
 	</div>
     </div>
 	<br>

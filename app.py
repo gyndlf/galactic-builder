@@ -360,19 +360,17 @@ def dynamicPersonalCalc(object, farms, values):
     for material in values.mineValues:
         needed = materialsNeeded[material] - minesDict[material]
         if needed < 0:  # Greater than §0. Sell the excess
-            selling = needed * values.mineValues[material]
+            selling = abs(needed * values.mineValues[material])
             materialsSelling[material] = selling
             mineProfitMade += selling
-            messages[material] = 'You have ' + str(needed) + ' extra ' + str('[RESOURCE NAME]') + \
-                                 ' This will be sold for §' + str(selling)
+            messages[material] = 'You have ' + str(abs(needed)) + ' extra. This will be sold for §' + str(selling)
         elif needed > 0:
             buying = needed * values.mineValues[material]
             materialsBuying[material] = buying
             materialsTotalCost += buying
-            messages[material] = 'You need ' + str(needed) + ' more ' + str('[RESOURCE NAME]') + \
-                             ' This will be brought for §' + str(buying)
+            messages[material] = 'You need ' + str(needed) + ' more. This will be brought for §' + str(buying)
         else:
-            messages[material] = 'Lol. You produce just the right amount of resources. Good job.'
+            messages[material] = 'You produce just the right amount of resources needed. Good job.'
 
     # General
     income = Fincome + totalFacIncome + mineProfitMade # Add farm income, mines and factory income here
@@ -722,7 +720,7 @@ def userButton(name=None):
 @app.route('/testing')
 def testing():
     data = 'This is data sent from Python to Javascript'
-    return render_template("newFinances.html")
+    return render_template("newFinances.html", person=person)
 
 
 if __name__ == "__main__":
