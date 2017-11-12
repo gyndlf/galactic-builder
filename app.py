@@ -14,8 +14,8 @@ import string as s
 import random
 import logging
 
-# Import the dictionaries needed to calculate everything
-from python import general
+# Import the modules needed to calculate everything
+from modules import general
 
 import baseValues  # Only used in the inital check to see if everything is in sync
 import database  # Only used in the inital check to see if everything is in sync
@@ -74,45 +74,11 @@ DATABASE_PATH = os.path.join(PICKLE_DIR, DATABASE)
 VALUES = 'values.p'
 VALUES_PATH = os.path.join(PICKLE_DIR, VALUES)
 
-def loadusers():
-    '''
-        """Load users from the file given as USERS"""
-        logger.info('[1] Loading users')
-        users = []
-        # Load users.p files
-        with open(USERS_PATH, 'rb') as f:
-            usersarray = pickle.load(f)
-
-        # Read to find out the users
-        for file in usersarray:
-            fname = os.path.join(PICKLE_DIR, file)
-            with open(fname, 'rb') as f:
-                person = pickle.load(f)
-                users.append(person)
-        return users'''
-
-    return general.loadusers(USERS_PATH, PICKLE_DIR)
-
-
-
-
-def loadvalues():
-    '''
-        """Load the values from the file given as VALUES"""
-        logger.info('[1] Load values')
-        with open(VALUES_PATH, 'rb') as f:
-            values = pickle.load(f)
-        return values'''
-
-    return general.loadvalues(VALUES_PATH)
-
-
-
 # Before doing anything important, first make sure that all of the varibles are similar across the board
 # Check if each person has the same as the database.py and database.p files
 # Is not perfect as it cannot check the one varibles, only lists.
-u = loadusers()
-v = loadvalues()
+u = general.loadusers(USERS_PATH, PICKLE_DIR)
+v = general.loadvalues(VALUES_PATH)
 
 b = baseValues.basic()
 d = database.person()
@@ -444,7 +410,7 @@ def home():
 @app.route('/loginuser', methods=['POST'])
 def calcmessage():
     """This is the login script"""
-    users = loadusers()
+    users = general.loadusers(USERS_PATH, PICKLE_DIR)
     try:
         username = request.form['username']
         password = request.form['password']
@@ -494,8 +460,8 @@ def user(name=None, page=None, data=None):
         dialogMessage = None
 
     # Calculate the very basics
-    values = loadvalues()
-    users = loadusers()
+    values = general.loadvalues(VALUES_PATH)
+    users = general.loadusers(USERS_PATH, PICKLE_DIR)
     totals = total(users, values)
 
     # Calculate the recipies
@@ -591,8 +557,8 @@ def userButton(name=None):
 
     # Run recipies. Because other users could be online and you want to be upto date
     logger.info("Loading recipies...")
-    users = loadusers()
-    values = loadvalues()
+    users = general.loadusers(USERS_PATH, PICKLE_DIR)
+    values = general.loadvalues(VALUES_PATH)
     totals = total(users, values)
     farms = farm(values, totals)
     mines = mine(values, totals)

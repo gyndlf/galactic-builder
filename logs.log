@@ -314,3 +314,166 @@
 2017-11-12 20:29:03,646 - root - INFO - [4] Running dynamic personal calulator def
 2017-11-12 20:29:03,649 - root - INFO - Rendering home html...
 2017-11-12 20:29:03,686 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:29:03] "GET /user/james/home HTTP/1.1" 200 -
+2017-11-12 20:33:27,810 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-12 20:38:49,335 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-12 20:38:49,340 - modules.general - INFO - [1] Loading users
+2017-11-12 20:38:59,408 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-12 20:38:59,410 - modules.general - INFO - [1] Loading users
+2017-11-12 20:38:59,411 - modules.general - INFO - [1] Load values
+2017-11-12 20:38:59,415 - root - INFO - Passed the cross reference variable test
+2017-11-12 20:38:59,418 - root - INFO - Running app
+2017-11-12 20:38:59,456 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-12 20:39:04,710 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:39:04] "GET / HTTP/1.1" 200 -
+2017-11-12 20:39:08,083 - modules.general - INFO - [1] Loading users
+2017-11-12 20:39:08,090 - __main__ - ERROR - Exception on /loginuser [POST]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/James/PycharmProjects/galactic-builder/app.py", line 413, in calcmessage
+    users = general.loadusers(USERS_PATH, PICKLE_DIR)()
+TypeError: 'list' object is not callable
+2017-11-12 20:39:08,122 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:39:08] "POST /loginuser HTTP/1.1" 500 -
+2017-11-12 20:39:08,438 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:39:08] "GET /favicon.ico HTTP/1.1" 404 -
+2017-11-12 20:39:43,150 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-12 20:39:43,152 - modules.general - INFO - [1] Loading users
+2017-11-12 20:39:43,152 - modules.general - INFO - [1] Load values
+2017-11-12 20:39:43,155 - root - INFO - Passed the cross reference variable test
+2017-11-12 20:39:43,157 - root - INFO - Running app
+2017-11-12 20:39:43,190 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-12 20:39:44,641 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:39:44] "GET / HTTP/1.1" 200 -
+2017-11-12 20:39:47,971 - modules.general - INFO - [1] Loading users
+2017-11-12 20:39:47,973 - root - INFO - Logging in to james
+2017-11-12 20:39:47,974 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:39:47] "POST /loginuser HTTP/1.1" 302 -
+2017-11-12 20:39:47,983 - root - INFO - ----------Finances----------
+2017-11-12 20:39:47,983 - modules.general - INFO - [1] Load values
+2017-11-12 20:39:47,983 - modules.general - INFO - [1] Loading users
+2017-11-12 20:39:47,984 - __main__ - ERROR - Exception on /user/james/home [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/James/PycharmProjects/galactic-builder/app.py", line 464, in user
+    users = general.loadusers(USERS_PATH, PICKLE_DIR)()
+TypeError: 'list' object is not callable
+2017-11-12 20:39:48,000 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:39:48] "GET /user/james/home HTTP/1.1" 500 -
+2017-11-12 20:39:57,979 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-12 20:39:57,981 - modules.general - INFO - [1] Loading users
+2017-11-12 20:39:57,982 - modules.general - INFO - [1] Load values
+2017-11-12 20:39:57,982 - root - INFO - Passed the cross reference variable test
+2017-11-12 20:39:57,987 - root - INFO - Running app
+2017-11-12 20:39:58,008 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-12 20:40:00,350 - root - INFO - ----------Finances----------
+2017-11-12 20:40:00,350 - modules.general - INFO - [1] Load values
+2017-11-12 20:40:00,350 - modules.general - INFO - [1] Loading users
+2017-11-12 20:40:00,351 - root - INFO - [2] Running total definition
+2017-11-12 20:40:00,354 - root - INFO - Calculating dynamic varibles...
+2017-11-12 20:40:00,354 - root - INFO - [3] Running farms def
+2017-11-12 20:40:00,355 - root - INFO - [3] Running mine def
+2017-11-12 20:40:00,355 - root - INFO - [3] Running factory def
+2017-11-12 20:40:00,355 - root - INFO - [4] Running dynamic personal calulator def
+2017-11-12 20:40:00,358 - root - INFO - Rendering home html...
+2017-11-12 20:40:00,398 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:40:00] "GET /user/james/home HTTP/1.1" 200 -
+2017-11-12 20:40:01,521 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:40:01] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-11-12 20:40:09,939 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-12 20:40:09,940 - modules.general - INFO - [1] Loading users
+2017-11-12 20:40:09,942 - modules.general - INFO - [1] Load values
+2017-11-12 20:40:09,942 - root - INFO - Passed the cross reference variable test
+2017-11-12 20:40:09,946 - root - INFO - Running app
+2017-11-12 20:40:09,974 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-12 20:40:11,093 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:40:11] "GET / HTTP/1.1" 200 -
+2017-11-12 20:40:13,900 - modules.general - INFO - [1] Loading users
+2017-11-12 20:40:13,902 - root - INFO - Logging in to james
+2017-11-12 20:40:13,905 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:40:13] "POST /loginuser HTTP/1.1" 302 -
+2017-11-12 20:40:13,916 - root - INFO - ----------Finances----------
+2017-11-12 20:40:13,917 - modules.general - INFO - [1] Load values
+2017-11-12 20:40:13,918 - modules.general - INFO - [1] Loading users
+2017-11-12 20:40:13,919 - root - INFO - [2] Running total definition
+2017-11-12 20:40:13,920 - root - INFO - Calculating dynamic varibles...
+2017-11-12 20:40:13,920 - root - INFO - [3] Running farms def
+2017-11-12 20:40:13,920 - root - INFO - [3] Running mine def
+2017-11-12 20:40:13,920 - root - INFO - [3] Running factory def
+2017-11-12 20:40:13,920 - root - INFO - [4] Running dynamic personal calulator def
+2017-11-12 20:40:13,921 - root - INFO - Rendering home html...
+2017-11-12 20:40:13,971 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:40:13] "GET /user/james/home HTTP/1.1" 200 -
+2017-11-12 20:40:18,205 - root - INFO - ----------Finances----------
+2017-11-12 20:40:18,206 - modules.general - INFO - [1] Load values
+2017-11-12 20:40:18,206 - modules.general - INFO - [1] Loading users
+2017-11-12 20:40:18,208 - root - INFO - [2] Running total definition
+2017-11-12 20:40:18,209 - root - INFO - Calculating dynamic varibles...
+2017-11-12 20:40:18,209 - root - INFO - [3] Running farms def
+2017-11-12 20:40:18,210 - root - INFO - [3] Running mine def
+2017-11-12 20:40:18,210 - root - INFO - [3] Running factory def
+2017-11-12 20:40:18,210 - root - INFO - [4] Running dynamic personal calulator def
+2017-11-12 20:40:18,211 - root - INFO - Rendering mines html...
+2017-11-12 20:40:18,233 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:40:18] "GET /user/james/mines HTTP/1.1" 200 -
+2017-11-12 20:40:23,673 - root - INFO - ----------Button----------
+2017-11-12 20:40:23,674 - root - INFO - Loading recipies...
+2017-11-12 20:40:23,674 - modules.general - INFO - [1] Loading users
+2017-11-12 20:40:23,676 - modules.general - INFO - [1] Load values
+2017-11-12 20:40:23,676 - root - INFO - [2] Running total definition
+2017-11-12 20:40:23,677 - root - INFO - [3] Running farms def
+2017-11-12 20:40:23,677 - root - INFO - [3] Running mine def
+2017-11-12 20:40:23,677 - root - INFO - [3] Running factory def
+2017-11-12 20:40:23,678 - root - INFO - Signed in as james
+2017-11-12 20:40:23,678 - root - INFO - Detected mine button
+2017-11-12 20:40:23,679 - root - INFO - Brought one steel mine
+2017-11-12 20:40:23,680 - root - INFO - Saving...
+2017-11-12 20:40:23,681 - root - INFO - Calculating redirect
+2017-11-12 20:40:23,682 - root - INFO - Redirecting back to mines
+2017-11-12 20:40:23,686 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:40:23] "POST /user/james/button HTTP/1.1" 302 -
+2017-11-12 20:40:23,696 - root - INFO - ----------Finances----------
+2017-11-12 20:40:23,697 - modules.general - INFO - [1] Load values
+2017-11-12 20:40:23,697 - modules.general - INFO - [1] Loading users
+2017-11-12 20:40:23,698 - root - INFO - [2] Running total definition
+2017-11-12 20:40:23,699 - root - INFO - Calculating dynamic varibles...
+2017-11-12 20:40:23,699 - root - INFO - [3] Running farms def
+2017-11-12 20:40:23,699 - root - INFO - [3] Running mine def
+2017-11-12 20:40:23,699 - root - INFO - [3] Running factory def
+2017-11-12 20:40:23,699 - root - INFO - [4] Running dynamic personal calulator def
+2017-11-12 20:40:23,700 - root - INFO - Rendering mines html...
+2017-11-12 20:40:23,705 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:40:23] "GET /user/james/mines HTTP/1.1" 200 -
+2017-11-12 20:40:26,029 - root - INFO - ----------Button----------
+2017-11-12 20:40:26,029 - root - INFO - Loading recipies...
+2017-11-12 20:40:26,029 - modules.general - INFO - [1] Loading users
+2017-11-12 20:40:26,031 - modules.general - INFO - [1] Load values
+2017-11-12 20:40:26,031 - root - INFO - [2] Running total definition
+2017-11-12 20:40:26,032 - root - INFO - [3] Running farms def
+2017-11-12 20:40:26,032 - root - INFO - [3] Running mine def
+2017-11-12 20:40:26,032 - root - INFO - [3] Running factory def
+2017-11-12 20:40:26,032 - root - INFO - Signed in as james
+2017-11-12 20:40:26,033 - root - INFO - Detected mine button
+2017-11-12 20:40:26,033 - root - INFO - Brought one steel mine
+2017-11-12 20:40:26,033 - root - INFO - Saving...
+2017-11-12 20:40:26,035 - root - INFO - Calculating redirect
+2017-11-12 20:40:26,035 - root - INFO - Redirecting back to mines
+2017-11-12 20:40:26,037 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:40:26] "POST /user/james/button HTTP/1.1" 302 -
+2017-11-12 20:40:26,047 - root - INFO - ----------Finances----------
+2017-11-12 20:40:26,047 - modules.general - INFO - [1] Load values
+2017-11-12 20:40:26,048 - modules.general - INFO - [1] Loading users
+2017-11-12 20:40:26,051 - root - INFO - [2] Running total definition
+2017-11-12 20:40:26,051 - root - INFO - Calculating dynamic varibles...
+2017-11-12 20:40:26,051 - root - INFO - [3] Running farms def
+2017-11-12 20:40:26,051 - root - INFO - [3] Running mine def
+2017-11-12 20:40:26,051 - root - INFO - [3] Running factory def
+2017-11-12 20:40:26,051 - root - INFO - [4] Running dynamic personal calulator def
+2017-11-12 20:40:26,052 - root - INFO - Rendering mines html...
+2017-11-12 20:40:26,054 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:40:26] "GET /user/james/mines HTTP/1.1" 200 -
