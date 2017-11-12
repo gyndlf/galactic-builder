@@ -3,11 +3,10 @@
 
 # This is a huge project to migrate. Will be awhile before it can happen
 import logging
-import os
-import pickle
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 def dynamicPersonalCalc(object, farms, values, pickledir):
     """Calculate personal dynamic varibles"""
@@ -108,20 +107,22 @@ def dynamicPersonalCalc(object, farms, values, pickledir):
         'totalFacIncome': totalFacIncome
     }
 
+    # Legacy system of saving the DPC. Not needed as it is always calculated
     # Any point having the code below? It's never used
     # Input new dynamic varibles into "object" object
-    object.foodProduced = Fproduced
-    object.income = income
-    object.expenses = expenses
-    object.netIncome = netIncome
-    object.mineProduced = minesDict
-    object.saveFactories = factoryDict
-    logger.debug('Dynamic personal number of mines: %s', minesDict)
 
+    # object.foodProduced = Fproduced
+    # object.income = income
+    # object.expenses = expenses
+    # object.netIncome = netIncome
+    # object.mineProduced = minesDict
+    # object.saveFactories = factoryDict
+    # logger.debug('Dynamic personal number of mines: %s', minesDict)
     # Save new varibles to file
-    filename = object.name + '.p'
-    fname = os.path.join(pickledir, filename)
-    logger.debug("[-] Saving dynamic personal data to %s", str(filename))
-    with open(fname, 'wb') as f:
-        pickle.dump(object, f)
+    # filename = object.name + '.p'
+    # fname = os.path.join(pickledir, filename)
+    # logger.debug("[-] Saving dynamic personal data to %s", str(filename))
+    # with open(fname, 'wb') as f:
+    #     pickle.dump(object, f)
+
     return calculated
