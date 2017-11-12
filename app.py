@@ -15,7 +15,7 @@ import random
 import logging
 
 # Import the modules needed to calculate everything
-from modules import general, total, farms
+from modules import general, total, farms, mines
 
 import baseValues  # Only used in the inital check to see if everything is in sync
 import database  # Only used in the inital check to see if everything is in sync
@@ -97,40 +97,6 @@ for person in u:
                                                              "variables")
         quit()
 logger.info('Passed the cross reference variable test')
-
-
-def mine(values, totals):
-    """Calculate the mine costs"""
-    logger.info('[3] Running mine def')
-    calculated = {}
-
-    # For each mine calculate its costs
-    for mine in values.mineValues:
-        mineCost = totals['totalMines'] * values.mineValues[mine]  # Number of mines * value of mine
-        if mineCost < 1200:
-            mineCost = 1200
-        msg = 'Mine cost: (' + str(totals['totalMines']) + ' * ' + str(values.mineValues[mine]) + ') ' + str(
-            mine) + str(mineCost)
-        logger.debug(msg)
-        calculated[mine] = mineCost
-
-    # Mine upgrades
-    base = int(totals['avgWealth'] / 10)
-    if base < 100:
-        base = 100
-    root10 = base * 9
-    root50 = base * 45
-    root100 = base * 90
-    root2 = root100 * root50
-    mineUpgrades = {
-        1: base,
-        10: root10,
-        50: root50,
-        100: root100,
-        2: root2
-    }
-    calculated['mineUpgrades'] = mineUpgrades
-    return calculated
 
 
 def factory(values, totals):
@@ -360,7 +326,7 @@ def user(name=None, page=None, data=None):
     # Calculate the recipies
     logger.info('Calculating dynamic varibles...')
     farm = farms.farm(values, totals)
-    mines = mine(values, totals)
+    minecalcd = mines.mine(values, totals)
     factories = factory(values, totals)
 
     # Identify the user
@@ -370,7 +336,7 @@ def user(name=None, page=None, data=None):
             dynamicPersonal = dynamicPersonalCalc(person, farm, values)
 
             templateData = {
-                'minesFunc': mines,
+                'minesFunc': minecalcd,
                 'dialogMessage': dialogMessage,
                 'dynamicPersonal': dynamicPersonal,
                 'values': values,
@@ -454,7 +420,7 @@ def userButton(name=None):
     values = general.loadvalues(VALUES_PATH)
     totals = total.total(users, values)
     farm = farms.farm(values, totals)
-    mines = mine(values, totals)
+    minecalcd = mines.mine(values, totals)
     factories = factory(values, totals)
 
     # Where have you come from?
@@ -503,9 +469,9 @@ def userButton(name=None):
             elif 'mineUpgrade' in request.form:
                 logger.debug('Detected mineUpgrade')
                 mineHtml = True
-                if general.hasmoney(person, mines['mineUpgrades'][2]):
+                if general.hasmoney(person, minecalcd['mineUpgrades'][2]):
                     person.minePowerUpgrade += 1
-                    person.money -= mines['mineUpgrades'][2]
+                    person.money -= minecalcd['mineUpgrades'][2]
                     logger.info("Upgraded mine power upgrade brought")
                 else:
                     logger.error("Money Error: Not enough money")
@@ -518,9 +484,9 @@ def userButton(name=None):
                     if title in request.form:
                         logger.info('Detected %s', title)
                         mineHtml = True
-                        if general.hasmoney(person, mines['mineUpgrades'][percent]):
+                        if general.hasmoney(person, minecalcd['mineUpgrades'][percent]):
                             person.mineBoost += percent
-                            person.money -= mines['mineUpgrades'][percent]
+                            person.money -= minecalcd['mineUpgrades'][percent]
                             logger.info("Upgraded mine produced")
                         else:
                             logger.error("Money Error: Not enough money")
@@ -532,9 +498,9 @@ def userButton(name=None):
                     if button in request.form:
                         logger.info('Detected mine button')
                         mineHtml = True
-                        if general.hasmoney(person, mines[digger]):
+                        if general.hasmoney(person, minecalcd[digger]):
                             person.ownedMines[digger] += 1
-                            person.money -= mines[digger]
+                            person.money -= minecalcd[digger]
                             logger.info('Brought one %s mine', digger)
                         else:
                             logger.error("Money Error: Not enough money")
