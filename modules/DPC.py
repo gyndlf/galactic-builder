@@ -126,3 +126,7 @@ def dynamicPersonalCalc(object, farms, values, pickledir):
     #     pickle.dump(object, f)
 
     return calculated
+
+
+if __name__ == '__main__':  # The file is run directly
+    print('Error 321: Unknown values')

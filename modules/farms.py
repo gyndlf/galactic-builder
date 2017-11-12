@@ -26,3 +26,7 @@ def farm(values, totals):
         'levelCost': levelCost
     }
     return calculated
+
+
+if __name__ == '__main__':  # The file is run directly
+    print('Error 321: Unknown value and total values')

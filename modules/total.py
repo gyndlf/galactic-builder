@@ -47,3 +47,7 @@ def total(users, values):
     }
     logger.debug('Calculated factory count %s', factories)
     return calculated
+
+
+if __name__ == '__main__':  # The file is run directly
+    print('Error 321: Unknown values')
