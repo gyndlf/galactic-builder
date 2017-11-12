@@ -14,6 +14,9 @@ import string as s
 import random
 import logging
 
+# Import the dictionaries needed to calculate everything
+from python import general
+
 import baseValues  # Only used in the inital check to see if everything is in sync
 import database  # Only used in the inital check to see if everything is in sync
 
