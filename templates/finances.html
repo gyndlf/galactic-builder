@@ -20,14 +20,14 @@
         <div id="td" class="col-sm-2">Net Income</div>
         <div id="td" class="col-sm-2">Income</div>
         <div id="td" class="col-sm-2">Expenses</div>
-        <div id="td" class="col-sm-2">Net Worth</div>
+        <div id="td" class="col-sm-2">Net Worth (All that others see)</div>
     </div>
     <div id="tr" class="row">
         <div id="td" class="col-sm-2 module">§{{ person.money }}</div>
         <div id="td" class="col-sm-2 module">§{{ person.netIncome }}</div>
         <div id="td" class="col-sm-2 module">§{{ person.income }}</div>
         <div id="td" class="col-sm-2 module">§{{ person.expenses }}</div>
-        <div id="td" class="col-sm-2 module">§{{ person.netWorth }}</div>
+        <div id="td" class="col-sm-2 module">§{{ totals.wealth[person.name] }}</div>
     </div>
 </div>
     <br>

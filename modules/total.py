@@ -22,10 +22,7 @@ def total(users, values):
     for person in users:
         foodSent += person.foodProduced
         totalMoney += person.money
-        tmpWealth = int(person.netIncome * random.randint(7500, 12500) / 10000)
-        if tmpWealth < 1:
-            tmpWealth = 0
-        wealth[person.name] = tmpWealth
+        wealth[person.name] = int(person.netIncome * random.randint(7500, 12500) / 10000)
         message = str(person.name) + "'s wealth " + str(wealth[person.name])
         logger.debug(message)
         for mine in person.ownedMines:

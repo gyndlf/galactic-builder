@@ -15,7 +15,7 @@ import random
 import logging
 
 # Import the modules needed to calculate everything
-from modules import general, total
+from modules import general, total, farms
 
 import baseValues  # Only used in the inital check to see if everything is in sync
 import database  # Only used in the inital check to see if everything is in sync
@@ -97,66 +97,6 @@ for person in u:
                                                              "variables")
         quit()
 logger.info('Passed the cross reference variable test')
-
-
-
-def scrambleCookie(request, username):
-    '''
-    """Scramble the username and add to the give request"""
-    t = []
-    for i in username:
-        v = ENCRYPT_DICT[i]
-        t.append(v)
-    sessio = ''.join(t)
-    request.set_cookie('sessionID', sessio)
-    return request'''
-    return general.scramblecookie(request, username, ENCRYPT_DICT)
-
-
-def loadCookie(username):
-    '''
-    """Decrypt the username"""
-    # Converts the cypher to words.
-    h = []
-    for i in username:
-        v = DECRYPT_DICT[i]
-        h.append(v)
-    return ''.join(h)'''
-    return general.loadcookie(username, DECRYPT_DICT)
-
-
-def hasMoney(object, money):
-    '''
-    """Weather or not the object has >= money"""
-    try:
-        if object.money >= money:
-            return True
-        else:
-            return False
-    except:
-        return False'''
-    return general.hasmoney(object, money)
-
-
-def farm(values, totals):
-    """The farms calculation. Calculates all the formulas for farms"""
-    logger.info('[3] Running farms def')
-
-    population = values.population
-    foodNeeded = population * 2
-    foodSent = totals['foodSent']
-    farmValue = (foodNeeded - foodSent) * 2
-    farmCost = farmValue * 20
-    levelCost = farmCost * 50
-
-    calculated = {
-        'foodNeeded': foodNeeded,
-        'foodSent': foodSent,
-        'farmValue': farmValue,  # Selling food value (price food sells at)
-        'farmCost': farmCost,
-        'levelCost': levelCost
-    }
-    return calculated
 
 
 def mine(values, totals):
@@ -376,7 +316,7 @@ def calcmessage():
             logger.info("Logging in to %s", str(username))
             resp = make_response(redirect(url_for('user', name=username, page='home')))
             logger.debug("Saving cookie 'sessionID'")
-            resp = scrambleCookie(resp, username)
+            resp = general.scramblecookie(resp, username, ENCRYPT_DICT)
             return resp
     logger.error('Username or password does not match database')
     return redirect(url_for('home'))
@@ -399,7 +339,7 @@ def user(name=None, page=None, data=None):
         return redirect(url_for('home'))
 
     # Check the cookie matches
-    cookie = loadCookie(cookie)
+    cookie = general.loadcookie(cookie, DECRYPT_DICT)
     if cookie != name:
         logger.error('Cookie is not the same as %s', name)
         return 'You do not have access to this location'
@@ -419,7 +359,7 @@ def user(name=None, page=None, data=None):
 
     # Calculate the recipies
     logger.info('Calculating dynamic varibles...')
-    farms = farm(values, totals)
+    farm = farms.farm(values, totals)
     mines = mine(values, totals)
     factories = factory(values, totals)
 
@@ -427,7 +367,7 @@ def user(name=None, page=None, data=None):
     for person in users:
         if name == person.name:  # Name is from the url
             # Calculate dynamic personal varibles
-            dynamicPersonal = dynamicPersonalCalc(person, farms, values)
+            dynamicPersonal = dynamicPersonalCalc(person, farm, values)
 
             templateData = {
                 'minesFunc': mines,
@@ -437,7 +377,7 @@ def user(name=None, page=None, data=None):
                 'person': person,
                 'totals': totals,
                 'factories': factories,
-                'farms': farms
+                'farms': farm
             }
 
             # Return the html
@@ -503,7 +443,7 @@ def userButton(name=None):
         logger.error('No cookie found')
         return 'No cookie found.'
 
-    cookie = loadCookie(cookie)
+    cookie = general.loadcookie(cookie, DECRYPT_DICT)
     if cookie != name:
         logger.error('Cookie does not match database')
         return 'You do not have access to this location'
@@ -513,7 +453,7 @@ def userButton(name=None):
     users = general.loadusers(USERS_PATH, PICKLE_DIR)
     values = general.loadvalues(VALUES_PATH)
     totals = total.total(users, values)
-    farms = farm(values, totals)
+    farm = farms.farm(values, totals)
     mines = mine(values, totals)
     factories = factory(values, totals)
 
@@ -537,9 +477,9 @@ def userButton(name=None):
             if 'buyFarm' in request.form:
                 logger.info("Detected 'buyFarm'")
                 farmHtml = True
-                if hasMoney(person, farms['farmCost']):
+                if general.hasmoney(person, farm['farmCost']):
                     person.numberFarms += 1
-                    person.money -= farms['farmCost']
+                    person.money -= farm['farmCost']
                     logger.info("Brought one farm")
                 else:
                     logger.error("Money Error: Not enough money")
@@ -552,9 +492,9 @@ def userButton(name=None):
                     logger.error("Error: Max farm level")
                     error = 'maxFarmLevel'
                 else:
-                    if hasMoney(person, farms['levelCost']):
+                    if general.hasmoney(person, farm['levelCost']):
                         person.farmLevel += 1
-                        person.money -= farms['levelCost']
+                        person.money -= farm['levelCost']
                         logger.info("Upgraded Level")
                     else:
                         logger.error("Money Error: Not enough money")
@@ -563,7 +503,7 @@ def userButton(name=None):
             elif 'mineUpgrade' in request.form:
                 logger.debug('Detected mineUpgrade')
                 mineHtml = True
-                if hasMoney(person, mines['mineUpgrades'][2]):
+                if general.hasmoney(person, mines['mineUpgrades'][2]):
                     person.minePowerUpgrade += 1
                     person.money -= mines['mineUpgrades'][2]
                     logger.info("Upgraded mine power upgrade brought")
@@ -578,7 +518,7 @@ def userButton(name=None):
                     if title in request.form:
                         logger.info('Detected %s', title)
                         mineHtml = True
-                        if hasMoney(person, mines['mineUpgrades'][percent]):
+                        if general.hasmoney(person, mines['mineUpgrades'][percent]):
                             person.mineBoost += percent
                             person.money -= mines['mineUpgrades'][percent]
                             logger.info("Upgraded mine produced")
@@ -592,7 +532,7 @@ def userButton(name=None):
                     if button in request.form:
                         logger.info('Detected mine button')
                         mineHtml = True
-                        if hasMoney(person, mines[digger]):
+                        if general.hasmoney(person, mines[digger]):
                             person.ownedMines[digger] += 1
                             person.money -= mines[digger]
                             logger.info('Brought one %s mine', digger)
@@ -605,7 +545,7 @@ def userButton(name=None):
                     if button in request.form:
                         logger.info('Factory detected')
                         factoryHtml = True
-                        if hasMoney(person, factories[factoryl]):
+                        if general.hasmoney(person, factories[factoryl]):
                             person.ownedFactories[factoryl] += 1
                             person.money -= factories[factoryl]
                             logger.info('Brought one %s factory', factoryl)
@@ -620,7 +560,7 @@ def userButton(name=None):
                         logger.info('Detected %s', ship)
                         shipBuyHtml = True
                         '''
-                        if hasMoney(person, factories[factoryl]):
+                        if general.hasmoney(person, factories[factoryl]):
                             person.ownedFactories[factoryl] += 1
                             person.money -= factories[factoryl]
                             logger.info('Brought one %s factory', factoryl)
