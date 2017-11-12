@@ -30,3 +30,7 @@ def loadvalues(valuefilepath):
     with open(valuefilepath, 'rb') as f:
         values = pickle.load(f)
     return values
+
+
+if __name__ == '__main__':
+    print('Running general.py directly')

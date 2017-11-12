@@ -271,3 +271,25 @@
 2017-10-21 11:59:46,384 - root - INFO - Valid character 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-./:;<=>?@[]^_{|}~ 
 2017-10-21 11:59:46,384 - root - INFO - Shuffled characters zYPsy#K(4AIJ>B2^xi@wONLH1?]n<Wo7}Vep+fd-8r&lu;6Rt_hSM%|0X 5.9Za3TQ{/[=b*CkFq:gUGE$~vD!)cjm
 2017-10-21 11:59:46,387 - root - INFO - Running app
+2017-11-12 20:12:49,179 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-12 20:12:49,184 - python.general - INFO - [1] Loading users
+2017-11-12 20:12:49,190 - python.general - INFO - [1] Load values
+2017-11-12 20:12:49,194 - root - INFO - Passed the cross reference variable test
+2017-11-12 20:12:49,197 - root - INFO - Running app
+2017-11-12 20:12:49,232 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-12 20:12:50,503 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:12:50] "GET / HTTP/1.1" 200 -
+2017-11-12 20:12:50,728 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:12:50] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-11-12 20:12:53,410 - python.general - INFO - [1] Loading users
+2017-11-12 20:12:53,412 - root - INFO - Logging in to james
+2017-11-12 20:12:53,416 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:12:53] "POST /loginuser HTTP/1.1" 302 -
+2017-11-12 20:12:53,428 - root - INFO - ----------Finances----------
+2017-11-12 20:12:53,429 - python.general - INFO - [1] Load values
+2017-11-12 20:12:53,429 - python.general - INFO - [1] Loading users
+2017-11-12 20:12:53,432 - root - INFO - [2] Running total definition
+2017-11-12 20:12:53,432 - root - INFO - Calculating dynamic varibles...
+2017-11-12 20:12:53,432 - root - INFO - [3] Running farms def
+2017-11-12 20:12:53,433 - root - INFO - [3] Running mine def
+2017-11-12 20:12:53,433 - root - INFO - [3] Running factory def
+2017-11-12 20:12:53,433 - root - INFO - [4] Running dynamic personal calulator def
+2017-11-12 20:12:53,437 - root - INFO - Rendering home html...
+2017-11-12 20:12:53,482 - werkzeug - INFO - 127.0.0.1 - - [12/Nov/2017 20:12:53] "GET /user/james/home HTTP/1.1" 200 -

@@ -20,22 +20,23 @@ from python import general
 import baseValues  # Only used in the inital check to see if everything is in sync
 import database  # Only used in the inital check to see if everything is in sync
 
+
+runingonamazon = False
+
 # create a logging format
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler = logging.FileHandler('logs.log')
 handler.setFormatter(formatter)
 
-'''#Add quotes here for normal output
-logger = logging.getLogger('')
-logger.addHandler(handler)
-logger.setLevel(logging.INFO)
-'''
+if runingonamazon:
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger(__name__)
+else:
+    logger = logging.getLogger('')
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-# Add quotes here for only printing to the log
-
-seed = 19285718923740892364809237480923645
+seed = 21904867982759875983275982375893
 random.seed(seed)
 logger.info('The seed is %s', seed)
 app = Flask(__name__)
@@ -74,28 +75,37 @@ VALUES = 'values.p'
 VALUES_PATH = os.path.join(PICKLE_DIR, VALUES)
 
 def loadusers():
-    """Load users from the file given as USERS"""
-    logger.info('[1] Loading users')
-    users = []
-    # Load users.p files
-    with open(USERS_PATH, 'rb') as f:
-        usersarray = pickle.load(f)
+    '''
+        """Load users from the file given as USERS"""
+        logger.info('[1] Loading users')
+        users = []
+        # Load users.p files
+        with open(USERS_PATH, 'rb') as f:
+            usersarray = pickle.load(f)
 
-    # Read to find out the users
-    for file in usersarray:
-        fname = os.path.join(PICKLE_DIR, file)
-        with open(fname, 'rb') as f:
-            person = pickle.load(f)
-            users.append(person)
-    return users
+        # Read to find out the users
+        for file in usersarray:
+            fname = os.path.join(PICKLE_DIR, file)
+            with open(fname, 'rb') as f:
+                person = pickle.load(f)
+                users.append(person)
+        return users'''
+
+    return general.loadusers(USERS_PATH, PICKLE_DIR)
+
+
 
 
 def loadvalues():
-    """Load the values from the file given as VALUES"""
-    logger.info('[1] Load values')
-    with open(VALUES_PATH, 'rb') as f:
-        values = pickle.load(f)
-    return values
+    '''
+        """Load the values from the file given as VALUES"""
+        logger.info('[1] Load values')
+        with open(VALUES_PATH, 'rb') as f:
+            values = pickle.load(f)
+        return values'''
+
+    return general.loadvalues(VALUES_PATH)
+
 
 
 # Before doing anything important, first make sure that all of the varibles are similar across the board
