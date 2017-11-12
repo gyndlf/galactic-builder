@@ -135,6 +135,7 @@ logger.info('Passed the cross reference variable test')
 
 
 def scrambleCookie(request, username):
+    '''
     """Scramble the username and add to the give request"""
     t = []
     for i in username:
@@ -142,20 +143,24 @@ def scrambleCookie(request, username):
         t.append(v)
     sessio = ''.join(t)
     request.set_cookie('sessionID', sessio)
-    return request
+    return request'''
+    return general.scramblecookie(request, username, ENCRYPT_DICT)
 
 
 def loadCookie(username):
+    '''
     """Decrypt the username"""
     # Converts the cypher to words.
     h = []
     for i in username:
         v = DECRYPT_DICT[i]
         h.append(v)
-    return ''.join(h)
+    return ''.join(h)'''
+    return general.loadcookie(username, DECRYPT_DICT)
 
 
 def hasMoney(object, money):
+    '''
     """Weather or not the object has >= money"""
     try:
         if object.money >= money:
@@ -163,7 +168,8 @@ def hasMoney(object, money):
         else:
             return False
     except:
-        return False
+        return False'''
+    return general.hasmoney(object, money)
 
 
 def total(users, values):
