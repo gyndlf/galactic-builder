@@ -6,7 +6,7 @@ git pull origin # Pull origin to stay up to date
 
 PHR="Release Alpha v"
 NUM1=6 # Set new main version number here
-NUM2=0 # And set version minor number here
+NUM2=1 # And set version minor number here
 
 TMP=$[NUM2-1]
 
