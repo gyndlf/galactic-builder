@@ -6,7 +6,6 @@
 # export FLASK_APP=mainpythonfile.py
 # python -m flask run
 
-
 import pickle
 import os
 from flask import *
@@ -15,7 +14,7 @@ import random
 import logging
 
 # Import the modules needed to calculate everything
-from modules import general, total, farms, mines
+from modules import general, total, farms, mines, factories, DPC
 
 import baseValues  # Only used in the inital check to see if everything is in sync
 import database  # Only used in the inital check to see if everything is in sync
@@ -99,164 +98,6 @@ for person in u:
 logger.info('Passed the cross reference variable test')
 
 
-def factory(values, totals):
-    """Calculate factory costs"""
-
-    ''' respourceDisplay = 
-    for mine in values.mineValues:
-    resourceObject = int(float(str(resources)[:mine]))
-    if resourceObject > 0:
-    resourceDisplay += mine.value + ":"(mine.total * resourceObject) ","
-    resourcecost += mine.total * resourceObject
-    return resourceDisplay, '''
-
-    logger.info('[3] Running factory def')
-
-    calculated = {}
-
-    # Calculate factory costs
-    for factoryt in values.factoryValues:
-
-        # Make sure that the scaling is correct. Now multiplying by 0
-        if totals['factoryCount'][factoryt] == 0:
-            calculated[factoryt] = values.factoryValues[factoryt] * 2
-        else:
-            calculated[factoryt] = values.factoryValues[factoryt] * totals['factoryCount'][factoryt] * 2
-
-        # Make sure the cost is not below 10
-        if calculated[factoryt] < 10:
-            calculated[factoryt] = 10
-    logger.debug('Calculated factory cost %s', calculated)
-
-    # Code from the spreadsheet
-    # productCost = 0
-    # factoryLevel = 1
-    # amountProduced = 2^factoryLevel*2
-    # income = productCost * amountProduced
-    # upgrade = income * 5
-    # materialCost = 0 #Changed in other classes
-    # profit = income - (materialCost * amountProduced)
-    return calculated
-
-
-def dynamicPersonalCalc(object, farms, values):
-    """Calculate personal dynamic varibles"""
-    logger.info('[4] Running dynamic personal calulator def')
-
-    # Farms
-    Fproduced = object.farmLevel * object.numberFarms
-    Fincome = Fproduced * farms['farmValue']
-
-    # Mines
-    minesDict = {}
-    # amount produced = number of mines * percentage boost || Eventually use this
-    # object.mineBoost is representing a number/100. So 5 is a 5% bonus.
-    # object.minePowerUpgrade is the one that lets mines produce more than one material
-    for name in values.mineValues:
-        produced = object.ownedMines[name] * object.minePowerUpgrade
-        produced += int(produced * object.mineBoost / 100)
-        minesDict[name] = produced
-
-    # Factories
-    factoryDict = {}
-    totalFacIncome = 0
-    materialsNeeded = {}
-    for material in values.mineValues:  # Initialise the materials
-        materialsNeeded[material] = 0
-    # amountProduced = numberOfFactories * Bonus(edited)
-    # income = productCost * amountProduced
-    # profit = income - (materialCost * amountProduced)
-    for factory in values.factoryValues:
-        facProduced = object.ownedFactories[factory] * 1  # Add bonus instead of 1 eventually
-        facIncome = values.factoryValues[factory] * facProduced
-        facProfit = facIncome - 0  # Need to add materials next
-
-        for material in values.factoryRecipies[factory]:  # Find out how many materials are needed
-            materialsNeeded[material] += values.factoryRecipies[factory][material] * facProduced
-        totalFacIncome += facProfit
-
-        tmp = {
-            'produced': facProduced,
-            'income': facIncome,
-            'profit': facProfit,
-            'materialsRequired': values.factoryRecipies[factory]
-        }
-
-        factoryDict[factory] = tmp
-
-    logger.debug('Materials needed in total %s', materialsNeeded)
-    logger.debug('Materials produced: %s', minesDict)
-
-    # Calculate sales
-    # You produce 400 iron in total but only need 324. The excess 76 will be sold.
-    # You produce 200 gold but need 253 and so you will buy 53 gold.
-
-    messages = {}
-    materialsSelling = {}
-    materialsBuying = {}
-    materialsTotalCost = 0
-    mineProfitMade = 0
-
-    for material in minesDict:
-        materialsSelling[material] = 0
-        materialsBuying[material] = 0
-
-    for material in values.mineValues:
-        needed = materialsNeeded[material] - minesDict[material]
-        if needed < 0:  # Greater than §0. Sell the excess
-            selling = abs(needed * values.mineValues[material])
-            materialsSelling[material] = selling
-            mineProfitMade += selling
-            messages[material] = 'You have ' + str(abs(needed)) + ' extra. This will be sold for §' + str(selling)
-        elif needed > 0:
-            buying = needed * values.mineValues[material]
-            materialsBuying[material] = buying
-            materialsTotalCost += buying
-            messages[material] = 'You need ' + str(needed) + ' more. This will be brought for §' + str(buying)
-        else:
-            messages[material] = 'You produce just the right amount of resources needed. Good job.'
-
-    # General
-    income = Fincome + totalFacIncome + mineProfitMade # Add farm income, mines and factory income here
-    expenses = int(income / 5) + materialsTotalCost  # (Tax) Add all expenses here
-    netIncome = income - expenses
-
-    # Chuck (Norris) it in a dictionary (== Unkillable)
-    calculated = {
-        'Fproduced': Fproduced,
-        'Fincome': Fincome,
-        'income': income,
-        'expenses': expenses,
-        'netIncome': netIncome,
-        'minesDict': minesDict,
-        'factories': factoryDict,
-        'materialsSelling': materialsSelling,
-        'materialsBuying': materialsBuying,
-        'mineMessages': messages,
-        'mineProfitMade': mineProfitMade,
-        'materialsTotalCost': materialsTotalCost,
-        'totalFacIncome': totalFacIncome
-    }
-
-    # Any point having the code below? It's never used
-    # Input new dynamic varibles into "object" object
-    object.foodProduced = Fproduced
-    object.income = income
-    object.expenses = expenses
-    object.netIncome = netIncome
-    object.mineProduced = minesDict
-    object.saveFactories = factoryDict
-    logger.debug('Dynamic personal number of mines: %s', minesDict)
-
-    # Save new varibles to file
-    username = object.name + '.p'
-    fname = os.path.join(PICKLE_DIR, username)
-    logger.debug("[-] Saving dynamic personal data to %s", str(username))
-    with open(fname, 'wb') as f:
-        pickle.dump(object, f)
-    return calculated
-
-
 # All app.route functions -----------------------------------------------------------------------------------------#
 @app.route('/')
 def home():
@@ -327,13 +168,13 @@ def user(name=None, page=None, data=None):
     logger.info('Calculating dynamic varibles...')
     farm = farms.farm(values, totals)
     minecalcd = mines.mine(values, totals)
-    factories = factory(values, totals)
+    factory = factories.factory(values, totals)
 
     # Identify the user
     for person in users:
         if name == person.name:  # Name is from the url
             # Calculate dynamic personal varibles
-            dynamicPersonal = dynamicPersonalCalc(person, farm, values)
+            dynamicPersonal = DPC.dynamicPersonalCalc(person, farm, values, PICKLE_DIR)
 
             templateData = {
                 'minesFunc': minecalcd,
@@ -342,7 +183,7 @@ def user(name=None, page=None, data=None):
                 'values': values,
                 'person': person,
                 'totals': totals,
-                'factories': factories,
+                'factories': factory,
                 'farms': farm
             }
 
@@ -421,7 +262,7 @@ def userButton(name=None):
     totals = total.total(users, values)
     farm = farms.farm(values, totals)
     minecalcd = mines.mine(values, totals)
-    factories = factory(values, totals)
+    factory = factories.factory(values, totals)
 
     # Where have you come from?
     farmHtml = False
@@ -511,9 +352,9 @@ def userButton(name=None):
                     if button in request.form:
                         logger.info('Factory detected')
                         factoryHtml = True
-                        if general.hasmoney(person, factories[factoryl]):
+                        if general.hasmoney(person, factory[factoryl]):
                             person.ownedFactories[factoryl] += 1
-                            person.money -= factories[factoryl]
+                            person.money -= factory[factoryl]
                             logger.info('Brought one %s factory', factoryl)
                         else:
                             logger.error("Money Error: Not enough money")

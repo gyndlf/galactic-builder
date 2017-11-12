@@ -1877,3 +1877,182 @@ TypeError: 'list' object is not callable
 2017-11-13 06:18:35,835 - root - INFO - [4] Running dynamic personal calulator def
 2017-11-13 06:18:35,835 - root - INFO - Rendering mines html...
 2017-11-13 06:18:35,841 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:18:35] "GET /user/james/mines HTTP/1.1" 200 -
+2017-11-13 06:28:40,560 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-13 06:28:40,567 - modules.general - INFO - [1] Loading users
+2017-11-13 06:28:40,569 - modules.general - INFO - [1] Load values
+2017-11-13 06:28:40,569 - root - INFO - Passed the cross reference variable test
+2017-11-13 06:28:40,574 - root - INFO - Running app
+2017-11-13 06:28:40,594 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-13 06:28:41,795 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:28:41] "GET / HTTP/1.1" 200 -
+2017-11-13 06:28:45,059 - modules.general - INFO - [1] Loading users
+2017-11-13 06:28:45,060 - root - INFO - Logging in to james
+2017-11-13 06:28:45,062 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:28:45] "POST /loginuser HTTP/1.1" 302 -
+2017-11-13 06:28:45,081 - root - INFO - ----------Finances----------
+2017-11-13 06:28:45,081 - modules.general - INFO - [1] Load values
+2017-11-13 06:28:45,082 - modules.general - INFO - [1] Loading users
+2017-11-13 06:28:45,082 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:28:45,083 - root - INFO - Calculating dynamic varibles...
+2017-11-13 06:28:45,083 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:28:45,083 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:28:45,083 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:28:45,083 - root - INFO - [4] Running dynamic personal calulator def
+2017-11-13 06:28:45,084 - root - INFO - Rendering home html...
+2017-11-13 06:28:45,112 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:28:45] "GET /user/james/home HTTP/1.1" 200 -
+2017-11-13 06:28:56,997 - root - INFO - ----------Finances----------
+2017-11-13 06:28:56,997 - modules.general - INFO - [1] Load values
+2017-11-13 06:28:56,998 - modules.general - INFO - [1] Loading users
+2017-11-13 06:28:56,999 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:28:57,000 - root - INFO - Calculating dynamic varibles...
+2017-11-13 06:28:57,000 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:28:57,000 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:28:57,000 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:28:57,000 - root - INFO - [4] Running dynamic personal calulator def
+2017-11-13 06:28:57,001 - root - INFO - Rendering factories html...
+2017-11-13 06:28:57,022 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:28:57] "GET /user/james/factories HTTP/1.1" 200 -
+2017-11-13 06:34:34,853 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-13 06:34:34,854 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:34,856 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:34,856 - root - INFO - Passed the cross reference variable test
+2017-11-13 06:34:34,858 - root - INFO - Running app
+2017-11-13 06:34:34,871 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-13 06:34:37,059 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:37] "GET / HTTP/1.1" 200 -
+2017-11-13 06:34:41,131 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:41,133 - root - INFO - Logging in to james
+2017-11-13 06:34:41,136 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:41] "POST /loginuser HTTP/1.1" 302 -
+2017-11-13 06:34:41,147 - root - INFO - ----------Finances----------
+2017-11-13 06:34:41,147 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:41,148 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:41,149 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:41,150 - root - INFO - Calculating dynamic varibles...
+2017-11-13 06:34:41,150 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:41,150 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:41,150 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:41,151 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-13 06:34:41,153 - root - INFO - Rendering home html...
+2017-11-13 06:34:41,186 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:41] "GET /user/james/home HTTP/1.1" 200 -
+2017-11-13 06:34:45,887 - root - INFO - ----------Finances----------
+2017-11-13 06:34:45,887 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:45,887 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:45,888 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:45,888 - root - INFO - Calculating dynamic varibles...
+2017-11-13 06:34:45,888 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:45,889 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:45,889 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:45,889 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-13 06:34:45,890 - root - INFO - Rendering farm html...
+2017-11-13 06:34:45,902 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:45] "GET /user/james/farms HTTP/1.1" 200 -
+2017-11-13 06:34:48,767 - root - INFO - ----------Button----------
+2017-11-13 06:34:48,767 - root - INFO - Loading recipies...
+2017-11-13 06:34:48,768 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:48,769 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:48,769 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:48,770 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:48,770 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:48,770 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:48,771 - root - INFO - Signed in as james
+2017-11-13 06:34:48,771 - root - INFO - Detected 'buyFarm'
+2017-11-13 06:34:48,771 - root - INFO - Brought one farm
+2017-11-13 06:34:48,771 - root - INFO - Saving...
+2017-11-13 06:34:48,772 - root - INFO - Calculating redirect
+2017-11-13 06:34:48,772 - root - INFO - Redirecting back to farms
+2017-11-13 06:34:48,775 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:48] "POST /user/james/button HTTP/1.1" 302 -
+2017-11-13 06:34:48,782 - root - INFO - ----------Finances----------
+2017-11-13 06:34:48,782 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:48,782 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:48,783 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:48,784 - root - INFO - Calculating dynamic varibles...
+2017-11-13 06:34:48,784 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:48,784 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:48,784 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:48,784 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-13 06:34:48,785 - root - INFO - Rendering farm html...
+2017-11-13 06:34:48,787 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:48] "GET /user/james/farms HTTP/1.1" 200 -
+2017-11-13 06:34:50,236 - root - INFO - ----------Button----------
+2017-11-13 06:34:50,236 - root - INFO - Loading recipies...
+2017-11-13 06:34:50,236 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:50,237 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:50,237 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:50,238 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:50,238 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:50,238 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:50,239 - root - INFO - Signed in as james
+2017-11-13 06:34:50,239 - root - INFO - Detected 'buyFarm'
+2017-11-13 06:34:50,239 - root - INFO - Brought one farm
+2017-11-13 06:34:50,240 - root - INFO - Saving...
+2017-11-13 06:34:50,240 - root - INFO - Calculating redirect
+2017-11-13 06:34:50,241 - root - INFO - Redirecting back to farms
+2017-11-13 06:34:50,243 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:50] "POST /user/james/button HTTP/1.1" 302 -
+2017-11-13 06:34:50,252 - root - INFO - ----------Finances----------
+2017-11-13 06:34:50,253 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:50,253 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:50,254 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:50,254 - root - INFO - Calculating dynamic varibles...
+2017-11-13 06:34:50,254 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:50,254 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:50,254 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:50,254 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-13 06:34:50,255 - root - INFO - Rendering farm html...
+2017-11-13 06:34:50,259 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:50] "GET /user/james/farms HTTP/1.1" 200 -
+2017-11-13 06:34:52,620 - root - INFO - ----------Finances----------
+2017-11-13 06:34:52,620 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:52,621 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:52,622 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:52,622 - root - INFO - Calculating dynamic varibles...
+2017-11-13 06:34:52,622 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:52,622 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:52,623 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:52,623 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-13 06:34:52,623 - root - INFO - Rendering factories html...
+2017-11-13 06:34:52,639 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:52] "GET /user/james/factories HTTP/1.1" 200 -
+2017-11-13 06:34:55,267 - root - INFO - ----------Button----------
+2017-11-13 06:34:55,267 - root - INFO - Loading recipies...
+2017-11-13 06:34:55,267 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:55,270 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:55,270 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:55,271 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:55,272 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:55,272 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:55,273 - root - INFO - Signed in as james
+2017-11-13 06:34:55,273 - root - INFO - Factory detected
+2017-11-13 06:34:55,274 - root - INFO - Brought one batteries factory
+2017-11-13 06:34:55,274 - root - INFO - Saving...
+2017-11-13 06:34:55,274 - root - INFO - Calculating redirect
+2017-11-13 06:34:55,275 - root - INFO - Redirecting back to factories
+2017-11-13 06:34:55,276 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:55] "POST /user/james/button HTTP/1.1" 302 -
+2017-11-13 06:34:55,286 - root - INFO - ----------Finances----------
+2017-11-13 06:34:55,287 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:55,287 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:55,288 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:55,289 - root - INFO - Calculating dynamic varibles...
+2017-11-13 06:34:55,289 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:55,289 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:55,289 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:55,289 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-13 06:34:55,290 - root - INFO - Rendering factories html...
+2017-11-13 06:34:55,293 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:55] "GET /user/james/factories HTTP/1.1" 200 -
+2017-11-13 06:34:58,906 - root - INFO - ----------Button----------
+2017-11-13 06:34:58,907 - root - INFO - Loading recipies...
+2017-11-13 06:34:58,908 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:58,909 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:58,910 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:58,910 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:58,911 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:58,911 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:58,911 - root - INFO - Signed in as james
+2017-11-13 06:34:58,912 - root - INFO - Factory detected
+2017-11-13 06:34:58,912 - root - INFO - Brought one batteries factory
+2017-11-13 06:34:58,913 - root - INFO - Saving...
+2017-11-13 06:34:58,913 - root - INFO - Calculating redirect
+2017-11-13 06:34:58,913 - root - INFO - Redirecting back to factories
+2017-11-13 06:34:58,915 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:58] "POST /user/james/button HTTP/1.1" 302 -
+2017-11-13 06:34:58,924 - root - INFO - ----------Finances----------
+2017-11-13 06:34:58,925 - modules.general - INFO - [1] Load values
+2017-11-13 06:34:58,925 - modules.general - INFO - [1] Loading users
+2017-11-13 06:34:58,925 - modules.total - INFO - [2] Running total definition
+2017-11-13 06:34:58,926 - root - INFO - Calculating dynamic varibles...
+2017-11-13 06:34:58,926 - modules.farms - INFO - [3] Running farms def
+2017-11-13 06:34:58,926 - modules.mines - INFO - [3] Running mine def
+2017-11-13 06:34:58,926 - modules.factories - INFO - [3] Running factory def
+2017-11-13 06:34:58,926 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-13 06:34:58,926 - root - INFO - Rendering factories html...
+2017-11-13 06:34:58,930 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:34:58] "GET /user/james/factories HTTP/1.1" 200 -
