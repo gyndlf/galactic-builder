@@ -67,6 +67,12 @@ body{
 			margin-left: -50%;
 			margin-top: -10%;
 		}
+		.noAb {
+			margin-top: 0px;
+			margin-left: 0px;
+			position: static;
+			
+		}
 		.sides {
 			height: 95%;
 		 }
