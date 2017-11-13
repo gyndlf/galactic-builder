@@ -44,7 +44,7 @@ var myGameArea = {
 	
     start : function() {
 		this.canvas.style.zIndex = "-1";
-        this.canvas.width = document.body.clientWidth * 1.2;
+        this.canvas.width = document.body.clientWidth;
         this.canvas.height = document.body.clientHeight * 2;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
