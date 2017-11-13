@@ -36,10 +36,10 @@ function startGame() {
 		solar_system[7] = new Celestial_Ob(500, solar_system[0], 13, 13, 0.0005, "#ffcc66");
 		solar_system[8] = new Celestial_Ob(600, solar_system[0], 8, 8, 0.0001, "#3399ff");
 		solar_system[9] = new Celestial_Ob(750, solar_system[0], 12, 12, 0.00005, "#0066ff");
-		solar_system[10] = new Celestial_Ob(13, solar_system[6], 1, 1, 0.22, "grey");
-		solar_system[11] = new Celestial_Ob(15, solar_system[6], 1, 1, 0.28, "grey");
-		solar_system[12] = new Celestial_Ob(18, solar_system[6], 1, 1, 0.20, "grey");
-		solar_system[13] = new Celestial_Ob(23, solar_system[6], 1, 1, 0.18, "grey");
+		solar_system[10] = new Celestial_Ob(26, solar_system[6], 1, 1, 0.22, "grey");
+		solar_system[11] = new Celestial_Ob(30, solar_system[6], 1, 1, 0.28, "grey");
+		solar_system[12] = new Celestial_Ob(36, solar_system[6], 1, 1, 0.20, "grey");
+		solar_system[13] = new Celestial_Ob(46, solar_system[6], 1, 1, 0.18, "grey");
 		astroid[0] = new Astroid_Rg(320, solar_system[0], 500, 30, "#800000");
 		astroid[1] = new Astroid_Rg(20, solar_system[7], 30, 4, "#800000");
 }
