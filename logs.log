@@ -2261,3 +2261,25 @@ TypeError: 'list' object is not callable
 2017-11-13 06:59:35,800 - modules.DPC - INFO - [4] Running dynamic personal calulator def
 2017-11-13 06:59:35,800 - root - INFO - Rendering mines html...
 2017-11-13 06:59:35,803 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 06:59:35] "GET /user/james/mines HTTP/1.1" 200 -
+2017-11-13 16:45:39,856 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-13 16:45:39,860 - modules.general - INFO - [1] Loading users
+2017-11-13 16:45:39,883 - modules.general - INFO - [1] Load values
+2017-11-13 16:45:39,888 - root - INFO - Passed the cross reference variable test
+2017-11-13 16:45:39,892 - root - INFO - Running app
+2017-11-13 16:45:39,946 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-13 16:45:41,229 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 16:45:41] "GET / HTTP/1.1" 200 -
+2017-11-13 16:45:41,541 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 16:45:41] "GET /static/favicon.ico HTTP/1.1" 304 -
+2017-11-13 16:46:42,301 - modules.general - INFO - [1] Loading users
+2017-11-13 16:46:42,317 - root - INFO - Logging in to joe
+2017-11-13 16:46:42,319 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 16:46:42] "POST /loginuser HTTP/1.1" 302 -
+2017-11-13 16:46:42,327 - root - INFO - ----------Finances----------
+2017-11-13 16:46:42,328 - modules.general - INFO - [1] Load values
+2017-11-13 16:46:42,330 - modules.general - INFO - [1] Loading users
+2017-11-13 16:46:42,335 - modules.total - INFO - [2] Running total definition
+2017-11-13 16:46:42,341 - root - INFO - Calculating dynamic varibles...
+2017-11-13 16:46:42,341 - modules.farms - INFO - [3] Running farms def
+2017-11-13 16:46:42,342 - modules.mines - INFO - [3] Running mine def
+2017-11-13 16:46:42,342 - modules.factories - INFO - [3] Running factory def
+2017-11-13 16:46:42,342 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-13 16:46:42,342 - root - INFO - Rendering home html...
+2017-11-13 16:46:42,394 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 16:46:42] "GET /user/joe/home HTTP/1.1" 200 -
