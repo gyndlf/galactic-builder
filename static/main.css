@@ -17,8 +17,8 @@ body{
             text-align: center;
         }
         p {
-    line-height: 2;
-font-size: 17px
+			line-height: 2;
+			font-size: 17px
 		}
         h1{
             color: azure;
@@ -36,7 +36,7 @@ font-size: 17px
         }
         
         #maininfo{
-            border:5px solid #33cc33;
+            /*border:5px solid #33cc33;*/
             background-color: azure;
             text-align: center;
             width: 100%;
@@ -65,6 +65,7 @@ font-size: 17px
 			background-color: #f1f1f1;
 			position: absolute;
 			margin-left: -50%;
+			margin-top: -10%;
 		}
 		.sides {
 			height: 95%;
