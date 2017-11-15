@@ -231,6 +231,10 @@ def user(name=None, page=None, data=None):
                 logger.info('Rendering shipBuying html')
                 return render_template('diplomacy.html', **templateData)
 
+            elif page == 'settings':
+                logger.info('Rendering settings html')
+                return render_template('settings.html', **templateData)
+
             else:
                 logger.error('Invalid page name!')
                 return "Invalid page name"

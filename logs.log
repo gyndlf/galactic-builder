@@ -2283,3 +2283,95 @@ TypeError: 'list' object is not callable
 2017-11-13 16:46:42,342 - modules.DPC - INFO - [4] Running dynamic personal calulator def
 2017-11-13 16:46:42,342 - root - INFO - Rendering home html...
 2017-11-13 16:46:42,394 - werkzeug - INFO - 127.0.0.1 - - [13/Nov/2017 16:46:42] "GET /user/joe/home HTTP/1.1" 200 -
+2017-11-15 19:26:33,303 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-15 19:26:33,308 - modules.general - INFO - [1] Loading users
+2017-11-15 19:26:33,318 - modules.general - INFO - [1] Load values
+2017-11-15 19:26:33,319 - root - INFO - Passed the cross reference variable test
+2017-11-15 19:26:33,323 - root - INFO - Running app
+2017-11-15 19:26:33,368 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-15 19:26:34,981 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:26:34] "GET / HTTP/1.1" 200 -
+2017-11-15 19:26:35,306 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:26:35] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-11-15 19:26:38,217 - modules.general - INFO - [1] Loading users
+2017-11-15 19:26:38,219 - root - INFO - Logging in to james
+2017-11-15 19:26:38,222 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:26:38] "POST /loginuser HTTP/1.1" 302 -
+2017-11-15 19:26:38,237 - root - INFO - ----------Finances----------
+2017-11-15 19:26:38,237 - modules.general - INFO - [1] Load values
+2017-11-15 19:26:38,238 - modules.general - INFO - [1] Loading users
+2017-11-15 19:26:38,240 - modules.total - INFO - [2] Running total definition
+2017-11-15 19:26:38,240 - root - INFO - Calculating dynamic varibles...
+2017-11-15 19:26:38,241 - modules.farms - INFO - [3] Running farms def
+2017-11-15 19:26:38,241 - modules.mines - INFO - [3] Running mine def
+2017-11-15 19:26:38,241 - modules.factories - INFO - [3] Running factory def
+2017-11-15 19:26:38,241 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-15 19:26:38,242 - root - INFO - Rendering home html...
+2017-11-15 19:26:38,286 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:26:38] "GET /user/james/home HTTP/1.1" 200 -
+2017-11-15 19:26:38,330 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:26:38] "GET /static/main.css HTTP/1.1" 200 -
+2017-11-15 19:26:38,347 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:26:38] "GET /static/BackgroundAnimation.js HTTP/1.1" 200 -
+2017-11-15 19:26:38,357 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:26:38] "GET /static/Chart.min.js HTTP/1.1" 304 -
+2017-11-15 19:26:42,466 - root - INFO - ----------Finances----------
+2017-11-15 19:26:42,468 - modules.general - INFO - [1] Load values
+2017-11-15 19:26:42,469 - modules.general - INFO - [1] Loading users
+2017-11-15 19:26:42,470 - modules.total - INFO - [2] Running total definition
+2017-11-15 19:26:42,471 - root - INFO - Calculating dynamic varibles...
+2017-11-15 19:26:42,471 - modules.farms - INFO - [3] Running farms def
+2017-11-15 19:26:42,471 - modules.mines - INFO - [3] Running mine def
+2017-11-15 19:26:42,471 - modules.factories - INFO - [3] Running factory def
+2017-11-15 19:26:42,472 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-15 19:26:42,472 - root - INFO - Rendering settings html
+2017-11-15 19:26:42,478 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:26:42] "GET /user/james/settings HTTP/1.1" 200 -
+2017-11-15 19:26:58,825 - root - INFO - ----------Finances----------
+2017-11-15 19:26:58,828 - modules.general - INFO - [1] Load values
+2017-11-15 19:26:58,832 - modules.general - INFO - [1] Loading users
+2017-11-15 19:26:58,846 - modules.total - INFO - [2] Running total definition
+2017-11-15 19:26:58,846 - root - INFO - Calculating dynamic varibles...
+2017-11-15 19:26:58,846 - modules.farms - INFO - [3] Running farms def
+2017-11-15 19:26:58,846 - modules.mines - INFO - [3] Running mine def
+2017-11-15 19:26:58,846 - modules.factories - INFO - [3] Running factory def
+2017-11-15 19:26:58,846 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-15 19:26:58,847 - root - INFO - Rendering settings html
+2017-11-15 19:26:58,849 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:26:58] "GET /user/james/settings HTTP/1.1" 200 -
+2017-11-15 19:26:59,379 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:26:59] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-11-15 19:27:07,734 - root - INFO - ----------Finances----------
+2017-11-15 19:27:07,734 - modules.general - INFO - [1] Load values
+2017-11-15 19:27:07,735 - modules.general - INFO - [1] Loading users
+2017-11-15 19:27:07,736 - modules.total - INFO - [2] Running total definition
+2017-11-15 19:27:07,736 - root - INFO - Calculating dynamic varibles...
+2017-11-15 19:27:07,736 - modules.farms - INFO - [3] Running farms def
+2017-11-15 19:27:07,736 - modules.mines - INFO - [3] Running mine def
+2017-11-15 19:27:07,737 - modules.factories - INFO - [3] Running factory def
+2017-11-15 19:27:07,737 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-15 19:27:07,737 - root - INFO - Rendering settings html
+2017-11-15 19:27:07,740 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:27:07] "GET /user/james/settings HTTP/1.1" 200 -
+2017-11-15 19:27:08,518 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:27:08] "GET /static/favicon.ico HTTP/1.1" 200 -
+2017-11-15 19:32:11,812 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-15 19:32:11,816 - modules.general - INFO - [1] Loading users
+2017-11-15 19:32:11,822 - modules.general - INFO - [1] Load values
+2017-11-15 19:32:11,822 - root - INFO - Passed the cross reference variable test
+2017-11-15 19:32:11,828 - root - INFO - Running app
+2017-11-15 19:32:11,880 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-15 19:32:13,640 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:32:13] "GET / HTTP/1.1" 200 -
+2017-11-15 19:32:17,652 - modules.general - INFO - [1] Loading users
+2017-11-15 19:32:17,655 - root - INFO - Logging in to james
+2017-11-15 19:32:17,657 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:32:17] "POST /loginuser HTTP/1.1" 302 -
+2017-11-15 19:32:17,668 - root - INFO - ----------Finances----------
+2017-11-15 19:32:17,668 - modules.general - INFO - [1] Load values
+2017-11-15 19:32:17,668 - modules.general - INFO - [1] Loading users
+2017-11-15 19:32:17,669 - modules.total - INFO - [2] Running total definition
+2017-11-15 19:32:17,670 - root - INFO - Calculating dynamic varibles...
+2017-11-15 19:32:17,670 - modules.farms - INFO - [3] Running farms def
+2017-11-15 19:32:17,670 - modules.mines - INFO - [3] Running mine def
+2017-11-15 19:32:17,670 - modules.factories - INFO - [3] Running factory def
+2017-11-15 19:32:17,670 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-15 19:32:17,671 - root - INFO - Rendering home html...
+2017-11-15 19:32:17,718 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:32:17] "GET /user/james/home HTTP/1.1" 200 -
+2017-11-15 19:32:21,995 - root - INFO - ----------Finances----------
+2017-11-15 19:32:21,996 - modules.general - INFO - [1] Load values
+2017-11-15 19:32:21,996 - modules.general - INFO - [1] Loading users
+2017-11-15 19:32:21,997 - modules.total - INFO - [2] Running total definition
+2017-11-15 19:32:21,998 - root - INFO - Calculating dynamic varibles...
+2017-11-15 19:32:21,998 - modules.farms - INFO - [3] Running farms def
+2017-11-15 19:32:21,998 - modules.mines - INFO - [3] Running mine def
+2017-11-15 19:32:21,999 - modules.factories - INFO - [3] Running factory def
+2017-11-15 19:32:21,999 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-15 19:32:22,000 - root - INFO - Rendering settings html
+2017-11-15 19:32:22,010 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:32:22] "GET /user/james/settings HTTP/1.1" 200 -
