@@ -7,7 +7,7 @@ GDOCS_SPREADSHEET_NAME = 'galactic-builder-database'
 GDOCS_OAUTH_JSON = 'galactic-builder-8e70e9c56779.json'
 
 
-def open(oauth_key_file, spreadsheet):
+def open(oauth_key_file=GDOCS_OAUTH_JSON, spreadsheet=GDOCS_SPREADSHEET_NAME):
     """Connect to Google Docs spreadsheet and return the first worksheet."""
     try:
         scope = ['https://spreadsheets.google.com/feeds']
@@ -31,21 +31,23 @@ def get_stats(worksheet, person, item):
     found_person = worksheet.find(person)
     found_item = worksheet.find(item)
 
-    print('Found person', found_person.row, found_person.col)
-    print('Found item', found_item.row, found_item.col)
+    #print('Found person', found_person.row, found_person.col)
+    #print('Found item', found_item.row, found_item.col)
 
     cell = worksheet.cell(found_person.row, found_item.col).value
     return cell
 
-print('Opening...')
-sheet = open(GDOCS_OAUTH_JSON, GDOCS_SPREADSHEET_NAME)
-print('Running...')
+
+if __name__ == '__main__':
+    print('Opening...')
+    sheet = open()
+    print('Running...')
 
 
-wks_list = sheet.worksheets()
-worksheet = sheet.worksheet('people')
+    wks_list = sheet.worksheets()
+    worksheet = sheet.worksheet('people')
 
-print(get_stats(worksheet, 'james', 'money'))
+    print(get_stats(worksheet, 'james', 'money'))
 
 
 # Rows : Columns

@@ -101,23 +101,30 @@ def home():
 @app.route('/loginuser', methods=['POST'])
 def calcmessage():
     """This is the login script"""
-    users = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
-    try:
-        username = request.form['username']
-        password = request.form['password']
-        username = username.lower()
-    except:
-        logger.error('Invalid username or password')
+    if WHICH_DATABASE is 'pickle':
+        users = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
+        try:
+            username = request.form['username']
+            password = request.form['password']
+            username = username.lower()
+        except:
+            logger.error('Invalid username or password')
+            return redirect(url_for('home'))
+        for person in users:
+            if person.name == username and person.password == password:
+                logger.info("Logging in to %s", str(username))
+                resp = make_response(redirect(url_for('user', name=username, page='home')))
+                logger.debug("Saving cookie 'sessionID'")
+                resp = general.scramblecookie(resp, username, ENCRYPT_DICT)
+                return resp
+        logger.error('Username or password does not match database')
         return redirect(url_for('home'))
-    for person in users:
-        if person.name == username and person.password == password:
-            logger.info("Logging in to %s", str(username))
-            resp = make_response(redirect(url_for('user', name=username, page='home')))
-            logger.debug("Saving cookie 'sessionID'")
-            resp = general.scramblecookie(resp, username, ENCRYPT_DICT)
-            return resp
-    logger.error('Username or password does not match database')
-    return redirect(url_for('home'))
+    elif WHICH_DATABASE is 'google':
+        logger.warning('Google database not migrated')
+        return 'Not migrated get.'
+    else:
+        logger.error('Error: No database set')
+        return 'Error: Database not set'
 
 
 @app.route('/user/')
@@ -148,87 +155,95 @@ def user(name=None, page=None, data=None):
     else:
         dialogMessage = None
 
-    # Calculate the very basics
-    values = pickledata.loadvalues(VALUES_PATH)
-    users = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
-    totals = total.total(users, values)
+    if WHICH_DATABASE is 'pickle':
 
-    # Calculate the recipies
-    logger.info('Calculating dynamic varibles...')
-    farm = farms.farm(values, totals)
-    minecalcd = mines.mine(values, totals)
-    factory = factories.factory(values, totals)
+        # Calculate the very basics
+        values = pickledata.loadvalues(VALUES_PATH)
+        users = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
+        totals = total.total(users, values)
 
-    # Identify the user
-    for person in users:
-        if name == person.name:  # Name is from the url
-            # Calculate dynamic personal varibles
-            dynamicPersonal = DPC.dynamicPersonalCalc(person, farm, values, PICKLE_DIR)
+        # Calculate the recipies
+        logger.info('Calculating dynamic varibles...')
+        farm = farms.farm(values, totals)
+        minecalcd = mines.mine(values, totals)
+        factory = factories.factory(values, totals)
 
-            templateData = {
-                'minesFunc': minecalcd,
-                'dialogMessage': dialogMessage,
-                'dynamicPersonal': dynamicPersonal,
-                'values': values,
-                'person': person,
-                'totals': totals,
-                'factories': factory,
-                'farms': farm
-            }
+        # Identify the user
+        for person in users:
+            if name == person.name:  # Name is from the url
+                # Calculate dynamic personal varibles
+                dynamicPersonal = DPC.dynamicPersonalCalc(person, farm, values, PICKLE_DIR)
 
-            # Return the html
-            if page == 'home':
-                logger.info("Rendering home html...")
-                return render_template('finances.html', **templateData)
+                templateData = {
+                    'minesFunc': minecalcd,
+                    'dialogMessage': dialogMessage,
+                    'dynamicPersonal': dynamicPersonal,
+                    'values': values,
+                    'person': person,
+                    'totals': totals,
+                    'factories': factory,
+                    'farms': farm
+                }
 
-            elif page == 'farms':
-                logger.info('Rendering farm html...')
-                return render_template('farms.html', **templateData)
+                # Return the html
+                if page == 'home':
+                    logger.info("Rendering home html...")
+                    return render_template('finances.html', **templateData)
 
-            elif page == 'mines':
-                logger.info('Rendering mines html...')
-                return render_template('mines.html', **templateData)
+                elif page == 'farms':
+                    logger.info('Rendering farm html...')
+                    return render_template('farms.html', **templateData)
 
-            elif page == 'factories':
-                logger.info("Rendering factories html...")
-                return render_template('factories.html', **templateData)
+                elif page == 'mines':
+                    logger.info('Rendering mines html...')
+                    return render_template('mines.html', **templateData)
 
-            elif page == 'community':
-                logger.info("Rendering community html..")
-                labels = []
-                info = []
-                data = totals['wealth']
-                for item in data:
-                    info.append(data[item])
-                    labels.append(item)
-                colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD"]
-                return render_template('community.html', **templateData, set=zip(info, labels, colors))
+                elif page == 'factories':
+                    logger.info("Rendering factories html...")
+                    return render_template('factories.html', **templateData)
 
-            elif page == 'species':
-                logger.info('Rendering species html')
-                return render_template('species.html', **templateData)
+                elif page == 'community':
+                    logger.info("Rendering community html..")
+                    labels = []
+                    info = []
+                    data = totals['wealth']
+                    for item in data:
+                        info.append(data[item])
+                        labels.append(item)
+                    colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD"]
+                    return render_template('community.html', **templateData, set=zip(info, labels, colors))
 
-            elif page == 'war':
-                logger.info('Rendering war html')
-                return render_template('war.html', **templateData)
+                elif page == 'species':
+                    logger.info('Rendering species html')
+                    return render_template('species.html', **templateData)
 
-            elif page == 'shipBuying':
-                logger.info('Rendering shipBuying html')
-                return render_template('shipBuying.html', **templateData)
+                elif page == 'war':
+                    logger.info('Rendering war html')
+                    return render_template('war.html', **templateData)
 
-            elif page == 'diplomacy':
-                logger.info('Rendering shipBuying html')
-                return render_template('diplomacy.html', **templateData)
+                elif page == 'shipBuying':
+                    logger.info('Rendering shipBuying html')
+                    return render_template('shipBuying.html', **templateData)
 
-            elif page == 'settings':
-                logger.info('Rendering settings html')
-                return render_template('settings.html', **templateData)
+                elif page == 'diplomacy':
+                    logger.info('Rendering shipBuying html')
+                    return render_template('diplomacy.html', **templateData)
 
-            else:
-                logger.error('Invalid page name!')
-                return "Invalid page name"
-    logger.error('Invalid username!')
-    return "Invaild username"
+                elif page == 'settings':
+                    logger.info('Rendering settings html')
+                    return render_template('settings.html', **templateData)
+
+                else:
+                    logger.error('Invalid page name!')
+                    return "Invalid page name"
+        logger.error('Invalid username!')
+        return "Invaild username"
+    elif WHICH_DATABASE is 'google':
+        logger.warning('Google database not migrated')
+        return 'Not migrated get.'
+    else:
+        logger.error('Error: No database set')
+        return 'Error: Database not set'
 
 
 @app.route('/user/<name>/button', methods=['POST'])
@@ -248,151 +263,158 @@ def userButton(name=None):
         logger.error('Cookie does not match database')
         return 'You do not have access to this location'
 
-    # Run recipies. Because other users could be online and you want to be upto date
-    logger.info("Loading recipies...")
-    users = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
-    values = pickledata.loadvalues(VALUES_PATH)
-    totals = total.total(users, values)
-    farm = farms.farm(values, totals)
-    minecalcd = mines.mine(values, totals)
-    factory = factories.factory(values, totals)
+    if WHICH_DATABASE is 'pickle':
+        # Run recipies. Because other users could be online and you want to be upto date
+        logger.info("Loading recipies...")
+        users = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
+        values = pickledata.loadvalues(VALUES_PATH)
+        totals = total.total(users, values)
+        farm = farms.farm(values, totals)
+        minecalcd = mines.mine(values, totals)
+        factory = factories.factory(values, totals)
 
-    # Where have you come from?
-    farmHtml = False
-    mineHtml = False
-    factoryHtml = False
-    shipBuyHtml = False
+        # Where have you come from?
+        farmHtml = False
+        mineHtml = False
+        factoryHtml = False
+        shipBuyHtml = False
 
-    # Has there been an error you should know about?
-    error = None
+        # Has there been an error you should know about?
+        error = None
 
-    # Identify the user
-    for person in users:
-        if name == person.name:
-            logger.info("Signed in as " + str(person.name))
+        # Identify the user
+        for person in users:
+            if name == person.name:
+                logger.info("Signed in as " + str(person.name))
 
-            # Detect what button it was and do the appropriate action
+                # Detect what button it was and do the appropriate action
 
-            # farms.html ---------------#
-            if 'buyFarm' in request.form:
-                logger.info("Detected 'buyFarm'")
-                farmHtml = True
-                if general.hasmoney(person, farm['farmCost']):
-                    person.numberFarms += 1
-                    person.money -= farm['farmCost']
-                    logger.info("Brought one farm")
-                else:
-                    logger.error("Money Error: Not enough money")
-                    error = 'Not Enough Money!'
-
-            elif 'upgradeFarm' in request.form:
-                logger.info("Detected 'upgradeFarm'")
-                farmHtml = True
-                if person.farmLevel >= 5:
-                    logger.error("Error: Max farm level")
-                    error = 'At max farm level of 5. Cannot advance'
-                else:
-                    if general.hasmoney(person, farm['levelCost']):
-                        person.farmLevel += 1
-                        person.money -= farm['levelCost']
-                        logger.info("Upgraded Level")
+                # farms.html ---------------#
+                if 'buyFarm' in request.form:
+                    logger.info("Detected 'buyFarm'")
+                    farmHtml = True
+                    if general.hasmoney(person, farm['farmCost']):
+                        person.numberFarms += 1
+                        person.money -= farm['farmCost']
+                        logger.info("Brought one farm")
                     else:
                         logger.error("Money Error: Not enough money")
                         error = 'Not Enough Money!'
-            # Mines --------------------#
-            elif 'mineUpgrade' in request.form:
-                logger.debug('Detected mineUpgrade')
-                mineHtml = True
-                if general.hasmoney(person, minecalcd['mineUpgrades'][2]):
-                    person.minePowerUpgrade += 1
-                    person.money -= minecalcd['mineUpgrades'][2]
-                    logger.info("Upgraded mine power upgrade brought")
+
+                elif 'upgradeFarm' in request.form:
+                    logger.info("Detected 'upgradeFarm'")
+                    farmHtml = True
+                    if person.farmLevel >= 5:
+                        logger.error("Error: Max farm level")
+                        error = 'At max farm level of 5. Cannot advance'
+                    else:
+                        if general.hasmoney(person, farm['levelCost']):
+                            person.farmLevel += 1
+                            person.money -= farm['levelCost']
+                            logger.info("Upgraded Level")
+                        else:
+                            logger.error("Money Error: Not enough money")
+                            error = 'Not Enough Money!'
+                # Mines --------------------#
+                elif 'mineUpgrade' in request.form:
+                    logger.debug('Detected mineUpgrade')
+                    mineHtml = True
+                    if general.hasmoney(person, minecalcd['mineUpgrades'][2]):
+                        person.minePowerUpgrade += 1
+                        person.money -= minecalcd['mineUpgrades'][2]
+                        logger.info("Upgraded mine power upgrade brought")
+                    else:
+                        logger.error("Money Error: Not enough money")
+                        error = 'Not Enough Money!'
+
                 else:
-                    logger.error("Money Error: Not enough money")
-                    error = 'Not Enough Money!'
+                    mineUpgrades = [1, 10, 50, 100]
+                    for percent in mineUpgrades:
+                        title = 'mineUpgrade' + str(percent)
+                        if title in request.form:
+                            logger.info('Detected %s', title)
+                            mineHtml = True
+                            if general.hasmoney(person, minecalcd['mineUpgrades'][percent]):
+                                person.mineBoost += percent
+                                person.money -= minecalcd['mineUpgrades'][percent]
+                                logger.info("Upgraded mine produced")
+                            else:
+                                logger.error("Money Error: Not enough money")
+                                error = 'Not Enough Money!'
+                            logger.info('The users mineBoost is now %s', person.mineBoost)
+                    # Mines
+                    for digger in person.ownedMines:
+                        button = 'buy' + digger
+                        if button in request.form:
+                            logger.info('Detected mine button')
+                            mineHtml = True
+                            if general.hasmoney(person, minecalcd[digger]):
+                                person.ownedMines[digger] += 1
+                                person.money -= minecalcd[digger]
+                                logger.info('Brought one %s mine', digger)
+                            else:
+                                logger.error("Money Error: Not enough money")
+                                error = 'Not Enough Money!'
+                    # Factories
+                    for factoryl in person.ownedFactories:
+                        button = 'buy' + factoryl
+                        if button in request.form:
+                            logger.info('Factory detected')
+                            factoryHtml = True
+                            if general.hasmoney(person, factory[factoryl]):
+                                person.ownedFactories[factoryl] += 1
+                                person.money -= factory[factoryl]
+                                logger.info('Brought one %s factory', factoryl)
+                            else:
+                                logger.error("Money Error: Not enough money")
+                                error = 'Not Enough Money!'
 
-            else:
-                mineUpgrades = [1, 10, 50, 100]
-                for percent in mineUpgrades:
-                    title = 'mineUpgrade' + str(percent)
-                    if title in request.form:
-                        logger.info('Detected %s', title)
-                        mineHtml = True
-                        if general.hasmoney(person, minecalcd['mineUpgrades'][percent]):
-                            person.mineBoost += percent
-                            person.money -= minecalcd['mineUpgrades'][percent]
-                            logger.info("Upgraded mine produced")
-                        else:
-                            logger.error("Money Error: Not enough money")
-                            error = 'Not Enough Money!'
-                        logger.info('The users mineBoost is now %s', person.mineBoost)
-                # Mines
-                for digger in person.ownedMines:
-                    button = 'buy' + digger
-                    if button in request.form:
-                        logger.info('Detected mine button')
-                        mineHtml = True
-                        if general.hasmoney(person, minecalcd[digger]):
-                            person.ownedMines[digger] += 1
-                            person.money -= minecalcd[digger]
-                            logger.info('Brought one %s mine', digger)
-                        else:
-                            logger.error("Money Error: Not enough money")
-                            error = 'Not Enough Money!'
-                # Factories
-                for factoryl in person.ownedFactories:
-                    button = 'buy' + factoryl
-                    if button in request.form:
-                        logger.info('Factory detected')
-                        factoryHtml = True
-                        if general.hasmoney(person, factory[factoryl]):
-                            person.ownedFactories[factoryl] += 1
-                            person.money -= factory[factoryl]
-                            logger.info('Brought one %s factory', factoryl)
-                        else:
-                            logger.error("Money Error: Not enough money")
-                            error = 'Not Enough Money!'
+                    for ship in person.ownedShips:
+                        button = 'buy' + ship
+                        if button in request.form:
+                            logger.info('shipBuy detected')
+                            logger.info('Detected %s', ship)
+                            shipBuyHtml = True
+                            '''
+                            if general.hasmoney(person, factories[factoryl]):
+                                person.ownedFactories[factoryl] += 1
+                                person.money -= factories[factoryl]
+                                logger.info('Brought one %s factory', factoryl)
+                            else:
+                                logger.error("Money Error: Not enough money")
+                                error = 'Not Enough Money!'
+                            '''
 
-                for ship in person.ownedShips:
-                    button = 'buy' + ship
-                    if button in request.form:
-                        logger.info('shipBuy detected')
-                        logger.info('Detected %s', ship)
-                        shipBuyHtml = True
-                        '''
-                        if general.hasmoney(person, factories[factoryl]):
-                            person.ownedFactories[factoryl] += 1
-                            person.money -= factories[factoryl]
-                            logger.info('Brought one %s factory', factoryl)
-                        else:
-                            logger.error("Money Error: Not enough money")
-                            error = 'Not Enough Money!'
-                        '''
+                # Save upated personal data
+                logger.info('Saving...')
+                username = person.name + '.p'
+                fname = os.path.join(PICKLE_DIR, username)
+                with open(fname, 'wb') as f:
+                    pickle.dump(person, f)
 
-            # Save upated personal data
-            logger.info('Saving...')
-            username = person.name + '.p'
-            fname = os.path.join(PICKLE_DIR, username)
-            with open(fname, 'wb') as f:
-                pickle.dump(person, f)
-
-    # Redirect back to the page the user was at before
-    logger.info("Calculating redirect")
-    if farmHtml:
-        logger.info('Redirecting back to farms')
-        return redirect(url_for('user', name=name, page='farms', data=error))
-    elif mineHtml:
-        logger.info('Redirecting back to mines')
-        return redirect(url_for('user', name=name, page='mines', data=error))
-    elif factoryHtml:
-        logger.info('Redirecting back to factories')
-        return redirect(url_for('user', name=name, page='factories', data=error))
-    elif shipBuyHtml:
-        logger.info('Redirecting back to shipBuyHtml')
-        return redirect(url_for('user', name=name, page='shipBuying', data=error))
+        # Redirect back to the page the user was at before
+        logger.info("Calculating redirect")
+        if farmHtml:
+            logger.info('Redirecting back to farms')
+            return redirect(url_for('user', name=name, page='farms', data=error))
+        elif mineHtml:
+            logger.info('Redirecting back to mines')
+            return redirect(url_for('user', name=name, page='mines', data=error))
+        elif factoryHtml:
+            logger.info('Redirecting back to factories')
+            return redirect(url_for('user', name=name, page='factories', data=error))
+        elif shipBuyHtml:
+            logger.info('Redirecting back to shipBuyHtml')
+            return redirect(url_for('user', name=name, page='shipBuying', data=error))
+        else:
+            logger.info('Redirecting to home')
+            return redirect(url_for('user', name=name, page='home', data=error))
+    elif WHICH_DATABASE is 'google':
+        logger.warning('Google database not migrated')
+        return 'Not migrated get.'
     else:
-        logger.info('Redirecting to home')
-        return redirect(url_for('user', name=name, page='home', data=error))
+        logger.error('Error: No database set')
+        return 'Error: Database not set'
 
 
 @app.route('/testing')
