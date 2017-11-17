@@ -1,36 +1,39 @@
 # The general functions needed to run the code
 import logging
-import pickle
-import os
+import random
+import string as s
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def loadusers(userfilepath, pickledir):
-    """Load users from the file given as USERS"""
-    logger.info('[1] Loading users')
-    users = []
-    # Load users.p files
-    with open(userfilepath, 'rb') as f:
-        usersarray = pickle.load(f)
+def randomchars(seed):
+    random.seed(seed)
 
-    # Read to find out the users
-    for file in usersarray:
-        fname = os.path.join(pickledir, file)
-        with open(fname, 'rb') as f:
-            person = pickle.load(f)
-            users.append(person)
-    return users
+    chars = s.printable[:-5]  # All valid characters
+    logger.debug('All characters %s', chars)
+    chars = chars.replace("\\", "")  # Remove backslash
+    chars = chars.replace("'", '')  # Remove single quote
+    chars = chars.replace('"', '')  # Remove double quote
+    chars = chars.replace(',', '')  # Remove commar
+    chars = chars.replace('`', '')  # Remove thingy
+    word = list(chars)
+    logger.debug('Valid character %s', chars)
+    random.shuffle(word)
+    chars = ''.join(word)
+    logger.debug('Shuffled characters %s', chars)
+    substution = chars[-3:] + chars[:-3]  # Moves them over by 3
 
+    # Create the encryption and decryption dictionaries
+    encryption = {}
+    decryption = {}
 
-def loadvalues(valuefilepath):
-    """Load the values from the file given as VALUES"""
-    logger.info('[1] Load values')
-    with open(valuefilepath, 'rb') as f:
-        values = pickle.load(f)
-    return values
+    for i, c in enumerate(chars):
+        v = substution[i]
+        encryption[c] = v
+        decryption[v] = c
 
+    return encryption, decryption
 
 def scramblecookie(request, username, encryptdict):
     """Scramble the username and add to the give request"""

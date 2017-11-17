@@ -2375,3 +2375,11 @@ TypeError: 'list' object is not callable
 2017-11-15 19:32:21,999 - modules.DPC - INFO - [4] Running dynamic personal calulator def
 2017-11-15 19:32:22,000 - root - INFO - Rendering settings html
 2017-11-15 19:32:22,010 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2017 19:32:22] "GET /user/james/settings HTTP/1.1" 200 -
+2017-11-17 19:10:29,714 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-17 19:10:29,720 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:10:29,729 - modules.pickledata - INFO - [1] Load values
+2017-11-17 19:10:29,733 - root - INFO - Passed the cross reference variable test
+2017-11-17 19:10:29,742 - root - INFO - Running app
+2017-11-17 19:10:29,815 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-17 19:10:31,731 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:10:31] "GET / HTTP/1.1" 200 -
+2017-11-17 19:10:31,933 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:10:31] "GET /static/favicon.ico HTTP/1.1" 200 -
