@@ -61,10 +61,12 @@ else:
     logger.error('CRITICAL ERROR: Unknown database')
     quit()
 
-# Before doing anything important, first make sure that all of the varibles are similar across the board
-# Check if each person has the same as the database.py and database.p files
-# Is not perfect as it cannot check the one varibles, only lists.
 if ENABLE_TEST:
+    # Before doing anything important, first make sure that all of the varibles are similar across the board
+    # Check if each person has the same as the database.py and database.p files
+    # Is not perfect as it cannot check the one varibles, only lists.
+    # Can be disabled by the ENABLE_TEST boolean
+
     u = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
     v = pickledata.loadvalues(VALUES_PATH)
 
@@ -93,8 +95,6 @@ else:
 @app.route('/')
 def home():
     """The main login page / Index"""
-    # return redirect(url_for('user', name='james', page='home'))
-    # A little hotwire for debuging. Remember to remove cookie stuff
     return render_template('index.html')
 
 
@@ -143,10 +143,8 @@ def user(name=None, page=None, data=None):
         return 'You do not have access to this location'
 
     # Have you been sent here with an error? Get ready to display it!
-    if data == 'notEnoughMoney':  # Could change to having the string have the sentance shown. Get rid of if/else
-        dialogMessage = 'Not enough money!'
-    elif data == 'maxFarmLevel':
-        dialogMessage = 'The max farm level is 5'
+    if data:
+        dialogMessage = data
     else:
         dialogMessage = None
 
@@ -285,14 +283,14 @@ def userButton(name=None):
                     logger.info("Brought one farm")
                 else:
                     logger.error("Money Error: Not enough money")
-                    error = 'notEnoughMoney'
+                    error = 'Not Enough Money!'
 
             elif 'upgradeFarm' in request.form:
                 logger.info("Detected 'upgradeFarm'")
                 farmHtml = True
                 if person.farmLevel >= 5:
                     logger.error("Error: Max farm level")
-                    error = 'maxFarmLevel'
+                    error = 'At max farm level of 5. Cannot advance'
                 else:
                     if general.hasmoney(person, farm['levelCost']):
                         person.farmLevel += 1
@@ -300,7 +298,7 @@ def userButton(name=None):
                         logger.info("Upgraded Level")
                     else:
                         logger.error("Money Error: Not enough money")
-                        error = 'notEnoughMoney'
+                        error = 'Not Enough Money!'
             # Mines --------------------#
             elif 'mineUpgrade' in request.form:
                 logger.debug('Detected mineUpgrade')
@@ -311,7 +309,7 @@ def userButton(name=None):
                     logger.info("Upgraded mine power upgrade brought")
                 else:
                     logger.error("Money Error: Not enough money")
-                    error = 'notEnoughMoney'
+                    error = 'Not Enough Money!'
 
             else:
                 mineUpgrades = [1, 10, 50, 100]
@@ -326,7 +324,7 @@ def userButton(name=None):
                             logger.info("Upgraded mine produced")
                         else:
                             logger.error("Money Error: Not enough money")
-                            error = 'notEnoughMoney'
+                            error = 'Not Enough Money!'
                         logger.info('The users mineBoost is now %s', person.mineBoost)
                 # Mines
                 for digger in person.ownedMines:
@@ -340,7 +338,7 @@ def userButton(name=None):
                             logger.info('Brought one %s mine', digger)
                         else:
                             logger.error("Money Error: Not enough money")
-                            error = 'notEnoughMoney'
+                            error = 'Not Enough Money!'
                 # Factories
                 for factoryl in person.ownedFactories:
                     button = 'buy' + factoryl
@@ -353,7 +351,7 @@ def userButton(name=None):
                             logger.info('Brought one %s factory', factoryl)
                         else:
                             logger.error("Money Error: Not enough money")
-                            error = 'notEnoughMoney'
+                            error = 'Not Enough Money!'
 
                 for ship in person.ownedShips:
                     button = 'buy' + ship
@@ -368,7 +366,7 @@ def userButton(name=None):
                             logger.info('Brought one %s factory', factoryl)
                         else:
                             logger.error("Money Error: Not enough money")
-                            error = 'notEnoughMoney'
+                            error = 'Not Enough Money!'
                         '''
 
             # Save upated personal data

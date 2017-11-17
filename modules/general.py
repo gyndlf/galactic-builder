@@ -8,6 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 def randomchars(seed):
+    """Returns two randomised dictionaries"""
     random.seed(seed)
 
     chars = s.printable[:-5]  # All valid characters
@@ -27,13 +28,13 @@ def randomchars(seed):
     # Create the encryption and decryption dictionaries
     encryption = {}
     decryption = {}
-
     for i, c in enumerate(chars):
         v = substution[i]
         encryption[c] = v
         decryption[v] = c
 
     return encryption, decryption
+
 
 def scramblecookie(request, username, encryptdict):
     """Scramble the username and add to the give request"""

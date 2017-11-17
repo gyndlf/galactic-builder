@@ -2387,3 +2387,129 @@ TypeError: 'list' object is not callable
 2017-11-17 19:19:48,730 - root - WARNING - Warning: Not running the cross reference varible test
 2017-11-17 19:19:48,732 - root - INFO - Running app
 2017-11-17 19:19:48,767 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-17 19:29:53,146 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-17 19:29:53,154 - root - WARNING - Warning: Not running the cross reference varible test
+2017-11-17 19:29:53,159 - root - INFO - Running app
+2017-11-17 19:29:53,231 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-11-17 19:29:55,219 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:29:55] "GET / HTTP/1.1" 200 -
+2017-11-17 19:29:58,641 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:29:58,661 - root - INFO - Logging in to james
+2017-11-17 19:29:58,663 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:29:58] "POST /loginuser HTTP/1.1" 302 -
+2017-11-17 19:29:58,672 - root - INFO - ----------Finances----------
+2017-11-17 19:29:58,673 - modules.pickledata - INFO - [1] Load values
+2017-11-17 19:29:58,678 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:29:58,679 - modules.total - INFO - [2] Running total definition
+2017-11-17 19:29:58,682 - root - INFO - Calculating dynamic varibles...
+2017-11-17 19:29:58,682 - modules.farms - INFO - [3] Running farms def
+2017-11-17 19:29:58,682 - modules.mines - INFO - [3] Running mine def
+2017-11-17 19:29:58,682 - modules.factories - INFO - [3] Running factory def
+2017-11-17 19:29:58,682 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-17 19:29:58,682 - root - INFO - Rendering home html...
+2017-11-17 19:29:58,742 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:29:58] "GET /user/james/home HTTP/1.1" 200 -
+2017-11-17 19:29:58,797 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:29:58] "GET /static/main.css HTTP/1.1" 304 -
+2017-11-17 19:29:58,806 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:29:58] "GET /static/BackgroundAnimation.js HTTP/1.1" 304 -
+2017-11-17 19:29:58,809 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:29:58] "GET /static/Chart.min.js HTTP/1.1" 304 -
+2017-11-17 19:30:03,796 - root - INFO - ----------Finances----------
+2017-11-17 19:30:03,797 - modules.pickledata - INFO - [1] Load values
+2017-11-17 19:30:03,797 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:30:03,800 - modules.total - INFO - [2] Running total definition
+2017-11-17 19:30:03,800 - root - INFO - Calculating dynamic varibles...
+2017-11-17 19:30:03,800 - modules.farms - INFO - [3] Running farms def
+2017-11-17 19:30:03,800 - modules.mines - INFO - [3] Running mine def
+2017-11-17 19:30:03,801 - modules.factories - INFO - [3] Running factory def
+2017-11-17 19:30:03,801 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-17 19:30:03,801 - root - INFO - Rendering farm html...
+2017-11-17 19:30:03,815 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:03] "GET /user/james/farms HTTP/1.1" 200 -
+2017-11-17 19:30:07,504 - root - INFO - ----------Button----------
+2017-11-17 19:30:07,504 - root - INFO - Loading recipies...
+2017-11-17 19:30:07,504 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:30:07,505 - modules.pickledata - INFO - [1] Load values
+2017-11-17 19:30:07,506 - modules.total - INFO - [2] Running total definition
+2017-11-17 19:30:07,506 - modules.farms - INFO - [3] Running farms def
+2017-11-17 19:30:07,506 - modules.mines - INFO - [3] Running mine def
+2017-11-17 19:30:07,507 - modules.factories - INFO - [3] Running factory def
+2017-11-17 19:30:07,507 - root - INFO - Signed in as james
+2017-11-17 19:30:07,507 - root - INFO - Detected 'upgradeFarm'
+2017-11-17 19:30:07,508 - root - ERROR - Error: Max farm level
+2017-11-17 19:30:07,508 - root - INFO - Saving...
+2017-11-17 19:30:07,519 - root - INFO - Calculating redirect
+2017-11-17 19:30:07,519 - root - INFO - Redirecting back to farms
+2017-11-17 19:30:07,520 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:07] "POST /user/james/button HTTP/1.1" 302 -
+2017-11-17 19:30:07,529 - root - INFO - ----------Finances----------
+2017-11-17 19:30:07,529 - modules.pickledata - INFO - [1] Load values
+2017-11-17 19:30:07,529 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:30:07,531 - modules.total - INFO - [2] Running total definition
+2017-11-17 19:30:07,531 - root - INFO - Calculating dynamic varibles...
+2017-11-17 19:30:07,531 - modules.farms - INFO - [3] Running farms def
+2017-11-17 19:30:07,531 - modules.mines - INFO - [3] Running mine def
+2017-11-17 19:30:07,532 - modules.factories - INFO - [3] Running factory def
+2017-11-17 19:30:07,532 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-17 19:30:07,532 - root - INFO - Rendering farm html...
+2017-11-17 19:30:07,534 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:07] "GET /user/james/farms/At%20max%20farm%20level%20of%205.%20Cannot%20advance HTTP/1.1" 200 -
+2017-11-17 19:30:15,449 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:15] "GET / HTTP/1.1" 200 -
+2017-11-17 19:30:21,059 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:30:21,061 - root - INFO - Logging in to joe
+2017-11-17 19:30:21,062 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:21] "POST /loginuser HTTP/1.1" 302 -
+2017-11-17 19:30:21,070 - root - INFO - ----------Finances----------
+2017-11-17 19:30:21,070 - modules.pickledata - INFO - [1] Load values
+2017-11-17 19:30:21,070 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:30:21,071 - modules.total - INFO - [2] Running total definition
+2017-11-17 19:30:21,071 - root - INFO - Calculating dynamic varibles...
+2017-11-17 19:30:21,071 - modules.farms - INFO - [3] Running farms def
+2017-11-17 19:30:21,071 - modules.mines - INFO - [3] Running mine def
+2017-11-17 19:30:21,071 - modules.factories - INFO - [3] Running factory def
+2017-11-17 19:30:21,071 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-17 19:30:21,072 - root - INFO - Rendering home html...
+2017-11-17 19:30:21,074 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:21] "GET /user/joe/home HTTP/1.1" 200 -
+2017-11-17 19:30:24,835 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:24] "GET / HTTP/1.1" 200 -
+2017-11-17 19:30:29,759 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:30:29,761 - root - INFO - Logging in to cael
+2017-11-17 19:30:29,762 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:29] "POST /loginuser HTTP/1.1" 302 -
+2017-11-17 19:30:29,779 - root - INFO - ----------Finances----------
+2017-11-17 19:30:29,780 - modules.pickledata - INFO - [1] Load values
+2017-11-17 19:30:29,781 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:30:29,783 - modules.total - INFO - [2] Running total definition
+2017-11-17 19:30:29,784 - root - INFO - Calculating dynamic varibles...
+2017-11-17 19:30:29,784 - modules.farms - INFO - [3] Running farms def
+2017-11-17 19:30:29,784 - modules.mines - INFO - [3] Running mine def
+2017-11-17 19:30:29,784 - modules.factories - INFO - [3] Running factory def
+2017-11-17 19:30:29,785 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-17 19:30:29,785 - root - INFO - Rendering home html...
+2017-11-17 19:30:29,792 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:29] "GET /user/cael/home HTTP/1.1" 200 -
+2017-11-17 19:30:32,563 - root - INFO - ----------Finances----------
+2017-11-17 19:30:32,568 - modules.pickledata - INFO - [1] Load values
+2017-11-17 19:30:32,569 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:30:32,571 - modules.total - INFO - [2] Running total definition
+2017-11-17 19:30:32,571 - root - INFO - Calculating dynamic varibles...
+2017-11-17 19:30:32,571 - modules.farms - INFO - [3] Running farms def
+2017-11-17 19:30:32,572 - modules.mines - INFO - [3] Running mine def
+2017-11-17 19:30:32,572 - modules.factories - INFO - [3] Running factory def
+2017-11-17 19:30:32,572 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-17 19:30:32,573 - root - INFO - Rendering factories html...
+2017-11-17 19:30:32,593 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:32] "GET /user/cael/factories HTTP/1.1" 200 -
+2017-11-17 19:30:35,344 - root - INFO - ----------Button----------
+2017-11-17 19:30:35,345 - root - INFO - Loading recipies...
+2017-11-17 19:30:35,345 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:30:35,346 - modules.pickledata - INFO - [1] Load values
+2017-11-17 19:30:35,347 - modules.total - INFO - [2] Running total definition
+2017-11-17 19:30:35,348 - modules.farms - INFO - [3] Running farms def
+2017-11-17 19:30:35,349 - modules.mines - INFO - [3] Running mine def
+2017-11-17 19:30:35,349 - modules.factories - INFO - [3] Running factory def
+2017-11-17 19:30:35,349 - root - INFO - Signed in as cael
+2017-11-17 19:30:35,350 - root - INFO - Factory detected
+2017-11-17 19:30:35,350 - root - ERROR - Money Error: Not enough money
+2017-11-17 19:30:35,351 - root - INFO - Saving...
+2017-11-17 19:30:35,351 - root - INFO - Calculating redirect
+2017-11-17 19:30:35,352 - root - INFO - Redirecting back to factories
+2017-11-17 19:30:35,353 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:35] "POST /user/cael/button HTTP/1.1" 302 -
+2017-11-17 19:30:35,361 - root - INFO - ----------Finances----------
+2017-11-17 19:30:35,361 - modules.pickledata - INFO - [1] Load values
+2017-11-17 19:30:35,362 - modules.pickledata - INFO - [1] Loading users
+2017-11-17 19:30:35,363 - modules.total - INFO - [2] Running total definition
+2017-11-17 19:30:35,363 - root - INFO - Calculating dynamic varibles...
+2017-11-17 19:30:35,363 - modules.farms - INFO - [3] Running farms def
+2017-11-17 19:30:35,363 - modules.mines - INFO - [3] Running mine def
+2017-11-17 19:30:35,363 - modules.factories - INFO - [3] Running factory def
+2017-11-17 19:30:35,364 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-11-17 19:30:35,364 - root - INFO - Rendering factories html...
+2017-11-17 19:30:35,368 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:35] "GET /user/cael/factories/Not%20Enough%20Money%21 HTTP/1.1" 200 -
