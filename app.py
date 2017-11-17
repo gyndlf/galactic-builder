@@ -6,13 +6,11 @@
 # export FLASK_APP=mainpythonfile.py
 # python -m flask run
 
-# Test
+WHICH_DATABASE = 'pickle'  # Or can be 'google'
 
 import pickle
 import os
 from flask import *
-import string as s
-import random
 import logging
 
 # Import the modules needed to calculate everything
@@ -36,33 +34,12 @@ else:
     logger.addHandler(handler)
     logger.setLevel(logging.INFO)
 
-seed = 21904867982759875983275982375893
-random.seed(seed)
-logger.info('The seed is %s', seed)
 app = Flask(__name__)
 
-CHAR_SET = s.printable[:-5]  # All valid characters
-logger.debug('All characters %s', CHAR_SET)
-CHAR_SET = CHAR_SET.replace("\\", "")  # Remove backslash
-CHAR_SET = CHAR_SET.replace("'", '')  # Remove single quote
-CHAR_SET = CHAR_SET.replace('"', '')  # Remove double quote
-CHAR_SET = CHAR_SET.replace(',', '')  # Remove commar
-CHAR_SET = CHAR_SET.replace('`', '')  # Remove thingy
-word = list(CHAR_SET)
-logger.debug('Valid character %s', CHAR_SET)
-random.shuffle(word)
-CHAR_SET = ''.join(word)
-logger.debug('Shuffled characters %s', CHAR_SET)
-SUBSTITUTION_CHARS = CHAR_SET[-3:] + CHAR_SET[:-3]  # Moves them over by 3
-
 # Create the encryption and decryption dictionaries
-ENCRYPT_DICT = {}
-DECRYPT_DICT = {}
-
-for i, c in enumerate(CHAR_SET):
-    v = SUBSTITUTION_CHARS[i]
-    ENCRYPT_DICT[c] = v
-    DECRYPT_DICT[v] = c
+seed = 21904867982759875983275982375893
+logger.info('The seed is %s', seed)
+ENCRYPT_DICT, DECRYPT_DICT = general.randomchars(seed)
 
 # Calculate file paths
 MY_DIR = os.path.realpath(os.path.dirname(__file__))
@@ -74,11 +51,20 @@ DATABASE_PATH = os.path.join(PICKLE_DIR, DATABASE)
 VALUES = 'values.p'
 VALUES_PATH = os.path.join(PICKLE_DIR, VALUES)
 
+
+if WHICH_DATABASE is 'pickle':
+    from modules import pickledata
+elif WHICH_DATABASE is 'google':
+    pass
+else:
+    logger.error('CRITICAL ERROR: Unknown database')
+    quit()
+
 # Before doing anything important, first make sure that all of the varibles are similar across the board
 # Check if each person has the same as the database.py and database.p files
 # Is not perfect as it cannot check the one varibles, only lists.
-u = general.loadusers(USERS_PATH, PICKLE_DIR)
-v = general.loadvalues(VALUES_PATH)
+u = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
+v = pickledata.loadvalues(VALUES_PATH)
 
 b = baseValues.basic()
 d = database.person()
@@ -111,7 +97,7 @@ def home():
 @app.route('/loginuser', methods=['POST'])
 def calcmessage():
     """This is the login script"""
-    users = general.loadusers(USERS_PATH, PICKLE_DIR)
+    users = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
     try:
         username = request.form['username']
         password = request.form['password']
@@ -161,8 +147,8 @@ def user(name=None, page=None, data=None):
         dialogMessage = None
 
     # Calculate the very basics
-    values = general.loadvalues(VALUES_PATH)
-    users = general.loadusers(USERS_PATH, PICKLE_DIR)
+    values = pickledata.loadvalues(VALUES_PATH)
+    users = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
     totals = total.total(users, values)
 
     # Calculate the recipies
@@ -262,8 +248,8 @@ def userButton(name=None):
 
     # Run recipies. Because other users could be online and you want to be upto date
     logger.info("Loading recipies...")
-    users = general.loadusers(USERS_PATH, PICKLE_DIR)
-    values = general.loadvalues(VALUES_PATH)
+    users = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
+    values = pickledata.loadvalues(VALUES_PATH)
     totals = total.total(users, values)
     farm = farms.farm(values, totals)
     minecalcd = mines.mine(values, totals)
