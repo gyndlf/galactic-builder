@@ -2513,3 +2513,7 @@ TypeError: 'list' object is not callable
 2017-11-17 19:30:35,364 - modules.DPC - INFO - [4] Running dynamic personal calulator def
 2017-11-17 19:30:35,364 - root - INFO - Rendering factories html...
 2017-11-17 19:30:35,368 - werkzeug - INFO - 127.0.0.1 - - [17/Nov/2017 19:30:35] "GET /user/cael/factories/Not%20Enough%20Money%21 HTTP/1.1" 200 -
+2017-11-17 19:35:14,734 - root - INFO - The seed is 21904867982759875983275982375893
+2017-11-17 19:35:14,741 - root - WARNING - Warning: Not running the cross reference varible test
+2017-11-17 19:35:14,743 - root - INFO - Running app
+2017-11-17 19:35:14,787 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
