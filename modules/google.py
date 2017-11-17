@@ -45,7 +45,7 @@ print('Running...')
 wks_list = sheet.worksheets()
 worksheet = sheet.worksheet('people')
 
-print(get_stats(worksheet, 'thomas', 'money'))
+print(get_stats(worksheet, 'james', 'money'))
 
 
 # Rows : Columns
