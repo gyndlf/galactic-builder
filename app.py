@@ -21,7 +21,6 @@ from modules import general, total, farms, mines, factories, DPC
 import baseValues  # Only used in the inital check to see if everything is in sync
 import database  # Only used in the inital check to see if everything is in sync
 
-
 runingonamazon = False
 
 # create a logging format

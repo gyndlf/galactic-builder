@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "galactic-builder",
+  "private_key_id": "8e70e9c56779cc2ff0c16c04cfa958bf93c22160",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC4w2mB72EyF9Fi\n+mD8unvwFn8/JiZP9NUl7ccal6bxEJHFbKTQMOaNn+unuXJzho+TXj57mEmBRqNb\nwRbde5ZLt/HH20aY2kLBCqOeuVvGfd6TcppXOoBRBZvKKDJgKoBssRyZa4rAms45\nUp2wCktriGEAxAvTcCz22hB9f0mbkHKrZwX5sYd1dUzJk9N1w1Gj7cvp1zcQiavi\ni27icNwbxqyZPO89JaUlFanbTsXDqM0xI1b3AP/o5BXSpRPZc1ZFMa8SxvLkO0B9\nXLrCa4BGK24tL8uqc1EiCLgN0F5c/kOUUT8EE5Q108To0UCy4Np+SsXsbYgNdqTv\nstVBRfVrAgMBAAECggEAVDrZvZ+YqtKK5VmJn42QdNp8thg5PRg7l6f3rdrXA2zv\nV5Z46GRyprvyHauATsRYbfF4ALZjRCkkze6P8valhO1dryP64jIWXpTwFKsh+LJn\nJscHL57+4nDxHc8HcCnQFD0F8bdCMR4hx6YvNxLqYSJyPnwhfAnWpc6x19SQhPcl\na+xKFl2er30tzvDc5HN81rtF1JlzcEV4zvrHMCaTlld4J55vptrcqLsoAu+v+XDt\n542YLB6o+XaNh1ExU3kgfvdxal3G6fcm8wp5BPsZo3m7g9bGmc3o6harSZb1zgXV\nNDvJ99ihBl2KZMfatBjZKkLFSuuIZpMMWZWB6/+KeQKBgQDn18Yt+F45UucuUR0b\nU1mlPVa7kVa/34Wz6z0QtkGIdgX2N1FVtqs3GLw1LadCnXXI1xwtThZcq58giGkb\nPqTOPBHXYXO6+2TQeI/bj+dIKSAI48ykP8uOU1zQ2PAYtUzlPx14ds6jSlDP0qgD\nSqJISGR8/jWxJSDwSjUDj22o9QKBgQDMA9QQ4rZ55tnr8yq+f4Ozsv5/Xk8PO5Bl\ngFy8WWTj9U98B88tANKsDZodmKNznQ2jbfz8Wix+esTv0wyf9U/C394lFa1hxvl5\niWKUXXO4NzNrRWi4PpDyD/mvN83qQWFCjaSNTx37PIe01DLtOVPNMeYMfcIu4zuS\njkFJgwOo3wKBgAoBGaAqM4atuSQag/MF6bxjpTZ60w98ibx1zjDGbJWC4kb5pBza\nwRCjlJuG2MzbFpYQEjsyP2zISxmQSVjPnzT3Cp4Mqn3LE1KboTmMQCKxA5zel5oO\n1q3RkxPACLxINoU97/uexNPvBQWyxWU+9zm/RfbO0WpPe9him18H9WdxAoGAFowZ\nxN/5gNF1pjESuUkIejS/Eb6PiERx+fXMyfgrQVJcPX3zdKrRnbhHHxw+fEmQN06x\nlgY1Qqk42LR/gbIv5X6uY3TY26SM79SyM2l8n5BiO2nJYAtyI36GfsnxFQGyyRM0\na3Wh/6E58k89baBXVac9IIZJjrsIW3MjXgd/wQsCgYBG8MmNeIO+FmRXbTzlth76\nx9xYvGNhVsvC4vvDbxQQGbawwYEqNFE2wpAwM2naZP8GXm4/Hvz+9tItGDbfQgH6\n/RvzHMIENnhv/uAImbCcLbcPj1+3EfrLkV5E3D4UgXETNqqgxLnpEVp185eyUhcr\n11a1bVEvueLk77x8QWdhnw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "galatic-builder@galactic-builder.iam.gserviceaccount.com",
+  "client_id": "118411461714555777860",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/galatic-builder%40galactic-builder.iam.gserviceaccount.com"
+}
