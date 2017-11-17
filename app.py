@@ -93,9 +93,13 @@ else:
 
 # All app.route functions -----------------------------------------------------------------------------------------#
 @app.route('/')
-def home():
+@app.route('/<data>')
+def home(data=None):
     """The main login page / Index"""
-    return render_template('index.html')
+    if data:
+        return render_template('index.html', message=data)
+    else:
+        return render_template('index.html', message=None)
 
 
 @app.route('/loginuser', methods=['POST'])
@@ -109,7 +113,7 @@ def calcmessage():
             username = username.lower()
         except:
             logger.error('Invalid username or password')
-            return redirect(url_for('home'))
+            return redirect(url_for('home', data='Invalid username or password'))
         for person in users:
             if person.name == username and person.password == password:
                 logger.info("Logging in to %s", str(username))
@@ -118,13 +122,13 @@ def calcmessage():
                 resp = general.scramblecookie(resp, username, ENCRYPT_DICT)
                 return resp
         logger.error('Username or password does not match database')
-        return redirect(url_for('home'))
+        return redirect(url_for('home', data='Username or password does not match'))
     elif WHICH_DATABASE is 'google':
         logger.warning('Google database not migrated')
-        return 'Not migrated get.'
+        return redirect(url_for('home', data='Google database not migrated.'))
     else:
         logger.error('Error: No database set')
-        return 'Error: Database not set'
+        return 'Critical Error: Database not set. Please contact @Vobenhen'
 
 
 @app.route('/user/')
@@ -141,13 +145,13 @@ def user(name=None, page=None, data=None):
         logger.debug('Username via cookie: %s', cookie)
     except:
         logger.error('No cookie found')
-        return redirect(url_for('home'))
+        return redirect(url_for('home', data='No cookie found. Please login.'))
 
     # Check the cookie matches
     cookie = general.loadcookie(cookie, DECRYPT_DICT)
     if cookie != name:
         logger.error('Cookie is not the same as %s', name)
-        return 'You do not have access to this location'
+        return redirect(url_for('home', data='You do not have access to this location.'))
 
     # Have you been sent here with an error? Get ready to display it!
     if data:
@@ -240,10 +244,10 @@ def user(name=None, page=None, data=None):
         return "Invaild username"
     elif WHICH_DATABASE is 'google':
         logger.warning('Google database not migrated')
-        return 'Not migrated get.'
+        return redirect(url_for('home', data='Google database not migrated.'))
     else:
         logger.error('Error: No database set')
-        return 'Error: Database not set'
+        return 'Critical Error: Database not set. Please contact @Vobenhen'
 
 
 @app.route('/user/<name>/button', methods=['POST'])
@@ -256,12 +260,12 @@ def userButton(name=None):
         logger.debug('Username via cookie: %s', cookie)
     except:
         logger.error('No cookie found')
-        return 'No cookie found.'
+        return redirect(url_for('home', data='No cookie found. Please login'))
 
     cookie = general.loadcookie(cookie, DECRYPT_DICT)
     if cookie != name:
         logger.error('Cookie does not match database')
-        return 'You do not have access to this location'
+        return redirect(url_for('home', data='You do not have access to this location.'))
 
     if WHICH_DATABASE is 'pickle':
         # Run recipies. Because other users could be online and you want to be upto date
@@ -411,10 +415,10 @@ def userButton(name=None):
             return redirect(url_for('user', name=name, page='home', data=error))
     elif WHICH_DATABASE is 'google':
         logger.warning('Google database not migrated')
-        return 'Not migrated get.'
+        return redirect(url_for('home', data='Google database not migrated.'))
     else:
         logger.error('Error: No database set')
-        return 'Error: Database not set'
+        return 'Critical Error: Database not set. Please contact @Vobenhen'
 
 
 @app.route('/testing')
