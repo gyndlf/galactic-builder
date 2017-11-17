@@ -7,6 +7,7 @@
 # python -m flask run
 
 WHICH_DATABASE = 'pickle'  # Or can be 'google'
+ENABLE_TEST = False
 
 import pickle
 import os
@@ -63,26 +64,29 @@ else:
 # Before doing anything important, first make sure that all of the varibles are similar across the board
 # Check if each person has the same as the database.py and database.p files
 # Is not perfect as it cannot check the one varibles, only lists.
-u = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
-v = pickledata.loadvalues(VALUES_PATH)
+if ENABLE_TEST:
+    u = pickledata.loadusers(USERS_PATH, PICKLE_DIR)
+    v = pickledata.loadvalues(VALUES_PATH)
 
-b = baseValues.basic()
-d = database.person()
+    b = baseValues.basic()
+    d = database.person()
 
-sample = len(d.ownedMines) + len(d.ownedFactories) + len(d.ownedShips)  # number of owned "stuff"
+    sample = len(d.ownedMines) + len(d.ownedFactories) + len(d.ownedShips)  # number of owned "stuff"
 
-values = len(b.mineValues) + len(b.factoryRecipies) + len(b.factoryValues) + len(b.shipDesc) # Num of value "stuff"
-actual = len(v.mineValues) + len(v.factoryRecipies) + len(v.factoryValues) + len(v.shipDesc)
-if values is not actual:
-    logger.error('CRITICAL ERROR: Values.p does NOT match baseValues.py\nReset database or update the variables')
-    quit()
-
-for person in u:
-    if (len(person.ownedMines) + len(person.ownedFactories) + len(person.ownedShips)) is not sample:
-        logger.error('CRITICAL ERROR: ' + str(person.name) + "'s varibles do NOT match.\nReset database or update"
-                                                             "variables")
+    values = len(b.mineValues) + len(b.factoryRecipies) + len(b.factoryValues) + len(b.shipDesc) # Num of value "stuff"
+    actual = len(v.mineValues) + len(v.factoryRecipies) + len(v.factoryValues) + len(v.shipDesc)
+    if values is not actual:
+        logger.error('CRITICAL ERROR: Values.p does NOT match baseValues.py\nReset database or update the variables')
         quit()
-logger.info('Passed the cross reference variable test')
+
+    for person in u:
+        if (len(person.ownedMines) + len(person.ownedFactories) + len(person.ownedShips)) is not sample:
+            logger.error('CRITICAL ERROR: ' + str(person.name) + "'s varibles do NOT match.\nReset database or update"
+                                                                 "variables")
+            quit()
+    logger.info('Passed the cross reference variable test')
+else:
+    logger.warning('Warning: Not running the cross reference varible test')
 
 
 # All app.route functions -----------------------------------------------------------------------------------------#
