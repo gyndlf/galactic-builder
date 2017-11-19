@@ -8,16 +8,6 @@ PHR="Release Alpha v"
 NUM1=6 # Set new main version number here
 NUM2=2 # And set version minor number here
 
-TMP=$[NUM2-1]
-
-
-echo ""
-echo "Changing to"
-echo $NUM1.$NUM2
-echo "from"
-echo $NUM1.$TMP
-echo ""
-
 VER=$NUM1.$NUM2
 MSG=$PHR$VER
 
