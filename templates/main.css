@@ -137,7 +137,7 @@ font-size: 17px
             color: azure;
 		}
         .species{
-			border:5px solid #33cc33;
+			/*border:5px solid #33cc33;*/
             background-color: azure;
             text-align: center;
 		}
