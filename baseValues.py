@@ -32,17 +32,17 @@ class basic:
         self.factoryValues = {
             'Car': 3000,  # 10 steel, 1 silicon,
             'iPhoneX': 1000,  # 2 titianium, 1 copper, 2 silicon (Possible weapon license)
-            'AppyLyinx': 100,  # 5 titianium, 3 copper, 3 silicon, 1 noobidium
-            'Toilet': 10,  # 10 noobidium
-            'Pii Fighter': 8000,
+            'AppyLyinx': 1500,  # 5 titianium, 3 copper, 3 silicon, 1 noobidium
+            'Toilet': 15,  # 10 noobidium
+            'Pii Fighter': 50000,
             # 50 steel, 20 titianium, 10 hydrogen, 1 white crystal, weapon lisence core, fighter license
             '4d Printer': 12000,  # 10 steel, 10 copper, 10 silicon, 1 white crystal, 1 yellow crystal
             'X128 CPU': 10000,
-            'robot': 200,
+            'robot': 10000,
             'batteries': 100,
-            'plasma compressor': 6000,
-            'laser': 200,
-            'death star': 1000000
+            'plasma compressor': 60000,
+            'laser': 1500,
+            'death star': 10000000
         }
 
         self.j10exs = {
@@ -171,7 +171,7 @@ class basic:
             },
 
             'AppyLyinx': {
-                'titanium': 10,
+                'titanium': 8,
                 'copper': 8,
                 'silicon': 8,
                 'noobidium': 5
@@ -189,41 +189,41 @@ class basic:
             },
 
             '4d Printer': {
-                'steel': 1000,
-                'copper': 1000,
-                'silicon': 1000,
-                'gold': 100,
+                'steel': 50,
+                'copper': 50,
+                'silicon': 50,
+                'gold': 10,
                 'white crystal': 20,
                 'yellow crystal': 3
             },
 
             'X128 CPU': {
-                'gold': 200,
-                'silicon': 3000,
-                'copper': 1000
+                'gold': 10,
+                'silicon': 10,
+                'copper': 10
             },
 
             'robot': {
                 'gold': 4,
                 'silicon': 30,
                 'copper': 20,
-                'titanium': 50
+                'titanium': 30
             },
 
             'batteries': {
-                'lead': 5,
+                'oil': 5,
                 'carbon': 100
             },
 
             'plasma compressor': {
-                'titanium': 2000,
-                'hydrogen': 1000,
-                'oil': 2000
+                'titanium': 200,
+                'hydrogen': 100,
+                'oil': 200
             },
 
             'laser': {
-                'carbon': 200,
-                'copper': 20
+                'titanium': 10,
+                'diamond': 1
             },
 
             'death star': {
