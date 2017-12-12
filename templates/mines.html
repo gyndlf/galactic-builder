@@ -10,67 +10,123 @@ Mines are different as you do not gain any money for buying mines, instead they 
     </div>
 </div>
 <br>
+<div class="col-sm-2 tabs">
+    <div  class="sides maininfo">
+        <div class="vertical-menu">
+            {% for mine in values.mineValues %}
+            <a id="{{ mine }}">{{ mine }}</a><br>
+            {% endfor %}
+            <h1>Mine upgrades: </h1>
+            <a id="upgrade1">1% boost</a><br>
+            <a id="upgrade2">10% boost</a><br>
+            <a id="upgrade3">50% boost</a><br>
+            <a id="upgrade4">Double output</a><br>
+            <a id="upgrade5">Resource increase by one</a><br>
+        </div>
+    </div>
+</div>
+<div class="col-sm-10 tabs maininfo">
     {% for mine in values.mineValues %}
-<div class="maininfo" background="/static/minephoto/{{ mine }}.jpg">
-    <div class="row">
-        <div class = "module col-sm-3">Mine name: {{ mine }}</div>
-        <div class = "module col-sm-3">Mine Value: §{{ values.mineValues[mine] }}</div>
-        <div class = "module col-sm-3">{{ dynamicPersonal['mineMessages'][mine] }}</div>
-        <div class = "module col-sm-3">Amount produced: {{ dynamicPersonal['minesDict'][mine] }}</div>
-        <div class = "module col-sm-3">Mine cost: §{{ minesFunc[mine] }}</div>
+    <div class="{{ mine }} centerContent ">
+        <h3>{{ mine }} Mine</h3>
+        <div  class="row tr">
+            <div  class="col-sm-6 td">Mine Value</div>
+            <div  class="col-sm-6 td">§{{ values.mineValues[mine] }}</div>
+        </div>
+        <div  class="row tr">
+            <div  class="col-sm-6 td">Amount produced by yourself</div>
+            <div  class="col-sm-6 td">{{ dynamicPersonal['factories'][factory]['produced'] }}</div>
+        </div>
+        <div  class="row tr">
+            <div  class="col-sm-6 td">Amount produced by everyone</div>
+            <div  class="col-sm-6 td">{{ totals['factoryCount'][factory] }}</div>
+        </div>
+        <div  class="row tr">
+            <div  class="col-sm-12 td">{{ dynamicPersonal['mineMessages'][mine] }}</div>
+        </div>
+        <div  class="row tr">
+            <div  class="col-sm-6 td">Amount Produced</div>
+            <div  class="col-sm-6 td">{{ dynamicPersonal['minesDict'][mine] }}</div>
+        </div>
+        <div  class="row tr">
+            <div  class="col-sm-6 td">Mine Cost</div>
+            <div  class="col-sm-6 td">§{{ minesFunc[mine] }}</div>
+        </div>
+        <div  class="row tr">
+            <div  class="col-sm-6 td">Number of mines</div>
+            <div  class="col-sm-6 td">{{ person.ownedMines[mine] }}</div>
+        </div>
+        <form action="/user/{{ person.name }}/button" method="post">
+            <input type="submit" name="{{ 'buy' + mine }}" value="Buy mine">
+        </form>
+        <img src="/static/minephoto/{{ mine }}.jpg">
     </div>
-    <div class="row">
-        <div class = "module col-sm-6">Number of mines: {{ person.ownedMines[mine] }}</div>
-        <div class = "module col-sm-6"><form action="/user/{{ person.name }}/button" method="post">
-                <input type="submit" name="{{ 'buy' + mine }}" value="Buy mine">
-            </form></div>
-    </div>
-</div>
-<br>
-
     {% endfor %}
-
-<h1>Mine upgrades: </h1>
-<div class="maininfo">
-<form action="/user/{{ person.name }}/button" method="post">
-    <div class="row"><div class="col-sm-12"><p>Upgrade the amount mined by 1% (rounded down)</p></div></div>
-    <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][1] }}</p></div></div>
-    <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade1" value="Buy Upgrade"></div></div>
-</form>
+    <div class="upgrade1 centerContent ">
+        <form action="/user/{{ person.name }}/button" method="post">
+            <div class="row"><div class="col-sm-12"><p>Upgrade the amount mined by 1% (rounded down)</p></div></div>
+            <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][1] }}</p></div></div>
+            <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade1" value="Buy Upgrade"></div></div>
+        </form>
+    </div>
+    <div class="updrage2 centerContent ">
+        <form action="/user/{{ person.name }}/button" method="post">
+            <div class="row"><div class="col-sm-12"><p>Upgrade the amount mined by 10% (rounded down)</p></div></div>
+            <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][10] }}</p></div></div>
+            <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade10" value="Buy Upgrade"></div></div>
+        </form>
+    </div>
+    <div class="updrage3 centerContent ">
+        <form action="/user/{{ person.name }}/button" method="post">
+            <div class="row"><div class="col-sm-12"><p>Upgrade the amount mined by 50% (rounded down)</p></div></div>
+            <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][50] }}</p></div></div>
+            <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade50" value="Buy Upgrade"></div></div>
+        </form>
+    </div>
+    <div class="updrage4 centerContent ">
+        <form action="/user/{{ person.name }}/button" method="post">
+            <div class="row"><div class="col-sm-12"><p>Mines double their output!</p></div></div>
+            <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][100] }}</p></div></div>
+            <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade100" value="Buy Upgrade"></div></div>
+        </form>
+    </div>
+    <div class="updrage5 centerContent ">
+        <form action="/user/{{ person.name }}/button" method="post">
+            <div class="row"><div class="col-sm-12"><p>Instead of producing one resource per mine, mines produce one more. (2,3,4,...)</p></div></div>
+            <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][2] }}</p></div></div>
+            <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade" value="Buy Upgrade"></div></div>
+        </form>
+    </div>
 </div>
-<br>
-<div class="maininfo">
-<form action="/user/{{ person.name }}/button" method="post">
-    <div class="row"><div class="col-sm-12"><p>Upgrade the amount mined by 10% (rounded down)</p></div></div>
-    <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][10] }}</p></div></div>
-    <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade10" value="Buy Upgrade"></div></div>
-</form>
-</div>
-<br>
-<div class="maininfo">
-<form action="/user/{{ person.name }}/button" method="post">
-    <div class="row"><div class="col-sm-12"><p>Upgrade the amount mined by 50% (rounded down)</p></div></div>
-    <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][50] }}</p></div></div>
-    <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade50" value="Buy Upgrade"></div></div>
-</form>
-</div>
-<br>
-<div class="maininfo">
-<form action="/user/{{ person.name }}/button" method="post">
-    <div class="row"><div class="col-sm-12"><p>Mines double their output!</p></div></div>
-    <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][100] }}</p></div></div>
-    <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade100" value="Buy Upgrade"></div></div>
-</form>
-</div>
-<br>
-<div class="maininfo">
-<form action="/user/{{ person.name }}/button" method="post">
-    <div class="row"><div class="col-sm-12"><p>Instead of producing one resource per mine, mines produce one more. (2,3,4,...)</p></div></div>
-    <div class="row"><div class="col-sm-12"><p>Cost : §{{ minesFunc['mineUpgrades'][2] }}</p></div></div>
-    <div class="row"><div class="col-sm-12"><input type="submit" name="mineUpgrade" value="Buy Upgrade"></div></div>
-</form>
-</div>
-<br>
-
-<p>future images here</p>
+<script>
+    $(document).ready(function(){
+        $(".centerContent").hide();
+        {% for mine in values.mineValues %}
+        $("#{{ mine }}").click(function(){
+            $(".centerContent").hide();
+            $(".{{ mine }}").toggle();
+        });
+        {% endfor %}
+        $("#upgrade1").click(function(){
+            $(".centerContent").hide();
+            $(".upgrade1").toggle();
+        });
+        $("#upgrade2").click(function(){
+            $(".centerContent").hide();
+            $(".upgrade2").toggle();
+        });
+        $("#upgrade3").click(function(){
+            $(".centerContent").hide();
+            $(".upgrade3").toggle();
+        });
+        $("#upgrade4").click(function(){
+            $(".centerContent").hide();
+            $(".upgrade4").toggle();
+        });
+        $("#upgrade5").click(function(){
+            $(".centerContent").hide();
+            $(".upgrade5").toggle();
+        });
+    });
+</script>
 {% endblock %}
