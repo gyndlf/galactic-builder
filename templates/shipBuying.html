@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="maininfo">
-    <div id="tr" class="row">
-        <div id="td" classs="col-sm-12"><b>Ship Buying</b></div>
+<div class="maininfo">
+    <div class="row tr">
+        <div classs="col-sm-12 td"><b>Ship Buying</b></div>
     </div>
 </div>
 <br>
 {% for ship in values.shipDesc %}
 
-<div id="maininfo">
+<div class="maininfo">
 	<div class="row">
 		<div class="col-sm-12">{{ values.shipDesc[ship]['name'] }}</div>
 	</div>
@@ -26,7 +26,7 @@
 				<div class="col-sm-6">Cost: §{{ values.shipDesc[ship]['cost'] }}</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-6" id="td"><form action="/user/{{ username }}/button" method="post">
+				<div class="col-sm-6 td"><form action="/user/{{ username }}/button" method="post">
     			    <input type="submit" name="{{ 'buy' + ship }}" value="Buy Ship">
     			</form></div>
 				<div class="col-sm-6"></div>

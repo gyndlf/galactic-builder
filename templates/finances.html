@@ -1,56 +1,56 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="maininfo">
-    <div id="tr" class="row">
-        <div id="td" class="col-sm-12"><b>Welcome back {{ person.name }}!</b>
+<div class="maininfo">
+    <div class="row tr">
+        <div class="col-sm-12 td"><b>Welcome back {{ person.name }}!</b>
         </div>
     </div>
     </div>
     <br>
-    <div id="maininfo">
+    <div class="maininfo">
 	<p>Since the game is in Alpha, there will be database resets as we add new features and edit varibles. To give you something to do, we have a challenge for you, your goal is to be the first to get §1 billion dollars. Sorry about that.</p>
 </div>
 <br>
-<div id="maininfo">
-    <div id="tr" class="row">
-        <div id="td" class="col-sm-12"><b>Finances</b></div>
+<div class="maininfo">
+    <div class="row tr">
+        <div class="col-sm-12 td"><b>Finances</b></div>
     </div>
-    <div id="tr" class="row">
-        <div id="td" class="col-sm-2">Money</div>
-        <div id="td" class="col-sm-2">Net Income</div>
-        <div id="td" class="col-sm-2">Income</div>
-        <div id="td" class="col-sm-2">Expenses</div>
-        <div id="td" class="col-sm-2">Net Worth (What others see)</div>
+    <div  class="row tr">
+        <div class="col-sm-2 td">Money</div>
+        <div class="col-sm-2 td">Net Income</div>
+        <div class="col-sm-2 td">Income</div>
+        <div class="col-sm-2 td">Expenses</div>
+        <div class="col-sm-2 td">Net Worth (What others see)</div>
     </div>
-    <div id="tr" class="row">
-        <div id="td" class="col-sm-2 module">§{{ person.money }}</div>
-        <div id="td" class="col-sm-2 module">§{{ person.netIncome }}</div>
-        <div id="td" class="col-sm-2 module">§{{ person.income }}</div>
-        <div id="td" class="col-sm-2 module">§{{ person.expenses }}</div>
-        <div id="td" class="col-sm-2 module">§{{ totals.wealth[person.name] }}</div>
+    <div  class="row tr">
+        <div class="col-sm-2 td module">§{{ person.money }}</div>
+        <div class="col-sm-2 td module">§{{ person.netIncome }}</div>
+        <div class="col-sm-2 td module">§{{ person.income }}</div>
+        <div class="col-sm-2 td module">§{{ person.expenses }}</div>
+        <div class="col-sm-2 td module">§{{ totals.wealth[person.name] }}</div>
     </div>
 </div>
     <br>
-<div id="maininfo">
-	<div id="tr" class="row">
-        <div id="td" class="col-sm-4 module"></div>
-        <div id="td" class="col-sm-4 module"><b>Income</b></div>
-        <div id="td" class="col-sm-4 module"><b>Expenses</b></div>
+<div class="maininfo">
+	<div  class="row tr">
+        <div class="col-sm-4 module td"></div>
+        <div class="col-sm-4 module td"><b>Income</b></div>
+        <div class="col-sm-4 module td"><b>Expenses</b></div>
     </div>
-	<div id="tr" class="row">
-        <div id="td" class="col-sm-4 module"><b>Mine</b></div>
-        <div id="td" class="col-sm-4 module">§{{ dynamicPersonal['mineProfitMade'] }}</div>
-        <div id="td" class="col-sm-4 module">§{{ dynamicPersonal['materialsTotalCost'] }}</div>
+	<div  class="row tr">
+        <div class="col-sm-4 module td"><b>Mine</b></div>
+        <div class="col-sm-4 module td">§{{ dynamicPersonal['mineProfitMade'] }}</div>
+        <div class="col-sm-4 module td">§{{ dynamicPersonal['materialsTotalCost'] }}</div>
     </div>
-	<div id="tr" class="row">
-        <div id="td" class="col-sm-4 module"><b>Factory</b></div>
-        <div id="td" class="col-sm-4 module">§{{ dynamicPersonal['totalFacIncome'] }}</div>
-        <div id="td" class="col-sm-4 module">//No Such thing at present//</div>
+	<div  class="row tr">
+        <div class="col-sm-4 module td"><b>Factory</b></div>
+        <div class="col-sm-4 module td">§{{ dynamicPersonal['totalFacIncome'] }}</div>
+        <div class="col-sm-4 module td">//No Such thing at present//</div>
     </div>
-	<div id="tr" class="row">
-        <div id="td" class="col-sm-4 module"><b>Farm</b></div>
-        <div id="td" class="col-sm-4 module">§{{ dynamicPersonal['Fincome'] }}</div>
-        <div id="td" class="col-sm-4 module">//No Such thing at present//</div>
+	<div  class="row tr">
+        <div class="col-sm-4 module td"><b>Farm</b></div>
+        <div class="col-sm-4 module td">§{{ dynamicPersonal['Fincome'] }}</div>
+        <div class="col-sm-4 module td">//No Such thing at present//</div>
     </div>
 </div>
 <p>
