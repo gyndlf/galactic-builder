@@ -7,7 +7,7 @@
 # python -m flask run
 
 WHICH_DATABASE = 'pickle'  # Or can be 'google'
-ENABLE_TEST = False
+ENABLE_TEST = True
 
 import pickle
 import os
