@@ -11,33 +11,62 @@ Factories are where the real money is made, you buy factories and thouse factori
 </div>
     <br>
 
-
-    <br>
+<div class="col-sm-2" id="tabs">
+    <div id="maininfo" class="sides">
+        <div class="vertical-menu">
+            {% for factory in factories %}
+            <a id="{{ factory }}">{{ factory }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="col-sm-10" id="tabs">
     {% for factory in factories %}
-    <div id="maininfo">
-    <div id="tr" class="row">
-    <div id="td" class="col-sm-3">Factory name: {{ factory }}</div>
-    <div id="td" class="col-sm-3">Factory cost: §{{ factories[factory] }} </div>
-    <div id="td" class="col-sm-3">Amount produced by yourself: {{ dynamicPersonal['factories'][factory]['produced'] }}</div>
-    <div id="td" class="col-sm-3">Amount produced by everyone: {{ totals['factoryCount'][factory] }}</div>
+    <div id="maininfo" class="{{ factory }} centerContent">
+        <h3>{{ factory }} Factory</h3>
+        <div id="tr" class="row">
+            <div id="td" class="col-sm-6">Factory cost</div>
+            <div id="td" class="col-sm-6">§{{ factories[factory] }}</div>
+        </div>
+        <div id="tr" class="row">
+            <div id="td" class="col-sm-6">Amount produced by yourself</div>
+            <div id="td" class="col-sm-6">{{ dynamicPersonal['factories'][factory]['produced'] }}</div>
+        </div>
+        <div id="tr" class="row">
+            <div id="td" class="col-sm-6">Amount produced by everyone</div>
+            <div id="td" class="col-sm-6">{{ totals['factoryCount'][factory] }}</div>
+        </div>
+        <div id="tr" class="row">
+            <div id="td" class="col-sm-6">Factory count</div>
+            <div id="td" class="col-sm-6">{{ person.ownedFactories[factory] }}</div>
+        </div>
+        <div id="tr" class="row">
+            <div id="td" class="col-sm-6">Income</div>
+            <div id="td" class="col-sm-6">§{{ dynamicPersonal['factories'][factory]['income'] }}</div>
+        </div>
+        <div id="tr" class="row">
+            <div id="td" class="col-sm-6">Profit</div>
+            <div id="td" class="col-sm-6">§{{ dynamicPersonal['factories'][factory]['profit'] }}</div>
+        </div>
+        <div id="tr" class="row">
+            <div id="td" class="col-sm-6">Materials You Need To Supply per factory</div>
+            <div id="td" class="col-sm-6">{{ values['factoryRecipies'][factory] }}</div>
+        </div>
+                <form action="/user/{{ person.name }}/button" method="post">
+                    <input type="submit" name="{{ 'buy' + factory }}" value="Buy factory">
+                </form>
     </div>
-    <div class="row">
-    <div id="td" class="col-sm-3">Factory count: {{ person.ownedFactories[factory] }}</div>
-    <div id="td" class="col-sm-3">Income: §{{ dynamicPersonal['factories'][factory]['income'] }}</div>
-    <div id="td" class="col-sm-3">Profit: §{{ dynamicPersonal['factories'][factory]['profit'] }}</div>
-    <div id="td" class="col-sm-3"><form action="/user/{{ person.name }}/button" method="post">
-        <input type="submit" name="{{ 'buy' + factory }}" value="Buy factory">
-    </form></div>
-    </div>
-	<div id="tr" class="row">
-	<div id="td" class="col-sm-3">Materials You Need To Supply per factory:  </div>
-	<div id="td" class="col-sm-3">{{ values['factoryRecipies'][factory] }}</div>
-	</div>
-    </div>
-	<br>
     {% endfor %}
-
-<p>Factory upgrades go here</p>
-<p>picture goes here</p>
-
+</div>
+<script>
+    $(document).ready(function(){
+        $(".centerContent").hide();
+        {% for factory in factories %}
+        $("#{{ factory }}").click(function(){
+            $(".centerContent").hide();
+            $(".{{ factory }}").toggle();
+        });
+        {% endfor %}
+    });
+</script>
 {% endblock %}
