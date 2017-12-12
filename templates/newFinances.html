@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="col-sm-2" id="tabs">
-		<div id="maininfo" class="sides">
+<div class="col-sm-2 tabs">
+		<div class="maininfo sides">
 		<br>
 		<br>
 		<br>
@@ -20,93 +20,99 @@
 			<button class="button" id="NetWorth">Net Worth</button>
 		<br>
 		<br>
+			<button class="button" id="Discord">Discord</button>
+			<br>
+			<br>
 		</div>
 	</div>
 	<div class="col-sm-10" id="tabs">
-		<div id="maininfo" class="Money centerContent">
+		<div class="maininfo Money centerContent">
 		<h3>Money</h3>
-		<div id="tr" class="row">
-			<div id="td" class="col-sm-6">Money</div>
-			<div id="td" class="col-sm-6 module">§{{ money }}</div>
+		<div class="tr row">
+			<div class="col-sm-6 module td">Money</div>
+			<div class="col-sm-6 module td">§{{ money }}</div>
 		</div>
 			<!--money stats-->
 		</div>
-		<div id="maininfo" class="NetIncome centerContent">
+		<div class="maininfo NetIncome centerContent">
 		<h3>Net Income</h3>
-		<div id="tr" class="row">
-		    <div id="td" class="col-sm-6">Net Income</div>
-			<div id="td" class="col-sm-2 module">§{{ person.netIncome }}</div>
+		<div class="tr row">
+		    <div class="col-sm-6 td">Net Income</div>
+			<div class="col-sm-6 td">§{{ person.netIncome }}</div>
 		</div>
-		<div id="tr" class="row">
-        <div id="td" class="col-sm-4 module"></div>
-        <div id="td" class="col-sm-4 module"><b>Income</b></div>
-        <div id="td" class="col-sm-4 module"><b>Expenses</b></div>
+		<div class="tr row">
+        <div class="col-sm-4 module td"></div>
+        <div class="col-sm-4 module td"><b>Income</b></div>
+        <div class="col-sm-4 module td"><b>Expenses</b></div>
     </div>
-	<div id="tr" class="row">
-        <div id="td" class="col-sm-4 module"><b>Mine</b></div>
-        <div id="td" class="col-sm-4 module">//MineIncome//</div>
-        <div id="td" class="col-sm-4 module">//MineExpenses//</div>
+	<div class="tr row">
+        <div class="col-sm-4 module td"><b>Mine</b></div>
+        <div class="col-sm-4 module td">//MineIncome//</div>
+        <div class="col-sm-4 module td">//MineExpenses//</div>
     </div>
-	<div id="tr" class="row">
-        <div id="td" class="col-sm-4 module"><b>Factory</b></div>
-        <div id="td" class="col-sm-4 module">//FactoryIncome//</div>
-        <div id="td" class="col-sm-4 module">//FactoryExpenses//</div>
+	<div class="tr row">
+        <div class="col-sm-4 module td"><b>Factory</b></div>
+        <div class="col-sm-4 module td">//FactoryIncome//</div>
+        <div class="col-sm-4 module td">//FactoryExpenses//</div>
     </div>
-	<div id="tr" class="row">
-        <div id="td" class="col-sm-4 module"><b>Farm</b></div>
-        <div id="td" class="col-sm-4 module">//FarmIncome//</div>
-        <div id="td" class="col-sm-4 module">//FarmExpenses//</div>
+	<div class="tr row">
+        <div class="col-sm-4 module td"><b>Farm</b></div>
+        <div class="col-sm-4 module td">//FarmIncome//</div>
+        <div class="col-sm-4 module td">//FarmExpenses//</div>
 		</div>
 			<!--Net income stats-->
 		</div>
-		<div id="maininfo" class="Income centerContent">
+		<div class="maininfo Income centerContent">
 		<h3>Income</h3>
-		<div id="tr" class="row">
-		<div id="td" class="col-sm-6">Income</div>
-		<div id="td" class="col-sm-6 module">§{{ income }}</div>
+		<div class="tr row">
+		<div class="col-sm-6 module td">Income</div>
+		<div class="col-sm-6 module td">§{{ income }}</div>
 		</div>
-		<div id="tr" class="row">
-		<div id="td" class="col-sm-6 module"></div>
-        <div id="td" class="col-sm-6 module"><b>Income</b></div>
+		<div class="tr row">
+		<div class="col-sm-6 module td"></div>
+        <div class="col-sm-6 module td"><b>Income</b></div>
 		</div>
-		<div id="tr" class="row">
-			<div id="td" class="col-sm-6 module"><b>Mine</b></div>
-			<div id="td" class="col-sm-6 module">//MineIncome//</div>
+		<div class="tr row">
+			<div class="col-sm-6 module td"><b>Mine</b></div>
+			<div class="col-sm-6 module td">//MineIncome//</div>
 		</div>
-		<div id="tr" class="row">
-			<div id="td" class="col-sm-6 module"><b>Factory</b></div>
-			<div id="td" class="col-sm-6 module">//FactoryIncome//</div>
+		<div class="tr row">
+			<div class="col-sm-6 module td"><b>Factory</b></div>
+			<div class="col-sm-6 module td">//FactoryIncome//</div>
 		</div>
-		<div id="tr" class="row">
-		<div id="td" class="col-sm-6 module"><b>Farm</b></div>
-        <div id="td" class="col-sm-6 module">//FarmIncome//</div>
+		<div class="tr row">
+		<div class="col-sm-6 module td"><b>Farm</b></div>
+        <div class="col-sm-6 module td">//FarmIncome//</div>
 		</div>
 			<!--Income stats-->
 		</div>
 		<div id="maininfo" class="Expenses centerContent">
 		<h3>Expenses</h3>
-		<div id="tr" class="row">
-        <div id="td" class="col-sm-6 module"></div>
-        <div id="td" class="col-sm-6 module"><b>Expenses</b></div>
+		<div class="tr row">
+        <div class="col-sm-6 module td"></div>
+        <div class="col-sm-6 module td"><b>Expenses</b></div>
     </div>
-	<div id="tr" class="row">
-        <div id="td" class="col-sm-6 module"><b>Mine</b></div>
-        <div id="td" class="col-sm-6 module">//MineExpenses//</div>
+	<div  class="tr row">
+        <div class="col-sm-6 module td"><b>Mine</b></div>
+        <div class="col-sm-6 module td">//MineExpenses//</div>
     </div>
-	<div id="tr" class="row">
-        <div id="td" class="col-sm-6 module"><b>Factory</b></div>
-        <div id="td" class="col-sm-6 module">//FactoryExpenses//</div>
+	<div class="tr row">
+        <div class="col-sm-6 module td"><b>Factory</b></div>
+        <div class="col-sm-6 module td">//FactoryExpenses//</div>
     </div>
-	<div id="tr" class="row">
-        <div id="td" class="col-sm-6 module"><b>Farm</b></div>
-        <div id="td" class="col-sm-6 module">//FarmExpenses//</div>
+	<div class="tr row">
+        <div class="col-sm-6 module td"><b>Farm</b></div>
+        <div class="col-sm-6 module td">//FarmExpenses//</div>
 		</div>
 			<!--Expenses stats-->
 		</div>
-		<div id="maininfo" class="NetWorth centerContent">
+		<div class="maininfo NetWorth centerContent">
 		<h3>Net Worth</h3>
 		<p>information on how the net worth is generated?</p>
 			<!--NetWorth stats-->
+		</div>
+		<div class="maininfo Discord centerContent">
+			<iframe src="https://discordapp.com/widget?id=303781677635731457&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"></iframe>
 		</div>
 	</div>
 	<!--<div class="col-sm-2" id="tabs">
@@ -137,6 +143,10 @@ $(document).ready(function(){
 	$("#NetWorth").click(function(){
 		$(".centerContent").hide();
         $(".NetWorth").toggle();
+    });
+    $("#Discord").click(function(){
+        $(".centerContent").hide();
+        $(".Discord").toggle();
     });
 });
 	</script>

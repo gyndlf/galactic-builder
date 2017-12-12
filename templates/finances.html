@@ -5,57 +5,160 @@
         <div class="col-sm-12 td"><b>Welcome back {{ person.name }}!</b>
         </div>
     </div>
-    </div>
-    <br>
-    <div class="maininfo">
-	<p>Since the game is in Alpha, there will be database resets as we add new features and edit varibles. To give you something to do, we have a challenge for you, your goal is to be the first to get §1 billion dollars. Sorry about that.</p>
 </div>
 <br>
 <div class="maininfo">
-    <div class="row tr">
-        <div class="col-sm-12 td"><b>Finances</b></div>
-    </div>
-    <div  class="row tr">
-        <div class="col-sm-2 td">Money</div>
-        <div class="col-sm-2 td">Net Income</div>
-        <div class="col-sm-2 td">Income</div>
-        <div class="col-sm-2 td">Expenses</div>
-        <div class="col-sm-2 td">Net Worth (What others see)</div>
-    </div>
-    <div  class="row tr">
-        <div class="col-sm-2 td module">§{{ person.money }}</div>
-        <div class="col-sm-2 td module">§{{ person.netIncome }}</div>
-        <div class="col-sm-2 td module">§{{ person.income }}</div>
-        <div class="col-sm-2 td module">§{{ person.expenses }}</div>
-        <div class="col-sm-2 td module">§{{ totals.wealth[person.name] }}</div>
+    <p>Since the game is in Alpha, there will be database resets as we add new features and edit varibles. To give you something to do, we have a challenge for you, your goal is to be the first to get §1 billion dollars. Sorry about that.</p>
+</div>
+<div class="col-sm-2 tabs">
+    <div class="maininfo sides">
+        <br>
+        <br>
+        <br>
+        <button class="button" id="Money">Money</button>
+        <br>
+        <br>
+        <button class="button" id="NetIncome">Net Income</button>
+        <br>
+        <br>
+        <button class="button" id="Income">Income</button>
+        <br>
+        <br>
+        <button class="button" id="Expenses">Expenses</button>
+        <br>
+        <br>
+        <button class="button" id="NetWorth">Net Worth</button>
+        <br>
+        <br>
+        <button class="button" id="Discord">Discord</button>
+        <br>
+        <br>
     </div>
 </div>
-    <br>
-<div class="maininfo">
-	<div  class="row tr">
-        <div class="col-sm-4 module td"></div>
-        <div class="col-sm-4 module td"><b>Income</b></div>
-        <div class="col-sm-4 module td"><b>Expenses</b></div>
+<div class="col-sm-10" id="tabs">
+    <div class="maininfo Money centerContent">
+        <h3>Money</h3>
+        <div class="tr row">
+            <div class="col-sm-6 module td">Money</div>
+            <div class="col-sm-6 module td">§{{ money }}</div>
+        </div>
+        <!--money stats-->
     </div>
-	<div  class="row tr">
-        <div class="col-sm-4 module td"><b>Mine</b></div>
-        <div class="col-sm-4 module td">§{{ dynamicPersonal['mineProfitMade'] }}</div>
-        <div class="col-sm-4 module td">§{{ dynamicPersonal['materialsTotalCost'] }}</div>
+    <div class="maininfo NetIncome centerContent">
+        <h3>Net Income</h3>
+        <div class="tr row">
+            <div class="col-sm-6 td">Net Income</div>
+            <div class="col-sm-6 td">§{{ person.netIncome }}</div>
+        </div>
+        <div class="tr row">
+            <div class="col-sm-4 module td"></div>
+            <div class="col-sm-4 module td"><b>Income</b></div>
+            <div class="col-sm-4 module td"><b>Expenses</b></div>
+        </div>
+        <div class="tr row">
+            <div class="col-sm-4 module td"><b>Mine</b></div>
+            <div class="col-sm-4 module td">§{{ dynamicPersonal['mineProfitMade'] }}</div>
+            <div class="col-sm-4 module td">§{{ dynamicPersonal['materialsTotalCost'] }}</div>
+        </div>
+        <div class="tr row">
+            <div class="col-sm-4 module td"><b>Factory</b></div>
+            <div class="col-sm-4 module td">§{{ dynamicPersonal['totalFacIncome'] }}</div>
+            <div class="col-sm-4 module td">//No Such thing at present//</div>
+        </div>
+        <div class="tr row">
+            <div class="col-sm-4 module td"><b>Farm</b></div>
+            <div class="col-sm-4 module td">§{{ dynamicPersonal['Fincome'] }}</div>
+            <div class="col-sm-4 module td">//No Such thing at present//</div>
+        </div>
+        <!--Net income stats-->
     </div>
-	<div  class="row tr">
-        <div class="col-sm-4 module td"><b>Factory</b></div>
-        <div class="col-sm-4 module td">§{{ dynamicPersonal['totalFacIncome'] }}</div>
-        <div class="col-sm-4 module td">//No Such thing at present//</div>
+    <div class="maininfo Income centerContent">
+        <h3>Income</h3>
+        <div class="tr row">
+            <div class="col-sm-6 module td">Income</div>
+            <div class="col-sm-6 module td">§{{ income }}</div>
+        </div>
+        <div class="tr row">
+            <div class="col-sm-6 module td"></div>
+            <div class="col-sm-6 module td"><b>Income</b></div>
+        </div>
+        <div class="tr row">
+            <div class="col-sm-6 module td"><b>Mine</b></div>
+            <div class="col-sm-6 module td">§{{ dynamicPersonal['mineProfitMade'] }}</div>
+        </div>
+        <div class="tr row">
+            <div class="col-sm-6 module td"><b>Factory</b></div>
+            <div class="col-sm-6 module td">§{{ dynamicPersonal['totalFacIncome'] }}</div>
+        </div>
+        <div class="tr row">
+            <div class="col-sm-6 module td"><b>Farm</b></div>
+            <div class="col-sm-6 module td">§{{ dynamicPersonal['Fincome'] }}</div>
+        </div>
+        <!--Income stats-->
     </div>
-	<div  class="row tr">
-        <div class="col-sm-4 module td"><b>Farm</b></div>
-        <div class="col-sm-4 module td">§{{ dynamicPersonal['Fincome'] }}</div>
-        <div class="col-sm-4 module td">//No Such thing at present//</div>
+    <div id="maininfo" class="Expenses centerContent">
+        <h3>Expenses</h3>
+        <div class="tr row">
+            <div class="col-sm-6 module td"></div>
+            <div class="col-sm-6 module td"><b>Expenses</b></div>
+        </div>
+        <div  class="tr row">
+            <div class="col-sm-6 module td"><b>Mine</b></div>
+            <div class="col-sm-6 module td">§{{ dynamicPersonal['materialsTotalCost'] }}</div>
+        </div>
+        <div class="tr row">
+            <div class="col-sm-6 module td"><b>Factory</b></div>
+            <div class="col-sm-6 module td">//No Such thing at present//</div>
+        </div>
+        <div class="tr row">
+            <div class="col-sm-6 module td"><b>Farm</b></div>
+            <div class="col-sm-6 module td">//No Such thing at present//</div>
+        </div>
+        <!--Expenses stats-->
+    </div>
+    <div class="maininfo NetWorth centerContent">
+        <h3>Net Worth</h3>
+        <p>information on how the net worth is generated?</p>
+        <!--NetWorth stats-->
+    </div>
+    <div class="maininfo Discord centerContent">
+        <iframe src="https://discordapp.com/widget?id=303781677635731457&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"></iframe>
     </div>
 </div>
-<p>
-    <br>
-    <iframe src="https://discordapp.com/widget?id=303781677635731457&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"></iframe>
-</p>
+<!--<div class="col-sm-2" id="tabs">
+<!--can put content here->
+<div class="sides" id="maininfo">
+</div>
+</div>-->
+</div>
+<script>
+    $(document).ready(function(){
+        $(".centerContent").hide();
+        $("#Money").click(function(){
+            $(".centerContent").hide();
+            $(".Money").toggle();
+        });
+        $("#NetIncome").click(function(){
+            $(".centerContent").hide();
+            $(".NetIncome").toggle();
+        });
+        $("#Income").click(function(){
+            $(".centerContent").hide();
+            $(".Income").toggle();
+        });
+        $("#Expenses").click(function(){
+            $(".centerContent").hide();
+            $(".Expenses").toggle();
+        });
+        $("#NetWorth").click(function(){
+            $(".centerContent").hide();
+            $(".NetWorth").toggle();
+        });
+        $("#Discord").click(function(){
+            $(".centerContent").hide();
+            $(".Discord").toggle();
+        });
+    });
+</script>
 
 {% endblock %}
