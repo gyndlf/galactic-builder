@@ -3192,3 +3192,43 @@ TypeError: unsupported operand type(s) for +=: 'int' and 'str'
 2017-12-12 13:37:22,951 - root - INFO - Passed the cross reference variable test
 2017-12-12 13:37:22,955 - root - INFO - Running app
 2017-12-12 13:37:22,992 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-12-12 13:40:50,628 - root - INFO - The seed is 21904867982759875983275982375893
+2017-12-12 13:40:50,639 - modules.pickledata - INFO - [1] Loading users
+2017-12-12 13:40:50,646 - modules.pickledata - INFO - [1] Load values
+2017-12-12 13:40:50,646 - root - INFO - Passed the cross reference variable test
+2017-12-12 13:40:50,650 - root - INFO - Running app
+2017-12-12 13:40:50,689 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-12-12 13:40:53,835 - werkzeug - INFO - 127.0.0.1 - - [12/Dec/2017 13:40:53] "GET / HTTP/1.1" 200 -
+2017-12-12 13:40:58,122 - modules.pickledata - INFO - [1] Loading users
+2017-12-12 13:40:58,123 - root - INFO - Logging in to james
+2017-12-12 13:40:58,125 - werkzeug - INFO - 127.0.0.1 - - [12/Dec/2017 13:40:58] "POST /loginuser HTTP/1.1" 302 -
+2017-12-12 13:40:58,140 - root - INFO - ----------Finances----------
+2017-12-12 13:40:58,140 - modules.pickledata - INFO - [1] Load values
+2017-12-12 13:40:58,141 - modules.pickledata - INFO - [1] Loading users
+2017-12-12 13:40:58,143 - modules.total - INFO - [2] Running total definition
+2017-12-12 13:40:58,146 - root - INFO - Calculating dynamic varibles...
+2017-12-12 13:40:58,146 - modules.farms - INFO - [3] Running farms def
+2017-12-12 13:40:58,146 - modules.mines - INFO - [3] Running mine def
+2017-12-12 13:40:58,147 - modules.factories - INFO - [3] Running factory def
+2017-12-12 13:40:58,147 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-12-12 13:40:58,147 - root - INFO - Rendering home html...
+2017-12-12 13:40:58,194 - werkzeug - INFO - 127.0.0.1 - - [12/Dec/2017 13:40:58] "GET /user/james/home HTTP/1.1" 200 -
+2017-12-12 13:41:03,793 - root - INFO - ----------Finances----------
+2017-12-12 13:41:03,795 - modules.pickledata - INFO - [1] Load values
+2017-12-12 13:41:03,795 - modules.pickledata - INFO - [1] Loading users
+2017-12-12 13:41:03,797 - modules.total - INFO - [2] Running total definition
+2017-12-12 13:41:03,797 - root - INFO - Calculating dynamic varibles...
+2017-12-12 13:41:03,797 - modules.farms - INFO - [3] Running farms def
+2017-12-12 13:41:03,798 - modules.mines - INFO - [3] Running mine def
+2017-12-12 13:41:03,798 - modules.factories - INFO - [3] Running factory def
+2017-12-12 13:41:03,798 - modules.DPC - INFO - [4] Running dynamic personal calulator def
+2017-12-12 13:41:03,798 - root - INFO - Rendering factories html...
+2017-12-12 13:41:03,817 - werkzeug - INFO - 127.0.0.1 - - [12/Dec/2017 13:41:03] "GET /user/james/factories HTTP/1.1" 200 -
+2017-12-15 15:11:21,279 - root - INFO - The seed is 21904867982759875983275982375893
+2017-12-15 15:11:21,286 - modules.pickledata - INFO - [1] Loading users
+2017-12-15 15:11:21,297 - modules.pickledata - INFO - [1] Load values
+2017-12-15 15:11:21,301 - root - INFO - Passed the cross reference variable test
+2017-12-15 15:11:21,307 - root - INFO - Running app
+2017-12-15 15:11:21,378 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2017-12-15 15:11:44,204 - werkzeug - INFO - 127.0.0.1 - - [15/Dec/2017 15:11:44] "GET / HTTP/1.1" 200 -
+2017-12-15 15:11:44,479 - werkzeug - INFO - 127.0.0.1 - - [15/Dec/2017 15:11:44] "GET /static/favicon.ico HTTP/1.1" 200 -
