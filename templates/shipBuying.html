@@ -1,41 +1,52 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="maininfo">
-    <div id="tr" class="row">
-        <div id="td" classs="col-sm-12"><b>Ship Buying</b></div>
+<div class="maininfo">
+    <div class="row tr">
+        <div classs="col-sm-12 td"><b>Ship Buying</b></div>
     </div>
 </div>
 <br>
-{% for ship in values.shipDesc %}
-
-<div id="maininfo">
-	<div class="row">
-		<div class="col-sm-12">{{ values.shipDesc[ship]['name'] }}</div>
-	</div>
-	
-    <div class="row">
-		<div class="col-sm-6">
-			<div class="row">
-				<div class="col-sm-6"><!--<img id = "test" src="/static/J10EXS.jpg" width= "53px" height="12px">--></div>
-				<div class="col-sm-6"><p>{{ values.shipDesc[ship]['desc'] }}</p></div>
-			</div>
-		</div>
-		<div class="col-sm-6">
-			<div class="row">
-				<div class="col-sm-6">Class: {{ values.shipDesc[ship]['class'] }}</div>
-				<div class="col-sm-6">Cost: §{{ values.shipDesc[ship]['cost'] }}</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6" id="td"><form action="/user/{{ username }}/button" method="post">
-    			    <input type="submit" name="{{ 'buy' + ship }}" value="Buy Ship">
-    			</form></div>
-				<div class="col-sm-6"></div>
-			</div>
+<div class="col-sm-2 tabs">
+	<div  class="sides maininfo">
+		<div class="vertical-menu">
+			{% for ship in values.shipDesc %}
+			<a id="{{ values.shipDesc[ship]['name'] }}">{{ values.shipDesc[ship]['name'] }}</a><br>
+			{% endfor %}
 		</div>
 	</div>
+</div><div class="col-sm-10 tabs maininfo">
+	{% for ship in values.shipDesc %}
+	<div class="{{ values.shipDesc[ship]['name'] }} centerContent ">
+		<h3>{{ values.shipDesc[ship]['name'] }}</h3>
+		<div class="row">
+			<div class="col-sm-6"></div>
+			<div class="col-sm-6"><p>{{ values.shipDesc[ship]['desc'] }}</p></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">Class: {{ values.shipDesc[ship]['class'] }}</div>
+			<div class="col-sm-6">Cost: §{{ values.shipDesc[ship]['cost'] }}</div>
+		</div>
+		<form action="/user/{{ username }}/button" method="post">
+			<input type="submit" name="{{ 'buy' + ship }}" value="Buy Ship">
+		</form>
+	</div>
+	{% endfor %}
 </div>
-<br>
-{% endfor %}
+
+
+
+<script>
+    $(document).ready(function(){
+        $(".centerContent").hide();
+        {% for ship in values.shipDesc %}
+        $("#{{ values.shipDesc[ship]['name'] }}").click(function(){
+            $(".centerContent").hide();
+            $(".{{ values.shipDesc[ship]['name'] }}").toggle();
+        });
+        {% endfor %}
+    });
+</script>
+
 
 <br><br>
 <p>Possibly some graphics down here? Some images? Graphs?</p>
