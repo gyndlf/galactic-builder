@@ -1,2 +1,0 @@
-<h3>System Simulator</h3>
-<canvas id="systemSim"></canvas>
