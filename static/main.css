@@ -25,6 +25,12 @@ div{
 .centerContent {
 	height: 60%;
 }
+canvas {
+	border: 0px solid #d3d3d3;
+	background-color: #f1f1f1;
+	position: absolute;
+	margin-left: -50%;
+}
 /*button code*/
 .button {
     position: relative;
